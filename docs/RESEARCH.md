@@ -266,14 +266,14 @@ Domain Holdings Australia (ASX: DHG) has a 30 June year end. All sources in this
 |---|---|---|---|
 | Domain historical financials, FY21 to FY24 | Audited annual reports (Deloitte) | High | ASX announcements: private and personal use; link, do not rehost |
 | Domain 1H25 and FY25 | 1H25 results (reviewed, not audited); broker medians and trading update in the booklet | Medium: no FY25 actuals were published | As above |
-| Domain share prices and VWAPs | Booklet disclosures; a daily series still to be found (Yahoo no longer has DHG) | High for the booklet figures; daily series unresolved | Booklet as above |
+| Domain share prices and VWAPs | Booklet disclosures; no daily series (Yahoo no longer has DHG, and I decided against other downloads) | High | Booklet as above |
 | Peer financials | Peer annual reports and results releases | High for audited figures; medium for adjusted EBITDA | Company material: cite and link |
-| Peer and index share prices | Yahoo Finance | Medium: unofficial endpoint | Yahoo bans automated collection; a decision for me (see below) |
+| Peer share prices | Copied by hand for 30 May 2025 from the exchange or company disclosures, with source and date | High | Cite and link; no automated collection |
 | Peer forecasts | Company-published consensus for Scout24, Rightmove and Hemnet | Medium-high | Company pages with disclaimers |
 | Precedent transactions | Grant Samuel's list in the booklet, checked against acquirer and target releases | High where a party states the multiple | Company and regulator releases |
 | Risk-free rate | RBA table F2 | High | CC BY 4.0 |
 | Exchange rates | RBA tables F11.1 (daily) and F11 (monthly) | High | CC BY 4.0 |
-| Beta | Grant Samuel's evidence in the booklet, plus my own regression if I can get a daily DHG series | High for the booklet; my own estimate depends on data access | As above |
+| Beta | Grant Samuel's evidence in the booklet | High | As above |
 
 ### Domain's historical financials
 
@@ -374,7 +374,7 @@ Grant Samuel adopted a beta of 1.0 to 1.1 and gave its evidence (booklet pp. 139
 - It describes no explicit unlevering and relevering step. Gearing of 5% to 15% debt "is based on the gearing levels over the past four years of comparable listed companies".
 - The rest of its build: pre-tax cost of debt 5.5% (1.2% over the risk-free rate), tax 30%, 85% to 95% equity, a calculated WACC of 9.3% to 10.5% and an adopted discount rate of 9.5% to 10.5%. Broker discount rates were 8.4% to 9.0%, median 8.5% (booklet p. 140).
 
-My own estimate would regress weekly or monthly Domain returns on the S&P/ASX 200 over two to five years ending 20 February 2025. The index series work on Yahoo (^AXJO, ^AORD and the gross total return ^AXJT each returned 265 weekly rows from February 2020 to February 2025 with no gaps, provided explicit start and end dates are passed), but a Domain series needs one of the sources above. Published betas from free websites are weaker evidence, because the provider, window, frequency and index are rarely stated and the figure is overwritten, so a value as at my valuation date cannot be reproduced.
+A beta of my own would regress weekly or monthly Domain returns on the S&P/ASX 200 over two to five years ending 20 February 2025. The index series work on Yahoo (^AXJO, ^AORD and the gross total return ^AXJT each returned 265 weekly rows from February 2020 to February 2025 with no gaps, provided explicit start and end dates are passed), but a Domain series needs one of the sources above. I decided not to download price series (see [ARCHITECTURE.md](ARCHITECTURE.md#market-data)), so I test Grant Samuel's beta against its published evidence instead. Published betas from free websites are weaker evidence, because the provider, window, frequency and index are rarely stated and the figure is overwritten, so a value as at my valuation date cannot be reproduced.
 
 ### Terms of use for price data
 
@@ -383,7 +383,7 @@ My own estimate would regress weekly or monthly Domain returns on the S&P/ASX 20
 - ASX: the [website terms](https://www.asx.com.au/legals/terms-of-use.html) allow saving or printing "for your own information purposes only, including research, study or other personal, non-commercial use", and prohibit republishing content or using a screen scraper. I will link to ASX documents and quote sparingly with page references.
 - SEC EDGAR: [free to access](https://www.sec.gov/os/accessing-edgar-data) at up to 10 requests per second with a declared User-Agent.
 
-Automated collection from Yahoo conflicts with s 2.4.9, even for study. How I obtain peer and index prices, and whether the site shows raw prices or only figures derived from them, is still to be decided.
+Automated collection from Yahoo conflicts with s 2.4.9, even for study. I therefore download no price series; peer prices for 30 May 2025 are copied by hand with their source (see [ARCHITECTURE.md](ARCHITECTURE.md#market-data)).
 
 ### What I must extract by hand from the scheme booklet
 
