@@ -27,3 +27,9 @@ Hosting: a GitHub Pages project site at the owner's github.io address, linked fr
 Budget and domain: A$0 and no custom domain, so there is no renewal that could lapse and break the link.
 
 Analytics: none. No third-party script, no cookie banner, nothing to disclose.
+
+## 27 September 2026: Domain Holdings Australia is the deal
+
+I will value Domain Holdings Australia, acquired by CoStar Group by scheme at A$4.43 per share and implemented on 27 August 2025. Grant Samuel's range was A$4.06 to A$4.46.
+
+Options considered: ten shortlisted deals, scored in [DEAL_SHORTLIST.md](DEAL_SHORTLIST.md). Domain scored highest: the expert used both DCF and multiples, it has close ASX-listed peers, and every document is free. The alternatives I weighed were each strongest on one thing: Boral for the expert changing its opinion (but the scrip consideration and missing ASX peers make it harder to value), Insignia Financial for a 2026 private equity contest (but the expert used one method), and Pacific Smiles for deal tactics (but no close listed peers). CSR and MMA Offshore scored above some of these but are orderly or sector-specific deals.
