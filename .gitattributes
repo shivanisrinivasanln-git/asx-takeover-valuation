@@ -1,0 +1,5 @@
+# Shell scripts fail under sh with CRLF line endings.
+* text=auto eol=lf
+*.xlsx binary
+*.pdf binary
+*.png binary

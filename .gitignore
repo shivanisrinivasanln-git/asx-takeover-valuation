@@ -1,0 +1,9 @@
+# Downloaded source documents (third-party PDFs and filings)
+research/raw/
+
+# Secrets
+.env
+
+# Python bytecode
+__pycache__/
+*.pyc
