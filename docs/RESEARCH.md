@@ -1,6 +1,6 @@
 # Research
 
-Sourced findings for the project. Every factual claim carries a link and an access date. Anything that could not be checked against a source is marked UNVERIFIED. Page references use the printed page number in a scheme booklet ("booklet p.") unless marked "PDF p.", which is the page of the downloaded file.
+The sourced findings behind my valuation. Every factual claim carries a link and an access date. Anything that could not be checked against a source is marked UNVERIFIED. Page references use the printed page number in a scheme booklet ("booklet p.") unless marked "PDF p.", which is the page of the downloaded file.
 
 This file covers how Australian independent expert's reports work. Findings on data sources, architecture and design will be added as those items are researched.
 
@@ -63,7 +63,7 @@ Step 3, cross-check (market price plus premium). A$2.20 × 1.30 = A$2.86, inside
 
 Step 4, the opinion. The range is A$2.75 to A$3.25. The offer of A$3.10 is above the low end, so it is fair; being fair, it is also reasonable. (Kroll states in its Insignia report that the low end of the range is the threshold for fairness; see section 5.) The offer premium is 3.10 ÷ 2.20 − 1 = 40.9%.
 
-This project repeats those steps for a real deal with its own inputs, then explains each gap between its range and the expert's.
+My valuation repeats those steps for a real deal with my own inputs, then explains each gap between my range and the expert's.
 
 ## 1. How IERs are regulated
 
@@ -95,7 +95,7 @@ RG 111 treats "fair" and "reasonable" as two separate tests (RG 111.10).
 
 Source for this subsection: [RG 111 PDF](https://download.asic.gov.au/media/5827832/rg111-published-22-october-2020.pdf), pages 7 to 13 (accessed 26 September 2026).
 
-The consequence for this project: the expert's range is a control value. The offer is compared with that range, and the undisturbed share price is a minority value. A student valuation has to be on the same control basis before it can be compared with the expert's range.
+What this means for my valuation: the expert's range is a control value. The offer is compared with that range, and the undisturbed share price is a minority value. My range has to be on the same control basis before I can compare it with the expert's.
 
 ### What an IER must disclose
 
@@ -132,7 +132,7 @@ Related ASIC material, all accessed 26 September 2026:
 - [24-131MR](https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-131mr-pkf-admits-to-contraventions-concerning-independent-expert-report-engagements/): PKF Melbourne Corporate gave a court enforceable undertaking after admitting it lacked documented policies on method selection, specialist competence and conflicts, and agreed to stop IER work until an independent review was done. The date of 20 June 2024 comes from search summaries (UNVERIFIED).
 - [24-189MR](https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-189mr-afs-licensee-to-cease-providing-independent-expert-reports-on-corporate-transactions/): AP Lloyds' licence was varied from 28 August 2024 so it can no longer prepare IERs, after ASIC found problems with its selection and disclosure of methods and inputs and its use of specialists.
 
-For this project, ASIC's five points double as a checklist for reading the chosen IER: which figures sit inside the range and why, why each method was chosen, which assumptions are disclosed, and how any specialist was reviewed.
+I use ASIC's five points as a checklist for reading the Domain IER: which figures sit inside the range and why, why each method was chosen, which assumptions are disclosed, and how any specialist was reviewed.
 
 ### Recent Takeovers Panel and court matters involving IERs
 
