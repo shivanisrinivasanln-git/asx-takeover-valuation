@@ -2,7 +2,7 @@
 
 The sourced findings behind my valuation. Every factual claim carries a link and an access date. Anything that could not be checked against a source is marked UNVERIFIED. Page references use the printed page number in a scheme booklet ("booklet p.") unless marked "PDF p.", which is the page of the downloaded file.
 
-This file covers how Australian independent expert's reports work. Findings on data sources, architecture and design will be added as those items are researched.
+Sections 1 to 5 cover how Australian independent expert's reports work, and section 6 covers where I get the data for my valuation of Domain. Findings on design will be added when I research it.
 
 ## IERs and valuation methods in 10 minutes
 
@@ -256,6 +256,173 @@ Three reports from different firms were read in full: Deloitte for Gold Road (Au
 
 Preferred values are uncommon. Deloitte and Kroll give low and high only; BDO gives a preferred value for each method in its body tables (ASM p. 165) but not in its headline comparison. For a scrip offer, BDO values the consideration on a minority basis using the bidder's post-announcement trading (ASM pp. 142 and 166).
 
+## 6. Data sources for my valuation of Domain
+
+Domain Holdings Australia (ASX: DHG) has a 30 June year end. All sources in this section were accessed on 27 September 2026. Booklet pages refer to the [Domain Scheme Booklet](https://announcements.asx.com.au/asxpdf/20250630/pdf/06l8x6ntjgw6f7.pdf); in that PDF, the PDF page number is the booklet page plus 3.
+
+### Summary
+
+| Data | Source I will use | Reliability | Terms |
+|---|---|---|---|
+| Domain historical financials, FY21 to FY24 | Audited annual reports (Deloitte) | High | ASX announcements: private and personal use; link, do not rehost |
+| Domain 1H25 and FY25 | 1H25 results (reviewed, not audited); broker medians and trading update in the booklet | Medium: no FY25 actuals were published | As above |
+| Domain share prices and VWAPs | Booklet disclosures; a daily series still to be found (Yahoo no longer has DHG) | High for the booklet figures; daily series unresolved | Booklet as above |
+| Peer financials | Peer annual reports and results releases | High for audited figures; medium for adjusted EBITDA | Company material: cite and link |
+| Peer and index share prices | Yahoo Finance | Medium: unofficial endpoint | Yahoo bans automated collection; a decision for me (see below) |
+| Peer forecasts | Company-published consensus for Scout24, Rightmove and Hemnet | Medium-high | Company pages with disclaimers |
+| Precedent transactions | Grant Samuel's list in the booklet, checked against acquirer and target releases | High where a party states the multiple | Company and regulator releases |
+| Risk-free rate | RBA table F2 | High | CC BY 4.0 |
+| Exchange rates | RBA tables F11.1 (daily) and F11 (monthly) | High | CC BY 4.0 |
+| Beta | Grant Samuel's evidence in the booklet, plus my own regression if I can get a daily DHG series | High for the booklet; my own estimate depends on data access | As above |
+
+### Domain's historical financials
+
+Audited annual reports, each with Deloitte's auditor's report:
+
+| Year | Document | Auditor's report |
+|---|---|---|
+| FY21 | [Annual Report 2021](https://shareholders.domain.com.au/FormBuilder/_Resource/_module/T9NtqvJX0UGSmtpsWXgLcA/file/2021-Annual-Report.pdf) | Report p. 165 |
+| FY22 | [Annual Report 2022](https://shareholders.domain.com.au/FormBuilder/_Resource/_module/9sTGPYyyL06UZMFtMvhLPw/file/2022-Annual-Report.pdf) | Report p. 159 |
+| FY23 | [Annual Report 2023](https://announcements.asx.com.au/asxpdf/20230817/pdf/05sql499763tdl.pdf) (ASX, 17 August 2023) | Report p. 151 |
+| FY24 | [Annual Report 2024](https://shareholders.domain.com.au/FormBuilder/_Resource/_module/9sTGPYyyL06UZMFtMvhLPw/file/2024-Annual-Report.pdf) | Report p. 143 |
+
+Half-year material: [1H23 Appendix 4D](https://shareholders.domain.com.au/DownloadFile.axd?file=/Report/ComNews/20230216/02632059.pdf), [1H24 results announcement](https://announcements.asx.com.au/asxpdf/20240214/pdf/060cljbbyc72xd.pdf) and [1H25 results announcement](https://shareholders.domain.com.au/DownloadFile.axd?file=%2FReport%2FComNews%2F20250213%2F02912417.pdf) (13 February 2025). Half-year statements are reviewed, not audited (booklet p. 44).
+
+Access is fragile. Domain's investor centre index page now returns a 404, although direct file links on the same host still download; one (the 1H24 half-year report) returned HTTP 503. The ASX announcement search no longer recognises the DHG code, but PDFs still download from their exact URLs. I keep local copies in `research/raw/`, which is not in git.
+
+Presentation: the annual reports give statutory statements plus "trading results" that exclude significant items and, from FY23, discontinued operations. The booklet's summary tables (booklet pp. 44 to 46) and the IER's history table (booklet p. 118) use these underlying figures. The IER restates FY22 for purchase price allocations and discontinued operations but not FY21, which includes A$5.5m of Consumer Solutions revenue (booklet p. 118). Reported segments were Core Digital, Consumer Solutions, Print and Corporate in FY21, and Core Digital, Print and Corporate from FY23 after the exit from Domain Home Loans. Core Digital revenue is split by product (Residential; Media, Developers and Commercial; Agent Solutions; Domain Insight), but Domain does not disclose EBITDA below Core Digital (booklet pp. 120 and 122).
+
+### Did Domain publish audited FY25 accounts?
+
+No FY25 accounts were published on ASX, as far as I can establish. The timeline, from ASX notices:
+
+- 7 August 2025: last day of trading; the scheme became legally effective and trading was suspended from the close ([ASX notice](https://announcements.asx.com.au/asxpdf/20250807/pdf/06mmskv7qllny3.pdf)).
+- 19 August 2025: special dividend of 8.8 cents, fully franked, paid (same notice).
+- 27 August 2025: implementation, A$4.342 cash per share, which with the special dividend makes A$4.43 ([ASX notice](https://announcements.asx.com.au/asxpdf/20250827/pdf/06ndqqyt4sk7q9.pdf)).
+- 28 August 2025: removed from the Official List at the close of trading under Listing Rule 17.11 ([ASX notice](https://announcements.asx.com.au/asxpdf/20250828/pdf/06nhl1fc8jy66b.pdf)).
+
+Domain left the Official List before the usual end-of-August reporting date, and I found no FY25 Appendix 4E, results release or annual report. The booklet calls the 1H25 Appendix 4D and the 2024 Annual Report "the most recent financial reports released to the ASX" (booklet p. 47). ABN Lookup shows the company became Domain Holdings Australia Pty Limited, a private company, from 27 August 2025 ([ABN history](https://abr.business.gov.au/AbnHistory/View?id=43094154364)). Because the ASX search for DHG no longer works, the absence of an Appendix 4E is inferred rather than proven. Whether an FY25 financial report was lodged with ASIC (obtainable only as a paid extract, ACN 094 154 364) is UNVERIFIED.
+
+What this means for my valuation: the latest actual figures are for 1H25, the six months to 31 December 2024. The booklet gives no FY25 actuals. It has an unaudited trading update for the 11 months to 31 May 2025 (booklet p. 47: listings growth "low-single digit", EBITDA margins "stable", expense growth "mid-single digit" on the FY24 base of A$254.1m). The directors did not disclose management's FY25 forecast or FY26 projection (booklet p. 94, footnote 11), so Grant Samuel used broker medians: FY25 revenue A$420.0m and EBITDA A$146.3m, FY26 revenue A$453.8m and EBITDA A$160.0m (booklet p. 165). Grant Samuel's valuation date is 31 December 2024 (booklet p. 135), so my valuation will use the same date and the same information set: FY21 to 1H25 actuals and forecasts available by June 2025.
+
+Two aggregator claims conflict with the ASX notices and I will not use them: a search snippet giving FY25 revenue of A$418.2m, and companiesmarketcap.com's "last recorded trade on October 3, 2025".
+
+### Domain share prices
+
+Yahoo Finance no longer has DHG. On 27 September 2026 the chart endpoint for DHG.AX returned HTTP 404 ("No data found, symbol may be delisted") for every range and interval tried, and the quote page redirects to a lookup with no results. yfinance uses the same endpoint, so it will return nothing.
+
+Other free sources:
+- [Market Index](https://www.marketindex.com.au/asx/dhg) still shows year-end closes (for example A$3.05 on 28 June 2024), but its daily CSV requires an account and its [terms](https://www.marketindex.com.au/terms-of-use) forbid scraping and reproduction.
+- Stooq returned a browser verification page to every scripted request; Investing.com returned HTTP 403; Google Finance renders by script. Whether any of them still holds DHG history is UNVERIFIED.
+- UNSW Business School lists SIRCA ASX daily data, Bloomberg, LSEG Workspace and FactSet among its [research databases](https://www.unsw.edu.au/business/our-research/research-environment/databases). These are the most reliable route to a full daily series, but the page does not say whether undergraduates can use them (UNVERIFIED; the page names a contact).
+
+The booklet discloses the prices that matter most for the premium analysis, as text:
+- Last undisturbed trading date: 20 February 2025, close A$3.12. CoStar's original proposal of A$4.20 was announced on 21 February 2025 (booklet pp. 42 and 91).
+- VWAPs to 20 February 2025: one week A$3.14, one month A$2.95, three months A$2.77, six months A$2.88. They exclude CoStar's after-market crossing of 106,592,031 shares at A$4.20 on 20 February 2025. The offer of A$4.43 is a premium of 42.0% to the undisturbed close (booklet pp. 95 and 157). The date range in booklet p. 42 footnote 15 reads "21 November 2025", which appears to be a typo for 2024.
+- Three-year closing range before the proposal: A$2.44 to A$4.25 (booklet p. 158).
+- IRESS prices in the IER are not adjusted for the April 2022 entitlement offer at A$3.80 (booklet p. 128). Any return series I use for beta must adjust for it.
+
+### Comparable companies
+
+Grant Samuel's peer set was REA Group, CAR Group, SEEK, Hemnet, Scout24, Rightmove, Baltic Classifieds Group and Vend Marketplaces, with share prices as at 30 May 2025. It considered and excluded Zillow and CoStar, and excluded Cars.com, Autohome and Auto Trader (booklet pp. 149 to 152).
+
+| Company | Year end, currency | Investor material | Headline EBITDA | Yahoo ticker, weekly history test |
+|---|---|---|---|---|
+| REA Group | 30 June, A$ | [Investor centre](https://www.rea-group.com/investor-centre/) (could not be fetched on 27 September 2026); ASX announcements | Core EBITDA excluding associates ([1H26 Appendix 4D](https://announcements.asx.com.au/asxpdf/20260206/pdf/06w0q3ym7kvw23.pdf)) | REA.AX: 262 points, 26 September 2021 to 25 September 2026, no gaps |
+| CAR Group | 30 June, A$ | [cargroup.com](https://cargroup.com) | Proforma and adjusted EBITDA; the presentation says these "have not been subject to audit or review" ([FY26 presentation](https://cargroup.com/wp-content/uploads/2026/08/CAR-Group-FY26-Results-Presentation.pdf)) | CAR.AX: 262 points, no gaps |
+| SEEK | 30 June, A$ | [Reports and presentations](https://au.seek.com/about/investors/reports-presentations) | EBITDA from continuing operations, significant items shown separately | SEK.AX: 262 points, no gaps |
+| Rightmove | 31 December, £ | [plc.rightmove.co.uk](https://plc.rightmove.co.uk/) | No EBITDA line; underlying operating profit, so EBITDA must be built by adding back depreciation and amortisation from the notes | RMV.L: 262 points, in pence, no gaps |
+| Scout24 | 31 December, EUR | [Investor relations](https://www.scout24.com/en/investor-relations) | Ordinary operating EBITDA, before share-based payments, M&A, reorganisation and other non-operating items | G24.DE: 262 points, no gaps |
+| Hemnet | 31 December, SEK | [Investors](https://www.hemnetgroup.se/en/investors/) | EBITDA and adjusted EBITDA | HEM.ST: 262 points, no gaps |
+
+The Yahoo test requested five years of weekly data from the chart endpoint on 27 September 2026. Baltic Classifieds (BCG.L) also returned 262 points. Vend was not tested.
+
+Points that affect comparability:
+- Every peer traded near its 52-week low on 25 September 2026 (REA A$147.66 against a high of A$233.50; Hemnet SEK 63.50 against SEK 247.20). Multiples must be measured at my valuation date, not at today's prices.
+- The peers' EBITDA measures differ (core, proforma, ordinary operating, adjusted), so I will need to put them on one basis, including consistent treatment of leases under AASB 16 and IFRS 16.
+- CAR earns about a quarter of its revenue in North America through Trader Interactive (A$327m in FY26; secondary source, UNVERIFIED). SEEK is a jobs marketplace and recorded a A$283.6m impairment of its Zhaopin investment in FY26 ([FY26 results](https://au.seek.com/content/media/SEK-FY2026-Full-Year-Result.pdf)), so I treat it as a secondary peer. Hemnet's "Sell first, pay later" model moves revenue to the date of sale, and its Q2 2026 net sales fell 23.1% ([Q2 2026 report](https://www.hemnetgroup.se/en/media/press-releases/2026/hemnet-group-interim-report-q2-2026/)). These events postdate my valuation date but explain why current multiples look different.
+- Three peers publish a consensus compiled for them: [Scout24](https://www.scout24.com/en/investor-relations/share/analyst-coverage) (median, 2026e to 2028e, Excel download), [Rightmove](https://plc.rightmove.co.uk/content/uploads/2026/08/Rightmove_Modular-Finance-IR-Consensus.pdf) (Modular Finance, 26 August 2026) and Hemnet (Modular Finance quarterly press releases). I found none for REA, CAR or SEEK (UNVERIFIED). These are current forecasts; forecasts as at May 2025 would need archived copies, if they exist. [MarketScreener's terms](https://www.marketscreener.com/navigation/contrat-4T.htm) prohibit reproduction "even partial, in any form whatsoever, including non-commercial", so I will not use it on the site.
+
+### Precedent transactions
+
+Grant Samuel discusses these transactions (booklet pp. 145 to 149 and 153): ZPG (Zoopla) by Silver Lake in 2018; REA's withdrawn approach to Rightmove in 2024; Idealista by EQT in 2020 and 70% by Cinven in 2024; eBay Classifieds by Adevinta in 2020; Adevinta by Permira and Blackstone in 2023; the failed 2019 offer for Scout24 by Blackstone and Hellman & Friedman; Trade Me by Apax in 2018; and 58.com by a Warburg Pincus and General Atlantic consortium in 2020. It excluded Baltic Classifieds by Apax (2019), PropertyGuru by EQT (2024) and PropertyGuru's 2022 merger with Bridgetown 2. The multiples are shown in two charts without data labels (booklet pp. 146 and 147), so I will read them from the charts and check each against a primary source.
+
+Multiples stated by a party to the deal:
+
+| Announced | Deal | EV/EBITDA | Basis | Source |
+|---|---|---|---|---|
+| September 2024 | REA's third proposal for Rightmove, 770p (about £6.1bn); lapsed 30 September 2024 | 22.4x | LTM June 2024 EBITDA, stated by REA | [REA announcement](https://www.sec.gov/Archives/edgar/data/1564708/000156470824000490/a092324991-reaannouncement.htm) |
+| 17 December 2019 | AutoScout24 sold by Scout24 to Hellman & Friedman, EUR 2.892bn | 26.1x | LTM September 2019 ordinary operating EBITDA, stated by Scout24 | [Scout24 release](https://www.scout24.com/en/news-media/news/detail/scout24-ag-to-sell-autoscout24-for-attractive-valuation) |
+| 8 March 2023 | carsales buys a further 40% of webmotors, BRL 3,100m for 100% | 21.7x | December 2022 LTM EBITDA, stated by carsales | [carsales presentation](https://cargroup.com/wp-content/uploads/2023/03/Investor-Presentation-Acquisition-and-Entitlement-Offer.pdf) |
+| 27 June 2022 | carsales buys the remaining 51% of Trader Interactive, US$1,897m for 100% | 21.3x | Q4 FY22 annualised adjusted EBITDA (not LTM), stated by carsales | [carsales presentation](https://cargroup.com/wp-content/uploads/2022/06/Investor-Presentation-%E2%80%93-Acquisition-and-Entitlement-Offer.pdf) |
+
+For the other deals I found the price but not a stated enterprise value or multiple: Adevinta (NOK 115 per share, [offer release](https://adevinta.com/press-releases/permira-and-blackstone-announce-voluntary-offer-for-all-outstanding-ordinary-class-a-shares-in-adevinta-at-nok-115-per-share/)), eBay Classifieds (about US$9.2bn, [eBay release](https://www.ebayinc.com/stories/news/adevinta-to-acquire-ebay-classifieds-group-to-create-the-worlds-largest-online-classifieds-company/)), both Idealista deals, ZPG (490p, about £2.2bn equity) and CoStar's purchase of OnTheMarket (110p, about £99m equity, completed December 2023). Their multiples are UNVERIFIED until I compute them from each target's disclosed net debt and EBITDA or read them from Grant Samuel's charts. Two rejected or lapsed approaches (REA for Rightmove, the 2019 offer for Scout24) show what a bidder offered, not a completed price, and I will label them that way.
+
+Domain itself: CoStar's A$4.43 implied an enterprise value of A$3.0bn, based on 631.7m shares, net debt of A$185.8m at 31 December 2024 adjusted for A$12.6m of dividends, and A$12.1m for non-controlling interests and associates ([Domain release, 9 May 2025](https://shareholders.domain.com.au/DownloadFile.axd?file=%2FReport%2FComNews%2F20250509%2F02945138.pdf)). CoStar bought about 17% of Domain in February 2025 at A$4.20 ([CoStar 8-K exhibit](https://www.sec.gov/Archives/edgar/data/1057352/000105735225000069/pressreleasecostar-dhgsi.htm)).
+
+### Risk-free rate and exchange rates
+
+- RBA table F2, daily ([CSV](https://www.rba.gov.au/statistics/tables/csv/f2-data.csv)): the 10-year series is FCMYGBAG10D, "Yields on Australian government bonds, interpolated, 10 years maturity", in per cent per annum. On 30 May 2025 it was 4.249%, which matches Grant Samuel's 4.3% "as at 30 May 2025" (booklet p. 139). On 31 December 2024 it was 4.366% and on 20 February 2025 4.534%. The file I read was published on 25 September 2026 with data to 23 September, a lag of two business days; the official release schedule is UNVERIFIED. The monthly version is [F2.1](https://www.rba.gov.au/statistics/tables/csv/f2.1-data.csv) (FCMYGBAG10).
+- RBA table F11.1, daily exchange rates ([CSV](https://www.rba.gov.au/statistics/tables/csv/f11.1-data.csv), from 3 January 2023; earlier years on the [historical data page](https://www.rba.gov.au/statistics/historical-data.html#exchange-rates)) quotes A$1 in USD, EUR, GBP and other currencies. It has no SEK, which I need for Hemnet; the monthly [F11](https://www.rba.gov.au/statistics/tables/csv/f11-data.csv) table has SEK. Neither has NOK, which I would need for Vend, so NOK would have to be crossed through EUR or USD from a second source.
+- Terms: RBA material is licensed under [CC BY 4.0](https://www.rba.gov.au/copyright/), attributed as "Source: RBA [year]". Its "Financial Data" terms add that I must not imply RBA endorsement and that the RBA may amend data without notice.
+
+### Beta
+
+Grant Samuel adopted a beta of 1.0 to 1.1 and gave its evidence (booklet pp. 139 to 140):
+- Domain: SIRCA betas of about 1.4 to 2.1 over four years (1.4 at 31 December 2024, 48 months, with the March 2020 quarter excluded); MSCI Barra historical about 0.4 and predicted 0.8 to 0.9; Bloomberg adjusted betas at 30 May 2025 of 0.7 to 1.1 (four years) and 0.5 or below (two years). Grant Samuel said "It is difficult to determine a reliable beta for Domain".
+- Peers: REA SIRCA 1.2, Bloomberg 1.1 to 1.3 over four years; CAR and SEEK SIRCA 1.4 to 1.7; global property marketplaces Bloomberg four-year 0.9 to 1.4 (median 1.0).
+- It describes no explicit unlevering and relevering step. Gearing of 5% to 15% debt "is based on the gearing levels over the past four years of comparable listed companies".
+- The rest of its build: pre-tax cost of debt 5.5% (1.2% over the risk-free rate), tax 30%, 85% to 95% equity, a calculated WACC of 9.3% to 10.5% and an adopted discount rate of 9.5% to 10.5%. Broker discount rates were 8.4% to 9.0%, median 8.5% (booklet p. 140).
+
+My own estimate would regress weekly or monthly Domain returns on the S&P/ASX 200 over two to five years ending 20 February 2025. The index series work on Yahoo (^AXJO, ^AORD and the gross total return ^AXJT each returned 265 weekly rows from February 2020 to February 2025 with no gaps, provided explicit start and end dates are passed), but a Domain series needs one of the sources above. Published betas from free websites are weaker evidence, because the provider, window, frequency and index are rarely stated and the figure is overwritten, so a value as at my valuation date cannot be reproduced.
+
+### Terms of use for price data
+
+- Yahoo Finance: the [Australian terms](https://legal.yahoo.com/au/en/yahoo/terms/otos/index.html) prohibit collecting data "using any automated means ... for any purpose without our express, prior permission" (s 2.4.9) and reuse "for any commercial purpose" (s 2.5).
+- yfinance (Apache-2.0): its [README](https://github.com/ranaroussi/yfinance) says it is "not affiliated, endorsed, or vetted by Yahoo" and that "the Yahoo! finance API is intended for personal use only".
+- ASX: the [website terms](https://www.asx.com.au/legals/terms-of-use.html) allow saving or printing "for your own information purposes only, including research, study or other personal, non-commercial use", and prohibit republishing content or using a screen scraper. I will link to ASX documents and quote sparingly with page references.
+- SEC EDGAR: [free to access](https://www.sec.gov/os/accessing-edgar-data) at up to 10 requests per second with a declared User-Agent.
+
+Automated collection from Yahoo conflicts with s 2.4.9, even for study. How I obtain peer and index prices, and whether the site shows raw prices or only figures derived from them, is still to be decided.
+
+### What I must extract by hand from the scheme booklet
+
+Most tables in the Grant Samuel report are text in the PDF, but multi-column tables extract with values out of line, so every figure must be transcribed by hand against the page and checked by a second reading. Items marked "chart" have no data labels in the text and must be read visually.
+
+| Item | Booklet page | Form |
+|---|---|---|
+| Valuation summary: business operations A$2,775.0m to A$3,025.0m, other assets and liabilities (A$7.6m), adjusted net debt (A$187.0m), equity A$2,580.4m to A$2,830.4m, diluted shares 635.5m and 634.4m, A$4.06 to A$4.46 | 92, 131 | Table |
+| Diluted share build: rights vesting, cash-settled rights, treasury shares (footnote 43) | 92, 131 | Text |
+| Shares and rights on issue: 631,657,153 shares, 4,364,633 share rights | 42, 126 | Text |
+| Methods: DCF and EBITDA and EBITA multiples, both carrying weight and neither used only as a cross-check, with no numeric weights | 134 to 136 | Text |
+| Valuation date 31 December 2024, cum special dividend | 135 | Text |
+| Adjusted EBITDA and EBITA for FY24 to FY26, and the non-controlling interest adjustment | 136 | Table |
+| Implied multiples, with FY26 as the selected basis | 94, 153 | Table |
+| DCF: cash flows 1 January 2025 to 30 June 2035, terminal growth 4.0%, Scenario A assumptions (yield growth, revenue, margins, capex, working capital) | 137, 141 to 142 | Text |
+| Listed company cost saving of A$4.0m a year | 143 | Text |
+| Scenarios A to H | 143 | Table |
+| NPV by scenario | 93, 144 | Chart |
+| WACC parameters and beta evidence | 139 to 140 | Text |
+| Precedent transaction multiples, EBITDA and EBITA | 146, 147 | Charts |
+| Precedent transactions named in the text, including exclusions | 145 to 149, 153 | Text |
+| Comparable companies and their historical and forecast multiples | 149 to 152 (multiples chart p. 150) | Text and chart |
+| Other assets and liabilities: equity accounted investments, provisions, contingent consideration | 155 | Table |
+| Adjusted net debt build from reported net debt including leases of A$173.2m | 156 | Table |
+| Debt facilities at 31 December 2024 | 125 | Table |
+| Franking credits and tax losses | 126, 155 to 156 | Text |
+| Historical profit and loss, FY21 to 1H25 | 118 | Table |
+| Significant items, FY21 to 1H25 | 120 | Table |
+| Revenue and EBITDA by segment | 120 to 121 | Charts |
+| Broker forecasts for FY25 and FY26, by broker and median | 122, 165 | Table |
+| Financial position at 30 June 2024 and 31 December 2024 | 123 to 124 | Table |
+| Cash flow FY21 to 1H25, capex as a share of revenue | 125 | Table |
+| Underlying profit and loss, balance sheet and cash flow (1H25, FY24, FY23) | 44 to 46 | Tables |
+| Trading update to 31 May 2025 | 47, 123 | Text |
+| Share price and volume history, relative performance | 128, 129 | Charts |
+| VWAP and premium tables | 42 to 43, 95, 157, 159 | Tables |
+| Control premium evidence, including premiums in digital marketplace deals | 131, 133, 157 to 160 | Text and table |
+| Cost savings: listed company costs saved by any buyer included, savings only CoStar could achieve excluded | 136 to 137, 143 | Text |
+
 ## Unverified or not found
 
 - The text of Corporations Act sections 411, 636, 640 and 648A and Schedule 8 of the Corporations Regulations was not read directly; section numbers come from ASIC and Takeovers Panel documents.
@@ -265,5 +432,13 @@ Preferred values are uncommon. Deloitte and Kroll give low and high only; BDO gi
 - Some RG 111 and RG 112 paragraph numbers were assigned from cross-references because the PDF text printed them together.
 - RSM's 2017 study figures were not read, and no RSM study after 2021 was found.
 - The JORC Code was not read directly.
-- Grant Samuel's unlevering method and any specific risk premium for Domain were not found in the pages read.
+- Grant Samuel describes no explicit unlevering step for Domain (booklet pp. 139 to 140); no specific risk premium was found in the pages read.
+- Whether Domain lodged an FY25 financial report with ASIC after delisting; the absence of an FY25 Appendix 4E on ASX is inferred because the ASX search no longer recognises DHG.
+- Direct links to the 1H21, 1H22 and 1H25 Appendix 4D documents, and to the 1H24 half-year report (HTTP 503 on 27 September 2026).
+- Whether Stooq, Investing.com, Google Finance or Market Index daily data still hold DHG prices, and whether UNSW undergraduates can use SIRCA, Bloomberg or LSEG.
+- REA's FY26 figures; rea-group.com could not be fetched.
+- CAR's North American revenue share, from a secondary source.
+- Enterprise values and multiples for the precedents other than the four with a stated multiple.
+- Whether REA, CAR or SEEK publish a company-compiled consensus, and whether consensus as at May 2025 survives in archived copies.
+- The RBA's official release schedule for table F2.
 - Page references for the Quickstep and Bigtincan reports are internal IER pages or PDF pages, not booklet pages.
