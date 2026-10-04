@@ -1,0 +1,173 @@
+period,line_item,value,unit,source,location,as_at,note
+FY21,core_digital_revenue,271.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,FY21 includes 5.5 of Consumer Solutions revenue (footnote 23)
+FY22,core_digital_revenue,325.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,FY21 includes 5.5 of Consumer Solutions revenue (footnote 23); FY22 is restated (footnote 22)
+FY23,core_digital_revenue,328.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,FY21 includes 5.5 of Consumer Solutions revenue (footnote 23)
+FY24,core_digital_revenue,374.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,FY21 includes 5.5 of Consumer Solutions revenue (footnote 23)
+1HY25,core_digital_revenue,209.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,FY21 includes 5.5 of Consumer Solutions revenue (footnote 23)
+FY21,print_revenue,17.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,
+FY22,print_revenue,21.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,FY22 is restated (footnote 22)
+FY23,print_revenue,16.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,
+FY24,print_revenue,16.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,
+1HY25,print_revenue,8.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,
+FY21,corporate_revenue,0.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,"Printed as a dash for 1HY25, recorded as 0.0"
+FY22,corporate_revenue,0.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,"Printed as a dash for 1HY25, recorded as 0.0; FY22 is restated (footnote 22)"
+FY23,corporate_revenue,0.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,"Printed as a dash for 1HY25, recorded as 0.0"
+FY24,corporate_revenue,0.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,"Printed as a dash for 1HY25, recorded as 0.0"
+1HY25,corporate_revenue,0.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,"Printed as a dash for 1HY25, recorded as 0.0"
+FY21,revenue,289.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,Printed total
+FY22,revenue,347.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,Printed total; FY22 is restated (footnote 22)
+FY23,revenue,345.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,Printed total
+FY24,revenue,391.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,Printed total
+1HY25,revenue,217.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,Printed total
+FY21,ebitda,100.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,Before significant items
+FY22,ebitda,124.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,Before significant items; FY22 is restated (footnote 22)
+FY23,ebitda,108.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,Before significant items
+FY24,ebitda,137.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,Before significant items
+1HY25,ebitda,77.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,Before significant items
+FY21,depreciation_and_other_amortisation,-30.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,
+FY22,depreciation_and_other_amortisation,-25.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,FY22 is restated (footnote 22)
+FY23,depreciation_and_other_amortisation,-28.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,
+FY24,depreciation_and_other_amortisation,-34.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,
+1HY25,depreciation_and_other_amortisation,-13.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,
+FY21,ebita,70.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,Before amortisation of acquired intangible assets and significant items (footnote 24)
+FY22,ebita,99.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,Before amortisation of acquired intangible assets and significant items (footnote 24); FY22 is restated (footnote 22)
+FY23,ebita,80.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,Before amortisation of acquired intangible assets and significant items (footnote 24)
+FY24,ebita,102.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,Before amortisation of acquired intangible assets and significant items (footnote 24)
+1HY25,ebita,64.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,Before amortisation of acquired intangible assets and significant items (footnote 24)
+FY21,amortisation_of_acquired_intangibles,-5.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,
+FY22,amortisation_of_acquired_intangibles,-6.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,FY22 is restated (footnote 22)
+FY23,amortisation_of_acquired_intangibles,-10.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,
+FY24,amortisation_of_acquired_intangibles,-9.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,
+1HY25,amortisation_of_acquired_intangibles,-4.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,
+FY21,ebit,64.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,Before significant items (footnote 25)
+FY22,ebit,92.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,Before significant items (footnote 25); FY22 is restated (footnote 22)
+FY23,ebit,70.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,Before significant items (footnote 25)
+FY24,ebit,92.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,Before significant items (footnote 25)
+1HY25,ebit,59.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,Before significant items (footnote 25)
+FY21,net_finance_costs,-6.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,
+FY22,net_finance_costs,-5.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,FY22 is restated (footnote 22)
+FY23,net_finance_costs,-10.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,
+FY24,net_finance_costs,-12.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,
+1HY25,net_finance_costs,-5.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,
+FY21,income_tax_expense,-17.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,
+FY22,income_tax_expense,-26.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,FY22 is restated (footnote 22)
+FY23,income_tax_expense,-15.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,
+FY24,income_tax_expense,-23.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,
+1HY25,income_tax_expense,-16.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,
+FY21,net_profit_attributable_to_non_controlling_interest,-1.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,Agent ownership models
+FY22,net_profit_attributable_to_non_controlling_interest,-6.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,Agent ownership models; FY22 is restated (footnote 22)
+FY23,net_profit_attributable_to_non_controlling_interest,-6.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,Agent ownership models
+FY24,net_profit_attributable_to_non_controlling_interest,-8.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,Agent ownership models
+1HY25,net_profit_attributable_to_non_controlling_interest,-4.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,Agent ownership models
+FY21,significant_items_net_of_tax,-4.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,
+FY22,significant_items_net_of_tax,-19.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,FY22 is restated (footnote 22)
+FY23,significant_items_net_of_tax,-5.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,
+FY24,significant_items_net_of_tax,-6.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,
+1HY25,significant_items_net_of_tax,2.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,
+FY21,net_profit_from_discontinued_operations,0.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,"Printed as a dash for FY21 and 1HY25, recorded as 0.0"
+FY22,net_profit_from_discontinued_operations,-2.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,"Printed as a dash for FY21 and 1HY25, recorded as 0.0; FY22 is restated (footnote 22)"
+FY23,net_profit_from_discontinued_operations,-7.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,"Printed as a dash for FY21 and 1HY25, recorded as 0.0"
+FY24,net_profit_from_discontinued_operations,-0.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,"Printed as a dash for FY21 and 1HY25, recorded as 0.0"
+1HY25,net_profit_from_discontinued_operations,0.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,"Printed as a dash for FY21 and 1HY25, recorded as 0.0"
+FY21,npat_attributable_to_domain_shareholders,34.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,Printed total
+FY22,npat_attributable_to_domain_shareholders,32.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,Printed total; FY22 is restated (footnote 22)
+FY23,npat_attributable_to_domain_shareholders,26.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,Printed total
+FY24,npat_attributable_to_domain_shareholders,42.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,Printed total
+1HY25,npat_attributable_to_domain_shareholders,35.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,Printed total
+FY22,revenue_growth,20.0,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,"FY22 to FY24 are on the prior full year; 1HY25 is against 1HY24, which the booklet does not give; FY22 is restated (footnote 22)"
+FY23,revenue_growth,-0.5,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,"FY22 to FY24 are on the prior full year; 1HY25 is against 1HY24, which the booklet does not give"
+FY24,revenue_growth,13.1,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,"FY22 to FY24 are on the prior full year; 1HY25 is against 1HY24, which the booklet does not give"
+1HY25,revenue_growth,7.4,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,"FY22 to FY24 are on the prior full year; 1HY25 is against 1HY24, which the booklet does not give"
+FY22,ebitda_growth,24.1,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,As revenue growth; FY22 is restated (footnote 22)
+FY23,ebitda_growth,-13.0,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,As revenue growth
+FY24,ebitda_growth,26.2,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,As revenue growth
+1HY25,ebitda_growth,13.8,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,As revenue growth
+FY22,ebita_growth,41.5,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,As revenue growth; FY22 is restated (footnote 22)
+FY23,ebita_growth,-18.9,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,As revenue growth
+FY24,ebita_growth,27.6,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,As revenue growth
+1HY25,ebita_growth,23.0,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,As revenue growth
+FY21,ebitda_margin,34.7,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,
+FY22,ebitda_margin,35.9,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,FY22 is restated (footnote 22)
+FY23,ebitda_margin,31.4,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,
+FY24,ebitda_margin,35.0,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,
+1HY25,ebitda_margin,35.8,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,
+FY21,ebita_margin,24.2,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,
+FY22,ebita_margin,28.5,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,FY22 is restated (footnote 22)
+FY23,ebita_margin,23.3,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,
+FY24,ebita_margin,26.2,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,
+1HY25,ebita_margin,29.5,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,
+FY21,effective_tax_rate,30.6,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2021,
+FY22,effective_tax_rate,30.5,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2022,FY22 is restated (footnote 22)
+FY23,effective_tax_rate,25.2,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2023,
+FY24,effective_tax_rate,28.5,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",30 June 2024,
+1HY25,effective_tax_rate,30.2,pct,"Domain scheme booklet, Grant Samuel report","p. 118, section 3.5",31 December 2024,
+FY21,significant_restructuring_costs,-7.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2021,Significant items before tax
+FY22,significant_restructuring_costs,-8.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2022,Significant items before tax; FY22 is restated (footnote 22)
+FY23,significant_restructuring_costs,-6.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2023,Significant items before tax
+FY24,significant_restructuring_costs,-4.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2024,Significant items before tax
+1HY25,significant_restructuring_costs,-1.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",31 December 2024,Significant items before tax
+FY21,significant_impairment,0.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2021,"Printed as a dash for FY21 and FY22, recorded as 0.0"
+FY22,significant_impairment,0.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2022,"Printed as a dash for FY21 and FY22, recorded as 0.0; FY22 is restated (footnote 22)"
+FY23,significant_impairment,-0.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2023,"Printed as a dash for FY21 and FY22, recorded as 0.0"
+FY24,significant_impairment,-1.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2024,"Printed as a dash for FY21 and FY22, recorded as 0.0"
+1HY25,significant_impairment,-1.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",31 December 2024,"Printed as a dash for FY21 and FY22, recorded as 0.0"
+FY21,significant_contingent_consideration,1.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2021,Remeasurement and unwinding of the discount (footnote 29)
+FY22,significant_contingent_consideration,-8.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2022,Remeasurement and unwinding of the discount (footnote 29); FY22 is restated (footnote 22)
+FY23,significant_contingent_consideration,-1.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2023,Remeasurement and unwinding of the discount (footnote 29)
+FY24,significant_contingent_consideration,-1.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2024,Remeasurement and unwinding of the discount (footnote 29)
+1HY25,significant_contingent_consideration,3.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",31 December 2024,Remeasurement and unwinding of the discount (footnote 29)
+FY21,significant_mergers_and_acquisitions,-1.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2021,Mainly IDS and Realbase costs; the 1HY25 benefit is a warranty payment (footnote 30)
+FY22,significant_mergers_and_acquisitions,-4.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2022,Mainly IDS and Realbase costs; the 1HY25 benefit is a warranty payment (footnote 30); FY22 is restated (footnote 22)
+FY23,significant_mergers_and_acquisitions,-1.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2023,Mainly IDS and Realbase costs; the 1HY25 benefit is a warranty payment (footnote 30)
+FY24,significant_mergers_and_acquisitions,-1.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2024,Mainly IDS and Realbase costs; the 1HY25 benefit is a warranty payment (footnote 30)
+1HY25,significant_mergers_and_acquisitions,3.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",31 December 2024,Mainly IDS and Realbase costs; the 1HY25 benefit is a warranty payment (footnote 30)
+FY21,significant_other,0.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2021,"Printed as a dash for FY21, recorded as 0.0"
+FY22,significant_other,-1.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2022,"Printed as a dash for FY21, recorded as 0.0; FY22 is restated (footnote 22)"
+FY23,significant_other,0.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2023,"Printed as a dash for FY21, recorded as 0.0"
+FY24,significant_other,-0.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2024,"Printed as a dash for FY21, recorded as 0.0"
+1HY25,significant_other,-0.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",31 December 2024,"Printed as a dash for FY21, recorded as 0.0"
+FY21,significant_items_before_tax,-7.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2021,Printed total
+FY22,significant_items_before_tax,-22.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2022,Printed total; FY22 is restated (footnote 22)
+FY23,significant_items_before_tax,-9.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2023,"Printed total. The FY23 line items sum to -9.6, not the printed -9.4; I re-read the page twice and record the figures as printed"
+FY24,significant_items_before_tax,-8.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2024,Printed total
+1HY25,significant_items_before_tax,3.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",31 December 2024,Printed total
+FY21,significant_items_income_tax,2.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2021,
+FY22,significant_items_income_tax,3.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2022,FY22 is restated (footnote 22)
+FY23,significant_items_income_tax,4.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2023,
+FY24,significant_items_income_tax,1.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2024,
+1HY25,significant_items_income_tax,-1.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",31 December 2024,
+FY21,significant_items_after_tax,-4.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2021,Printed total
+FY22,significant_items_after_tax,-19.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2022,Printed total; FY22 is restated (footnote 22)
+FY23,significant_items_after_tax,-5.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2023,Printed total
+FY24,significant_items_after_tax,-6.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",30 June 2024,"Printed total, equal to the significant items line on p. 118 except FY24, which p. 118 prints as (6.0) and p. 120 as (6.1)"
+1HY25,significant_items_after_tax,2.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5",31 December 2024,Printed total
+FY21,segment_revenue_residential,195.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2021,Printed chart label
+FY22,segment_revenue_residential,239.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2022,Printed chart label; FY22 is restated (footnote 22)
+FY23,segment_revenue_residential,223.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2023,Printed chart label
+FY24,segment_revenue_residential,265.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2024,Printed chart label
+1HY25,segment_revenue_residential,154.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",31 December 2024,Printed chart label
+FY21,segment_revenue_media_developers_commercial,46.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2021,Printed chart label
+FY22,segment_revenue_media_developers_commercial,49.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2022,Printed chart label; FY22 is restated (footnote 22)
+FY23,segment_revenue_media_developers_commercial,47.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2023,Printed chart label
+FY24,segment_revenue_media_developers_commercial,51.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2024,Printed chart label
+1HY25,segment_revenue_media_developers_commercial,26.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",31 December 2024,Printed chart label
+FY21,segment_revenue_agent_solutions,13.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2021,Printed chart label; FY22 and FY23 match the text on p. 119
+FY22,segment_revenue_agent_solutions,21.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2022,Printed chart label; FY22 and FY23 match the text on p. 119; FY22 is restated (footnote 22)
+FY23,segment_revenue_agent_solutions,40.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2023,Printed chart label; FY22 and FY23 match the text on p. 119
+FY24,segment_revenue_agent_solutions,38.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2024,Printed chart label; FY22 and FY23 match the text on p. 119
+1HY25,segment_revenue_agent_solutions,19.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",31 December 2024,Printed chart label; FY22 and FY23 match the text on p. 119
+FY21,segment_revenue_domain_insight,11.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2021,Printed chart label
+FY22,segment_revenue_domain_insight,14.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2022,Printed chart label; FY22 is restated (footnote 22)
+FY23,segment_revenue_domain_insight,17.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2023,Printed chart label
+FY24,segment_revenue_domain_insight,18.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2024,Printed chart label
+1HY25,segment_revenue_domain_insight,8.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",31 December 2024,Printed chart label
+FY21,segment_revenue_print,17.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2021,Printed chart label
+FY22,segment_revenue_print,21.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2022,Printed chart label; FY22 is restated (footnote 22)
+FY23,segment_revenue_print,16.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2023,Printed chart label
+FY24,segment_revenue_print,16.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2024,Printed chart label
+1HY25,segment_revenue_print,8.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",31 December 2024,Printed chart label
+FY21,segment_revenue_total,283.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2021,Printed total above each column; excludes discontinued operations and corporate revenue (footnote 31)
+FY22,segment_revenue_total,347.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2022,Printed total above each column; excludes discontinued operations and corporate revenue (footnote 31); FY22 is restated (footnote 22)
+FY23,segment_revenue_total,345.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2023,Printed total above each column; excludes discontinued operations and corporate revenue (footnote 31)
+FY24,segment_revenue_total,390.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",30 June 2024,Printed total above each column; excludes discontinued operations and corporate revenue (footnote 31)
+1HY25,segment_revenue_total,217.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 120, section 3.5, revenue by business segment chart",31 December 2024,Printed total above each column; excludes discontinued operations and corporate revenue (footnote 31)
