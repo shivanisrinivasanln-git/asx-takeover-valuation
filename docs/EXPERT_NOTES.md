@@ -257,3 +257,66 @@ The report gives one reason for both. Their historical and forecast EBITDA multi
 ### From multiples to the range
 
 The range of A$2,775 to A$3,025 million implies 18.2 to 19.9 times FY26 adjusted EBITDA and 23.3 to 25.4 times FY26 adjusted EBITA (p. 153). The expert puts more weight on FY26 because FY25 is already a historical year and its FY25 forecast reflects actual results for the 11 months to 31 May 2025 (p. 153). Against listed peers, the implied multiples are well below REA (33 times forecast EBITDA, 38 times EBITA), Hemnet, Baltic and Vend (27 to 32 times forecast EBITDA), and comparable to CAR Group, SEEK, Scout24 and Rightmove (about 16 to 23 times forecast EBITDA) (p. 154). The report lists reasons that Domain deserves a high absolute multiple (strategic position as number two in a two-participant market, brand, track record, growth opportunities, the Nine relationship, and the Australian market) and reasons that constrain it (smaller scale, being a "price follower", lower margins, cyclicality and mixed results in Ancillary Services), and concludes that the implied multiples "reflect a reasonable balance" (pp. 154 and 155).
+
+## The control premium and the fairness conclusion (booklet pp. 157 to 160)
+
+### The conclusion
+
+Grant Samuel concludes the scheme is fair and reasonable (p. 157). The A$4.43 falls inside its range of A$4.06 to A$4.46 per share and "very close to the top end", which the expert says probably reflects Domain's strategic value as the second participant in a two-participant market and a shareholding structure in which CoStar needed Nine's support (p. 157). It adds that Nine, as an arm's length party, has no apparent reason to accept less than fair value, and that this reinforces fairness (p. 157). The reasoning is that, as the scheme is fair, it is also reasonable, and it then lists further factors (p. 157).
+
+For scale, A$4.43 sits A$0.37 above the bottom of the range and A$0.03 below the top, which is 92.5% of the way up the range (my arithmetic: 0.37 divided by 0.40). It is A$0.17, or 4.0%, above the A$4.26 midpoint I use later for the gap bridge.
+
+### The premium the offer represents
+
+The A$4.43 is a 42% premium to the last close before the original proposal, A$3.12 on 20 February 2025, and the premium rises to about 50% to 60% against the one-month to six-month averages (p. 157). The report's table, with my recomputation from the printed prices:
+
+| Base | Domain price | Premium printed | My recomputation | Page |
+|---|---|---|---|---|
+| Close on 20 February 2025 | A$3.12 | 42.0% | 42.0% | 157 |
+| 1 week VWAP to 20 February | A$3.14 | 41.0% | 41.1% | 157 |
+| 1 month VWAP | A$2.95 | 50.2% | 50.2% | 157 |
+| 3 month VWAP | A$2.77 | 59.7% | 59.9% | 157 |
+| 6 month VWAP | A$2.88 | 53.8% | 53.8% | 157 |
+
+The small differences come from the VWAPs, which the report calculates to three decimal places and prints to two (footnote 54, p. 157). The VWAPs exclude the special crossing of 106,592,031 shares at A$4.20 after the close on 20 February 2025, which was CoStar's purchase (footnote 54, p. 157).
+
+A worked example from the booklet's figures: the premium over the close is (4.43 minus 3.12) divided by 3.12, which is 1.31 divided by 3.12, or 42.0%. The original A$4.20 proposal was a 34.6% premium on the same close, so the A$0.23 increase added 7.4 percentage points (p. 159; the 7.4 is my subtraction of 34.6% from 42.0%).
+
+### How the expert treats the premium
+
+- It says the premiums are "well above" the 20% to 35% typically associated with Australian takeovers, and that premiums are "an outcome not a determinant of value" and vary widely, with a substantial proportion of deals outside the 20% to 35% range (pp. 133 and 158).
+- It considers recent prices a more appropriate base than the one, three and six month VWAPs, because those reflect lower prices earlier in the period, and the share price rose after the 1HY25 results on 13 February 2025 (p. 158).
+- Domain's closing price over the three years before the proposal ranged from A$2.44 to A$4.25 and never reached A$4.43 (p. 158). It last traded above A$4.43 between November 2020 and February 2022. The intraday high was A$6.03 on 5 November 2021, unadjusted for the April 2022 entitlement offer, which the expert attributes to "market (over) exuberance" (p. 158).
+- It sees no event that artificially affected the price before the proposal (p. 158).
+- It explains a premium above 35% by strategic value, since CoStar has no other way into the Australian property marketplace sector at scale, and by Nine's position, because CoStar needed Nine's support and a higher price was negotiated after the A$4.20 proposal (p. 159). The original proposal's premiums, 33.7% to 51.4%, were "more consistent" with the typical Australian level, at the high end (p. 159).
+
+### Premiums in other digital marketplace deals
+
+The report's table of recent deals, all of them outside Australia (p. 159):
+
+| Target | Acquirer | Date | Consideration | Premium |
+|---|---|---|---|---|
+| ZPG | Silver Lake | May 2018 | Cash | 30.6% |
+| Trade Me | Apax Partners | December 2018 | Cash | 26.5% |
+| Scout24 (unsuccessful) | Hellman and Friedman and Blackstone | February 2019 | Cash | 27.4% |
+| 58.com | General Atlantic consortium | June 2020 | Cash | 19.9% |
+| Adevinta | Permira and Blackstone | November 2023 | Cash | 43.7% |
+| PropertyGuru | EQT Private Capital | August 2024 | Cash | 51.9% |
+| Rightmove (withdrawn) | REA Group | September 2024 | 45% cash and 55% scrip | 40.5% |
+
+Premiums are measured over the last close before the first approach or speculation of an offer (footnote 55, p. 159). The expert concludes that deals for digital marketplaces have generally been at or above the top of the typical 20% to 35% range, and about 40% to 50% over the last two years (p. 160). It says a lower premium can be justified where scrip is offered, because shareholders keep exposure to the target's growth (footnote 56, p. 159).
+
+### The premium inside the valuation
+
+The expert's A$4.06 to A$4.46 range "includes a premium for control" (p. 131), and shares in a listed company normally trade at a 15% to 25% discount to underlying value (p. 131). It does not publish a premium percentage for its own range. A worked example from those two figures: if underlying value is 100, shares at a 15% discount trade at 85 and a buyer paying 100 pays a premium of 100 divided by 85 minus 1, which is 17.6%; at a 25% discount the premium is 100 divided by 75 minus 1, which is 33.3% (my arithmetic). The report gives 20% to 35% as the typical premium (p. 133), so the two ranges overlap (my observation).
+
+### Reasonableness
+
+The report's other reasons the scheme is reasonable (pp. 160 and 161):
+
+- Without the scheme, it expects Domain shares to trade materially below A$4.43, and sees no reason they would trade materially above the A$3.00 to A$3.20 range before the proposal (p. 160).
+- Liquidity would fall. CoStar holds 16.96% and Nine about 60%, leaving a free float of about 23% and a possible overhang from CoStar's stake (p. 160).
+- No third party could succeed without Nine (p. 160). CoStar has matching rights and has said A$4.43 is its best and final price in the absence of a competing proposal, and the deed lets Domain respond to an unsolicited superior proposal (pp. 160 and 161).
+- No superior proposal had been received since 21 February 2025, and the scheme meeting was set for 4 August 2025 (p. 161).
+- If the scheme fails, Domain expects to bear costs of about A$3.6 million (0.6 cents a share) and could owe CoStar a A$28.1 million break fee (p. 161).
+- Part of the A$4.43 may be a franked special dividend of up to 8.8 cents, which reduces the cash consideration, and the expert does not value franking credits in the consideration (p. 161).
