@@ -419,6 +419,75 @@ Third-party requests: none.
 
 Direction B, with direction A's "Show sources" switch added to it. B makes the football field the landing page, which is the 30-second read, and it has the lightest font load and one file to subset. The source switch costs one small script and little CSS, and it keeps the provenance marker visible to an interviewer without crowding the first screen, because it starts switched off. I would change the palette and type of A only if I chose A outright.
 
+## Front-end practice
+
+Before building any page I read how well-regarded public sites and design systems handle dense numbers, and checked browser support for the CSS I want to use. All pages and repositories were accessed on 4 October 2026. Repository licences, last-push dates and star counts come from the GitHub API on that date, and browser support from the web platform status data that MDN and web.dev publish. I took no screenshots of other sites, so where I describe how something looks, the description comes from its published specification or markup. Anything I could not confirm is marked UNVERIFIED.
+
+### Sources and what I take from them
+
+| Source | Licence | What I take | Fit |
+|---|---|---|---|
+| [ONS data visualisation service manual](https://service-manual.ons.gov.uk/data-visualisation/build-specifications/chart-elements) | Open Government Licence v3.0 (guidance); MIT (design system code) | The most concrete chart specification I found: 1 px gridlines in a light grey, a 1.5 px zero line, 14 px minimum chart text, three to six gridlines on mobile, annotations of about 50 characters close to the data with no arrow | Take the values as defaults |
+| [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) and [table guidance](https://design-system.service.gov.uk/components/table/) | MIT (code); Open Government Licence v3.0 (guidance) | Numeric headers and cells right-aligned together; larger text for tables with much data | Principles only; its yellow focus ring and black header read as UK government |
+| [USWDS table component](https://designsystem.digital.gov/components/table/) | CC0 1.0 with listed exceptions | A scroll container with `tabindex="0"` and a label for wide tables; a sort value kept apart from the displayed text | Principles only; it sets numbers in a monospace face, which I do not |
+| [gwern.net design notes](https://gwern.net/design) | The page says its source files are CC0; no licence file found | Different underline styles tell the reader what a link will do; a dotted underline marks a link with a pop-up note | Principles only; its pop-ups need heavy script |
+| [Tufte CSS](https://github.com/edwardtufte/tufte-css) | MIT | Margin notes hidden until a checkbox toggles them, with no script | One technique only; its cream page and serif are a look I avoid |
+| [Utopia](https://utopia.fyi/) | None stated | Set type and spacing at a small and a large width and interpolate with `clamp()` | Use the method |
+| [Open Props](https://github.com/argyleink/open-props) | MIT | Token naming and easing values | Read only; its gradients and shadows are a stock look |
+| [Pico CSS](https://github.com/picocss/pico) | MIT | Nothing | Avoid: archived, and its README says it is no longer maintained |
+| [Our World in Data grapher](https://github.com/owid/owid-grapher) | Proprietary since 2026 (code visible for reference) | A data tab, sources and downloads beside each chart | Principles only; I do not reuse code |
+| [RBA Chart Pack](https://www.rba.gov.au/chart-pack/) | All rights reserved | A release date and a separate data date | Principles only; I copy the pairing as a valuation date and a data date |
+
+I looked at 24 sources in all. The rest were design systems that need a framework or carry a brand (Carbon, Primer, Radix Themes, NSW Design System, Observable Framework) and I take no code from them. The Economist chart style guide and Reuters Graphics could not be read, and I draw nothing from them.
+
+### Techniques available
+
+| Technique | Browser support on 4 October 2026 | Plan |
+|---|---|---|
+| Cascade layers, `oklch()` and `color-mix()` for tints, `clamp()`, container queries, subgrid, `:has()`, `<details>`, `<dialog>` | Supported by all core browsers for a long time | Use directly |
+| Popover API | All core browsers since January 2025 (iOS 18.3) | Use for the provenance marker, with a plain link as the fallback on older iOS |
+| Cross-document view transitions | Chrome and Safari; Firefox loads the page normally | Available, not adopted for now |
+| Anchor positioning | Only Safari 27 has full support | Phones get a bottom sheet; an anchored bubble is an enhancement behind `@supports` |
+| `popover="hint"`, interest invokers, `interpolate-size` | Missing in at least one core browser | Do not rely on them |
+| `text-wrap: balance` and `pretty` | Balance in all; pretty not in Firefox | Use, harmless where missing |
+| Inline SVG with percentage coordinates and no `viewBox` | Per MDN, `x` and `width` accept percentages; resolution in every browser UNVERIFIED | Python writes `x="37.25%"` so bars stretch while text and hatch keep their size and angle; check in the first build |
+
+Inline SVG is not counted as the largest contentful paint element, so the verdict sentence will be the element measured, and a bar animation on the chart cannot slow it.
+
+### Proposed chart and table defaults
+
+These come from the sources above and my own calculations. They are starting points that I confirm or change in task P5-01 after the first chart is built. What I have decided is in the next two sections.
+
+- Football field: one row per method at a 40 px pitch with 14 to 16 px bars; price ticks every A$0.50 on desktop and A$1.00 on a phone; 1 px light gridlines behind the bars; no axis line or tick marks; an axis note stating where the axis starts; low and high labels 4 px from each bar end.
+- My bars: a 45 degree accent hatch at 5 px pitch with 1.75 px lines, plus a 1.5 px accent outline. By my calculation the hatch alone averages about 1.8:1 against the page, below the 3:1 that WCAG 1.4.11 asks of graphics, and the outline carries the edge (6.8:1). The expert's bar is a 1.5 px ink outline with no fill.
+- Lines: the offer is a solid 1.5 px ink line with its label above the plot; the undisturbed price is a dashed 1 px muted line with its label below the plot, so the two labels cannot collide.
+- Preferred value: an accent tick 2.5 px wide, extending 4 px past the bar. The expert published none, so its row has no tick and a note under the chart says so.
+- Sensitivity table: the base case gets a 2 px accent inset border and a heavier weight, not a heat-map fill, and one line under the table says what the grid does not vary.
+- Gap bridge: drawn horizontally with one step per row, signed labels, thin connectors, and the accent kept out of the step bars so it does not blur with teal.
+- Type: body at a fixed 16 px, with the three largest steps growing between 390 and 1440 px in `rem` plus `vw` so browser zoom still works; tabular figures on numbers but not in running prose; no small caps and no synthesised styles.
+
+### Refinements I adopt
+
+1. A stronger hatch with an outline, and a dotted accent underline on every sourced figure as the provenance marker. The underline is visible with "Show sources" off, so the signature feature is seen without switching anything on.
+2. The verdict sentence uses the chart's own notation: my range under a hatched band, the expert's range in a thin box, the offer with a solid rule under it, and the offer line extending up from the chart to the sentence. The sentence works as the legend.
+3. A deal docket under the title: a labelled one-line list of target, acquirer, consideration and implementation date.
+4. A footer written as a colophon: valuation date, data date, build date with a link to the commit, the disclaimer, and the unit note.
+5. A link-preview image of the football field, rendered at build time.
+
+Not adopted: a white plate behind the football field (my rule keeps the raised white surface for overlays), the offer line drawn as a stepped border in the sensitivity table, a sticky range summary on the DCF page, a button that downloads the chart as SVG, and page transitions from each row to its method page.
+
+### Left for version 2
+
+A button that copies the link holding the current scenario, and a brief colour change with a signed change ("+0.12 against my base case") when a control moves. Numbers jump to precalculated values and never count up through values that were not calculated, because a screen reader would read them.
+
+### Unverified
+
+Whether the Atkinson Hyperlegible Next minus sign has the same advance as its tabular figures; whether it has small caps; whether `outline` and `:focus-visible` render on SVG elements in Safari; whether percentage lengths in SVG resolve as expected in every browser for my layout; and the licences of Utopia, Datawrapper Academy and the Bank of England page, which state none.
+
+### One conflict with an earlier note
+
+The gap bridge was to start from the expert's preferred value, but Grant Samuel published a range only. On 4 October 2026 I decided to start the bridge from the midpoint of the range, A$4.26, and label it "midpoint of the expert's range, not a figure the expert published".
+
 ## Choice
 
 On 4 October 2026 I chose direction B, range first, with direction A's "Show sources" switch added.
@@ -429,3 +498,5 @@ On 4 October 2026 I chose direction B, range first, with direction A's "Show sou
 - Negative numbers use a true minus sign (for example −0.12) everywhere, matching the plus or minus sign every variance carries. I considered parentheses, which Grant Samuel's tables use, and rejected them because I would still need minus signs for variances and would end up with two conventions.
 
 Why B: it gives the 30-second reader the verdict and the chart with nothing in between, and it has the lightest font load (one file of about 21 KB). Direction A would have put reference codes in front of every first-time visitor, and direction C would have put prose above the chart on a phone. I accept B's risk that the page is thin if my ranges are dull, so the gap analysis has to carry the story.
+
+After the front-end research on the same day I kept direction B's palette and typeface and adopted the refinements listed under "Refinements I adopt" above. The palette stays because the accent keeps my hatch distinct from the expert's ink outline (about 2.2:1 between accent and ink), and the deeper blues I tested did worse on that measure: cobalt #1640A8 is 8.5:1 against the page but 1.75:1 against the ink, and petrol #0F5A8A is 7.0:1 and 2.1:1. The improvement comes from how the colours are used, not new values.

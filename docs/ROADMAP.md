@@ -1,6 +1,6 @@
 # Roadmap
 
-My plan for the shadow valuation of Domain Holdings Australia (ASX: DHG), acquired by CoStar at A$4.43 per share and implemented on 27 August 2025. Hour figures are my estimates of focused work, written before any build task has been timed, and I will re-estimate after phase 0. This is a draft until I approve it (task R-06 in [TODO.md](../TODO.md)). The task list is in the same file. The reasons behind the choices are in [DECISIONS.md](DECISIONS.md), the sources in [RESEARCH.md](RESEARCH.md), the pipeline in [ARCHITECTURE.md](ARCHITECTURE.md) and the visual direction in [DESIGN_RESEARCH.md](DESIGN_RESEARCH.md).
+My plan for the shadow valuation of Domain Holdings Australia (ASX: DHG), acquired by CoStar at A$4.43 per share and implemented on 27 August 2025. Hour figures are my estimates of focused work, written before any build task has been timed, and I will re-estimate after phase 0. I approved this on 4 October 2026 (task R-06 in [TODO.md](../TODO.md)). The task list is in the same file. The reasons behind the choices are in [DECISIONS.md](DECISIONS.md), the sources in [RESEARCH.md](RESEARCH.md), the pipeline in [ARCHITECTURE.md](ARCHITECTURE.md) and the visual direction in [DESIGN_RESEARCH.md](DESIGN_RESEARCH.md).
 
 ## Goal and success criteria
 
@@ -32,7 +32,7 @@ Version 2:
 - DCF controls on the site that look up a precalculated grid of discount rates and terminal growth rates, with the scenario held in the URL.
 - A print-ready memo view of the landing page and valuation page.
 - The share price and offer chart rebuilt from the booklet's disclosed prices.
-- "Use the expert's assumptions" and "Reset to my base case" buttons on the DCF.
+- "Use the expert's assumptions" and "Reset to my base case" buttons on the DCF, a button that copies a link to the current scenario, and a short colour change that shows the signed change when a control moves.
 
 Stretch, in order of value:
 - A dashboard of ASX control transactions in FY26 (offer premiums, structures and expert conclusions), built from the same extraction approach. I would only start it after the MVP is deployed, and I rate it the largest piece of extra work.
@@ -76,11 +76,11 @@ flowchart LR
 | 2 | Data collection and extraction | 20 h | `assumptions.yaml` and `data/extracted/` are complete and every row has a source |
 | 3 | Valuation model | 30 h | Engine, `valuation.json` and the Excel model agree within tolerance |
 | 4 | Reconciliation and gap analysis | 15 h | My range is set and the gap bridge reconciles |
-| 5 | Website | 32 h | All pages built, accessible and within the budgets |
+| 5 | Website | 36 h | All pages built, accessible and within the budgets |
 | 6 | Write-up and packaging | 14 h | PDF, README and interview material are done |
 | 7 | Deploy, QA and launch | 8 h | The site is live, checked on real devices, and linked from my portfolio |
 
-The total is about 141 hours, and version 2 adds about 6. No task in [TODO.md](../TODO.md) is longer than about two hours, and most are shorter, so each phase estimate is below the sum of its task limits. The calendar time depends on my weekly hours, which I have not capped, and on how much I automate scaffolding and checks.
+The total is about 145 hours, and version 2 adds about 9. No task in [TODO.md](../TODO.md) is longer than about two hours, and most are shorter, so each phase estimate is below the sum of its task limits. The calendar time depends on my weekly hours, which I have not capped, and on how much I automate scaffolding and checks.
 
 ### Phase 0: setup
 
@@ -114,7 +114,7 @@ Done when: the bridge reconciles, each step has a short explanation with a sourc
 
 ### Phase 5: website
 
-Design tokens first, then the landing page end to end, then the other pages. The football field, gap bridge and sensitivity table as SVG at build time; the provenance marker and the "Show sources" switch. The DCF controls and the print stylesheet are version 2. Screenshots at 390, 768, 1280 and 1440 px after each change. Front-end research feeds the visual polish before the first page is built.
+Design tokens first, then the landing page end to end, then the other pages. The football field, gap bridge and sensitivity table as SVG at build time; the provenance marker and the "Show sources" switch. The DCF controls and the print stylesheet are version 2. Screenshots at 390, 768, 1280 and 1440 px after each change. The front-end research is in [DESIGN_RESEARCH.md](DESIGN_RESEARCH.md): a stronger hatch with an outline, a dotted underline as the provenance marker, the chart's notation in the verdict sentence, a deal docket header, a colophon footer and a link-preview image. The gap bridge starts from the midpoint of the expert's range (A$4.26), labelled as such.
 
 Done when: every page passes axe with zero violations, meets the Lighthouse budgets, and the built HTML matches `valuation.json` in the site test.
 

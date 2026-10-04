@@ -49,3 +49,13 @@ GitHub Pages cannot send HTTP security headers, so the security policy goes in a
 I chose direction B, range first, with the "Show sources" switch from direction A. The football field is the landing page and each row opens its method. The type is Atkinson Hyperlegible Next only, subset and self-hosted, so the site makes no third-party request. The theme is light only at launch, and negative numbers use a true minus sign.
 
 Options considered: A (workpaper, with reference codes on every figure), B, and C (a scheme booklet rebuilt for the screen). The measurements and the three self-reviews are in [DESIGN_RESEARCH.md](DESIGN_RESEARCH.md). B gives the fastest read on a phone and the lightest font load. I took the source switch from A because an interviewer needs to see where each number came from, and it starts off so it does not crowd the first screen. I rejected a dark theme for now because it doubles the contrast and colour-vision checks, and parentheses for negatives because I would still need minus signs for variances.
+
+## 4 October 2026: roadmap approved
+
+I approved the roadmap and task list as drafted in [ROADMAP.md](ROADMAP.md) and [TODO.md](../TODO.md): a minimum version with one deal, three methods, the football field, the gap analysis, the assumption register, the deal timeline, an Excel model, a PDF and a live site; a version 2 with the DCF controls and the print memo; and no stretch item until the minimum version is live. The task tags are [ME], [AUTO] and [MIXED].
+
+## 4 October 2026: front-end refinements and the bridge start
+
+After reading how public sites handle dense numbers (see [DESIGN_RESEARCH.md](DESIGN_RESEARCH.md)), I kept the palette and typeface of direction B and adopted: a stronger hatch with an accent outline and a dotted underline as the provenance marker; the chart's notation in the verdict sentence; a deal docket header; a colophon footer; and a link-preview image. For version 2: a copy-link button and a signed change marker. I did not adopt a white plate behind the chart (my rule keeps the raised white surface for overlays), the offer line as a stepped border in the sensitivity table, a sticky range summary, an SVG download button, or page transitions from each row to its method page.
+
+The gap bridge starts from the midpoint of Grant Samuel's range, A$4.26, labelled as a midpoint and not as a figure the expert published, because the expert gave a range only. The alternatives I was offered were two bridges (low to low and high to high), which is more faithful but doubles the chart and is hard to read on a phone, and a bridge from the offer price, which answers a different question.

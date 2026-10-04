@@ -18,7 +18,7 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 | [x] | R-03 | [ME] | Source the data for Domain | docs/RESEARCH.md section 6, commit 195999f |
 | [x] | R-04 | [ME] | Choose the architecture | docs/ARCHITECTURE.md, commit 9e78cef |
 | [x] | R-05 | [ME] | Research design and choose a visual direction | docs/DESIGN_RESEARCH.md, commits 2f5cdbf and f06c414 |
-| [ ] | R-06 | [ME] | Approve this roadmap and task list | I have read docs/ROADMAP.md and changed anything I disagree with |
+| [x] | R-06 | [ME] | Approve this roadmap and task list | Approved 4 October 2026, recorded in docs/DECISIONS.md |
 
 ## Phase 0: setup
 
@@ -100,7 +100,7 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 | [ ] | P4-04 | [ME] | Choose the multiple ranges | Comparable and precedent ranges, with the peers and deals that drive them | Each range lists its evidence | P3-05, P3-06 |
 | [ ] | P4-05 | [ME] | Argue the control premium | A value and range with the evidence from RESEARCH.md section 4 | The note cites the studies and the expert's treatment | P3-07 |
 | [ ] | P4-06 | [MIXED] | Set my preferred value and range | Each method has a low, high and preferred value, and the combined range is explained | The weights are stated and the football field data is in `valuation.json` | P4-02 to P4-05 |
-| [ ] | P4-07 | [AUTO] | Gap bridge from the expert's value to mine | Each step is one assumption difference with its value per share | The steps sum to the total gap within the tolerance | P4-06 |
+| [ ] | P4-07 | [AUTO] | Gap bridge from the expert's midpoint to my value | The bridge starts at A$4.26, labelled as the midpoint of the range and not a published figure, and each step is one assumption difference with its value per share | The steps sum to the total gap within the tolerance | P4-06 |
 | [ ] | P4-08 | [ME] | Write a short explanation for each gap step | Two or three sentences with a source for each step | Each explanation names the input, both values and the effect | P4-07 |
 | [ ] | P4-09 | [ME] | Interview prep: the largest gap in 60 seconds | A recorded explanation | It fits in 60 seconds and uses no notes | P4-08 |
 | [ ] | P4-10 | [MIXED] | Trace every number | A list of every displayed figure with its source or test | No figure has an empty source | P4-08 |
@@ -109,12 +109,13 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 
 | Done | ID | Tag | Task | Acceptance | Check | Needs |
 |---|---|---|---|---|---|---|
-| [ ] | P5-01 | [MIXED] | Review front-end research and set the visual details | A short note of the techniques and refinements I adopt, and a decision on any change to the chosen direction | The note lists each choice with its reason | R-05 |
-| [ ] | P5-02 | [AUTO] | Design tokens and fonts | One tokens file with the colours, type scale and spacing, and the font subset self-hosted | No raw colour outside the tokens file, and the font file is under 25 KB | P5-01 |
+| [ ] | P5-01 | [MIXED] | Confirm the proposed chart and type defaults | Each proposed default in docs/DESIGN_RESEARCH.md (tick pitch, base-case border, bridge layout, fluid type) is confirmed or changed after the first chart is built, and the result is recorded there | The section lists each default as confirmed or changed | R-05, P5-04b |
+| [ ] | P5-02 | [AUTO] | Design tokens and fonts | One tokens file with the colours, type scale and spacing, and the font subset self-hosted | No raw colour outside the tokens file, and the font file is under 25 KB | R-05 |
 | [ ] | P5-03 | [AUTO] | Templates, build script and security tags | Base template, build script, the policy and referrer meta tags, scripts from the site only | The build output has no inline script and no third-party request | P5-02, P3-09 |
-| [ ] | P5-04 | [AUTO] | Football field SVG generator | Rows, ends labelled, axis, offer line, undisturbed line, hatch for my estimates, a text alternative and a data table | The SVG test checks each label against `valuation.json`, and a screenshot shows no collisions at 390 px | P5-03 |
-| [ ] | P5-05 | [AUTO] | Landing page | Verdict sentence, the football field, and the three routes onward | Screenshots at 390, 768, 1280 and 1440 px | P5-04 |
-| [ ] | P5-06 | [AUTO] | Provenance marker | A marker on each sourced figure that opens the document, page and date, by keyboard and by tap | Keyboard and touch tests pass, and the note is dismissible | P5-03 |
+| [ ] | P5-04 | [AUTO] | Football field SVG generator | Rows with bars drawn from the price scale using percentage coordinates and no `viewBox`, ends labelled, an axis note, the offer line and the undisturbed line; if percentage coordinates do not resolve correctly in the browsers I test, I fall back to a `viewBox` with non-scaling strokes and record that | The SVG test checks each label against `valuation.json`, and a screenshot shows no collisions at 390 px | P5-03 |
+| [ ] | P5-04b | [AUTO] | Football field styling and alternatives | My bars as a 45 degree hatch with an accent outline, the expert's bar as an ink outline, the preferred value tick, a text alternative and a data table | The edge of each bar and each line is at least 3:1 against the page, and the table lists every row's low and high | P5-04 |
+| [ ] | P5-05 | [AUTO] | Landing page | Verdict sentence using the chart's notation (hatched band, outlined box, offer rule), the football field, and the three routes onward | Screenshots at 390, 768, 1280 and 1440 px | P5-04 |
+| [ ] | P5-06 | [AUTO] | Provenance marker | A dotted accent underline on each sourced figure that opens the document, page and date as a popover, with a link fallback on older iOS, by keyboard and by tap | Keyboard and touch tests pass, and the note is dismissible | P5-03 |
 | [ ] | P5-07 | [AUTO] | "Show sources" switch | Off by default; on, it prints a reference code beside each sourced figure | The page still works when the script fails | P5-06 |
 | [ ] | P5-08 | [AUTO] | Valuation page: DCF tables | Forecast table and assumptions with units and sources | Every figure matches `valuation.json` | P5-03 |
 | [ ] | P5-09 | [AUTO] | Sensitivity table | Discount rate by terminal growth grid with the base case shaded and a caveat line | A test confirms the shaded cell equals the base value | P5-08 |
@@ -129,6 +130,8 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 | [ ] | P5-18 | [ME] | Write the landing page copy | The verdict sentence and the text around the football field, in my words | Every sentence states a fact or a judgement with its reason | P4-06 |
 | [ ] | P5-19 | [ME] | Write the valuation, gap and method page copy | Headings, captions and introductions in my words, with the gap explanations from P4-08 | The same check on every sentence | P4-08 |
 | [ ] | P5-20 | [ME] | Review the site as a first-time visitor | A list of what I could not follow, and fixes | A friend reads it and can state the verdict in 30 seconds | P5-18, P5-19 |
+| [ ] | P5-21 | [AUTO] | Deal docket header and colophon footer | A labelled line of target, acquirer, consideration and implementation date under the title; a footer with valuation date, data date, build date with a commit link, the disclaimer and the unit note | Both appear on every page, and the dates match `valuation.json` | P5-03 |
+| [ ] | P5-22 | [AUTO] | Link-preview image | A 1200 by 630 image of the football field rendered at build time, with absolute `og:image` tags | The image exists in the build output and shows the base case | P5-04 |
 
 ## Phase 6: write-up and packaging
 
@@ -163,3 +166,5 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 | [ ] | V2-01 | [AUTO] | DCF controls | Sliders and fields look up the precalculated grid, with the scenario in the URL | The result matches the engine for every grid point | P7-07 |
 | [ ] | V2-02 | [AUTO] | "Use the expert's assumptions" and "Reset to my base case" | Both buttons set the controls, with the change in value shown | A test for each button against the grid | V2-01 |
 | [ ] | V2-03 | [AUTO] | Print stylesheet | The landing view and valuation page print as a clean two-page memo | A print preview screenshot at A4 | P7-07 |
+| [ ] | V2-04 | [AUTO] | Copy link to this scenario | A button copies the URL holding the current control settings, and every parameter is checked against the precalculated grid before use | A test opens the copied link and gets the same result | V2-01 |
+| [ ] | V2-05 | [AUTO] | Signed change marker | A changed figure fades briefly and shows its signed change from my base case, with no counting animation and one polite live region | A screen reader test reads the new sentence once | V2-01 |
