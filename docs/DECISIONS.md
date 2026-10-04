@@ -89,3 +89,11 @@ The font is one variable file of Atkinson Hyperlegible Next, narrowed to weights
 The colours are the ones in the design research. The tests recalculate their contrast ratios, so a change to a hex value that breaks the contrast rules fails the full check. The three largest type steps use the `rem` plus `vw` values from the front-end research, growing one step between 390 and 1440 px. At 390 px a section heading is therefore 20 px, the same size as a subheading, and only the weight separates them. I will look at that on the first built page and confirm or change it in P5-01.
 
 I left out the radius and shadow tokens, the chart stroke widths and the fallback font face with `size-adjust`. Each is needed by a later task (templates, chart styling, performance), and I will measure each against a real page then.
+
+## 5 October 2026: risk-free rate and exchange rates
+
+I read the 30 May 2025 rows of the RBA tables and stored them in `data/extracted/market_rates_30_may_2025.csv`: the 10-year yield of 4.249%, A$1 = EUR 0.5670 and A$1 = GBP 0.4775, with the RBA credit that CC BY 4.0 requires in each row's source.
+
+Two things differ from what I had written in RESEARCH.md. The RBA's monthly table has a SEK column, but it stopped in November 2013, so no RBA table has the krona rate for my date. And Grant Samuel's 4.3% (booklet p. 139) is not the RBA's 4.249% rounded; it is 0.05 percentage points higher, for a reason I could not find. Which figure goes into `assumptions.yaml` as my risk-free input is a decision for P2-15, where I will record both.
+
+I did not collect SEK or NOK rates. An EV/EBITDA multiple needs no conversion when the value and the earnings are in the same currency, so the rates would only show Hemnet's and Vend's size in A$. The options were the Riksbank and Norges Bank tables (free, but a second set of terms to check) or leaving the sizes in local currency. I will revisit this if the peer table needs A$ sizes.

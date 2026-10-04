@@ -140,7 +140,7 @@ Yahoo Finance no longer serves Domain's share price history, and its terms prohi
 - Domain's undisturbed price, VWAPs and trading range come from the scheme booklet (booklet pp. 42, 95 and 157 to 158).
 - For beta I use Grant Samuel's published evidence (booklet pp. 139 to 140) and test the expert's choice against it. I do not estimate a regression beta of my own.
 - Peer share prices are needed for one date, 30 May 2025 (Grant Samuel's pricing date for the peers). I copy each by hand from the exchange or the company's own disclosures and record the source and the date I read it.
-- Share counts, net debt and EBITDA for the peers come from their annual and half-year reports; exchange rates come from RBA tables F11.1 and F11.
+- Share counts, net debt and EBITDA for the peers come from their annual and half-year reports; exchange rates for euros and pounds come from RBA table F11.1.
 
 Each value goes into `data/extracted/` with its source, so the source trace test covers market data too.
 
