@@ -421,4 +421,11 @@ Direction B, with direction A's "Show sources" switch added to it. B makes the f
 
 ## Choice
 
-Not yet made. I will record it here and in [DECISIONS.md](DECISIONS.md) after I choose.
+On 4 October 2026 I chose direction B, range first, with direction A's "Show sources" switch added.
+
+- The football field is the landing page, and each row opens the method behind it. Palette, type and wireframes are as in direction B above: Atkinson Hyperlegible Next as the only family, a cool white page, a deep blue accent, teal for favourable variances and orange for unfavourable ones.
+- The "Show sources" switch comes from direction A. It starts switched off and prints a short reference code beside each sourced figure when switched on, so an interviewer can see every source at once. It needs one small script served from the site and a few lines of CSS.
+- Light theme only at launch. A dark theme would double the contrast and colour-vision checks on every chart and hatch pattern, and I can add one later if it passes the same checks.
+- Negative numbers use a true minus sign (for example −0.12) everywhere, matching the plus or minus sign every variance carries. I considered parentheses, which Grant Samuel's tables use, and rejected them because I would still need minus signs for variances and would end up with two conventions.
+
+Why B: it gives the 30-second reader the verdict and the chart with nothing in between, and it has the lightest font load (one file of about 21 KB). Direction A would have put reference codes in front of every first-time visitor, and direction C would have put prose above the chart on a phone. I accept B's risk that the page is thin if my ranges are dull, so the gap analysis has to carry the story.
