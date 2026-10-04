@@ -1,0 +1,44 @@
+parameter,qualifier,value,unit,source,location,as_at,note
+cash_flow_start_date,,1 January 2025,date,"Domain scheme booklet, Grant Samuel report",p. 137,30 June 2025,"Starts from the FY25 Forecast for 2HY25, with the 5 Year Plan as a framework; neither is published"
+cash_flow_end_date,,30 June 2035,date,"Domain scheme booklet, Grant Samuel report",p. 137,30 June 2025,Ten and a half years of nominal after-tax cash flows
+projection_period,,10.5,years,"Domain scheme booklet, Grant Samuel report",p. 137,30 June 2025,
+terminal_value_date,,30 June 2035,date,"Domain scheme booklet, Grant Samuel report",p. 137,30 June 2025,Net after-tax cash flows capitalised with a perpetual growth rate
+terminal_growth,,4.0,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,Based on long-term inflation of 2.5% and real growth in EBITDA
+long_term_inflation,,2.5,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,
+discount_rate_adopted_low,,9.5,pct,"Domain scheme booklet, Grant Samuel report",p. 138 and p. 140,30 June 2025,Nominal WACC
+discount_rate_adopted_high,,10.5,pct,"Domain scheme booklet, Grant Samuel report",p. 138 and p. 140,30 June 2025,Nominal WACC
+wacc_calculated_low,,9.3,pct,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,
+wacc_calculated_high,,10.5,pct,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,
+corporate_tax_rate,,30.0,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,
+new_for_sale_listings_volume_growth,flat,0.0,pct,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,Through-the-cycle volume consistent with the historical average
+residential_revenue_fy35,about,740,aud_m,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,Scenario A
+residential_revenue_growth,about,9.5,pct,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,Average a year over the projection period
+media_developers_commercial_revenue_growth,just over,9.0,pct,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,"Average a year, slowing in the outer years"
+print_revenue_fy35,about,10,aud_m,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,About 1% of revenue; keeps declining in line with history
+listings_revenue_growth,just over,9.0,pct,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,Average a year
+ancillary_services_revenue_growth,just under,9.0,pct,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,Average a year
+agent_solutions_revenue_fy30,almost,60,aud_m,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,
+domain_insight_revenue_fy30,about,30,aud_m,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,
+total_revenue_fy35,over,990,aud_m,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,
+total_revenue_growth,just over,9.0,pct,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,Average a year
+operating_expenses_growth,about,7.0,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,Average a year over the projection period
+staff_costs_fy30,about,180,aud_m,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,
+staff_costs_growth_to_fy30,about,7.5,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,Average a year
+staff_costs_growth_long_term,about,4.0,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,Average a year after FY30
+ebitda_margin_fy30,,41.0,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,
+ebitda_margin_fy35,just below,48.0,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,
+ebitda_margin_fy21,,34.7,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,"Evidence cited by the expert, not a model input"
+ebitda_margin_1hy25,,35.8,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,"Evidence cited by the expert, not a model input"
+rea_group_australia_ebitda_margin_low,,63.0,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,"Evidence cited by the expert, not a model input"
+rea_group_australia_ebitda_margin_high,,65.0,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,"Evidence cited by the expert, not a model input"
+ebitda_growth_to_fy30,about,13.5,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,"Average a year, then easing to the terminal growth rate"
+capital_expenditure_pct_of_revenue,almost,9.5,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,Over the projection period; higher in the early years
+capital_expenditure_pct_of_revenue_long_term,,9.0,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,Depreciation and other amortisation roughly equals capital expenditure after the early years
+working_capital_pct_of_revenue,,2.5,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,Consistent with the historical trend
+agent_dividends_pct_of_prior_year_revenue,,1.6,pct,"Domain scheme booklet, Grant Samuel report",p. 142,30 June 2025,"Of prior year Residential and Media, Developers and Commercial revenue"
+unallocated_corporate_costs,about,30,aud_m,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Kept in the DCF model
+listed_company_costs_low,,3.5,aud_m,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Domain's estimate of the annual cost of being listed
+listed_company_costs_high,,4.0,aud_m,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,
+corporate_cost_saving,,4.0,aud_m,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,"Per year, saved by any acquirer"
+business_operations_value_low,,2775,aud_m,"Domain scheme booklet, Grant Samuel report","p. 137, p. 144 and p. 145",30 June 2025,"The expert's selected range, a subjective balancing of the scenarios"
+business_operations_value_high,,3025,aud_m,"Domain scheme booklet, Grant Samuel report","p. 137, p. 144 and p. 145",30 June 2025,

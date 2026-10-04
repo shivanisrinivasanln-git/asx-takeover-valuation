@@ -1,0 +1,21 @@
+scenario,assumption,qualifier,value,unit,source,location,as_at,note
+A,residential_yield_growth,,10.0,pct,"Domain scheme booklet, Grant Samuel report",p. 141,30 June 2025,Base case; Domain's average since listing in November 2017
+B,residential_yield_growth,,12.0,pct,"Domain scheme booklet, Grant Samuel report",p. 141 and p. 143,30 June 2025,Domain's longer-term target and the FY21 to FY24 average
+B,residential_revenue_fy35,about,865,aud_m,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,
+B,residential_revenue_growth,about,11.0,pct,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Average a year
+B,ebitda_margin_fy35,almost,51.0,pct,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,
+C,residential_yield_growth,,9.0,pct,"Domain scheme booklet, Grant Samuel report",p. 141 and p. 143,30 June 2025,A more conservative case
+C,residential_revenue_fy35,about,684,aud_m,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,
+C,residential_revenue_growth,about,8.5,pct,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Average a year
+C,ebitda_margin_fy35,,46.0,pct,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,
+D,additional_state_valuation_contracts_by_fy28,,2,state entities,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Domain wins statutory valuations contracts
+E,ancillary_services_revenue_adjustment,,-1.0,pct a year,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,1% a year lower across the projection period
+F,additional_marketing_fy27_to_fy30,about,100,aud_m,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,"FY26 real terms, across FY27 to FY30"
+F,total_revenue_fy30,about,687,aud_m,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,
+F,total_revenue_growth_to_fy30,about,11.0,pct,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Average a year
+F,ebitda_margin_every_year_below,,49.0,pct,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Margins stay below 49% for the entire projection period
+G,capital_expenditure_pct_of_revenue_mid_to_long_term,,10.0,pct,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Also approximately 10% over the projection period
+H,yield_per_listing_growth_fy26_to_fy27,about,6.0,pct a year,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Pricing and depth more targeted over FY26 and FY27
+H,yield_per_listing_growth_after_fy27,,12.0,pct a year,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Average over the remaining projection period
+H,yield_growth_whole_projection_period,,11.4,pct,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Average annual growth in yield over the entire period
+H,sales_listings_growth,about,0.5,pct a year,"Domain scheme booklet, Grant Samuel report",p. 143,30 June 2025,Moderate growth in sales listings
