@@ -1,0 +1,31 @@
+statistic,fiscal_year,metric,value_aud_m,source,location,as_at,note
+minimum,FY25,revenue,414.9,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+minimum,FY26,revenue,420.4,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+minimum,FY25,ebitda,142.5,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+minimum,FY26,ebitda,149.4,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+minimum,FY25,ebit,101.8,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+minimum,FY26,ebit,105.8,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+maximum,FY25,revenue,427.0,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+maximum,FY26,revenue,463.0,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+maximum,FY25,ebitda,148.0,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+maximum,FY26,ebitda,165.3,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+maximum,FY25,ebit,110.0,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+maximum,FY26,ebit,125.5,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+median,FY25,revenue,420.0,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+median,FY26,revenue,453.8,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+median,FY25,ebitda,146.3,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+median,FY26,ebitda,160.0,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+median,FY25,ebit,105.9,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+median,FY26,ebit,117.1,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Printed statistic across the brokers who give the metric
+adjustment,FY25,amortisation_of_acquired_intangibles,9.9,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,FY24 amount held constant (consistent with 1HY25 and LTM24 per the booklet)
+adjustment,FY26,amortisation_of_acquired_intangibles,9.9,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,FY24 amount held constant
+median,FY25,ebita,115.8,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Median EBIT plus the 9.9 adjustment
+median,FY26,ebita,127.0,"Domain scheme booklet, Grant Samuel report","p. 165, Appendix 1",30 June 2025,Median EBIT plus the 9.9 adjustment
+median_on_p122,FY25,revenue,420.0,"Domain scheme booklet, Grant Samuel report","p. 122, section 3.5, forecast financial performance",30 June 2025,
+median_on_p122,FY26,revenue,454.0,"Domain scheme booklet, Grant Samuel report","p. 122, section 3.5, forecast financial performance",30 June 2025,"Differs from the 453.8 median on p. 165, which I recomputed from the 13 brokers as 453.8; both are recorded as printed"
+median_on_p122,FY25,ebitda,146.3,"Domain scheme booklet, Grant Samuel report","p. 122, section 3.5, forecast financial performance",30 June 2025,
+median_on_p122,FY26,ebitda,160.0,"Domain scheme booklet, Grant Samuel report","p. 122, section 3.5, forecast financial performance",30 June 2025,
+median_on_p122,FY25,ebita,115.8,"Domain scheme booklet, Grant Samuel report","p. 122, section 3.5, forecast financial performance",30 June 2025,
+median_on_p122,FY26,ebita,127.0,"Domain scheme booklet, Grant Samuel report","p. 122, section 3.5, forecast financial performance",30 June 2025,
+median_on_p122,FY25,ebit,105.9,"Domain scheme booklet, Grant Samuel report","p. 122, section 3.5, forecast financial performance",30 June 2025,
+median_on_p122,FY26,ebit,117.1,"Domain scheme booklet, Grant Samuel report","p. 122, section 3.5, forecast financial performance",30 June 2025,
