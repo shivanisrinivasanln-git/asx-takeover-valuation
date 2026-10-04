@@ -54,7 +54,7 @@ Step 2, cross-check (DCF). Next year's free cash flow is forecast at A$30m, grow
 
 - Cost of equity, from the capital asset pricing model: risk-free rate plus beta times the market risk premium, 4.0% + 1.3 × 6.0% = 11.8%.
 - Cost of debt after 30% tax: 7.0% × (1 − 0.30) = 4.9%.
-- WACC with 80% equity and 20% debt: 0.8 × 11.8% + 0.2 × 4.9% = 10.4%.
+- WACC with 80% equity and 20% debt: 0.8 × 11.8% + 0.2 × 4.9% = 10.42%, which I round to 10.4% in the steps below.
 - A cash flow growing for ever at a constant rate is worth cash flow ÷ (WACC − growth): 30 ÷ (0.104 − 0.03) = A$405m of enterprise value, A$305m of equity, or A$3.05 per share. That sits inside the range from step 1.
 
 The result is sensitive to the discount rate. At a WACC of 9.4% the value is 30 ÷ 0.064 = A$469m, or A$3.69 per share; at 11.4% it is 30 ÷ 0.084 = A$357m, or A$2.57 per share. One percentage point either way moves the value by 48 to 63 cents a share, which is why experts publish sensitivity tables.

@@ -1,0 +1,44 @@
+[project]
+name = "asx-takeover-valuation"
+version = "0.1.0"
+description = "Shadow valuation of the Domain Holdings takeover: engine, Excel model, site and report."
+requires-python = ">=3.12"
+dependencies = [
+    "Jinja2",
+    "openpyxl",
+    "PyYAML",
+]
+
+[dependency-groups]
+dev = [
+    "mypy",
+    "pip-audit",
+    "pytest",
+    "ruff",
+    "types-PyYAML",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/engine"]
+pythonpath = ["src"]
+addopts = "-ra --strict-markers --strict-config"
+
+[tool.mypy]
+strict = true
+mypy_path = "src"
+files = ["src", "scripts", "tests/engine"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests/engine", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "SIM", "C4", "PT", "RUF", "S", "T20"]
+
+# These three ignores are the only ones.
+[tool.ruff.lint.per-file-ignores]
+# Tests use plain assert statements.
+"tests/**" = ["S101"]
+# The check script runs fixed commands with the current interpreter and prints its summary line.
+"scripts/**" = ["S603", "T201"]

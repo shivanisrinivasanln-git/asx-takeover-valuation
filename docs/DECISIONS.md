@@ -59,3 +59,13 @@ I approved the roadmap and task list as drafted in [ROADMAP.md](ROADMAP.md) and 
 After reading how public sites handle dense numbers (see [DESIGN_RESEARCH.md](DESIGN_RESEARCH.md)), I kept the palette and typeface of direction B and adopted: a stronger hatch with an accent outline and a dotted underline as the provenance marker; the chart's notation in the verdict sentence; a deal docket header; a colophon footer; and a link-preview image. For version 2: a copy-link button and a signed change marker. I did not adopt a white plate behind the chart (my rule keeps the raised white surface for overlays), the offer line as a stepped border in the sensitivity table, a sticky range summary, an SVG download button, or page transitions from each row to its method page.
 
 The gap bridge starts from the midpoint of Grant Samuel's range, A$4.26, labelled as a midpoint and not as a figure the expert published, because the expert gave a range only. The alternatives I was offered were two bridges (low to low and high to high), which is more faithful but doubles the chart and is hard to read on a phone, and a bridge from the offer price, which answers a different question.
+
+## 4 October 2026: Python tooling
+
+I use a `pyproject.toml` for dependencies and tool settings, `uv` to compile `requirements.lock` with a hash for every package (installs from it fail if a file does not match its hash), Ruff for formatting and linting, mypy in strict mode for types, and pytest for tests. The alternatives were Poetry or PDM, which add a larger tool and their own lock formats, and plain `pip freeze`, which records no hashes. The full check is one script, `scripts/check.py`, that runs the four steps with the interpreter that started it and prints one summary line, so it behaves the same on my machine and in CI.
+
+Rates in the engine are percentages named with `_pct`, money is A$ millions named with `_aud_m`, and per-share values are in A$ named with `_aud`, so a unit is visible in every name.
+
+The Harbour Industrial example in [RESEARCH.md](RESEARCH.md) became the first test. It found a rounding in the example: the WACC works out to 10.42%, not 10.4%. The example's later steps use 10.4%, so I changed the text to say 10.42% rounded to 10.4%, and the test checks both.
+
+Three Ruff ignores are the only ones: asserts in tests, and the fixed subprocess call and printed summary line in the check script. I declared Jinja2, openpyxl, PyYAML and the audit tool now, although nothing uses them yet, because the architecture fixes them and the lockfile should hold the full set from the start. The build step joins the full check when the first build exists, in task P5-03.
