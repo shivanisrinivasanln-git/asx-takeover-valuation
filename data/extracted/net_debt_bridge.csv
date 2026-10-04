@@ -1,0 +1,17 @@
+item,value_aud_m,source,location,as_at,note
+facility_limit_revolving_credit_a,-5.0,"Domain scheme booklet, Grant Samuel report",p. 125,31 December 2024,Facility limit; maturity December 2028. The 3.5 drawn for bank guarantees is excluded from the amount drawn
+facility_limit_revolving_loan_b,-169.0,"Domain scheme booklet, Grant Samuel report",p. 125,31 December 2024,Facility limit; maturity December 2028
+facility_limit_revolving_loan_c,-116.0,"Domain scheme booklet, Grant Samuel report",p. 125,31 December 2024,Facility limit; maturity December 2029
+facility_limit_total,-290.0,"Domain scheme booklet, Grant Samuel report",p. 125,31 December 2024,Printed total
+drawn_revolving_credit_a,0.0,"Domain scheme booklet, Grant Samuel report",p. 125,31 December 2024,"Printed as a dash, recorded as 0.0"
+drawn_revolving_loan_b,-169.0,"Domain scheme booklet, Grant Samuel report",p. 125,31 December 2024,
+drawn_revolving_loan_c,-16.0,"Domain scheme booklet, Grant Samuel report",p. 125,31 December 2024,
+capitalised_borrowing_costs,1.2,"Domain scheme booklet, Grant Samuel report",p. 125,31 December 2024,Reduces the balance sheet liability
+total_interest_bearing_liabilities,-183.8,"Domain scheme booklet, Grant Samuel report",p. 125,31 December 2024,Printed total
+cash_and_cash_equivalents,36.5,"Domain scheme booklet, Grant Samuel report",p. 125,31 December 2024,
+net_debt_excluding_leases,-147.3,"Domain scheme booklet, Grant Samuel report",p. 125,31 December 2024,Printed total
+lease_liabilities,-25.9,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+reported_net_debt_including_leases,-173.2,"Domain scheme booklet, Grant Samuel report","p. 156, section 4.6",31 December 2024,Starting figure of the expert's bridge; equals the p. 123 figure
+adjustment_capitalised_borrowing_costs,-1.2,"Domain scheme booklet, Grant Samuel report","p. 156, section 4.6",31 December 2024,"Accounting asset, removed from debt"
+adjustment_interim_dividend_paid_11_march_2025,-12.6,"Domain scheme booklet, Grant Samuel report","p. 156, section 4.6",31 December 2024,"2 cents a share, equivalent to 12.6 million (p. 125)"
+adjusted_net_debt,-187.0,"Domain scheme booklet, Grant Samuel report","p. 156, section 4.6",31 December 2024,Printed total; the figure used in the valuation summary

@@ -1,0 +1,86 @@
+period,line_item,value,unit,source,location,as_at,note
+FY21,ebitda,100.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,
+FY22,ebitda,124.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,
+FY23,ebitda,108.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,
+FY24,ebitda,137.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,
+1HY25,ebitda,77.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,
+FY21,changes_in_working_capital_and_other,-14.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,FY22 includes the cash flow of discontinued operations (footnote 36)
+FY22,changes_in_working_capital_and_other,-28.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,FY22 includes the cash flow of discontinued operations (footnote 36)
+FY23,changes_in_working_capital_and_other,-13.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,FY22 includes the cash flow of discontinued operations (footnote 36)
+FY24,changes_in_working_capital_and_other,0.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,FY22 includes the cash flow of discontinued operations (footnote 36)
+1HY25,changes_in_working_capital_and_other,-3.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,FY22 includes the cash flow of discontinued operations (footnote 36)
+FY21,net_lease_payments,-8.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,"Financing and principal components, net of sublease receipts (footnote 37)"
+FY22,net_lease_payments,-9.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,"Financing and principal components, net of sublease receipts (footnote 37)"
+FY23,net_lease_payments,-4.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,"Financing and principal components, net of sublease receipts (footnote 37)"
+FY24,net_lease_payments,-5.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,"Financing and principal components, net of sublease receipts (footnote 37)"
+1HY25,net_lease_payments,-2.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,"Financing and principal components, net of sublease receipts (footnote 37)"
+FY21,income_tax_payments,-29.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,
+FY22,income_tax_payments,-22.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,
+FY23,income_tax_payments,-19.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,
+FY24,income_tax_payments,-8.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,
+1HY25,income_tax_payments,-14.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,
+FY21,finance_costs_paid_net_of_interest_received,-3.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,
+FY22,finance_costs_paid_net_of_interest_received,-3.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,
+FY23,finance_costs_paid_net_of_interest_received,-8.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,
+FY24,finance_costs_paid_net_of_interest_received,-11.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,
+1HY25,finance_costs_paid_net_of_interest_received,-5.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,
+FY21,operating_cash_flow,44.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,Printed subtotal; differs from reported operating cash flow because lease payments are deducted (footnote 37)
+FY22,operating_cash_flow,60.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,Printed subtotal; differs from reported operating cash flow because lease payments are deducted (footnote 37)
+FY23,operating_cash_flow,62.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,Printed subtotal; differs from reported operating cash flow because lease payments are deducted (footnote 37)
+FY24,operating_cash_flow,113.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,Printed subtotal; differs from reported operating cash flow because lease payments are deducted (footnote 37)
+1HY25,operating_cash_flow,52.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,Printed subtotal; differs from reported operating cash flow because lease payments are deducted (footnote 37)
+FY21,capital_expenditure_net,-17.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,
+FY22,capital_expenditure_net,-20.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,
+FY23,capital_expenditure_net,-30.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,
+FY24,capital_expenditure_net,-37.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,
+1HY25,capital_expenditure_net,-20.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,
+FY21,net_investment_in_businesses_and_ventures,3.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,
+FY22,net_investment_in_businesses_and_ventures,-227.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,
+FY23,net_investment_in_businesses_and_ventures,-23.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,
+FY24,net_investment_in_businesses_and_ventures,-0.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,
+1HY25,net_investment_in_businesses_and_ventures,3.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,
+FY21,dividends_paid_to_domain_shareholders,0.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,"Printed as a dash for FY21, recorded as 0.0"
+FY22,dividends_paid_to_domain_shareholders,-35.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,"Printed as a dash for FY21, recorded as 0.0"
+FY23,dividends_paid_to_domain_shareholders,-37.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,"Printed as a dash for FY21, recorded as 0.0"
+FY24,dividends_paid_to_domain_shareholders,-37.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,"Printed as a dash for FY21, recorded as 0.0"
+1HY25,dividends_paid_to_domain_shareholders,-25.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,"Printed as a dash for FY21, recorded as 0.0"
+FY21,dividends_paid_to_non_controlling_interest,-5.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,
+FY22,dividends_paid_to_non_controlling_interest,-4.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,
+FY23,dividends_paid_to_non_controlling_interest,-4.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,
+FY24,dividends_paid_to_non_controlling_interest,-4.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,
+1HY25,dividends_paid_to_non_controlling_interest,-4.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,
+FY21,net_share_purchases_and_issues,0.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,
+FY22,net_share_purchases_and_issues,158.2,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,
+FY23,net_share_purchases_and_issues,-0.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,
+FY24,net_share_purchases_and_issues,-2.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,
+1HY25,net_share_purchases_and_issues,-1.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,
+FY21,other,3.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,"Printed as a dash for FY23 and FY24, recorded as 0.0"
+FY22,other,-1.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,"Printed as a dash for FY23 and FY24, recorded as 0.0"
+FY23,other,0.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,"Printed as a dash for FY23 and FY24, recorded as 0.0"
+FY24,other,0.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,"Printed as a dash for FY23 and FY24, recorded as 0.0"
+1HY25,other,-0.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,"Printed as a dash for FY23 and FY24, recorded as 0.0"
+FY21,net_cash_generated_or_used,28.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,Printed subtotal
+FY22,net_cash_generated_or_used,-70.1,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,Printed subtotal
+FY23,net_cash_generated_or_used,-34.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,Printed subtotal
+FY24,net_cash_generated_or_used,31.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,Printed subtotal
+1HY25,net_cash_generated_or_used,2.7,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,Printed subtotal
+FY21,net_debt_excluding_leases_opening,-105.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,FY24 opening includes cash attributable to discontinued operations of 1.3 (footnote 38)
+FY22,net_debt_excluding_leases_opening,-79.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,FY24 opening includes cash attributable to discontinued operations of 1.3 (footnote 38)
+FY23,net_debt_excluding_leases_opening,-151.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,FY24 opening includes cash attributable to discontinued operations of 1.3 (footnote 38)
+FY24,net_debt_excluding_leases_opening,-184.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,FY24 opening includes cash attributable to discontinued operations of 1.3 (footnote 38)
+1HY25,net_debt_excluding_leases_opening,-150.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,FY24 opening includes cash attributable to discontinued operations of 1.3 (footnote 38)
+FY21,non_cash_movements_in_interest_bearing_liabilities,-1.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,
+FY22,non_cash_movements_in_interest_bearing_liabilities,-2.4,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,
+FY23,non_cash_movements_in_interest_bearing_liabilities,1.9,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,
+FY24,non_cash_movements_in_interest_bearing_liabilities,2.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,
+1HY25,non_cash_movements_in_interest_bearing_liabilities,0.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,
+FY21,net_debt_excluding_leases_closing,-79.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,Printed total; FY23 closing includes cash attributable to discontinued operations of 1.3 (footnote 38)
+FY22,net_debt_excluding_leases_closing,-151.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,Printed total; FY23 closing includes cash attributable to discontinued operations of 1.3 (footnote 38)
+FY23,net_debt_excluding_leases_closing,-184.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,Printed total; FY23 closing includes cash attributable to discontinued operations of 1.3 (footnote 38)
+FY24,net_debt_excluding_leases_closing,-150.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,Printed total; FY23 closing includes cash attributable to discontinued operations of 1.3 (footnote 38)
+1HY25,net_debt_excluding_leases_closing,-147.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,Printed total; FY23 closing includes cash attributable to discontinued operations of 1.3 (footnote 38)
+FY21,capital_expenditure_pct_of_revenue,6.1,pct,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2021,
+FY22,capital_expenditure_pct_of_revenue,6.0,pct,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2022,
+FY23,capital_expenditure_pct_of_revenue,8.8,pct,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2023,
+FY24,capital_expenditure_pct_of_revenue,9.5,pct,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",30 June 2024,
+1HY25,capital_expenditure_pct_of_revenue,9.6,pct,"Domain scheme booklet, Grant Samuel report","p. 125, section 3.7",31 December 2024,

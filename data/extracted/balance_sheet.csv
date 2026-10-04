@@ -1,0 +1,57 @@
+balance_date,line_item,value,unit,source,location,as_at,note
+30 June 2024,trade_and_other_receivables,58.0,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,trade_and_other_receivables,51.1,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,trade_and_other_payables,-45.3,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,trade_and_other_payables,-35.8,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,payables_related_parties,-5.1,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,payables_related_parties,-3.7,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,net_working_capital,7.6,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,Printed subtotal
+31 December 2024,net_working_capital,11.6,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,Printed subtotal
+30 June 2024,goodwill,969.3,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,goodwill,969.3,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,other_intangible_assets,404.1,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,other_intangible_assets,408.7,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,property_plant_and_equipment_net,4.1,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,property_plant_and_equipment_net,4.1,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,right_of_use_assets,11.8,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,right_of_use_assets,21.7,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,convertible_notes_and_equity_accounted_investments,2.7,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,"Convertible notes at 30 June 2024, equity accounted investment at 31 December 2024 (p. 124)"
+31 December 2024,convertible_notes_and_equity_accounted_investments,1.6,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,"Convertible notes at 30 June 2024, equity accounted investment at 31 December 2024 (p. 124)"
+30 June 2024,current_tax_liabilities,-18.6,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,current_tax_liabilities,-19.4,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,deferred_tax_liabilities_net,-77.4,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,deferred_tax_liabilities_net,-80.9,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,provisions,-11.6,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,provisions,-11.6,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,contingent_consideration,-12.2,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,contingent_consideration,-8.4,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,total_funds_employed,1279.8,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,Printed subtotal
+31 December 2024,total_funds_employed,1296.8,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,Printed subtotal
+30 June 2024,cash_and_cash_equivalents,33.8,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,cash_and_cash_equivalents,36.5,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,interest_bearing_liabilities,-184.6,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,Net of capitalised borrowing costs (p. 125)
+31 December 2024,interest_bearing_liabilities,-183.8,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,Net of capitalised borrowing costs (p. 125)
+30 June 2024,net_debt_excluding_leases,-150.8,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,Printed subtotal
+31 December 2024,net_debt_excluding_leases,-147.3,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,Printed subtotal
+30 June 2024,lease_liabilities,-15.1,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,
+31 December 2024,lease_liabilities,-25.9,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,
+30 June 2024,net_debt_including_leases,-165.9,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,Printed subtotal; the 31 December 2024 figure is the starting point of the expert's net debt build (p. 156)
+31 December 2024,net_debt_including_leases,-173.2,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,Printed subtotal; the 31 December 2024 figure is the starting point of the expert's net debt build (p. 156)
+30 June 2024,net_assets,1113.9,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,Printed subtotal
+31 December 2024,net_assets,1123.6,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,Printed subtotal
+30 June 2024,non_controlling_interest,-13.6,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,Book value of the agents' equity interests
+31 December 2024,non_controlling_interest,-13.8,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,Book value of the agents' equity interests
+30 June 2024,equity_attributable_to_domain_shareholders,1100.3,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,30 June 2024,Printed total
+31 December 2024,equity_attributable_to_domain_shareholders,1109.9,aud_m,"Domain scheme booklet, Grant Samuel report",p. 123,31 December 2024,Printed total
+30 June 2024,shares_on_issue_at_period_end,631.7,million shares,"Domain scheme booklet, Grant Samuel report",p. 124,30 June 2024,
+31 December 2024,shares_on_issue_at_period_end,631.7,million shares,"Domain scheme booklet, Grant Samuel report",p. 124,31 December 2024,
+30 June 2024,net_assets_per_share,1.76,aud,"Domain scheme booklet, Grant Samuel report",p. 124,30 June 2024,Before non-controlling interest (footnote 32)
+31 December 2024,net_assets_per_share,1.78,aud,"Domain scheme booklet, Grant Samuel report",p. 124,31 December 2024,Before non-controlling interest (footnote 32)
+30 June 2024,net_tangible_assets_per_share,-0.41,aud,"Domain scheme booklet, Grant Samuel report",p. 124,30 June 2024,Before non-controlling interest (footnote 32)
+31 December 2024,net_tangible_assets_per_share,-0.40,aud,"Domain scheme booklet, Grant Samuel report",p. 124,31 December 2024,Before non-controlling interest (footnote 32)
+30 June 2024,net_working_capital_pct_of_revenue,1.9,pct,"Domain scheme booklet, Grant Samuel report",p. 124,30 June 2024,
+31 December 2024,net_working_capital_pct_of_revenue,2.9,pct,"Domain scheme booklet, Grant Samuel report",p. 124,31 December 2024,
+30 June 2024,net_debt_to_ebitda,1.1,times,"Domain scheme booklet, Grant Samuel report",p. 124,30 June 2024,Excludes lease liabilities; EBITDA for the prior 12 months (footnote 34)
+31 December 2024,net_debt_to_ebitda,1.0,times,"Domain scheme booklet, Grant Samuel report",p. 124,31 December 2024,Excludes lease liabilities; EBITDA for the prior 12 months (footnote 34)
+30 June 2024,gearing,11.0,pct,"Domain scheme booklet, Grant Samuel report",p. 124,30 June 2024,Net debt including leases over net debt plus net assets (footnote 35)
+31 December 2024,gearing,12.0,pct,"Domain scheme booklet, Grant Samuel report",p. 124,31 December 2024,Net debt including leases over net debt plus net assets (footnote 35)
