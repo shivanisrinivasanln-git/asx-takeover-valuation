@@ -1,0 +1,15 @@
+item,case,value,unit,source,location,as_at,note
+business_operations,low,2775.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 131 and p. 92, section 4.4",30 June 2025,Net of agents' interests and corporate costs (p. 131 footnote 42). Valuation date 31 December 2024 (p. 135)
+business_operations,high,3025.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 131 and p. 92, section 4.4",30 June 2025,
+other_assets_and_liabilities,low,-7.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 131 and p. 92, section 4.5",30 June 2025,"Equity accounted investments 1.6, provisions (0.8), contingent consideration (8.4) (p. 155)"
+other_assets_and_liabilities,high,-7.6,aud_m,"Domain scheme booklet, Grant Samuel report","p. 131 and p. 92, section 4.5",30 June 2025,
+enterprise_value,low,2767.4,aud_m,"Domain scheme booklet, Grant Samuel report",p. 131 and p. 92,30 June 2025,Printed total
+enterprise_value,high,3017.4,aud_m,"Domain scheme booklet, Grant Samuel report",p. 131 and p. 92,30 June 2025,Printed total
+adjusted_net_debt,low,-187.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 131 and p. 92, section 4.6",30 June 2025,Includes lease liabilities; see p. 156 for the bridge
+adjusted_net_debt,high,-187.0,aud_m,"Domain scheme booklet, Grant Samuel report","p. 131 and p. 92, section 4.6",30 June 2025,
+equity_value,low,2580.4,aud_m,"Domain scheme booklet, Grant Samuel report",p. 131 and p. 92,30 June 2025,Printed total
+equity_value,high,2830.4,aud_m,"Domain scheme booklet, Grant Samuel report",p. 131 and p. 92,30 June 2025,Printed total
+fully_diluted_shares,low,635.5,million shares,"Domain scheme booklet, Grant Samuel report","p. 131 and p. 92, footnote 43 and footnote 3",30 June 2025,See share_build.csv for the build
+fully_diluted_shares,high,634.4,million shares,"Domain scheme booklet, Grant Samuel report","p. 131 and p. 92, footnote 43 and footnote 3",30 June 2025,
+value_per_share,low,4.06,aud,"Domain scheme booklet, Grant Samuel report",p. 131 and p. 92,30 June 2025,Printed to two decimals
+value_per_share,high,4.46,aud,"Domain scheme booklet, Grant Samuel report",p. 131 and p. 92,30 June 2025,Printed to two decimals

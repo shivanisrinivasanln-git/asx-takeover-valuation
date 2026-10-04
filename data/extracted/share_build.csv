@@ -1,0 +1,8 @@
+item,case,value,unit,source,location,as_at,note
+ordinary_shares_on_issue,,631657153,shares,"Domain scheme booklet, Grant Samuel report","p. 126, section 3.9",30 June 2025,"Includes 514,034 treasury shares"
+treasury_shares,,514034,shares,"Domain scheme booklet, Grant Samuel report",p. 126 and p. 131 footnote 43,30 June 2025,"Used on vesting of share rights before new shares are issued, so deducted"
+share_rights_expected_to_vest,low,3266201,shares,"Domain scheme booklet, Grant Samuel report",p. 131 footnote 43,30 June 2025,
+share_rights_expected_to_vest,high,2208343,shares,"Domain scheme booklet, Grant Samuel report",p. 131 footnote 43,30 June 2025,"The 1,057,858 difference vests only if performance tests at 30 June 2025 are met"
+share_rights_cash_settled,,1098432,shares,"Domain scheme booklet, Grant Samuel report",p. 131 footnote 43,30 June 2025,Settled in cash at A$4.43 a share as part of the scheme
+share_rights_on_issue_total,,4364633,shares,"Domain scheme booklet, Grant Samuel report","p. 126, section 3.9",30 June 2025,"Of which 518,267 have vested but are unexercised"
+share_rights_vested_unexercised,,518267,shares,"Domain scheme booklet, Grant Samuel report","p. 126, section 3.9",30 June 2025,
