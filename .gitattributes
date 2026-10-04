@@ -3,3 +3,5 @@
 *.xlsx binary
 *.pdf binary
 *.png binary
+*.woff2 binary
+site/static/fonts/OFL.txt whitespace=-trailing-space

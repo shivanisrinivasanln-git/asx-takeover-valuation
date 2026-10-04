@@ -1,0 +1,72 @@
+/* Design tokens: the only file that holds raw colour values, sizes and the font face.
+   Components use the custom properties below and never a hex value. */
+
+@layer reset, tokens, base, layout, components, print;
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("fonts/AtkinsonHyperlegibleNext-subset.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer tokens {
+  :root {
+    color-scheme: light;
+
+    /* Colour roles. Ratios are against surface and were calculated with the WCAG 2.2
+       relative luminance formula; tests/engine/test_site_tokens.py recalculates them. */
+    --surface: #f7f9fb; /* pale grey-blue, so the page is neither pure white nor cream */
+    --surface-raised: #ffffff; /* overlays and popovers only */
+    --ink: #1a2332; /* 15.0:1, a blue-black chosen on purpose instead of #000 */
+    --ink-muted: #4b5768; /* 7.0:1: units, axis labels, source lines */
+    --rule: #d0d7e0; /* gridlines and dividers, decorative at 1.4:1 */
+    --rule-strong: #7d899b; /* control borders, 3.4:1 */
+    --accent: #1b4fbf; /* 6.8:1: my hatch, my preferred value, focus and selection only */
+    --positive-variance: #00796b; /* 5.0:1: favourable */
+    --negative-variance: #b34700; /* 5.2:1: unfavourable */
+
+    /* Tints of the accent. The hex values are the sRGB mix, for a browser without color-mix. */
+    --accent-wash: #eaeff7;
+    --accent-wash: color-mix(in oklab, var(--accent) 6%, var(--surface));
+    --accent-tint: #dde5f4;
+    --accent-tint: color-mix(in oklab, var(--accent) 12%, var(--surface));
+
+    /* Chart notation (docs/DESIGN_RESEARCH.md): solid for actuals, outline for the expert,
+       hatch for my estimates, a solid rule for the offer, a dashed rule for the undisturbed price. */
+    --actual-solid: var(--ink-muted);
+    --expert-outline: var(--ink);
+    --owner-hatch: var(--accent);
+    --offer-rule: var(--ink);
+    --undisturbed-rule: var(--ink-muted);
+
+    /* Type. One family, weights 400 and 600. Its figures are proportional by default, so
+       numbers set --numeric-features. */
+    --font-sans: "Atkinson Hyperlegible Next", sans-serif;
+    --weight-regular: 400;
+    --weight-strong: 600;
+    --numeric-features: tabular-nums lining-nums;
+    --leading-body: 1.5;
+    --leading-heading: 1.2;
+
+    /* Scale of 1.25 from a 16 px base. The three largest steps grow from the step below at a
+       390 px viewport to the stated size at 1440 px, in rem plus vw so browser zoom still works. */
+    --text-note: 0.8125rem; /* 13 px: source notes, table footnotes, smallest axis labels */
+    --text-body: 1rem; /* 16 px: prose and table text */
+    --text-subheading: 1.25rem; /* 20 px */
+    --text-heading: clamp(1.25rem, 1.134rem + 0.476vw, 1.5625rem); /* 20 to 25 px */
+    --text-verdict: clamp(1.5625rem, 1.423rem + 0.571vw, 1.9375rem); /* 25 to 31 px */
+    --text-title: clamp(1.9375rem, 1.752rem + 0.762vw, 2.4375rem); /* 31 to 39 px */
+
+    /* Spacing on a 4 px base, tied to the 24 px body line. */
+    --space-1: 0.25rem; /* 4 px */
+    --space-2: 0.5rem; /* 8 px */
+    --space-3: 0.75rem; /* 12 px */
+    --space-4: 1rem; /* 16 px */
+    --space-5: 1.5rem; /* 24 px: between a heading and its content */
+    --space-6: 2rem; /* 32 px */
+    --space-7: 3rem; /* 48 px: between sections */
+    --space-8: 4rem; /* 64 px: above the footer */
+  }
+}

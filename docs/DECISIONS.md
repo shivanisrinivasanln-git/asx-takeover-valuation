@@ -79,3 +79,13 @@ Each CSV file under `data/extracted/` must have `source`, `location` and `as_at`
 ## 5 October 2026: licence
 
 I chose the MIT licence for the code, with the copyright line "Copyright (c) 2026 Shivani Srinivasan". The options were Apache-2.0, which adds an explicit patent grant and a longer notice that a project this size does not need, and no licence, which would stop anyone legally reusing the code and looks closed to someone reading the repository. MIT is short, permissive and the usual choice for a portfolio project. It covers the code only. The documents I link to, such as the scheme booklet and company reports, belong to their owners and keep their own terms, and I do not copy them into the repository.
+
+## 5 October 2026: design tokens and the font file
+
+The site's static files live in `site/static/`: `tokens.css` and the font in `site/static/fonts/`. The notes and script for rebuilding the font are in `site/font-source/`, outside the folder that will be published. `tokens.css` holds every raw colour, the type scale and the spacing scale as CSS custom properties, so a component never writes a hex value. A test fails if any other stylesheet, SVG or template in `site/` contains one.
+
+The font is one variable file of Atkinson Hyperlegible Next, narrowed to weights 400 to 600 and subset to Basic Latin plus the punctuation I use and the true minus. It is 11.6 KB. The design research estimated 21 KB from an earlier subset whose settings I did not keep, so I do not know what accounts for the difference. Both are below the 25 KB limit. I downloaded it from the Google Fonts repository and checked the file's git hash against the one GitHub lists. The font's own licence file sits beside it.
+
+The colours are the ones in the design research. The tests recalculate their contrast ratios, so a change to a hex value that breaks the contrast rules fails the full check. The three largest type steps use the `rem` plus `vw` values from the front-end research, growing one step between 390 and 1440 px. At 390 px a section heading is therefore 20 px, the same size as a subheading, and only the weight separates them. I will look at that on the first built page and confirm or change it in P5-01.
+
+I left out the radius and shadow tokens, the chart stroke widths and the fallback font face with `size-adjust`. Each is needed by a later task (templates, chart styling, performance), and I will measure each against a real page then.
