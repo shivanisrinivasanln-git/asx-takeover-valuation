@@ -147,3 +147,60 @@ Every figure below comes from the table in the previous section, which gives its
 **Corporate costs.** About A$30 million a year of unallocated costs stay in the model, reduced by a A$4.0 million a year saving that any buyer could make on listed company costs.
 
 **What drives the result.** The expert says the other scenarios (Ancillary Services revenue, marketing spend, capital expenditure) have minimal effect on the NPVs and that only a change in the pricing model (Scenario H) moves them materially, besides the yield growth scenarios (p. 144). The 4% terminal growth rate is built on 2.5% inflation plus real growth in EBITDA (p. 142); the booklet gives no figure for the real growth, and 1.5 percentage points is my own subtraction of 2.5% from 4%. I have not judged either assumption here; they are inputs I will argue in the valuation phase.
+
+## The discount rate (booklet pp. 138 to 140)
+
+### What the expert says about the method
+
+Grant Samuel uses the capital asset pricing model (CAPM) for the cost of equity. It calls CAPM "probably the most widely accepted and used methodology" and says more elaborate multi-factor models have not been widely accepted or used in practice (p. 138). It also says the cost of equity "is not a precise or provable number", that the inputs rest on historical data as a proxy for forward-looking estimates, and that the result should be "a broad guide rather than an absolute truth" (pp. 138 and 139). It adds that strict CAPM in recent years gave unrealistically low results because government bond rates were very low, and that this problem has subsided as bond rates have returned towards historical averages (p. 139).
+
+### The cost of equity
+
+The cost of equity range is 10.3% to 10.9% (p. 139). It is the risk-free rate plus beta times the market risk premium:
+
+| Input | Value | Basis | Page |
+|---|---|---|---|
+| Risk-free rate | 4.3% | 10-year Commonwealth Government bond rate as at 30 May 2025 | 139 |
+| Market risk premium | 6% | A standard rate Grant Samuel adopts; analysts typically use 5% to 7% | 139 |
+| Beta | 1.0 to 1.1 | Judgement, explained below | 139 and 140 |
+
+At a beta of 1.0 the cost of equity is 4.3% plus 6% = 10.3%, and at 1.1 it is 4.3% plus 6.6% = 10.9%, which matches the printed range.
+
+### The beta evidence
+
+Grant Samuel says a reliable beta for Domain is hard to determine, because the estimates differ by source and period (p. 139):
+
+| Source | Domain | Page |
+|---|---|---|
+| SIRCA (48 months, quarterly) | Between about 1.4 and 2.1 over four years; 1.4 at 31 December 2024 and steady at about 1.4 for nine months | 139 |
+| MSCI Barra (60 months, to 30 April 2025) | Historical about 0.4; predicted 0.8 to 0.9 | 139 |
+| Bloomberg adjusted (to 30 May 2025) | Four-year 0.7 to 1.1; two-year at or below 0.5 | 139 |
+
+For peers (pp. 139 and 140):
+
+- REA Group, the closest Australian peer: SIRCA 1.2, Barra 0.4 (predicted 0.8), Bloomberg 1.1 to 1.3 over four years and 0.9 to 1.3 over two years. Grant Samuel notes that these include the effect of REA's withdrawn offer for Rightmove in September 2024, which will have distorted its share price (pp. 139 and 140).
+- CAR Group and SEEK: SIRCA 1.4 to 1.7, with lower Barra and Bloomberg betas that are generally still at or above 1. The expert says they are not particularly useful because they operate in auto and employment markets that are arguably less cyclical than property, and the report adds that CAR Group made large acquisitions to expand its global footprint and SEEK tried to expand by acquisition, which would have made their share prices more volatile (p. 140).
+- Global digital property marketplaces, excluding outliers: Bloomberg four-year betas 0.9 to 1.4 (median 1.0), Bloomberg two-year betas 0.3 to 1.3 (median 0.8), Barra predicted betas 0.8 to 1.1 (median 0.8) (p. 140).
+
+### Why it chose 1.0 to 1.1
+
+The expert's reasons, as I read them (pp. 139 and 140):
+
+1. It would intuitively expect a beta above 1.0 for a cyclical business whose activity is correlated with the market (p. 140).
+2. It does not accept the high estimates (SIRCA 1.4 or more) as forward-looking. Domain's shares outperformed after the COVID-19 pandemic, and it argues betas measured over a shorter period that excludes 2021 are more relevant. The fall in Domain's SIRCA beta over time and the lower two-year Bloomberg betas support that view (p. 139).
+3. Higher peer betas reflect one-off events such as the pandemic and large acquisitions, so they get less weight in an expected beta (p. 140).
+
+It concludes that 1.0 to 1.1 "is a reasonable estimate of the appropriate beta" (p. 140). The report calls the cost of capital "fundamentally a matter of judgement, not merely a calculation" (p. 139). The printed beta evidence for Domain and its peers runs from about 0.3 to 2.1, so 1.0 to 1.1 is not the output of any one source (my observation).
+
+### From cost of equity to WACC
+
+| Input | Value | Page |
+|---|---|---|
+| Pre-tax cost of debt | 5.5%, a 1.2 percentage point margin over the risk-free rate, based on expected pricing for a property marketplace and not Domain's existing facilities, with an allowance for establishment costs and liquidity | 140 |
+| Tax rate | 30% | 140 |
+| Gearing | 85% to 95% equity and 5% to 15% debt, from the gearing of comparable listed companies over four years, not Domain's own | 140 |
+| WACC | 9.3% to 10.5% | 140 |
+
+The report says a WACC range of 9.3% to 10.5% results, and that it adopts 9.5% to 10.5% for the DCF (p. 140). It says it considers a discount rate in line with the calculated WACC appropriate and does not say why the adopted range begins at 9.5% and not 9.3%. It notes that this range is higher than the broker analysts' discount rates of 8.4% to 9.0% (median 8.5%), and explains the difference by the brokers using a lower risk-free rate or a lower market risk premium (p. 140).
+
+My recomputation, with the after-tax cost of debt at 5.5% times (1 minus 30%), which is 3.85%: 85% equity at a 10.3% cost of equity gives 0.85 times 10.3% plus 0.15 times 3.85%, which is 9.333%, and 95% equity at 10.9% gives 0.95 times 10.9% plus 0.05 times 3.85%, which is 10.548%. Those match the printed 9.3% to 10.5% at one decimal place. The report does not say which weight goes with which cost of equity, so I chose the combinations that give the lowest and highest values (my arithmetic, not a statement in the booklet).
