@@ -103,6 +103,7 @@ Grant Samuel's DCF starts from Domain's FY25 Forecast for the second half of FY2
 | Staff costs | About A$180 million by FY30 (about 7.5% a year), then about 4% a year | 142 |
 | Other operating expenses | Marketing, production, distribution, IT and communications vary with revenue | 142 |
 | EBITDA margin | 41% by FY30 and just below 48% by FY35 (34.7% in FY21 and 35.8% in 1HY25) | 142 |
+| Margin evidence cited | REA Group's Australian EBITDA margin 63% to 65%; other listed peers 22% to 78% (median about 55.5%) | 142 |
 | EBITDA growth | About 13.5% a year to FY30, then easing to the terminal growth rate | 142 |
 | Capital expenditure | Almost 9.5% of revenue over the period, 9% in the long term; depreciation and other amortisation roughly equal to it after the early years | 142 |
 | Working capital | 2.5% of revenue | 142 |
@@ -128,3 +129,21 @@ Scenario B comes from Domain's own outlook of "longer term targets for 12% throu
 ### What the scenarios were used for
 
 The NPVs for each scenario at 9.5% to 10.5% appear only as a bar chart on p. 144, so I have no scenario NPV as a printed number. Grant Samuel says the weight given to each scenario was "subjective and not capable of being expressed in percentage terms" (p. 144). It treats Scenario A (10% yield growth, Domain's record since listing) as a realistic starting point and Scenario B (12%) as possible but aspirational (p. 144). Changes to Ancillary Services revenue, marketing and capital expenditure (Scenarios E, F and G) have minimal effect, and only Scenario H moves the NPV materially (p. 144). The range of NPVs across the scenarios is wider than the A$2,775 to A$3,025 million it selected, and the chosen range sits towards the upper end of most of the NPV outcomes. The expert says that position implicitly allows for the strategic value of being the second participant in a two-participant market, and that the range was also set to fit the multiples evidence (p. 145).
+
+## Summary of the expert's DCF assumptions
+
+Every figure below comes from the table in the previous section, which gives its page.
+
+**Growth.** Grant Samuel holds the volume of new "for sale" listings flat and puts all the growth in Residential yield, which is price and the adoption of premium listing products. Its base case, Scenario A, grows yield by 10% a year, the average since Domain listed in November 2017. That takes total revenue to over A$990 million in FY35, just over 9% a year, with Residential revenue at about A$740 million. Scenario B uses 12% a year and Scenario C uses 9% a year.
+
+**Margins.** Operating expenses grow by about 7% a year, with staff costs growing about 7.5% a year to FY30 and about 4% a year after that. Revenue grows faster than costs, so the EBITDA margin rises from 35.8% in 1HY25 to 41% by FY30 and just below 48% by FY35. The expert accepts that this is above Domain's history and points to REA Group's 63% to 65% as evidence that higher margins are possible in the sector, while saying it would be unrealistic for Domain to match REA Group. EBITDA grows about 13.5% a year to FY30 and then slows to the terminal growth rate.
+
+**Capital expenditure and working capital.** Capital expenditure is almost 9.5% of revenue over the period and 9% in the long term, and depreciation and other amortisation roughly equal it after the early years. Working capital is 2.5% of revenue. Dividends to the agents who own equity in Domain subsidiaries are 1.6% of the prior year's Residential and Media, Developers and Commercial revenue.
+
+**Tax.** The corporate tax rate is 30%.
+
+**Terminal value.** Cash flows run from 1 January 2025 to 30 June 2035. The terminal value at 30 June 2035 capitalises net after-tax cash flows with a perpetual growth rate of 4%, which the expert bases on long-term inflation of 2.5% a year plus real EBITDA growth. The discount rate is 9.5% to 10.5%. The report does not say how much of the value comes from the terminal value, only that the share is normally high (p. 138).
+
+**Corporate costs.** About A$30 million a year of unallocated costs stay in the model, reduced by a A$4.0 million a year saving that any buyer could make on listed company costs.
+
+**What drives the result.** The expert says the other scenarios (Ancillary Services revenue, marketing spend, capital expenditure) have minimal effect on the NPVs and that only a change in the pricing model (Scenario H) moves them materially, besides the yield growth scenarios (p. 144). The 4% terminal growth rate is built on 2.5% inflation plus real growth in EBITDA (p. 142); the booklet gives no figure for the real growth, and 1.5 percentage points is my own subtraction of 2.5% from 4%. I have not judged either assumption here; they are inputs I will argue in the valuation phase.
