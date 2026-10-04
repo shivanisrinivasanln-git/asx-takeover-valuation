@@ -1,0 +1,29 @@
+item,qualifier,low,high,median,unit,source,location,as_at,note
+risk_free_rate,,4.3,4.3,,pct,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,10-year Commonwealth Government bond rate as at 30 May 2025
+market_risk_premium,,6.0,6.0,,pct,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,A standard rate Grant Samuel adopts
+market_risk_premium_analysts_typical_range,,5.0,7.0,,pct,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,Used by a wide variety of analysts and practitioners
+beta_adopted,,1.0,1.1,,beta,"Domain scheme booklet, Grant Samuel report",p. 139 and p. 140,30 June 2025,Grant Samuel's judgement of the appropriate expected beta for Domain
+cost_of_equity,,10.3,10.9,,pct,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,CAPM
+pre_tax_cost_of_debt,,5.5,5.5,,pct,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,"Expected pricing for a property marketplace, not Domain's existing facilities, with an allowance for establishment costs and liquidity"
+pre_tax_cost_of_debt_margin_over_risk_free,,1.2,1.2,,pct,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,
+corporate_tax_rate,,30.0,30.0,,pct,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,
+equity_weight,,85.0,95.0,,pct,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,"From the gearing of comparable listed companies over the past four years, not Domain's own gearing"
+debt_weight,,5.0,15.0,,pct,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,
+wacc_calculated,,9.3,10.5,,pct,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,
+discount_rate_adopted,,9.5,10.5,,pct,"Domain scheme booklet, Grant Samuel report",p. 138 and p. 140,30 June 2025,Nominal; the report says it is in line with the calculated WACC but gives no reason for the 9.5% start
+broker_discount_rates,,8.4,9.0,8.5,pct,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,"Lower than the expert's, explained by a lower risk-free rate and/or a lower market risk premium"
+domain_beta_sirca_four_years,about,1.4,2.1,,beta,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,"48-month regressions, published quarterly, excluding the March 2020 quarter (footnote 45)"
+domain_beta_sirca_31_december_2024,,1.4,1.4,,beta,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,Relatively stable at about 1.4 over the last nine months
+domain_beta_barra_historical,around,0.4,0.4,,beta,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,60 months to 30 April 2025 (footnote 46)
+domain_beta_barra_predicted,,0.8,0.9,,beta,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,
+domain_beta_bloomberg_four_years,,0.7,1.1,,beta,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,Adjusted betas as at 30 May 2025; the range depends on the time period and the index (footnote 47)
+domain_beta_bloomberg_two_years,at or below,0.5,0.5,,beta,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,Recorded as the upper bound of 0.5; the lower bound is not given
+rea_group_beta_sirca,,1.2,1.2,,beta,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,Includes the effect of REA's withdrawn offer for Rightmove in September 2024 (p. 140)
+rea_group_beta_barra_historical,,0.4,0.4,,beta,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,
+rea_group_beta_barra_predicted,,0.8,0.8,,beta,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,
+rea_group_beta_bloomberg_four_years,,1.1,1.3,,beta,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,
+rea_group_beta_bloomberg_two_years,,0.9,1.3,,beta,"Domain scheme booklet, Grant Samuel report",p. 139,30 June 2025,
+car_group_and_seek_beta_sirca,,1.4,1.7,,beta,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,With lower Barra and Bloomberg betas that are generally still at or above 1; the expert treats them as less comparable (auto and employment)
+global_property_peers_beta_bloomberg_four_years,,0.9,1.4,1.0,beta,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,"Excluding outliers; monthly, against the local market index"
+global_property_peers_beta_bloomberg_two_years,,0.3,1.3,0.8,beta,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,Excluding outliers
+global_property_peers_beta_barra_predicted,,0.8,1.1,0.8,beta,"Domain scheme booklet, Grant Samuel report",p. 140,30 June 2025,Excluding outliers
