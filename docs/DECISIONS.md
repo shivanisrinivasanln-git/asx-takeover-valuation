@@ -75,3 +75,7 @@ Three Ruff ignores are the only ones: asserts in tests, and the fixed subprocess
 `assumptions.yaml` entries have six required fields (value, unit, source, location, as_at, note) and one optional flag, `judgement`, which marks an input that is my own judgement and not a figure from a document. A value is a number or a list of numbers, and `as_at` must be a real date written like "30 May 2025". The loader rejects an unknown field, because a misspelt field would otherwise be silently ignored, and a repeated key, because plain YAML keeps the last one without a warning. It reports every problem in one error, so I can fix a file in one pass.
 
 Each CSV file under `data/extracted/` must have `source`, `location` and `as_at` columns, with a value in each on every row, and at least one row. The source trace test runs both checks over the files in the repository, so a figure I add without a source fails the full check.
+
+## 5 October 2026: licence
+
+I chose the MIT licence for the code, with the copyright line "Copyright (c) 2026 Shivani Srinivasan". The options were Apache-2.0, which adds an explicit patent grant and a longer notice that a project this size does not need, and no licence, which would stop anyone legally reusing the code and looks closed to someone reading the repository. MIT is short, permissive and the usual choice for a portfolio project. It covers the code only. The documents I link to, such as the scheme booklet and company reports, belong to their owners and keep their own terms, and I do not copy them into the repository.
