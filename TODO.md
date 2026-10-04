@@ -50,8 +50,8 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 
 | Done | ID | Tag | Task | Acceptance | Check | Needs |
 |---|---|---|---|---|---|---|
-| [ ] | P2-01 | [AUTO] | Assumptions file schema and check | `assumptions.yaml` schema with value, unit, source, location, date and note, and a test that rejects a missing field | The test passes on a valid file and fails on each missing field | P0-04 |
-| [ ] | P2-02 | [AUTO] | Extracted data schema and source trace test | CSV layout for `data/extracted/` with a source and page on every row, and a test for it | A row with no source makes the test fail | P0-04 |
+| [x] | P2-01 | [AUTO] | Assumptions file schema and check | `assumptions.yaml` schema with value, unit, source, location, date and note, and a test that rejects a missing field | The test passes on a valid file and fails on each missing field. Evidence: `tests/engine/test_assumptions.py` passes (39 tests in the full check) and has one failing case for each of the six required fields, bad values, an unknown field, a duplicate key and several errors at once | P0-04 |
+| [x] | P2-02 | [AUTO] | Extracted data schema and source trace test | CSV layout for `data/extracted/` with a source and page on every row, and a test for it | A row with no source makes the test fail. Evidence: `tests/engine/test_extracted.py` and `test_source_trace.py` pass, and a planted CSV with an empty source made `test_every_extracted_row_has_a_source` fail | P0-04 |
 | [ ] | P2-03 | [ME] | Transcribe the valuation summary and share build | Values from booklet pp. 92 and 131 with the diluted share build | Totals match the printed totals, and a second reading finds no differences | P2-02 |
 | [ ] | P2-04 | [ME] | Transcribe the historical profit and loss | FY21 to 1H25 from booklet pp. 118 and 120, with the one-off items | Subtotals match the printed subtotals | P2-02 |
 | [ ] | P2-05 | [ME] | Transcribe the balance sheet, cash flow and net debt build | Booklet pp. 123 to 125 and 155 to 156, including the leases and the A$173.2m starting figure | The net debt bridge reaches A$187.0m | P2-02 |

@@ -1,0 +1,7 @@
+# Every valuation input lives here and nowhere else, with the document, page and date it came from.
+# Each entry needs: value (a number, or a list of numbers for a series), unit, source, location,
+# as_at (a date such as "30 May 2025") and note. Add `judgement: true` for an input that is my own
+# judgement and not a figure from a document. An input name is lower-case words joined by _
+# and should end with its unit, for example risk_free_rate_pct.
+#
+# The file is filled in Phase 2 (tasks P2-14 to P2-16).

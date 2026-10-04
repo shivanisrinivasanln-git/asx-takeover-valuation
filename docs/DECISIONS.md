@@ -69,3 +69,9 @@ Rates in the engine are percentages named with `_pct`, money is A$ millions name
 The Harbour Industrial example in [RESEARCH.md](RESEARCH.md) became the first test. It found a rounding in the example: the WACC works out to 10.42%, not 10.4%. The example's later steps use 10.4%, so I changed the text to say 10.42% rounded to 10.4%, and the test checks both.
 
 Three Ruff ignores are the only ones: asserts in tests, and the fixed subprocess call and printed summary line in the check script. I declared Jinja2, openpyxl, PyYAML and the audit tool now, although nothing uses them yet, because the architecture fixes them and the lockfile should hold the full set from the start. The build step joins the full check when the first build exists, in task P5-03.
+
+## 5 October 2026: how the inputs and data files are checked
+
+`assumptions.yaml` entries have six required fields (value, unit, source, location, as_at, note) and one optional flag, `judgement`, which marks an input that is my own judgement and not a figure from a document. A value is a number or a list of numbers, and `as_at` must be a real date written like "30 May 2025". The loader rejects an unknown field, because a misspelt field would otherwise be silently ignored, and a repeated key, because plain YAML keeps the last one without a warning. It reports every problem in one error, so I can fix a file in one pass.
+
+Each CSV file under `data/extracted/` must have `source`, `location` and `as_at` columns, with a value in each on every row, and at least one row. The source trace test runs both checks over the files in the repository, so a figure I add without a source fails the full check.
