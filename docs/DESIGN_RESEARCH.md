@@ -22,7 +22,7 @@ Page numbers in this file are printed footer numbers. To find the PDF page, add 
 
 | Document | Address | Terms |
 |---|---|---|
-| Domain scheme booklet, Grant Samuel report (pp. 116 to 170) | [ASX announcement, 30 June 2025](https://announcements.asx.com.au/asxpdf/20250630/pdf/06l8x6ntjgw6f7.pdf) | Third-party document, linked and not copied |
+| Domain scheme booklet, Grant Samuel report (pp. 99 to 165) | [ASX announcement, 30 June 2025](https://announcements.asx.com.au/asxpdf/20250630/pdf/06l8x6ntjgw6f7.pdf) | Third-party document, linked and not copied |
 | Gold Road scheme booklet, Deloitte (pp. 114 to 160, tables on pp. 117, 118, 148 and 165) | [ASX announcement, 15 August 2025](https://announcements.asx.com.au/asxpdf/20250815/pdf/06mxpjvcw9991s.pdf) | None stated |
 | Insignia Financial scheme booklet, Kroll (pp. 93, 152, 163 and 170) | [ASX announcement, 27 February 2026](https://announcements.asx.com.au/asxpdf/20260227/pdf/06wwkrzh14m716.pdf) | None stated |
 | ASM supplementary scheme booklet, BDO (pp. 91, 92 and 153) | [ASM website, 27 July 2026](https://asm-au.com/wp-content/uploads/2026/07/20260727_ASM-SchemeBooklet-Supplement-FINAL.pdf) | None stated |
