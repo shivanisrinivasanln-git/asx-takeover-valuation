@@ -71,3 +71,60 @@ The forecasts here are the median of broker forecasts, not management's. The rep
 ### What the report does not disclose
 
 Management's FY25 forecast, FY26 projection and five-year plan are not published (p. 108). The report gives no cash flow table, no figure for the terminal value as a share of value (it says only that this share is normally high, p. 138), and no NPV for any scenario as a number (pp. 137 to 145). Where I need those figures I will have to estimate them and label them as my own.
+
+## The DCF: assumptions and scenarios (booklet pp. 137 to 145)
+
+Grant Samuel's DCF starts from Domain's FY25 Forecast for the second half of FY25 and uses the five-year plan as a framework, with adjustments management advised on key parameters, including the FY26 projection (p. 137). It then adds its own long-term assumptions "with reference to the 5 Year Plan and following discussions with Domain management" (p. 143). The scenarios are, in its words, "what if" cases and not forecasts (p. 138).
+
+### Model structure
+
+| Item | Value | Page |
+|---|---|---|
+| Cash flows | Nominal, after tax, from 1 January 2025 to 30 June 2035 (ten and a half years) | 137 |
+| Terminal value | At 30 June 2035, by capitalising net after-tax cash flows with a perpetual growth rate | 137 |
+| Terminal growth rate | 4%, "based on a long term inflation rate of 2.5% per annum and real growth in EBITDA" | 142 |
+| Discount rate adopted | 9.5% to 10.5%, nominal WACC | 138 |
+| WACC calculated | 9.3% to 10.5% (the adopted range starts higher than the low end of the calculated range) | 140 |
+| Corporate tax rate | 30% | 142 |
+
+### Operating assumptions in Scenario A
+
+| Item | Assumption | Page |
+|---|---|---|
+| New "for sale" listing volume | Flat, as a through-the-cycle level consistent with the historical average | 141 |
+| Residential yield growth | 10% a year on average (Domain's average since listing in November 2017) | 141 |
+| Total Residential revenue | About A$740 million by FY35, about 9.5% a year | 141 |
+| Media, Developers and Commercial revenue | Just over 9% a year, slowing in the outer years | 141 |
+| Print revenue | Keeps declining to about A$10 million (about 1% of revenue) by FY35 | 141 |
+| Listings revenue | Just over 9% a year on average | 141 |
+| Ancillary Services revenue | Just under 9% a year; Agent Solutions almost A$60 million and Domain Insight about A$30 million by FY30 | 141 |
+| Total revenue | Over A$990 million in FY35, just over 9% a year | 141 |
+| Operating expenses | About 7% a year on average | 142 |
+| Staff costs | About A$180 million by FY30 (about 7.5% a year), then about 4% a year | 142 |
+| Other operating expenses | Marketing, production, distribution, IT and communications vary with revenue | 142 |
+| EBITDA margin | 41% by FY30 and just below 48% by FY35 (34.7% in FY21 and 35.8% in 1HY25) | 142 |
+| EBITDA growth | About 13.5% a year to FY30, then easing to the terminal growth rate | 142 |
+| Capital expenditure | Almost 9.5% of revenue over the period, 9% in the long term; depreciation and other amortisation roughly equal to it after the early years | 142 |
+| Working capital | 2.5% of revenue | 142 |
+| Dividends to agents' equity holders | 1.6% of the prior year's Residential and Media, Developers and Commercial revenue | 142 |
+| Corporate costs | About A$30 million a year of unallocated costs, kept in the model | 143 |
+| Corporate cost saving | A$4.0 million a year, against listed company costs Domain puts at A$3.5 to 4.0 million | 143 |
+
+### Scenarios A to H
+
+| Scenario | What changes against Scenario A | Page |
+|---|---|---|
+| A | Base case as above | 143 |
+| B | Yield growth 12% a year; Residential revenue to about A$865 million by FY35 (about 11% a year); EBITDA margin almost 51% by FY35 | 143 |
+| C | Yield growth 9% a year; Residential revenue to about A$684 million by FY35 (about 8.5% a year); EBITDA margin 46% by FY35 | 143 |
+| D | Domain wins statutory valuation contracts for two more state entities by FY28 | 143 |
+| E | Ancillary Services revenue 1% a year lower | 143 |
+| F | About A$100 million of extra marketing (FY26 real terms) across FY27 to FY30; revenue about A$687 million by FY30 (about 11% a year); EBITDA margin stays below 49% | 143 |
+| G | Capital expenditure rises to 10% of revenue in the mid to long term | 143 |
+| H | More targeted pricing and depth in FY26 and FY27 (yield per listing about 6% a year), then 12% a year (11.4% over the full projection period), with about 0.5% a year growth in sales listings | 143 |
+
+Scenario B comes from Domain's own outlook of "longer term targets for 12% through-the-cycle growth" in its FY23 and 1HY24 results presentations, and matches the average yield growth from FY21 to FY24 (p. 141). Scenario C is described as a more conservative case (p. 141), and the report later calls consistently lower yield growth "overly conservative" (p. 144).
+
+### What the scenarios were used for
+
+The NPVs for each scenario at 9.5% to 10.5% appear only as a bar chart on p. 144, so I have no scenario NPV as a printed number. Grant Samuel says the weight given to each scenario was "subjective and not capable of being expressed in percentage terms" (p. 144). It treats Scenario A (10% yield growth, Domain's record since listing) as a realistic starting point and Scenario B (12%) as possible but aspirational (p. 144). Changes to Ancillary Services revenue, marketing and capital expenditure (Scenarios E, F and G) have minimal effect, and only Scenario H moves the NPV materially (p. 144). The range of NPVs across the scenarios is wider than the A$2,775 to A$3,025 million it selected, and the chosen range sits towards the upper end of most of the NPV outcomes. The expert says that position implicitly allows for the strategic value of being the second participant in a two-participant market, and that the range was also set to fit the multiples evidence (p. 145).
