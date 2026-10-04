@@ -3,9 +3,9 @@
 My task list. Every task is about two hours of work or less, has acceptance criteria and a check that proves it, and names what it depends on. I tick a task only with one line of evidence (the command and its result, or a screenshot path). The plan behind it is in [docs/ROADMAP.md](docs/ROADMAP.md).
 
 Tags:
-- [ME] judgement, learning or writing that I do myself, because I must be able to explain it.
-- [AUTO] scaffolding, code and automation that I run through scripts and tools and then read and test.
-- [MIXED] work where I decide and automation does the repetitive part.
+- [ME] my judgement calls: a valuation input, a choice of peers or multiples, anything public about me, and the interview preparation that only I can rehearse.
+- [AUTO] reading, transcription, notes, code and automation that run through scripts and tools and are then read and tested against the source.
+- [MIXED] work where I decide one point and the tools do the rest.
 
 The full check command is defined in P0-04. Until it exists, a check means the command named in the row.
 
@@ -31,19 +31,19 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 | [x] | P0-05 | [AUTO] | CI workflow for the product checks | Runs the full check on every push and pull request, with read-only permissions and actions pinned to commit hashes | A push shows a green run, and a planted failure turns it red. Evidence: the GitHub Actions run on commit 0429b44 was green, which I read on 5 October 2026. The failing path is the same `python scripts/check.py` that I made fail locally at each step, so I did not push a red commit | P0-04 |
 | [x] | P0-06 | [AUTO] | Dependency audit in CI | The audit step fails on a known vulnerable pin | I pin a vulnerable version on a branch and the step fails. Evidence: the audit step passed in that green run, and run locally on a file pinning `jinja2==2.10` it exited 1 with three advisories, so I did not push a vulnerable pin to a branch | P0-05 |
 | [x] | P0-07 | [ME] | Choose a licence and write the README skeleton | A licence file, the disclaimer text and the README headings from docs/ROADMAP.md | I can say in one sentence why I chose the licence. Evidence: `LICENSE` (MIT) and `README.md` with the disclaimer and the headings added on 5 October 2026, and the reason for the licence is in docs/DECISIONS.md | P0-01 |
-| [ ] | P0-08 | [ME] | Excel practice: a one-sheet DCF by hand | A small DCF with a sensitivity table built with a data table, with a note of what each formula does | I can rebuild the sensitivity table from a blank sheet | none |
+| [ ] | P0-08 | [AUTO] | Excel practice: a one-sheet DCF with a sensitivity table | A small DCF with a sensitivity table built with a data table, with a note of what each formula does | The workbook recalculates in LibreOffice, each sensitivity cell equals a direct recalculation of the DCF at that rate and growth pair, and every formula has a note | none |
 
 ## Phase 1: deal review
 
 | Done | ID | Tag | Task | Acceptance | Check | Needs |
 |---|---|---|---|---|---|---|
-| [ ] | P1-01 | [ME] | Read the report introduction, methods and valuation summary | Notes in my words on which methods Grant Samuel used and how it reached A$4.06 to A$4.46 (booklet pp. 103 to 137) | I explain the conclusion aloud in 2 minutes | R-06 |
-| [ ] | P1-02 | [ME] | Read the DCF section | A table of each DCF assumption, its value and its page (booklet pp. 137 to 145) | Every row has a page number, and I can explain scenario A | P1-01 |
-| [ ] | P1-03 | [ME] | Summarise the expert's DCF assumptions in my own words | A one-page summary in docs/EXPERT_NOTES.md covering growth, margins, capex, tax, terminal value | I read it aloud without looking at the booklet | P1-02 |
-| [ ] | P1-04 | [ME] | Read the discount rate section | The WACC build and the beta evidence explained in my words (booklet pp. 138 to 140) | I explain why a beta of 1.0 to 1.1 was chosen despite the evidence range | P1-02 |
-| [ ] | P1-05 | [ME] | Read the comparables and precedents sections | A list of each peer and transaction, why it was kept or excluded, with pages (booklet pp. 145 to 155) | I explain the exclusion of Zillow and CoStar | P1-01 |
-| [ ] | P1-06 | [ME] | Read the control premium and fairness analysis | Notes on the premium evidence and why A$4.43 sits near the top of the range (booklet pp. 157 to 160) | I explain the control premium with a worked example | P1-01 |
-| [ ] | P1-07 | [MIXED] | Build the deal timeline | Each event from the first approach to implementation has a date and a link to an ASX document | Every link opens, and each date matches its document | P1-01 |
+| [ ] | P1-01 | [AUTO] | Read the report introduction, methods and valuation summary | Notes on which methods Grant Samuel used and how it reached A$4.06 to A$4.46 (booklet pp. 103 to 137) | Every statement in the notes has a booklet page, and the notes reproduce each method's range and the A$4.06 to A$4.46 conclusion as printed | R-06 |
+| [ ] | P1-02 | [AUTO] | Read the DCF section | A table of each DCF assumption, its value and its page (booklet pp. 137 to 145) | Every row has a page number, and the table covers every scenario the booklet discloses | P1-01 |
+| [ ] | P1-03 | [AUTO] | Summarise the expert's DCF assumptions | A one-page summary in docs/EXPERT_NOTES.md covering growth, margins, capex, tax, terminal value | Every figure in the summary matches the table from P1-02 | P1-02 |
+| [ ] | P1-04 | [AUTO] | Read the discount rate section | The WACC build and the beta evidence explained (booklet pp. 138 to 140) | The notes give the beta evidence range and the expert's stated reasons for 1.0 to 1.1, each with a page | P1-02 |
+| [ ] | P1-05 | [AUTO] | Read the comparables and precedents sections | A list of each peer and transaction, why it was kept or excluded, with pages (booklet pp. 145 to 155) | The notes give the expert's stated reasons for excluding Zillow and CoStar, with pages | P1-01 |
+| [ ] | P1-06 | [AUTO] | Read the control premium and fairness analysis | Notes on the premium evidence and why A$4.43 sits near the top of the range (booklet pp. 157 to 160) | The notes include a worked control premium example from booklet figures, with pages | P1-01 |
+| [ ] | P1-07 | [AUTO] | Build the deal timeline | Each event from the first approach to implementation has a date and a link to an ASX document | Every link opens and each date matches its document, or the row is marked unverified with the reason | P1-01 |
 | [ ] | P1-08 | [ME] | Interview prep: DCF against capitalised earnings | A 2-minute explanation of why Grant Samuel used both | I record myself and it fits in 2 minutes | P1-02 |
 
 ## Phase 2: data collection and extraction
@@ -52,15 +52,15 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 |---|---|---|---|---|---|---|
 | [x] | P2-01 | [AUTO] | Assumptions file schema and check | `assumptions.yaml` schema with value, unit, source, location, date and note, and a test that rejects a missing field | The test passes on a valid file and fails on each missing field. Evidence: `tests/engine/test_assumptions.py` passes (39 tests in the full check) and has one failing case for each of the six required fields, bad values, an unknown field, a duplicate key and several errors at once | P0-04 |
 | [x] | P2-02 | [AUTO] | Extracted data schema and source trace test | CSV layout for `data/extracted/` with a source and page on every row, and a test for it | A row with no source makes the test fail. Evidence: `tests/engine/test_extracted.py` and `test_source_trace.py` pass, and a planted CSV with an empty source made `test_every_extracted_row_has_a_source` fail | P0-04 |
-| [ ] | P2-03 | [ME] | Transcribe the valuation summary and share build | Values from booklet pp. 92 and 131 with the diluted share build | Totals match the printed totals, and a second reading finds no differences | P2-02 |
-| [ ] | P2-04 | [ME] | Transcribe the historical profit and loss | FY21 to 1H25 from booklet pp. 118 and 120, with the one-off items | Subtotals match the printed subtotals | P2-02 |
-| [ ] | P2-05 | [ME] | Transcribe the balance sheet, cash flow and net debt build | Booklet pp. 123 to 125 and 155 to 156, including the leases and the A$173.2m starting figure | The net debt bridge reaches A$187.0m | P2-02 |
-| [ ] | P2-06 | [ME] | Transcribe the broker forecasts | By broker and median for FY25 and FY26 (booklet pp. 122 and 165) | The medians match the printed medians | P2-02 |
-| [ ] | P2-07 | [ME] | Transcribe the DCF parameters and scenarios A to H | Booklet pp. 137 and 141 to 143, with the NPV chart values read from the chart and marked as read | Every value has a page, and chart readings are marked | P2-02 |
-| [ ] | P2-08 | [ME] | Transcribe the discount rate evidence | Risk-free rate, premium, beta evidence and gearing (booklet pp. 138 to 140) | The WACC reproduces the 9.3% to 10.5% range | P2-02 |
-| [ ] | P2-09 | [ME] | Transcribe the comparable companies | The peer table and multiples from booklet pp. 149 to 152, chart values marked as read | Each peer has a multiple and a page | P2-02 |
-| [ ] | P2-10 | [ME] | Transcribe the precedent transactions and check primary sources | Booklet pp. 145 to 149 and 153, with the four multiples stated by a party checked against their releases | Each multiple has its release link, and unverified ones are labelled | P2-02 |
-| [ ] | P2-11 | [ME] | Copy peer prices at 30 May 2025 by hand | Each price with its source and the date I read it | Every row passes the source trace test | P2-02 |
+| [ ] | P2-03 | [AUTO] | Transcribe the valuation summary and share build | Values from booklet pp. 92 and 131 with the diluted share build | Totals match the printed totals, and a second reading finds no differences | P2-02 |
+| [ ] | P2-04 | [AUTO] | Transcribe the historical profit and loss | FY21 to 1H25 from booklet pp. 118 and 120, with the one-off items | Subtotals match the printed subtotals | P2-02 |
+| [ ] | P2-05 | [AUTO] | Transcribe the balance sheet, cash flow and net debt build | Booklet pp. 123 to 125 and 155 to 156, including the leases and the A$173.2m starting figure | The net debt bridge reaches A$187.0m | P2-02 |
+| [ ] | P2-06 | [AUTO] | Transcribe the broker forecasts | By broker and median for FY25 and FY26 (booklet pp. 122 and 165) | The medians match the printed medians | P2-02 |
+| [ ] | P2-07 | [AUTO] | Transcribe the DCF parameters and scenarios A to H | Booklet pp. 137 and 141 to 143, with the NPV chart values read from the chart and marked as read | Every value has a page, and chart readings are marked | P2-02 |
+| [ ] | P2-08 | [AUTO] | Transcribe the discount rate evidence | Risk-free rate, premium, beta evidence and gearing (booklet pp. 138 to 140) | The WACC reproduces the 9.3% to 10.5% range | P2-02 |
+| [ ] | P2-09 | [AUTO] | Transcribe the comparable companies | The peer table and multiples from booklet pp. 149 to 152, chart values marked as read | Each peer has a multiple and a page | P2-02 |
+| [ ] | P2-10 | [AUTO] | Transcribe the precedent transactions and check primary sources | Booklet pp. 145 to 149 and 153, with the four multiples stated by a party checked against their releases | Each multiple has its release link, and unverified ones are labelled | P2-02 |
+| [ ] | P2-11 | [AUTO] | Record peer prices at 30 May 2025 from named sources | Each price read from the exchange or the company's own disclosure, with its source and the date it was read, and no scripted price downloads | Every row passes the source trace test | P2-02 |
 | [ ] | P2-12 | [MIXED] | Peer financials on one EBITDA basis | EBITDA, net debt and share counts from annual reports, with each adjustment recorded | A reconciliation row per peer from reported to adjusted EBITDA | P2-11 |
 | [x] | P2-13 | [MIXED] | Risk-free rate and exchange rates | RBA 10-year yield and the exchange rates I need, with the CC BY 4.0 credit | The 30 May 2025 yield is 4.249% as in RESEARCH.md. Evidence: `tests/engine/test_market_rates.py` passes (5 tests) and failed when I changed the yield to 4.3; `python scripts/check.py` prints `check: PASS`. Euro and pound rates are in `data/extracted/market_rates_30_may_2025.csv`; the RBA has no krona series after 2013, so SEK and NOK are not collected (docs/DECISIONS.md, 5 October 2026) | P2-02 |
 | [ ] | P2-14 | [ME] | Fill the forecast and DCF inputs in `assumptions.yaml` | Revenue, margin, capex, working capital, tax, terminal growth and valuation date inputs, each with value, source, page and note, and my own judgements marked as mine | The schema test and the source trace test pass | P2-03 to P2-08 |

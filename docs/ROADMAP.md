@@ -51,7 +51,7 @@ flowchart LR
     A[assumptions.yaml<br/>every input with source, page, date, note]
     D[data/extracted/*.csv<br/>financials, prices, peers, precedents]
   end
-  R[research/raw/<br/>downloaded PDFs, not in git] -. read and transcribed by hand .-> D
+  R[research/raw/<br/>downloaded PDFs, not in git] -. read and transcribed .-> D
   A --> E[Python valuation engine]
   D --> E
   E --> J[valuation.json]
@@ -90,13 +90,13 @@ Done when: the full check command passes on a clean clone, CI is green, and a de
 
 ### Phase 1: deal review
 
-Read Grant Samuel's report from start to finish (booklet pp. 99 to 165) and the booklet's front sections. Build the deal timeline from ASX notices, and write in my own words the expert's method, each DCF assumption, the discount rate build, the comparable set and why each peer was kept or dropped. Learning tasks sit here, because I need to understand the expert's choices before I can disagree with them.
+Read Grant Samuel's report from start to finish (booklet pp. 99 to 165) and the booklet's front sections. Build the deal timeline from ASX notices, and write up the expert's method, each DCF assumption, the discount rate build, the comparable set and why each peer was kept or dropped. Learning tasks sit here, because I need to understand the expert's choices before I can disagree with them.
 
 Done when: the timeline has a document link for every event, and I can explain the expert's DCF assumptions and discount rate from memory.
 
 ### Phase 2: data collection and extraction
 
-Transcribe the tables listed in [RESEARCH.md](RESEARCH.md) section 6 by hand against the page and check each by a second reading. Copy peer prices for 30 May 2025 with their source and the date I read them. Download the RBA series. Build the assumptions file and its schema, the extracted CSV files and the source trace test. Fix the valuation date, share count and net debt build.
+Transcribe the tables listed in [RESEARCH.md](RESEARCH.md) section 6 against the page and check each against the totals printed in the booklet. Record peer prices for 30 May 2025 from named sources, with the date each was read and no scripted downloads. Download the RBA series. Build the assumptions file and its schema, the extracted CSV files and the source trace test. Fix the valuation date, share count and net debt build.
 
 Done when: the source trace test passes, every transcribed total matches the booklet's printed total, and the items I could not verify are listed with a reason.
 
