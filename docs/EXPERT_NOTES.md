@@ -204,3 +204,56 @@ It concludes that 1.0 to 1.1 "is a reasonable estimate of the appropriate beta" 
 The report says a WACC range of 9.3% to 10.5% results, and that it adopts 9.5% to 10.5% for the DCF (p. 140). It says it considers a discount rate in line with the calculated WACC appropriate and does not say why the adopted range begins at 9.5% and not 9.3%. It notes that this range is higher than the broker analysts' discount rates of 8.4% to 9.0% (median 8.5%), and explains the difference by the brokers using a lower risk-free rate or a lower market risk premium (p. 140).
 
 My recomputation, with the after-tax cost of debt at 5.5% times (1 minus 30%), which is 3.85%: 85% equity at a 10.3% cost of equity gives 0.85 times 10.3% plus 0.15 times 3.85%, which is 9.333%, and 95% equity at 10.9% gives 0.95 times 10.9% plus 0.05 times 3.85%, which is 10.548%. Those match the printed 9.3% to 10.5% at one decimal place. The report does not say which weight goes with which cost of equity, so I chose the combinations that give the lowest and highest values (my arithmetic, not a statement in the booklet).
+
+## Comparable transactions and listed companies (booklet pp. 145 to 155)
+
+Grant Samuel says there have been no transactions involving Australian digital property marketplaces from which a multiple can be calculated, so it uses international deals and listed peers, including diversified marketplaces with some property exposure, and adjusts for Domain's own scope, size, market position, margins, growth and risk (p. 135). It notes that Australia uses a vendor-paid advertising model and most other markets an agent-paid one, which can change pricing power (p. 145). Multiples from share prices carry no premium for control (p. 149), and the peers' share prices are at 30 May 2025 (p. 149).
+
+### Transactions
+
+Grant Samuel shows historical and forecast EBITDA and EBITA multiples for each deal in two bar charts (pp. 146 and 147); unsuccessful proposals are hatched. Each bar carries a printed label, so the chart values are printed figures and not readings. The text sometimes rounds them differently from the labels: for example, the text says ZPG's historical multiple is about 30 to 31 times (p. 147) and the EBITDA chart label is 29.5 times (p. 146). The table gives the text's figures with the chart's EBITDA labels added where they differ.
+
+| Transaction | Treatment | Multiples in the text | Page |
+|---|---|---|---|
+| Silver Lake's acquisition of ZPG (UK), 2018 | Kept. The most relevant, because Zoopla is the second largest property marketplace in its market | Historical about 30 to 31 times EBITDA and EBITA in the text (EBITDA label 29.5 times); forecast about 25 to 26 times (EBITDA label 25.1 times). The 22 to 25 times EBITDA and 23 to 26 times EBITA on p. 147 covers ZPG and the Rightmove proposal together | 146, 147, 153 |
+| REA Group's four proposals for Rightmove (UK), 2024, withdrawn | Kept as a recent benchmark and a possible "floor" for market-leading marketplaces; shown hatched | Final offer: enterprise value of about £6.2 billion, 22 to 24 times EBITDA and 23 to 24 times EBITA | 147 |
+| EQT's acquisition of Idealista (Spain, Portugal, Italy), 2020, and Cinven's 70% in 2024 | Kept | About 30 to 31 times historical EBITDA | 147 |
+| Adevinta's acquisition of eBay Classifieds for about €9.2 billion, 2020 | Kept, for diversified marketplaces | About 25 times historical EBITDA and 27 times EBITA; about 18 and 19 times after expected combination savings of about €150 million a year | 148 |
+| Permira and Blackstone's acquisition of Adevinta, 2023 | Kept | Enterprise value about €13.7 billion; 21 times historical and almost 18 times forecast EBITDA; EBITA about 39 times historical and 26 times forecast | 148 |
+| Blackstone and Hellman and Friedman's offer for Scout24 (Germany), 2019, unsuccessful | Kept, shown hatched | Enterprise value about €5.7 billion; 20 to 21 times EBITDA and 21 to 23 times EBITA | 148 |
+| Apax's acquisition of Trade Me (New Zealand), 2018 | Kept, with lower multiples because it is a smaller, more mature market | About 15 to 17 times EBITDA and 18 to 20 times EBITA | 148 |
+| Warburg Pincus and General Atlantic consortium's acquisition of 58.com (China), 2020 | Kept, with low multiples (low margins, pandemic and regulatory uncertainty) | 13 to 14 times EBITDA and 14 to 15 times EBITA | 149 |
+| Apax's acquisition of Baltic Classifieds, 2019 | Excluded: terms not disclosed, so no multiple | None | 146 |
+| EQT's acquisition of PropertyGuru, 2024 | Excluded: earnings in transition, so the multiples are extremely high (88.6 times historical and 64.7 times forecast EBITDA, and no meaningful EBITA multiple) | Not used | 146 |
+| PropertyGuru Pte. Ltd. combination with Bridgetown 2, 2022 | Excluded: loss making | Not used | 146 |
+| Property data, workflow and marketing technology deals | Excluded: smaller and different business models | Not used | 145 |
+
+Pre-2019 deals are on a pre-IFRS 16 basis. The expert says the effect is immaterial because the leases are short and minor (p. 145). EBITA and forecast multiples could not be calculated for some private targets, because the available multiples come from announcements (p. 146).
+
+The expert's summary of the evidence is that digital marketplace deals have mostly happened at more than 20 times EBITDA and EBITA and all above 10 times (p. 147), and that the multiples implied by its range for Domain are "broadly consistent with, albeit towards the lower end of" recent international property deals and consistent with "the high end" of diversified marketplace deals, which excluding outliers range from 15 to 20 times forecast EBITDA and 18 to 26 times forecast EBITA (p. 153). It says ZPG is the most relevant deal and that Idealista and the Rightmove proposal deserve higher multiples because those businesses lead their markets (p. 153).
+
+### Listed companies
+
+| Company | Group in the report | Treatment | Evidence in the text | Page |
+|---|---|---|---|---|
+| REA Group | Australia and New Zealand | Kept; trades at the top of the range | About 38 times historical and 33 times forecast EBITDA, and 43 and 38 times EBITA | 151 |
+| CAR Group | Australia and New Zealand | Kept, with caution: automotive, not property | With SEEK: 16 to 25 times historical and 16 to 22 times forecast EBITDA; 23 to 29 times historical and 23 to 24 times forecast EBITA. The summary on p. 154 gives 16 to 23 times forecast EBITDA for the same two | 151, 154 |
+| SEEK | Australia and New Zealand | Kept, with caution: employment, not property | As above | 151, 154 |
+| Hemnet (Sweden) | International property marketplace | Kept; trades closer to REA | About 31 times forecast EBITDA | 151 |
+| Scout24 (Germany) | International property marketplace | Kept | With Rightmove: 21 to 28 times historical and 19 to 22 times forecast EBITDA; 22 to 31 and 19 to 26 times EBITA, excluding Hemnet | 151 |
+| Rightmove (UK) | International property marketplace | Kept | As above | 151 |
+| Baltic Classifieds (listed June 2021, 30 April year end) | International diversified | Kept | With Vend: 32 to 38 times historical and 27 to 32 times forecast EBITDA; 38 to 50 and 32 to 39 times EBITA | 149, 152 |
+| Vend Marketplaces (Nordic) | International diversified | Kept | As above | 149, 152 |
+| Zillow (US) | Considered | Excluded from the charts: historical and forecast EBITDA multiples at or above 75 times because of expected earnings growth | Not used | 152 |
+| CoStar | Considered | Excluded from the charts for the same reason; 2024 and 2025 earnings are reduced by heavy marketing and content investment in Homes.com | Not used | 152 |
+| Cars.com, Autohome and Auto Trader | International automotive | Excluded: market structure and macroeconomic exposure differ | Not used | 149 |
+
+All the international peers have 31 December year ends except Baltic (30 April), and all the Australian peers have 30 June year ends (p. 149). The expert explains the spread in terms of market dominance, network effects, growth and margins: REA at 60%-plus margins, Hemnet with about 95% of Swedish listings, and Scout24 and Rightmove in more mature markets (p. 151).
+
+### Why Zillow and CoStar are out
+
+The report gives one reason for both. Their historical and forecast EBITDA multiples are at or above 75 times, so they do not give meaningful benchmarks, because the market expects large future earnings growth (p. 152). It then describes each business. Zillow is moving from a home-buying model, which it discontinued in 2021, to a "housing super app". CoStar has been building Homes.com since 2021 to challenge Zillow, and the report says its heavy marketing and content investment has reduced its 2024 and forecast 2025 earnings (p. 152).
+
+### From multiples to the range
+
+The range of A$2,775 to A$3,025 million implies 18.2 to 19.9 times FY26 adjusted EBITDA and 23.3 to 25.4 times FY26 adjusted EBITA (p. 153). The expert puts more weight on FY26 because FY25 is already a historical year and its FY25 forecast reflects actual results for the 11 months to 31 May 2025 (p. 153). Against listed peers, the implied multiples are well below REA (33 times forecast EBITDA, 38 times EBITA), Hemnet, Baltic and Vend (27 to 32 times forecast EBITDA), and comparable to CAR Group, SEEK, Scout24 and Rightmove (about 16 to 23 times forecast EBITDA) (p. 154). The report lists reasons that Domain deserves a high absolute multiple (strategic position as number two in a two-participant market, brand, track record, growth opportunities, the Nine relationship, and the Australian market) and reasons that constrain it (smaller scale, being a "price follower", lower margins, cyclicality and mixed results in Ancillary Services), and concludes that the implied multiples "reflect a reasonable balance" (pp. 154 and 155).
