@@ -37,11 +37,11 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 
 | Done | ID | Tag | Task | Acceptance | Check | Needs |
 |---|---|---|---|---|---|---|
-| [ ] | P1-01 | [ME] | Read the report introduction, methods and valuation summary | Notes in my words on which methods Grant Samuel used and how it reached A$4.06 to A$4.46 (booklet pp. 116 to 135) | I explain the conclusion aloud in 2 minutes | R-06 |
-| [ ] | P1-02 | [ME] | Read the DCF section | A table of each DCF assumption, its value and its page (booklet pp. 136 to 148) | Every row has a page number, and I can explain scenario A | P1-01 |
+| [ ] | P1-01 | [ME] | Read the report introduction, methods and valuation summary | Notes in my words on which methods Grant Samuel used and how it reached A$4.06 to A$4.46 (booklet pp. 103 to 137) | I explain the conclusion aloud in 2 minutes | R-06 |
+| [ ] | P1-02 | [ME] | Read the DCF section | A table of each DCF assumption, its value and its page (booklet pp. 137 to 145) | Every row has a page number, and I can explain scenario A | P1-01 |
 | [ ] | P1-03 | [ME] | Summarise the expert's DCF assumptions in my own words | A one-page summary in docs/EXPERT_NOTES.md covering growth, margins, capex, tax, terminal value | I read it aloud without looking at the booklet | P1-02 |
-| [ ] | P1-04 | [ME] | Read the discount rate section | The WACC build and the beta evidence explained in my words (booklet pp. 139 to 140) | I explain why a beta of 1.0 to 1.1 was chosen despite the evidence range | P1-02 |
-| [ ] | P1-05 | [ME] | Read the comparables and precedents sections | A list of each peer and transaction, why it was kept or excluded, with pages (booklet pp. 145 to 153) | I explain the exclusion of Zillow and CoStar | P1-01 |
+| [ ] | P1-04 | [ME] | Read the discount rate section | The WACC build and the beta evidence explained in my words (booklet pp. 138 to 140) | I explain why a beta of 1.0 to 1.1 was chosen despite the evidence range | P1-02 |
+| [ ] | P1-05 | [ME] | Read the comparables and precedents sections | A list of each peer and transaction, why it was kept or excluded, with pages (booklet pp. 145 to 155) | I explain the exclusion of Zillow and CoStar | P1-01 |
 | [ ] | P1-06 | [ME] | Read the control premium and fairness analysis | Notes on the premium evidence and why A$4.43 sits near the top of the range (booklet pp. 157 to 160) | I explain the control premium with a worked example | P1-01 |
 | [ ] | P1-07 | [MIXED] | Build the deal timeline | Each event from the first approach to implementation has a date and a link to an ASX document | Every link opens, and each date matches its document | P1-01 |
 | [ ] | P1-08 | [ME] | Interview prep: DCF against capitalised earnings | A 2-minute explanation of why Grant Samuel used both | I record myself and it fits in 2 minutes | P1-02 |
@@ -57,7 +57,7 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 | [ ] | P2-05 | [ME] | Transcribe the balance sheet, cash flow and net debt build | Booklet pp. 123 to 125 and 155 to 156, including the leases and the A$173.2m starting figure | The net debt bridge reaches A$187.0m | P2-02 |
 | [ ] | P2-06 | [ME] | Transcribe the broker forecasts | By broker and median for FY25 and FY26 (booklet pp. 122 and 165) | The medians match the printed medians | P2-02 |
 | [ ] | P2-07 | [ME] | Transcribe the DCF parameters and scenarios A to H | Booklet pp. 137 and 141 to 143, with the NPV chart values read from the chart and marked as read | Every value has a page, and chart readings are marked | P2-02 |
-| [ ] | P2-08 | [ME] | Transcribe the discount rate evidence | Risk-free rate, premium, beta evidence and gearing (booklet pp. 139 to 140) | The WACC reproduces the 9.3% to 10.5% range | P2-02 |
+| [ ] | P2-08 | [ME] | Transcribe the discount rate evidence | Risk-free rate, premium, beta evidence and gearing (booklet pp. 138 to 140) | The WACC reproduces the 9.3% to 10.5% range | P2-02 |
 | [ ] | P2-09 | [ME] | Transcribe the comparable companies | The peer table and multiples from booklet pp. 149 to 152, chart values marked as read | Each peer has a multiple and a page | P2-02 |
 | [ ] | P2-10 | [ME] | Transcribe the precedent transactions and check primary sources | Booklet pp. 145 to 149 and 153, with the four multiples stated by a party checked against their releases | Each multiple has its release link, and unverified ones are labelled | P2-02 |
 | [ ] | P2-11 | [ME] | Copy peer prices at 30 May 2025 by hand | Each price with its source and the date I read it | Every row passes the source trace test | P2-02 |

@@ -90,7 +90,7 @@ Done when: the full check command passes on a clean clone, CI is green, and a de
 
 ### Phase 1: deal review
 
-Read Grant Samuel's report from start to finish (booklet pp. 116 to 170) and the booklet's front sections. Build the deal timeline from ASX notices, and write in my own words the expert's method, each DCF assumption, the discount rate build, the comparable set and why each peer was kept or dropped. Learning tasks sit here, because I need to understand the expert's choices before I can disagree with them.
+Read Grant Samuel's report from start to finish (booklet pp. 99 to 165) and the booklet's front sections. Build the deal timeline from ASX notices, and write in my own words the expert's method, each DCF assumption, the discount rate build, the comparable set and why each peer was kept or dropped. Learning tasks sit here, because I need to understand the expert's choices before I can disagree with them.
 
 Done when: the timeline has a document link for every event, and I can explain the expert's DCF assumptions and discount rate from memory.
 
