@@ -163,3 +163,167 @@ corporate_cost_saving_aud_m:
   location: p. 143
   as_at: 30 June 2025
   note: Saving on listed company costs available to any buyer, added to cash flow each year. The booklet does not say whether it grows, and I hold it flat.
+
+# Discount rate
+
+risk_free_rate_pct:
+  value: 4.249
+  unit: pct
+  source: "RBA statistical table F2, series FCMYGBAG10D (Source: RBA 2026, CC BY 4.0)"
+  location: row 30-May-2025, column Australian Government 10 year bond; data/extracted/market_rates_30_may_2025.csv
+  as_at: 30 May 2025
+  note: 10-year Commonwealth Government bond yield. On 5 October 2026 I chose this over the expert's 4.3% (and over 4.366%, the RBA yield at 31 December 2024) so that the 0.05 point difference shows as its own step in the gap bridge.
+
+expert_risk_free_rate_pct:
+  value: 4.3
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 139
+  as_at: 30 May 2025
+  note: The expert's rate for the same date, kept for the cross-check against its scenario A and for the bridge. I do not know why it is 0.05 points above the RBA figure (UNVERIFIED).
+
+market_risk_premium_pct:
+  value: 6.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 139
+  as_at: 30 May 2025
+  note: A standard rate the expert adopts; analysts typically use 5% to 7%.
+
+equity_beta_low:
+  value: 1.0
+  unit: beta
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 139 and p. 140
+  as_at: 30 May 2025
+  note: Low end of the expert's judgement of an expected beta for Domain. The evidence it weighed runs from about 0.3 to 2.1 (data/extracted/discount_rate_evidence.csv).
+
+equity_beta_high:
+  value: 1.1
+  unit: beta
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 139 and p. 140
+  as_at: 30 May 2025
+  note: High end of the same range.
+
+cost_of_debt_margin_over_risk_free_pct:
+  value: 1.2
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 140
+  as_at: 30 May 2025
+  note: The pre-tax cost of debt is the risk-free rate plus this margin, which gives the expert's 5.5% at its 4.3% and 5.449% at 4.249%.
+
+equity_weight_low_pct:
+  value: 85.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 140
+  as_at: 30 May 2025
+  note: Low end of the equity share of capital, from the gearing of comparable listed companies over four years and not Domain's own. Debt takes the rest.
+
+equity_weight_high_pct:
+  value: 95.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 140
+  as_at: 30 May 2025
+  note: High end of the equity share of capital.
+
+discount_rate_low_pct:
+  value: 9.5
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 138 and p. 140
+  as_at: 30 May 2025
+  note: The expert's adopted nominal discount rate range, used for the DCF. The WACC from the inputs above reproduces the expert's calculated range of 9.3% to 10.5%, and the report does not say why the adopted range starts at 9.5%.
+
+discount_rate_high_pct:
+  value: 10.5
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 138 and p. 140
+  as_at: 30 May 2025
+  note: High end of the adopted range.
+
+# Earnings multiples (seeded with the expert's implied multiples on 5 October 2026; I choose my own in Phase 4)
+
+fy26_adjusted_ebitda_aud_m:
+  value: 152.2
+  unit: aud_m
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 136 and p. 153
+  as_at: 30 June 2025
+  note: Broker median FY26 EBITDA of 160.0 less 7.8 for the agents' share of earnings (dividends of 5.5 grossed up at 30% tax).
+
+fy26_adjusted_ebita_aud_m:
+  value: 119.2
+  unit: aud_m
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 136 and p. 153
+  as_at: 30 June 2025
+  note: Broker median FY26 EBITA of 127.0 less the same 7.8.
+
+trading_ebitda_multiple_fy26_low_x:
+  value: 18.2
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: The multiple of FY26 adjusted EBITDA implied by the expert's range. It is on a control basis, so I apply no further control premium to it until I decide one in task P4-05.
+
+trading_ebitda_multiple_fy26_high_x:
+  value: 19.9
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: High end of the same range.
+
+trading_ebita_multiple_fy26_low_x:
+  value: 23.3
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: The multiple of FY26 adjusted EBITA implied by the expert's range, on a control basis.
+
+trading_ebita_multiple_fy26_high_x:
+  value: 25.4
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: High end of the same range.
+
+precedent_ebitda_multiple_fy26_low_x:
+  value: 18.2
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: Seeded with the same implied range, which the expert says is consistent with the high end of diversified marketplace deals (15x to 20x forecast EBITDA) and towards the lower end of the property deals (22x to 25x). I choose my own range in task P4-04.
+
+precedent_ebitda_multiple_fy26_high_x:
+  value: 19.9
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: High end of the same range.
+
+precedent_ebita_multiple_fy26_low_x:
+  value: 23.3
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: Seeded with the expert's implied EBITA range.
+
+precedent_ebita_multiple_fy26_high_x:
+  value: 25.4
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: High end of the same range.
