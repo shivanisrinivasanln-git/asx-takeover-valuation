@@ -327,3 +327,146 @@ precedent_ebita_multiple_fy26_high_x:
   location: p. 153
   as_at: 30 June 2025
   note: High end of the same range.
+
+# Net debt and its adjustments are positive amounts of debt. Other assets and liabilities is signed as a value, so a net liability is negative.
+
+reported_net_debt_including_leases_aud_m:
+  value: 173.2
+  unit: aud_m
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 123 and p. 156
+  as_at: 31 December 2024
+  note: Net debt including lease liabilities at the valuation date. It is the starting point of the expert's net debt build, and it is on a post-AASB 16 basis, consistent with the DCF.
+
+net_debt_adjustment_capitalised_borrowing_costs_aud_m:
+  value: 1.2
+  unit: aud_m
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 156
+  as_at: 31 December 2024
+  note: Added to net debt because capitalised borrowing costs are accounting assets and the balance sheet shows debt net of them (p. 125).
+
+net_debt_adjustment_interim_dividend_aud_m:
+  value: 12.6
+  unit: aud_m
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 156 and p. 125
+  as_at: 11 March 2025
+  note: The 2 cents a share interim dividend paid on 11 March 2025, which is cash out after the valuation date. Together with the two lines above it gives the adjusted net debt of 187.0.
+
+other_assets_and_liabilities_aud_m:
+  value: -7.6
+  unit: aud_m
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 155
+  as_at: 31 December 2024
+  note: Equity accounted investments of 1.6, provisions of (0.8) and contingent consideration of (8.4). No value is given to unused tax losses (p. 155).
+
+# Diluted share count
+
+ordinary_shares_on_issue_m:
+  value: 631.657153
+  unit: million shares
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 126
+  as_at: 30 June 2025
+  note: Includes 514,034 treasury shares.
+
+treasury_shares_m:
+  value: 0.514034
+  unit: million shares
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 131, footnote 43
+  as_at: 30 June 2025
+  note: Used when share rights vest, before new shares are issued, so deducted from the diluted count.
+
+share_rights_vesting_low_m:
+  value: 3.266201
+  unit: million shares
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 131, footnote 43
+  as_at: 30 June 2025
+  note: Share rights expected to vest at the low end of the expert's range.
+
+share_rights_vesting_high_m:
+  value: 2.208343
+  unit: million shares
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 131, footnote 43
+  as_at: 30 June 2025
+  note: Fewer rights vest at the high end, because 1,057,858 rights vest only if performance tests at 30 June 2025 are met.
+
+share_rights_cash_settled_m:
+  value: 1.098432
+  unit: million shares
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 131, footnote 43
+  as_at: 30 June 2025
+  note: Share rights settled in cash at A$4.43 as part of the scheme, counted in the diluted shares.
+
+# Offer and control premium evidence
+
+offer_price_aud:
+  value: 4.43
+  unit: aud
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 103
+  as_at: 9 May 2025
+  note: Cash consideration per share, including a fully franked special dividend of up to 8.8 cents.
+
+special_dividend_aud:
+  value: 0.088
+  unit: aud
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 103 and p. 135
+  as_at: 9 May 2025
+  note: The expert's valuation is cum this dividend, so it is compared with the full A$4.43.
+
+undisturbed_share_price_aud:
+  value: 3.12
+  unit: aud
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 157
+  as_at: 20 February 2025
+  note: Close on the last trading day before the original proposal.
+
+control_premium_typical_low_pct:
+  value: 20.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 133 and p. 158
+  as_at: 30 June 2025
+  note: The low end of the premium the expert says is typical in Australian takeovers. It says premiums are an outcome and not a determinant of value, and that a substantial share of deals fall outside the range.
+
+control_premium_typical_high_pct:
+  value: 35.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 133 and p. 158
+  as_at: 30 June 2025
+  note: The high end of the same range.
+
+listed_share_discount_to_underlying_low_pct:
+  value: 15.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 131
+  as_at: 30 June 2025
+  note: Shares in a listed company normally trade at a discount of 15% to 25% to the value of the company as a whole, though not always.
+
+listed_share_discount_to_underlying_high_pct:
+  value: 25.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 131
+  as_at: 30 June 2025
+  note: The high end of the same range.
+
+control_premium_applied_pct:
+  value: 0.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153 and p. 154
+  as_at: 30 June 2025
+  judgement: true
+  note: On 5 October 2026 I chose to apply no premium to the seeded multiples until I decide one in task P4-05, because the expert's implied multiples are already on a control basis (docs/DECISIONS.md).
