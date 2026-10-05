@@ -1,0 +1,37 @@
+item,value,unit,source,location,as_at,note
+business_operations_value_low,2775.0,aud_m,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,
+business_operations_value_high,3025.0,aud_m,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,
+ebitda_fy24,137.1,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,FY24 actual; FY25 and FY26 broker medians
+earnings_attributable_to_non_controlling_interests_ebitda_fy24,-6.1,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,Dividends paid to agents divided by one minus 30% tax (footnote 44)
+adjusted_ebitda_fy24,131.0,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136 and p. 153,30 June 2025,Printed total
+ebita_fy24,102.6,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,
+earnings_attributable_to_non_controlling_interests_ebita_fy24,-6.1,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,
+adjusted_ebita_fy24,96.5,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136 and p. 153,30 June 2025,Printed total
+ebitda_fy25,146.3,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,Broker median
+earnings_attributable_to_non_controlling_interests_ebitda_fy25,-6.9,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,Dividends paid to agents divided by one minus 30% tax (footnote 44)
+adjusted_ebitda_fy25,139.4,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136 and p. 153,30 June 2025,Printed total
+ebita_fy25,115.8,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,
+earnings_attributable_to_non_controlling_interests_ebita_fy25,-6.9,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,
+adjusted_ebita_fy25,108.9,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136 and p. 153,30 June 2025,Printed total
+ebitda_fy26,160.0,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,Broker median
+earnings_attributable_to_non_controlling_interests_ebitda_fy26,-7.8,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,Dividends paid to agents divided by one minus 30% tax (footnote 44)
+adjusted_ebitda_fy26,152.2,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136 and p. 153,30 June 2025,Printed total
+ebita_fy26,127.0,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,
+earnings_attributable_to_non_controlling_interests_ebita_fy26,-7.8,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136,30 June 2025,
+adjusted_ebita_fy26,119.2,aud_m,"Domain scheme booklet, Grant Samuel report",p. 136 and p. 153,30 June 2025,Printed total
+dividends_paid_to_non_controlling_interests_fy24,4.3,aud_m,"Domain scheme booklet, Grant Samuel report","p. 136, footnote 44",30 June 2025,Actual dividends paid
+dividends_paid_to_non_controlling_interests_fy25,4.8,aud_m,"Domain scheme booklet, Grant Samuel report","p. 136, footnote 44",30 June 2025,Actual dividends paid
+dividends_paid_to_non_controlling_interests_fy26,5.5,aud_m,"Domain scheme booklet, Grant Samuel report","p. 136, footnote 44",30 June 2025,FY26 is the expert's own DCF assumption
+tax_rate_used_to_gross_up_dividends,30.0,pct,"Domain scheme booklet, Grant Samuel report","p. 136, footnote 44",30 June 2025,
+implied_ebitda_multiple_fy24_low,21.2,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
+implied_ebitda_multiple_fy24_high,23.1,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
+implied_ebitda_multiple_fy25_low,19.9,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
+implied_ebitda_multiple_fy25_high,21.7,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
+implied_ebitda_multiple_fy26_low,18.2,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
+implied_ebitda_multiple_fy26_high,19.9,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
+implied_ebita_multiple_fy24_low,28.8,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
+implied_ebita_multiple_fy24_high,31.3,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
+implied_ebita_multiple_fy25_low,25.5,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
+implied_ebita_multiple_fy25_high,27.8,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
+implied_ebita_multiple_fy26_low,23.3,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
+implied_ebita_multiple_fy26_high,25.4,times,"Domain scheme booklet, Grant Samuel report",p. 153,30 June 2025,Printed
