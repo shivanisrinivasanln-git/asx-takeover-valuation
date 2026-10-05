@@ -113,3 +113,9 @@ The booklet prints no peer share prices, and the investor sites I tried (REA Gro
 Options I considered: reading each close from a price portal and marking it as a secondary source (fast, but it breaks the rule); looking each close up through UNSW's Bloomberg or FactSet access (the most defensible, but my access was never confirmed); or using the peer multiples that Grant Samuel printed for the same date, 30 May 2025 (booklet p. 150). I chose the printed multiples. I recorded all 32 of them in task P2-09 and P3-05 will use them.
 
 I dropped P2-11 (peer prices) and P2-12 (peer financials on one EBITDA basis), because P2-12 only serves multiples recomputed from peer prices. The cost is that my trading comparables rest on the expert's multiples and I cannot put the peers on my own EBITDA basis. The A$ size of Hemnet and Vend, which I would have needed krona and krone rates for, also drops out.
+
+## 5 October 2026: the practice workbook and Excel
+
+I built the one-sheet DCF (task P0-08) from the Harbour Industrial example, so its base value per share is the hand-worked A$3.05, and its sensitivity table is a real Excel data table. LibreOffice is not installed on this machine and desktop Excel 16 is, so I recalculate the workbook with Excel through a short PowerShell script and test the values Excel stores against a Python calculation. The recalculation script also removes the author names that Excel adds. The reconciliation in task P3-14 will use LibreOffice in the build, as the architecture says.
+
+openpyxl has no type information, which fails the strict type check on the script and the test that read the workbook, so I added `types-openpyxl` to the development dependencies and regenerated the hashed lock file. The only change in the lock file is that one package. The alternative was to switch off type checking for openpyxl, which would loosen the check.

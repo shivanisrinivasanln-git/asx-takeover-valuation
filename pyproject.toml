@@ -15,6 +15,7 @@ dev = [
     "pip-audit",
     "pytest",
     "ruff",
+    "types-openpyxl",
     "types-PyYAML",
 ]
 
