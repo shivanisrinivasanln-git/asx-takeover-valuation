@@ -72,7 +72,7 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 
 | Done | ID | Tag | Task | Acceptance | Check | Needs |
 |---|---|---|---|---|---|---|
-| [ ] | P3-01 | [AUTO] | Engine structure and input loader | A package that loads the assumptions and data and raises an error on anything missing | Unit tests for loading, including a missing key | P2-14 to P2-16 |
+| [x] | P3-01 | [AUTO] | Engine structure and input loader | A package that loads the assumptions and data and raises an error on anything missing | Unit tests for loading, including a missing key. Evidence: src/valuation/inputs.py loads assumptions.yaml and 14 data tables and raises one error naming everything missing. tests/engine/test_inputs.py passes (8 tests), including a missing input, a missing data file, several problems at once and a missing assumptions file; removing tax_rate_pct from the file made the loader tests fail, and a test checks that the engine's list of required inputs equals the 55 inputs in the file | P2-14 to P2-16 |
 | [ ] | P3-02 | [AUTO] | Free cash flow forecast | Revenue to unlevered free cash flow for each year, with a hand-worked fixture | The fixture test passes at full precision | P3-01 |
 | [ ] | P3-03 | [AUTO] | WACC and terminal value | WACC from its inputs, Gordon growth terminal value, discounting with a mid-year option | A hand-worked example matches to six decimals | P3-02 |
 | [ ] | P3-04 | [AUTO] | Equity bridge | Enterprise value to equity value to value per share using the adjusted net debt and diluted shares | Reproduces the expert's bridge from the expert's own enterprise value | P3-03 |
