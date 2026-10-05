@@ -71,6 +71,9 @@ REQUIRED_ASSUMPTIONS = (
     "listed_share_discount_to_underlying_high_pct",
     "control_premium_applied_pct",
     "mid_year_discounting_flag",
+    "sensitivity_rate_step_pct",
+    "sensitivity_growth_step_pct",
+    "sensitivity_steps_each_side",
 )
 
 REQUIRED_TABLES = (

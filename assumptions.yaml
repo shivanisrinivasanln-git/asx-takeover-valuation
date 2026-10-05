@@ -481,3 +481,29 @@ mid_year_discounting_flag:
   as_at: 30 June 2025
   judgement: true
   note: On 6 October 2026 I chose mid-year discounting, which treats each year's cash flow as arriving evenly through the year. The engine also computes year end, and the cross-check in task P3-17 reports both.
+
+# Sensitivity grid (my choice of grid, not from a document)
+
+sensitivity_rate_step_pct:
+  value: 0.5
+  unit: pct
+  source: My choice of display grid; not from a document
+  location: not applicable
+  as_at: 6 October 2026
+  note: Spacing of the discount rates in the sensitivity table, either side of the middle of the expert's adopted 9.5% to 10.5% range.
+
+sensitivity_growth_step_pct:
+  value: 0.5
+  unit: pct
+  source: My choice of display grid; not from a document
+  location: not applicable
+  as_at: 6 October 2026
+  note: Spacing of the terminal growth rates in the sensitivity table, either side of the 4.0% base.
+
+sensitivity_steps_each_side:
+  value: 2
+  unit: steps
+  source: My choice of display grid; not from a document
+  location: not applicable
+  as_at: 6 October 2026
+  note: Two steps each side of the base case gives a table of five discount rates by five growth rates.
