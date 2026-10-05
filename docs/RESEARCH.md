@@ -442,3 +442,26 @@ Most tables in the Grant Samuel report are text in the PDF, but multi-column tab
 - Whether REA, CAR or SEEK publish a company-compiled consensus, and whether consensus as at May 2025 survives in archived copies.
 - The RBA's official release schedule for table F2.
 - Page references for the Quickstep and Bigtincan reports are internal IER pages or PDF pages, not booklet pages.
+
+## Items I could not verify while transcribing the data and filling the inputs
+
+Each item has the reason I could not verify it and what I would do next. They are in addition to the list above.
+
+| Item | Reason | Next step |
+|---|---|---|
+| Why the expert's risk-free rate is 4.3% when the RBA 10-year yield for 30 May 2025 is 4.249% | p. 139 describes the rate only as the 10-year Commonwealth Government bond rate at 30 May 2025, with no data source or yield definition | None needed for the valuation, because I use 4.249% and show the difference as a step in the gap bridge; check a Bloomberg screen if UNSW access is confirmed |
+| Why the expert's adopted discount rate starts at 9.5% when its calculated WACC starts at 9.3% | The report says it is "in line with" the calculated range and gives no reason (p. 140) | Treat it as the expert's judgement and say so in the gap bridge |
+| Which years carry the higher capital expenditure in the expert's model | It gives an average of almost 9.5% of revenue and 9% in the long term, which my path of 9.6% to FY30 then 9.0% does not reproduce (it averages 9.3%) (p. 142) | Test alternative paths in the engine when it exists and report how much value depends on it |
+| The expert's FY25 forecast, FY26 projection and five-year plan | Management did not disclose them (p. 108), so my starting points are the broker medians | None possible from public documents; keep the seeds labelled as broker medians |
+| The value of the terminal value and each scenario's NPV as numbers | The booklet shows scenario NPVs only in a chart (p. 144) and gives no terminal value share | I read the bar ends from the chart to about A$5m; my engine will give my own figures |
+| The discounting convention (mid-year or year end) in the expert's DCF | The booklet does not say | Ask in task P3-03, because it could move the value materially |
+| The announcement of 28 April 2025 extending CoStar's exclusivity | Domain's file host returned HTTP 503 and the index pages show only the title and time | Retry the link later or find the ASX copy; the end date of 12 May 2025 is in booklet p. 103 |
+| The 24 February 2025 substantial holder notice, Nine's own 21 February release, the separate announcement of the 30 June court order and the same-day announcement of the 6 August approval | I did not find or open them; each fact is also stated in a document I did open | Search the ASX announcements platform if I need the originals |
+| The booklet's actual dispatch date | Only the planned date of 4 July 2025 is stated | None needed |
+| A gap of 537,000 shares between CoStar's 106,592,031-share crossing and its 107,129,031 holding | No document I opened explains it (booklet pp. 43 and 157) | Check the substantial holder notice if it matters |
+| Nine's holding: 60.05% (pp. 104 and 127) or 60.06% (p. 160) | The booklet prints both | Use "about 60%"; check the share register if it matters |
+| The ATO ruling's 651,657,153 shares at 30 June 2025 against the booklet's 631,657,153 | Probably a typing error in the ruling; I have not confirmed it | None needed |
+| Printed mismatches in the booklet: FY23 significant items (lines sum to (9.6), total (9.4)), FY24 significant items after tax ((6.0) on p. 118, (6.1) on p. 120), the FY26 median revenue (454.0 on p. 122, 453.8 on p. 165), and CAR Group and SEEK forecast EBITDA (16 to 22 times on p. 151, 16 to 23 on p. 154) | I re-read each page and recorded the figures as printed | None; each is recorded in the data files with a note |
+| The expert's multiples for the comparable deals and listed peers | They are Grant Samuel's chart labels, and I checked only the four multiples that a party to the deal stated against their releases | Recompute from each company's accounts if I ever need my own basis, which needs peer share prices I have not collected |
+| REA's 22.4x multiple for Rightmove and CoStar's 8-K statements | I read them through a page-fetch tool because the SEC blocks direct downloads | Open the SEC pages in a browser |
+| Peer share prices at 30 May 2025 and the krona and krone exchange rates | I found no official source and chose not to use price portals (docs/DECISIONS.md, 5 October 2026) | Use UNSW's Bloomberg or FactSet access if it is confirmed |
