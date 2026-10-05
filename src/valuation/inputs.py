@@ -70,6 +70,7 @@ REQUIRED_ASSUMPTIONS = (
     "listed_share_discount_to_underlying_low_pct",
     "listed_share_discount_to_underlying_high_pct",
     "control_premium_applied_pct",
+    "mid_year_discounting_flag",
 )
 
 REQUIRED_TABLES = (

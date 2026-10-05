@@ -470,3 +470,14 @@ control_premium_applied_pct:
   as_at: 30 June 2025
   judgement: true
   note: On 5 October 2026 I chose to apply no premium to the seeded multiples until I decide one in task P4-05, because the expert's implied multiples are already on a control basis (docs/DECISIONS.md).
+
+# Discounting convention
+
+mid_year_discounting_flag:
+  value: 1
+  unit: 1 for mid-year, 0 for year end
+  source: My judgement; the booklet does not state the expert's discounting convention
+  location: p. 137 (silent)
+  as_at: 30 June 2025
+  judgement: true
+  note: On 6 October 2026 I chose mid-year discounting, which treats each year's cash flow as arriving evenly through the year. The engine also computes year end, and the cross-check in task P3-17 reports both.
