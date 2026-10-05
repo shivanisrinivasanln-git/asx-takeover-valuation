@@ -4,4 +4,162 @@
 # judgement and not a figure from a document. An input name is lower-case words joined by _
 # and should end with its unit, for example risk_free_rate_pct.
 #
-# The file is filled in Phase 2 (tasks P2-14 to P2-16).
+# Until Phase 4 each input starts at the value the expert disclosed. Where the booklet gives only
+# a description such as "just below 48%", I choose a number and mark it `judgement: true`.
+
+# Valuation date and cash flow timing
+
+valuation_date_ymd:
+  value: [2024, 12, 31]
+  unit: year, month, day
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 135
+  as_at: 30 June 2025
+  note: Balance sheet date; the DCF counts cash flows from 1 January 2025 and the value is cum the special dividend of up to 8.8 cents.
+
+projection_end_date_ymd:
+  value: [2035, 6, 30]
+  unit: year, month, day
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 137
+  as_at: 30 June 2025
+  note: Last explicit cash flow date; the terminal value is calculated at this date.
+
+stub_period_years:
+  value: 0.5
+  unit: years
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 137
+  as_at: 30 June 2025
+  note: 1 January 2025 to 30 June 2025, the second half of FY25, then ten full years from FY26 to FY35. This is my count from the printed start and end dates.
+
+# Revenue and EBITDA
+
+fy25_revenue_aud_m:
+  value: 420.0
+  unit: aud_m
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 122 and p. 165, Appendix 1
+  as_at: 30 June 2025
+  note: Median of 13 broker forecasts. Management's FY25 forecast is not published (p. 108), and the expert says the broker medians are close to it.
+
+fy25_ebitda_aud_m:
+  value: 146.3
+  unit: aud_m
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 122 and p. 165, Appendix 1
+  as_at: 30 June 2025
+  note: Median of 13 broker forecasts, before significant items.
+
+revenue_growth_fy26_to_fy35_pct:
+  value: 9.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 141
+  as_at: 30 June 2025
+  judgement: true
+  note: The expert gives total revenue growth in Scenario A as "just over 9%" a year to over A$990 million in FY35. I use 9.0% a year, which takes 420.0 to 994.3 and agrees with "over 990". The expert's year-by-year path is not published.
+
+ebitda_margin_fy30_pct:
+  value: 41.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  note: Scenario A. The margin rises from the FY25 broker median margin to this value by FY30; the path between is my straight line (see docs/DECISIONS.md).
+
+ebitda_margin_fy35_pct:
+  value: 47.9
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  judgement: true
+  note: The expert says "just below 48%" in FY35. I use 47.9%.
+
+# Capital expenditure, depreciation and working capital
+
+capex_pct_of_revenue_fy26_to_fy30_pct:
+  value: 9.6
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142 and p. 125
+  as_at: 30 June 2025
+  judgement: true
+  note: The expert says capital expenditure is higher in the early years "in line with FY24 and 1HY25", which were 9.5% and 9.6% of revenue (p. 125). I use the 1HY25 figure for FY26 to FY30. Its average of almost 9.5% for the whole period is not reproduced by this path, which averages 9.3%; I cannot tell from the booklet which years carry higher rates (UNVERIFIED).
+
+capex_pct_of_revenue_long_term_pct:
+  value: 9.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  note: Applies from FY31 to FY35.
+
+fy25_depreciation_and_other_amortisation_aud_m:
+  value: 30.5
+  unit: aud_m
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 165, Appendix 1
+  as_at: 30 June 2025
+  note: Median EBITDA of 146.3 less median EBITA of 115.8. It excludes amortisation of acquired intangible assets, which is 9.9 a year (p. 165).
+
+depreciation_pct_of_revenue_long_term_pct:
+  value: 9.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  judgement: true
+  note: The expert says depreciation and other amortisation is initially less than capital expenditure and "approximately equal" after the early years. I set it equal to long-term capital expenditure and reach it by a straight line from FY25.
+
+working_capital_pct_of_revenue_pct:
+  value: 2.5
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142 and p. 124
+  as_at: 30 June 2025
+  note: Working capital as a share of revenue. I read it as a balance, so the cash flow each year is 2.5% of the change in revenue; p. 124 shows working capital at 2% to 3% of revenue.
+
+# Tax, terminal value and other cash flows
+
+tax_rate_pct:
+  value: 30.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  note: Corporate tax rate.
+
+terminal_growth_pct:
+  value: 4.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  note: Based on long-term inflation of 2.5% a year and real growth in EBITDA.
+
+agent_dividend_pct_of_prior_year_revenue_pct:
+  value: 1.6
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  note: Dividends to the agents who hold equity in Domain subsidiaries, as a share of the prior year's Residential and Media, Developers and Commercial revenue.
+
+residential_and_mdc_share_of_revenue_pct:
+  value: 82.1
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 120, revenue by business segment chart
+  as_at: 30 June 2025
+  judgement: true
+  note: Residential plus Media, Developers and Commercial in LTM24 (282.4 + 50.9) over total segment revenue of 406.0. I hold it constant, because the booklet does not give the future mix.
+
+corporate_cost_saving_aud_m:
+  value: 4.0
+  unit: aud_m
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 143
+  as_at: 30 June 2025
+  note: Saving on listed company costs available to any buyer, added to cash flow each year. The booklet does not say whether it grows, and I hold it flat.
