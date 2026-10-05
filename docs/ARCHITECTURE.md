@@ -61,7 +61,7 @@ risk_free_rate_pct:
   note: Expert's spot 10-year Commonwealth bond yield
 ```
 
-A schema check rejects an entry with a missing source, location or unit. Historical data that is not a judgement (reported revenue, daily share prices, peer market values) goes in CSV files under `data/extracted/`, each row carrying its source document and page.
+A schema check rejects an entry with a missing source, location or unit. Historical data that is not a judgement (reported revenue and the expert's printed multiples) goes in CSV files under `data/extracted/`, each row carrying its source document and page.
 
 ### The engine
 
@@ -139,8 +139,8 @@ LibreOffice (for Excel recalculation) and Typst are installed in CI at pinned ve
 Yahoo Finance no longer serves Domain's share price history, and its terms prohibit automated collection (see section 6 of [RESEARCH.md](RESEARCH.md)). I therefore download no price series:
 - Domain's undisturbed price, VWAPs and trading range come from the scheme booklet (booklet pp. 42, 95 and 157 to 158).
 - For beta I use Grant Samuel's published evidence (booklet pp. 139 to 140) and test the expert's choice against it. I do not estimate a regression beta of my own.
-- Peer share prices are needed for one date, 30 May 2025 (Grant Samuel's pricing date for the peers). I read each from the exchange or the company's own disclosures, with no scripted download, and record the source and the date it was read.
-- Share counts, net debt and EBITDA for the peers come from their annual and half-year reports; exchange rates for euros and pounds come from RBA table F11.1.
+- I record no peer share prices. The peers' multiples come from Grant Samuel's charts, which are based on share prices at 30 May 2025 (booklet p. 150), and I use those printed values. The investor sites I tried (REA Group and Scout24) show no historical close, and I have not cleared the terms of the price portals for reading by a tool. The cost is that I cannot recompute the multiples on my own EBITDA basis.
+- Exchange rates for euros and pounds come from RBA table F11.1.
 
 Each value goes into `data/extracted/` with its source, so the source trace test covers market data too.
 

@@ -267,8 +267,8 @@ Domain Holdings Australia (ASX: DHG) has a 30 June year end. All sources in this
 | Domain historical financials, FY21 to FY24 | Audited annual reports (Deloitte) | High | ASX announcements: private and personal use; link, do not rehost |
 | Domain 1H25 and FY25 | 1H25 results (reviewed, not audited); broker medians and trading update in the booklet | Medium: no FY25 actuals were published | As above |
 | Domain share prices and VWAPs | Booklet disclosures; no daily series (Yahoo no longer has DHG, and I decided against other downloads) | High | Booklet as above |
-| Peer financials | Peer annual reports and results releases | High for audited figures; medium for adjusted EBITDA | Company material: cite and link |
-| Peer share prices | Copied by hand for 30 May 2025 from the exchange or company disclosures, with source and date | High | Cite and link; no automated collection |
+| Peer financials | Not collected (see [DECISIONS.md](DECISIONS.md), 5 October 2026) | Not applicable | Not applicable |
+| Peer share prices | Not recorded; the multiples come from Grant Samuel's charts at 30 May 2025 (booklet p. 150) | Medium: the expert's analysis, not checked against primary sources | Cite the booklet page |
 | Peer forecasts | Company-published consensus for Scout24, Rightmove and Hemnet | Medium-high | Company pages with disclaimers |
 | Precedent transactions | Grant Samuel's list in the booklet, checked against acquirer and target releases | High where a party states the multiple | Company and regulator releases |
 | Risk-free rate | RBA table F2 | High | CC BY 4.0 |
@@ -383,7 +383,7 @@ A beta of my own would regress weekly or monthly Domain returns on the S&P/ASX 2
 - ASX: the [website terms](https://www.asx.com.au/legals/terms-of-use.html) allow saving or printing "for your own information purposes only, including research, study or other personal, non-commercial use", and prohibit republishing content or using a screen scraper. I will link to ASX documents and quote sparingly with page references.
 - SEC EDGAR: [free to access](https://www.sec.gov/os/accessing-edgar-data) at up to 10 requests per second with a declared User-Agent.
 
-Automated collection from Yahoo conflicts with s 2.4.9, even for study. I therefore download no price series; peer prices for 30 May 2025 are copied by hand with their source (see [ARCHITECTURE.md](ARCHITECTURE.md#market-data)).
+Automated collection from Yahoo conflicts with s 2.4.9, even for study. I therefore download no price series; I record no peer prices and use the multiples Grant Samuel printed for 30 May 2025 (see [ARCHITECTURE.md](ARCHITECTURE.md#market-data)).
 
 ### What I must extract by hand from the scheme booklet
 

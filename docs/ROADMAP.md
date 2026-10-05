@@ -96,7 +96,7 @@ Done when: the timeline has a document link for every event, and I can explain t
 
 ### Phase 2: data collection and extraction
 
-Transcribe the tables listed in [RESEARCH.md](RESEARCH.md) section 6 against the page and check each against the totals printed in the booklet. Record peer prices for 30 May 2025 from named sources, with the date each was read and no scripted downloads. Download the RBA series. Build the assumptions file and its schema, the extracted CSV files and the source trace test. Fix the valuation date, share count and net debt build.
+Transcribe the tables listed in [RESEARCH.md](RESEARCH.md) section 6 against the page and check each against the totals printed in the booklet. Use the expert's printed peer multiples at 30 May 2025 and record no peer prices. Download the RBA series. Build the assumptions file and its schema, the extracted CSV files and the source trace test. Fix the valuation date, share count and net debt build.
 
 Done when: the source trace test passes, every transcribed total matches the booklet's printed total, and the items I could not verify are listed with a reason.
 
@@ -136,7 +136,7 @@ Done when: the live site passes the same checks as the local build, and the link
 |---|---|
 | Domain published no FY25 accounts, so the latest actuals are 1H25 | Use the expert's valuation date of 31 December 2024 and its information set, and say so on the site |
 | The expert's scenarios A to H are only partly disclosed, so I cannot reproduce its DCF | Build my own DCF, compare outputs and not inputs where inputs are missing, and label what I could not replicate |
-| Peer EBITDA is defined differently across companies | Put every peer on one basis, record the adjustments, and show them in the comparables table |
+| Peer EBITDA is defined differently across companies | I use the expert's printed multiples as published, state that basis in the output, and do not put the peers on my own basis |
 | Beta is hard to measure for Domain and I use no price download | Test the expert's beta range against its published evidence and show the sensitivity of the value to it |
 | Transcription errors from PDF tables | Hand transcription, a second reading, totals checked against the printed totals, and the source trace test |
 | Excel and LibreOffice treat a function differently | Reconciliation test fails on empty cells and errors, and I avoid functions that differ |
