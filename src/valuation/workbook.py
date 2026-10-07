@@ -18,6 +18,7 @@ from openpyxl.worksheet.worksheet import Worksheet
 
 from valuation.forecast import EARLY_YEARS
 from valuation.inputs import Inputs
+from valuation.workbook_dcf import add_dcf_sheet
 
 ASSUMPTIONS_SHEET = "Assumptions"
 HEADER_ROW = 4
@@ -194,4 +195,6 @@ def build_workbook(inputs: Inputs) -> Workbook:
     if default is not None:
         book.remove(default)
     add_assumptions_sheet(book, inputs)
+    for key, reference in add_dcf_sheet(book).items():
+        _define_name(book, key, reference)
     return book

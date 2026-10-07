@@ -44,8 +44,8 @@ def rows_by_name(book: Workbook) -> dict[str, int]:
     return {str(name): FIRST_INPUT_ROW + offset for offset, name in enumerate(names)}
 
 
-def test_the_workbook_has_one_sheet_named_assumptions(book: Workbook) -> None:
-    assert book.sheetnames == [ASSUMPTIONS_SHEET]
+def test_the_assumptions_sheet_comes_first(book: Workbook) -> None:
+    assert book.sheetnames[0] == ASSUMPTIONS_SHEET
 
 
 def test_every_input_in_the_file_is_a_row_with_its_value_and_source(
