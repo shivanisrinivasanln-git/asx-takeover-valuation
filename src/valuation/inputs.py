@@ -117,8 +117,8 @@ class Inputs:
             raise ValueError(f"{key} is a single number, not a series")
         return value
 
-    def table_number(self, table: str, column: str, **match: str) -> float:
-        """The value in `column` of the one row of `table` whose fields equal `match`."""
+    def table_row(self, table: str, **match: str) -> Mapping[str, str]:
+        """The one row of `table` whose fields equal `match`."""
         rows = [
             row
             for row in self.tables[table]
@@ -126,7 +126,11 @@ class Inputs:
         ]
         if len(rows) != 1:
             raise ValueError(f"{table} has {len(rows)} rows matching {match}, expected 1")
-        return float(rows[0][column])
+        return rows[0]
+
+    def table_number(self, table: str, column: str, **match: str) -> float:
+        """The value in `column` of the one row of `table` whose fields equal `match`."""
+        return float(self.table_row(table, **match)[column])
 
 
 def load_inputs(root: Path) -> Inputs:
