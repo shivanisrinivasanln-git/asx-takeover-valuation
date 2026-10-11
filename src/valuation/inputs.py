@@ -8,7 +8,7 @@ missing input stops the run before any calculation starts.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 from valuation.assumptions import Assumption, load_assumptions
@@ -115,6 +115,10 @@ REQUIRED_TABLES = (
 )
 
 
+# Tables I wrote myself (each row still carries its source, location and date).
+REQUIRED_WRITTEN_TABLES = ("gap_step_explanations",)
+
+
 class MissingInputError(ValueError):
     """One or more required inputs or data files are missing; the message lists each."""
 
@@ -149,6 +153,13 @@ class Inputs:
             raise ValueError(f"{table} has {len(rows)} rows matching {match}, expected 1")
         return rows[0]
 
+    def with_assumption_values(self, values: Mapping[str, float]) -> Inputs:
+        """The same inputs with some single-number assumptions set to other values."""
+        assumptions = dict(self.assumptions)
+        for name, value in values.items():
+            assumptions[name] = replace(assumptions[name], value=value)
+        return Inputs(assumptions=assumptions, tables=self.tables)
+
     def table_number(self, table: str, column: str, **match: str) -> float:
         """The value in `column` of the one row of `table` whose fields equal `match`."""
         return float(self.table_row(table, **match)[column])
@@ -176,6 +187,13 @@ def load_inputs(root: Path) -> Inputs:
             tables[name] = tuple(load_rows(path))
         else:
             problems.append(f"data/extracted/{name}.csv: file not found")
+
+    for name in REQUIRED_WRITTEN_TABLES:
+        path = root / "data" / "written" / f"{name}.csv"
+        if path.exists():
+            tables[name] = tuple(load_rows(path))
+        else:
+            problems.append(f"data/written/{name}.csv: file not found")
 
     if problems:
         raise MissingInputError("\n".join(problems))

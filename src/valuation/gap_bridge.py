@@ -16,7 +16,7 @@ measured in my own combination of the methods.
 from __future__ import annotations
 
 from collections.abc import Callable, Mapping
-from dataclasses import dataclass, replace
+from dataclasses import dataclass
 from typing import Any
 
 from valuation.inputs import Inputs
@@ -70,6 +70,8 @@ class _Step:
     label: str
     expert_values: Mapping[str, float]
     my_values: Mapping[str, float]
+    explanation: str
+    sources: str
 
 
 def expert_input_name(name: str) -> str:
@@ -80,18 +82,15 @@ def bridge_input_names() -> tuple[str, ...]:
     return tuple(name for _, _, names in STEP_GROUPS for name in names)
 
 
-def _with_values(inputs: Inputs, values: Mapping[str, float]) -> Inputs:
-    assumptions = dict(inputs.assumptions)
-    for name, value in values.items():
-        assumptions[name] = replace(assumptions[name], value=value)
-    return Inputs(assumptions=assumptions, tables=inputs.tables)
-
-
 def expert_case_inputs(inputs: Inputs) -> Inputs:
     """My inputs with each bridge input set to the expert's value (its scenario A position)."""
-    return _with_values(
-        inputs, {name: inputs.number(expert_input_name(name)) for name in bridge_input_names()}
+    return inputs.with_assumption_values(
+        {name: inputs.number(expert_input_name(name)) for name in bridge_input_names()}
     )
+
+
+def _written(inputs: Inputs, step_id: str) -> Mapping[str, str]:
+    return inputs.table_row("gap_step_explanations", step_id=step_id)
 
 
 def _steps(inputs: Inputs) -> list[_Step]:
@@ -99,6 +98,8 @@ def _steps(inputs: Inputs) -> list[_Step]:
         _Step(
             id=WEIGHTS_STEP_ID,
             label="Method weights",
+            explanation=_written(inputs, WEIGHTS_STEP_ID)["text"],
+            sources=_written(inputs, WEIGHTS_STEP_ID)["location"],
             expert_values={name: inputs.number(expert_input_name(name)) for name in WEIGHT_NAMES},
             my_values={name: inputs.number(name) for name in WEIGHT_NAMES},
         )
@@ -108,6 +109,8 @@ def _steps(inputs: Inputs) -> list[_Step]:
             _Step(
                 id=step_id,
                 label=label,
+                explanation=_written(inputs, step_id)["text"],
+                sources=_written(inputs, step_id)["location"],
                 expert_values={name: inputs.number(expert_input_name(name)) for name in names},
                 my_values={name: inputs.number(name) for name in names},
             )
@@ -120,10 +123,18 @@ def gap_bridge(
 ) -> dict[str, Any]:
     """The bridge on the current inputs. `preferred_value_aud` is the engine's preferred value."""
     steps = _steps(inputs)
-    expert_inputs = _with_values(
-        inputs, {name: value for step in steps[1:] for name, value in step.expert_values.items()}
+    written_ids = {row["step_id"] for row in inputs.tables["gap_step_explanations"]}
+    if written_ids != {step.id for step in steps}:
+        raise ValueError(
+            "gap_step_explanations does not match the bridge steps: "
+            f"{sorted(written_ids ^ {step.id for step in steps})}"
+        )
+    expert_inputs = inputs.with_assumption_values(
+        {name: value for step in steps[1:] for name, value in step.expert_values.items()}
     )
-    multiples_reading_aud = preferred_value_aud(_with_values(expert_inputs, steps[0].expert_values))
+    multiples_reading_aud = preferred_value_aud(
+        expert_inputs.with_assumption_values(steps[0].expert_values)
+    )
 
     rows: list[dict[str, Any]] = []
     swapped: dict[str, float] = {}
@@ -133,7 +144,7 @@ def gap_bridge(
         # Expert inputs already carry my weights, so the weights step swaps nothing.
         if step.id != WEIGHTS_STEP_ID:
             swapped.update(step.my_values)
-        value_aud = preferred_value_aud(_with_values(expert_inputs, swapped))
+        value_aud = preferred_value_aud(expert_inputs.with_assumption_values(swapped))
         change_aud = value_aud - previous_aud
         cumulative_aud += change_aud
         rows.append(
@@ -143,6 +154,8 @@ def gap_bridge(
                 "inputs": list(step.my_values),
                 "expert_values": dict(step.expert_values),
                 "my_values": dict(step.my_values),
+                "explanation": step.explanation,
+                "sources": step.sources,
                 "change_aud": change_aud,
                 "cumulative_value_per_share_aud": cumulative_aud,
             }

@@ -26,6 +26,7 @@ from valuation.forecast import YearCashFlow, forecast_from_inputs
 from valuation.gap_bridge import gap_bridge
 from valuation.inputs import Inputs
 from valuation.multiples import Measure, Method, multiples_value
+from valuation.precedent_sensitivity import precedent_completed_deals_only
 from valuation.sensitivity import (
     base_discount_rate_pct,
     sensitivity_grid,
@@ -292,13 +293,22 @@ def valuation_date_label(inputs: Inputs) -> str:
     return f"{day} {calendar.month_name[month]} {year}"
 
 
-def preferred_value_per_share_aud(inputs: Inputs) -> float:
-    """My preferred value per share on a set of inputs, for the gap bridge's repeated runs."""
+def combined_range_aud(inputs: Inputs) -> tuple[float, float, float]:
+    """My combined low, preferred and high value per share on a set of inputs."""
     values = _Values()
     _add_dcf(values, inputs, forecast_from_inputs(inputs))
     _add_multiples(values, inputs)
     _add_combined(values, inputs)
-    return float(values.items["preferred_value_per_share_aud"]["value"])
+    return (
+        float(values.items["combined_value_per_share_aud_low"]["value"]),
+        float(values.items["preferred_value_per_share_aud"]["value"]),
+        float(values.items["combined_value_per_share_aud_high"]["value"]),
+    )
+
+
+def preferred_value_per_share_aud(inputs: Inputs) -> float:
+    """My preferred value per share on a set of inputs, for the gap bridge's repeated runs."""
+    return combined_range_aud(inputs)[1]
 
 
 def build_valuation(inputs: Inputs) -> dict[str, Any]:
@@ -333,6 +343,11 @@ def build_valuation(inputs: Inputs) -> dict[str, Any]:
         ],
         "forecast": _forecast_table(inputs, cash_flows),
         "sensitivity": _sensitivity_table(inputs),
+        "sensitivities": {
+            "precedent_completed_deals_only": precedent_completed_deals_only(
+                inputs, combined_range_aud
+            ),
+        },
         "gap_bridge": gap_bridge(
             inputs,
             preferred_value_per_share_aud,

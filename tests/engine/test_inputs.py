@@ -5,7 +5,13 @@ from pathlib import Path
 
 import pytest
 
-from valuation.inputs import REQUIRED_ASSUMPTIONS, REQUIRED_TABLES, MissingInputError, load_inputs
+from valuation.inputs import (
+    REQUIRED_ASSUMPTIONS,
+    REQUIRED_TABLES,
+    REQUIRED_WRITTEN_TABLES,
+    MissingInputError,
+    load_inputs,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -13,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[2]
 def copy_inputs(destination: Path) -> Path:
     shutil.copy(ROOT / "assumptions.yaml", destination / "assumptions.yaml")
     shutil.copytree(ROOT / "data" / "extracted", destination / "data" / "extracted")
+    shutil.copytree(ROOT / "data" / "written", destination / "data" / "written")
     return destination
 
 
@@ -20,6 +27,7 @@ def test_the_repository_inputs_load() -> None:
     inputs = load_inputs(ROOT)
     assert set(REQUIRED_ASSUMPTIONS) <= set(inputs.assumptions)
     assert set(REQUIRED_TABLES) <= set(inputs.tables)
+    assert set(REQUIRED_WRITTEN_TABLES) <= set(inputs.tables)
 
 
 def test_every_input_in_the_file_is_required_by_the_engine() -> None:
@@ -79,3 +87,19 @@ def test_every_problem_is_reported_in_one_error(tmp_path: Path) -> None:
 def test_a_missing_assumptions_file_raises(tmp_path: Path) -> None:
     with pytest.raises(MissingInputError, match=r"assumptions.yaml: file not found"):
         load_inputs(tmp_path)
+
+
+def test_a_missing_written_table_raises_and_names_it(tmp_path: Path) -> None:
+    root = copy_inputs(tmp_path)
+    (root / "data" / "written" / "gap_step_explanations.csv").unlink()
+    with pytest.raises(MissingInputError, match=r"gap_step_explanations\.csv: file not found"):
+        load_inputs(root)
+
+
+def test_with_assumption_values_changes_only_the_named_inputs() -> None:
+    inputs = load_inputs(ROOT)
+    changed = inputs.with_assumption_values({"terminal_growth_pct": 3.0})
+    assert changed.number("terminal_growth_pct") == 3.0
+    assert inputs.number("terminal_growth_pct") == 4.0
+    assert changed.number("tax_rate_pct") == inputs.number("tax_rate_pct")
+    assert changed.tables is inputs.tables

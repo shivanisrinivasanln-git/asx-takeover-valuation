@@ -202,3 +202,33 @@ def test_a_lower_terminal_growth_of_mine_shows_up_as_a_negative_dcf_step(
     assert changes["terminal_growth"] == pytest.approx(0.5 * dcf_effect, rel=1e-9)
     total = sum(changes.values())
     assert total == pytest.approx(float(bridge["total_gap_aud"]), abs=TOLERANCE_AUD)
+
+
+def test_every_step_has_the_explanation_i_wrote_and_it_states_the_steps_amount(
+    bridge: dict[str, Any],
+) -> None:
+    for step in bridge["steps"]:
+        amount = f"A${abs(step['change_aud']):.2f}"
+        assert amount in step["explanation"], (step["id"], amount)
+        assert step["sources"].startswith("pp. "), step["id"]
+
+
+def test_the_precedent_explanation_quotes_the_completed_deals_figure(inputs: Inputs) -> None:
+    valuation = build_valuation(inputs)
+    steps = {step["id"]: step for step in valuation["gap_bridge"]["steps"]}
+    section = valuation["sensitivities"]["precedent_completed_deals_only"]
+    figure = f"A${section['preferred_value_per_share_aud']:.2f}"
+    base = f"A${section['base_preferred_value_per_share_aud']:.2f}"
+    assert figure in steps["precedent_multiples"]["explanation"]
+    assert base in steps["precedent_multiples"]["explanation"]
+
+
+def test_an_explanation_for_a_step_that_does_not_exist_is_rejected(inputs: Inputs) -> None:
+    existing = inputs.tables["gap_step_explanations"]
+    rows = (*existing, {**existing[0], "step_id": "invented_step"})
+    changed = Inputs(
+        assumptions=inputs.assumptions,
+        tables={**inputs.tables, "gap_step_explanations": rows},
+    )
+    with pytest.raises(ValueError, match="invented_step"):
+        gap_bridge(changed, preferred_value_per_share_aud, start_value_aud=4.26)
