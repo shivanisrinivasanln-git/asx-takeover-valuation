@@ -1,17 +1,29 @@
-"""Compare the recalculated Excel model with the engine.
+"""Reconcile the recalculated Excel model with the engine.
 
-A problem is a named output cell that is missing, empty, an error, or differs from the engine's
-figure by more than the tolerance for its unit. The stored values come from Excel's own
-calculation (scripts/build_model.py), so a formula that Excel and the engine read differently
-shows up here.
+Two kinds of problem are reported, each as one line:
+
+- value problems: a named output cell is missing, empty, an error, or differs from the engine's
+  figure by more than the tolerance for its unit;
+- stale model problems: the committed workbook's formulas, typed values or defined names differ
+  from a workbook built now from the inputs, so the file was not rebuilt after a change.
+
+The stored values come from Excel's own calculation (scripts/build_model.py), so a formula that
+Excel and the engine read differently shows up as a value problem.
 """
 
 from __future__ import annotations
 
 import math
 from collections.abc import Mapping
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
+from openpyxl import load_workbook
 from openpyxl.workbook.workbook import Workbook
+
+from valuation.inputs import Inputs
+from valuation.output import build_valuation
+from valuation.workbook import build_workbook
 
 # Absolute tolerance by the unit a key's name promises. Money follows the project rule of
 # A$0.005 per share and A$0.05m; the others are set at the same order of size.
@@ -23,6 +35,7 @@ TOLERANCE_BY_UNIT: dict[str, float] = {
     "x": 0.005,
     "years": 0.005,
 }
+FORMULA_NUMBER_TOLERANCE = 1e-12
 
 
 def _destination(book: Workbook, name: str) -> tuple[str, str] | None:
@@ -61,4 +74,59 @@ def value_problems(calculated: Workbook, expected: Mapping[str, Mapping[str, obj
                 f"{key}: {sheet_name}!{reference} is {cell!r}, engine {engine!r}, "
                 f"tolerance {tolerance}"
             )
+    return problems
+
+
+def _same(a: object, b: object) -> bool:
+    if isinstance(a, int | float) and isinstance(b, int | float):
+        return not isinstance(a, bool) and abs(a - b) <= FORMULA_NUMBER_TOLERANCE * max(1.0, abs(b))
+    return a == b
+
+
+def stale_problems(committed: Workbook, rebuilt: Workbook) -> list[str]:
+    """Compare formulas, typed values and defined names of the committed file with a rebuild."""
+    problems: list[str] = []
+    if committed.sheetnames != rebuilt.sheetnames:
+        return [f"sheets differ: {committed.sheetnames} against {rebuilt.sheetnames}"]
+    for sheet_name in rebuilt.sheetnames:
+        old, new = committed[sheet_name], rebuilt[sheet_name]
+        seen: set[tuple[int, int]] = set()
+        for row in new.iter_rows():
+            for cell in row:
+                if cell.value is None:
+                    continue
+                seen.add((cell.row, cell.column))
+                stored = old.cell(cell.row, cell.column).value
+                if not _same(stored, cell.value):
+                    problems.append(
+                        f"{sheet_name}!{cell.coordinate}: file has {stored!r}, "
+                        f"a rebuild gives {cell.value!r}"
+                    )
+        for row in old.iter_rows():
+            for cell in row:
+                if cell.value is not None and (cell.row, cell.column) not in seen:
+                    problems.append(
+                        f"{sheet_name}!{cell.coordinate}: file has {cell.value!r}, a rebuild "
+                        "leaves it empty"
+                    )
+    names_old = {name: _destination(committed, name) for name in committed.defined_names}
+    names_new = {name: _destination(rebuilt, name) for name in rebuilt.defined_names}
+    for name in sorted(set(names_old) | set(names_new)):
+        if names_old.get(name) != names_new.get(name):
+            problems.append(
+                f"name {name}: file has {names_old.get(name)}, "
+                f"a rebuild gives {names_new.get(name)}"
+            )
+    return problems
+
+
+def reconcile(committed_path: Path, inputs: Inputs) -> list[str]:
+    """Every problem found between the committed model file, a fresh rebuild and the engine."""
+    expected = build_valuation(inputs)["values"]
+    with TemporaryDirectory() as directory:
+        rebuilt_path = Path(directory) / "rebuilt.xlsx"
+        build_workbook(inputs).save(rebuilt_path)
+        rebuilt = load_workbook(rebuilt_path)
+    problems = stale_problems(load_workbook(committed_path), rebuilt)
+    problems += value_problems(load_workbook(committed_path, data_only=True), expected)
     return problems

@@ -102,7 +102,7 @@ Done when: the source trace test passes, every transcribed total matches the boo
 
 ### Phase 3: valuation model
 
-Engine functions for the DCF, trading comparables and precedent transactions, each with a unit test and a hand-worked example. A sensitivity grid of discount rate and terminal growth. `valuation.json` at full precision. The Excel model written with openpyxl as live formulas and checked by the LibreOffice reconciliation test. A cross-check against the expert's published scenarios where its assumptions are disclosed.
+Engine functions for the DCF, trading comparables and precedent transactions, each with a unit test and a hand-worked example. A sensitivity grid of discount rate and terminal growth. `valuation.json` at full precision. The Excel model written with openpyxl as live formulas and checked by a reconciliation test on the Excel-recalculated file. A cross-check against the expert's published scenarios where its assumptions are disclosed.
 
 Done when: all engine tests pass, the Excel reconciliation test passes at the A$0.005 per share tolerance, and I can explain every sheet of the workbook.
 
@@ -139,7 +139,7 @@ Done when: the live site passes the same checks as the local build, and the link
 | Peer EBITDA is defined differently across companies | I use the expert's printed multiples as published, state that basis in the output, and do not put the peers on my own basis |
 | Beta is hard to measure for Domain and I use no price download | Test the expert's beta range against its published evidence and show the sensitivity of the value to it |
 | Transcription errors from PDF tables | Hand transcription, a second reading, totals checked against the printed totals, and the source trace test |
-| Excel and LibreOffice treat a function differently | Reconciliation test fails on empty cells and errors, and I avoid functions that differ |
+| A function behaves differently in another spreadsheet program than in Excel, which calculates the stored values | Reconciliation test fails on empty cells and errors, and I use plain arithmetic and a few standard functions |
 | A site without a component framework is slow to build | Keep the interactive part to a lookup of precalculated values, and build the static content first |
 | Links to ASX and company documents stop working | Link to the exact document URL, keep local copies out of git, and note the access date |
 | Copyright of third-party documents | Link, never copy; quote sparingly with page numbers; no third-party PDFs in the repository |
