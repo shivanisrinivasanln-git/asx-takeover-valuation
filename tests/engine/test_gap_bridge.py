@@ -136,6 +136,15 @@ def test_every_bridge_input_has_the_expert_value_and_it_is_the_one_in_the_report
         assert expert_input_name(name) in inputs.assumptions, name
 
 
+def test_my_values_in_every_step_are_the_inputs_i_chose(
+    inputs: Inputs, bridge: dict[str, Any]
+) -> None:
+    for step in bridge["steps"]:
+        for name, value in step["my_values"].items():
+            assert value == inputs.number(name), (step["id"], name)
+            assert step["expert_values"][name] == inputs.number(expert_input_name(name))
+
+
 def test_the_experts_weights_add_to_100_and_put_nothing_on_the_dcf(inputs: Inputs) -> None:
     weights = [inputs.number(expert_input_name(name)) for name in WEIGHT_NAMES]
     assert sum(weights) == pytest.approx(100.0, rel=1e-12)

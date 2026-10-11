@@ -277,6 +277,17 @@ def test_the_forecast_table_has_the_stub_then_ten_years_and_discounts_to_the_dcf
     )
 
 
+def test_the_forecast_margin_is_ebitda_over_revenue_in_every_row(
+    valuation: dict[str, object],
+) -> None:
+    forecast = valuation["forecast"]
+    assert isinstance(forecast, dict)
+    for row in forecast["rows"]:
+        assert row["ebitda_margin_pct"] == pytest.approx(
+            row["ebitda_aud_m"] / row["revenue_aud_m"] * 100, rel=1e-12
+        ), row["period"]
+
+
 def test_the_sensitivity_table_is_five_by_five_with_the_base_cell_marked(
     valuation: dict[str, object],
 ) -> None:

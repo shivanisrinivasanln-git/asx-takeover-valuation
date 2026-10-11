@@ -67,6 +67,20 @@ def test_the_base_case_is_left_unchanged_beside_the_sensitivity(inputs: Inputs) 
     assert section["change_in_preferred_value_aud"] < 0
 
 
+def test_the_base_multiples_and_base_combined_range_repeat_the_base_case(
+    inputs: Inputs,
+) -> None:
+    valuation = build_valuation(inputs)
+    section = valuation["sensitivities"]["precedent_completed_deals_only"]
+    values = valuation["values"]
+    assert section["base_multiple_low_x"] == inputs.number("precedent_ebitda_multiple_fy26_low_x")
+    assert section["base_multiple_high_x"] == inputs.number("precedent_ebitda_multiple_fy26_high_x")
+    for case in ("low", "high"):
+        assert section[f"base_combined_value_per_share_aud_{case}"] == pytest.approx(
+            values[f"combined_value_per_share_aud_{case}"]["value"], rel=1e-12
+        )
+
+
 def test_fewer_than_three_completed_deals_are_rejected(inputs: Inputs) -> None:
     rows = tuple({**row, "unsuccessful": "yes"} for row in inputs.tables["precedent_transactions"])
     changed = Inputs(
