@@ -10,7 +10,7 @@ from openpyxl.worksheet.worksheet import Worksheet
 
 from valuation.formula_audit import names_used, numeric_constants, sheet_references
 from valuation.inputs import Inputs, load_inputs
-from valuation.output import FOOTBALL_FIELD_ROWS, build_valuation
+from valuation.output import FOOTBALL_FIELD_ROWS, PREFERRED_KEY_BY_ROW, build_valuation
 from valuation.workbook import ASSUMPTIONS_SHEET, build_workbook, input_rows
 from valuation.workbook_dcf import DCF_SHEET
 from valuation.workbook_dcf import NOTE_COLUMN as DCF_NOTES
@@ -52,7 +52,7 @@ def test_the_workbook_has_the_five_sheets_in_order(book: Workbook) -> None:
 
 def test_every_valuation_key_is_a_name_for_exactly_one_cell(book: Workbook, inputs: Inputs) -> None:
     keys = list(build_valuation(inputs)["values"])
-    assert len(keys) == 101
+    assert len(keys) == 134
     for key in keys:
         assert key in book.defined_names, key
         destinations = list(book.defined_names[key].destinations)
@@ -110,8 +110,11 @@ def test_every_formula_row_has_a_note_on_every_sheet(book: Workbook) -> None:
 def test_the_summary_rows_are_the_football_field_rows(book: Workbook) -> None:
     sheet = book[SUMMARY_SHEET]
     assert isinstance(sheet, Worksheet)
-    for offset, (_, label, low_key, high_key) in enumerate(FOOTBALL_FIELD_ROWS):
+    for offset, (row_id, label, low_key, high_key) in enumerate(FOOTBALL_FIELD_ROWS):
         row = FIRST_ROW + offset
         assert sheet[f"A{row}"].value == label
         assert sheet[f"C{row}"].value == f"={low_key}"
         assert sheet[f"D{row}"].value == f"={high_key}"
+        preferred_key = PREFERRED_KEY_BY_ROW[row_id]
+        expected = None if preferred_key is None else f"={preferred_key}"
+        assert sheet[f"E{row}"].value == expected, row_id

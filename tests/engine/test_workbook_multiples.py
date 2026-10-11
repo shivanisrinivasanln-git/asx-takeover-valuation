@@ -103,7 +103,7 @@ def test_every_multiples_output_key_resolves_to_a_cell_on_its_sheet(
         for key in build_valuation(inputs)["values"]
         if key.startswith(("trading_", "precedent_"))
     ]
-    assert len(keys) == 56
+    assert len(keys) == 80
     for key in keys:
         ((sheet_name, _),) = book.defined_names[key].destinations
         expected = COMPARABLES_SHEET if key.startswith("trading_") else PRECEDENTS_SHEET

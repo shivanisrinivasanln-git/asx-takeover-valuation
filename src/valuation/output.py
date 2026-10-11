@@ -15,6 +15,7 @@ from typing import Any
 
 from valuation import finance
 from valuation.bridge import Case, adjusted_net_debt_aud_m, equity_bridge
+from valuation.combine import METHOD_NAMES, MethodName, combined_value_per_share_aud, method_weights
 from valuation.dcf import (
     dcf_value,
     discount_factor,
@@ -108,9 +109,17 @@ def _add_multiples(values: _Values, inputs: Inputs) -> None:
             prefix = f"{method}_{measure}"
             values.add(f"{prefix}_earnings_aud_m", result.earnings_aud_m)
             values.add(f"{prefix}_control_premium_pct", result.control_premium_pct)
-            multiples = {"low": result.low_multiple_x, "high": result.high_multiple_x}
-            operations = {"low": result.value_low_aud_m, "high": result.value_high_aud_m}
-            for case in EDGE_CASES:
+            multiples = {
+                "low": result.low_multiple_x,
+                "mid": result.mid_multiple_x,
+                "high": result.high_multiple_x,
+            }
+            operations = {
+                "low": result.value_low_aud_m,
+                "mid": result.value_mid_aud_m,
+                "high": result.value_high_aud_m,
+            }
+            for case in CASES:
                 bridge = equity_bridge(inputs, operations[case], case)
                 values.add(f"{prefix}_multiple_x_{case}", multiples[case])
                 values.add(f"{prefix}_business_operations_value_aud_m_{case}", operations[case])
@@ -118,6 +127,37 @@ def _add_multiples(values: _Values, inputs: Inputs) -> None:
                 values.add(f"{prefix}_equity_value_aud_m_{case}", bridge.equity_value_aud_m)
                 values.add(f"{prefix}_diluted_shares_m_{case}", bridge.diluted_shares_m)
                 values.add(f"{prefix}_value_per_share_aud_{case}", bridge.value_per_share_aud)
+
+
+def _method_value_key(method: MethodName, case: Case) -> str:
+    # The football field and the weights use the EBITDA multiple; the EBITA values are shown only.
+    stem = {"dcf": "dcf", "trading": "trading_ebitda", "precedent": "precedent_ebitda"}[method]
+    return f"{stem}_value_per_share_aud_{case}"
+
+
+def _add_combined(values: _Values, inputs: Inputs) -> None:
+    """My weights, each method's preferred value and the combined range (task P4-06)."""
+    weights = method_weights(inputs)
+    for method in METHOD_NAMES:
+        values.add(f"method_weight_{method}_pct", weights.of(method))
+    by_case: dict[Case, dict[MethodName, float]] = {
+        case: {
+            method: values.items[_method_value_key(method, case)]["value"]
+            for method in METHOD_NAMES
+        }
+        for case in CASES
+    }
+    for method in METHOD_NAMES:
+        values.add(f"preferred_{method}_value_per_share_aud", by_case["mid"][method])
+    values.add(
+        "combined_value_per_share_aud_low", combined_value_per_share_aud(weights, by_case["low"])
+    )
+    values.add(
+        "preferred_value_per_share_aud", combined_value_per_share_aud(weights, by_case["mid"])
+    )
+    values.add(
+        "combined_value_per_share_aud_high", combined_value_per_share_aud(weights, by_case["high"])
+    )
 
 
 def _add_discount_rate(values: _Values, inputs: Inputs) -> None:
@@ -224,12 +264,26 @@ FOOTBALL_FIELD_ROWS = (
         "precedent_ebitda_value_per_share_aud_high",
     ),
     (
+        "combined",
+        "My range (weighted combination)",
+        "combined_value_per_share_aud_low",
+        "combined_value_per_share_aud_high",
+    ),
+    (
         "expert",
         "Independent expert",
         "expert_value_per_share_aud_low",
         "expert_value_per_share_aud_high",
     ),
 )
+# The preferred value drawn as a tick on each row; the expert published a range only.
+PREFERRED_KEY_BY_ROW: dict[str, str | None] = {
+    "dcf": "preferred_dcf_value_per_share_aud",
+    "trading": "preferred_trading_value_per_share_aud",
+    "precedent": "preferred_precedent_value_per_share_aud",
+    "combined": "preferred_value_per_share_aud",
+    "expert": None,
+}
 
 
 def valuation_date_label(inputs: Inputs) -> str:
@@ -243,6 +297,7 @@ def build_valuation(inputs: Inputs) -> dict[str, Any]:
     values = _Values()
     _add_dcf(values, inputs, cash_flows)
     _add_multiples(values, inputs)
+    _add_combined(values, inputs)
     _add_discount_rate(values, inputs)
     _add_reference(values, inputs)
     return {
@@ -257,7 +312,13 @@ def build_valuation(inputs: Inputs) -> dict[str, Any]:
         },
         "values": values.items,
         "football_field": [
-            {"id": row_id, "label": label, "low_key": low_key, "high_key": high_key}
+            {
+                "id": row_id,
+                "label": label,
+                "low_key": low_key,
+                "high_key": high_key,
+                "preferred_key": PREFERRED_KEY_BY_ROW[row_id],
+            }
             for row_id, label, low_key, high_key in FOOTBALL_FIELD_ROWS
         ],
         "forecast": _forecast_table(inputs, cash_flows),

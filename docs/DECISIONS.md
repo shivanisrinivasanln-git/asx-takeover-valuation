@@ -198,4 +198,10 @@ Multiples: the seeded 18.2x to 19.9x was the expert's own implied multiple, so I
 
 Control premium: 25% on the trading method only, at enterprise value level, which is about 27.4% on the share price (the RSM median is 27.5%). The alternatives were 20%, 30% and no premium, which would leave the trading bar on a minority basis against a control offer. The engine applies the premium to enterprise value, so a share-price premium would overstate it for Domain, whose net debt is 8.7% of enterprise value.
 
-Weights and the preferred value are task P4-06.
+## 12 October 2026: method weights, mid cases and my preferred value (task P4-06)
+
+I answered one question on the weights. The options were equal thirds, 50/25/25, 40/30/30 and the DCF alone. I chose DCF 50%, trading comparables 25% and precedent transactions 25%. The combined low, preferred and high values per share are the weights times each method's low, middle and high value, so my preferred value is A$4.21 and my range is A$3.71 to A$4.75. The numbers and the alternatives are in [BASE_CASE.md](BASE_CASE.md).
+
+Trading and precedents needed a middle case. I used the midpoint of the multiple range and the average of the two diluted share counts, the same share count as the DCF middle case, because neither range has a preferred point. The weights are three inputs that must add to 100, and the engine stops with an error if they do not. The football field uses the EBITDA multiple for both multiples methods, so the weights use those values and the EBITA values stay as information.
+
+The preferred value of each method is its middle case. I added a named key for each (`preferred_dcf_value_per_share_aud` and the same for trading and precedent) as well as the combined `combined_value_per_share_aud_low`, `preferred_value_per_share_aud` and `combined_value_per_share_aud_high`, so the site, the model and the report read one name for each. The football field has a fifth row for my combined range and every row except the expert's carries a key for its preferred value. The Summary sheet shows the weights and the combination as formulas, and the Comparables and Precedents sheets have a Mid column.

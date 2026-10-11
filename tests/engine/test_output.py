@@ -54,7 +54,18 @@ EXPECTED_KEYS = (
         for method in ("trading", "precedent")
         for measure in ("ebitda", "ebita")
         for stem in MULTIPLE_STEMS
-        for case in ("low", "high")
+        for case in CASES
+    }
+    | {
+        "method_weight_dcf_pct",
+        "method_weight_trading_pct",
+        "method_weight_precedent_pct",
+        "preferred_dcf_value_per_share_aud",
+        "preferred_trading_value_per_share_aud",
+        "preferred_precedent_value_per_share_aud",
+        "combined_value_per_share_aud_low",
+        "preferred_value_per_share_aud",
+        "combined_value_per_share_aud_high",
     }
     | {
         "wacc_pct_low",
@@ -146,8 +157,59 @@ def test_the_mid_case_value_per_share_equals_the_sensitivity_base_value(
 def test_the_low_case_is_below_the_high_case_for_every_method(valuation: dict[str, object]) -> None:
     for stem in ("dcf", "trading_ebitda", "trading_ebita", "precedent_ebitda", "precedent_ebita"):
         low = number(valuation, f"{stem}_value_per_share_aud_low")
+        mid = number(valuation, f"{stem}_value_per_share_aud_mid")
         high = number(valuation, f"{stem}_value_per_share_aud_high")
-        assert low < high, stem
+        assert low < mid < high, stem
+
+
+def test_the_multiples_mid_case_is_the_midpoint_multiple_on_the_average_share_count(
+    valuation: dict[str, object],
+) -> None:
+    for method in ("trading", "precedent"):
+        for measure in ("ebitda", "ebita"):
+            stem = f"{method}_{measure}"
+            low = number(valuation, f"{stem}_multiple_x_low")
+            mid = number(valuation, f"{stem}_multiple_x_mid")
+            high = number(valuation, f"{stem}_multiple_x_high")
+            assert mid == pytest.approx((low + high) / 2, rel=1e-12)
+            shares = number(valuation, f"{stem}_diluted_shares_m_mid")
+            assert shares == pytest.approx(number(valuation, "dcf_diluted_shares_m_mid"), rel=1e-12)
+            equity = number(valuation, f"{stem}_equity_value_aud_m_mid")
+            assert number(valuation, f"{stem}_value_per_share_aud_mid") == pytest.approx(
+                equity / shares, rel=1e-12
+            )
+
+
+def test_the_combined_range_is_the_weighted_sum_of_the_method_values(
+    valuation: dict[str, object],
+) -> None:
+    weights = {
+        method: number(valuation, f"method_weight_{method}_pct")
+        for method in ("dcf", "trading", "precedent")
+    }
+    assert sum(weights.values()) == pytest.approx(100.0, rel=1e-12)
+    stems = {"dcf": "dcf", "trading": "trading_ebitda", "precedent": "precedent_ebitda"}
+    for case, key in (
+        ("low", "combined_value_per_share_aud_low"),
+        ("mid", "preferred_value_per_share_aud"),
+        ("high", "combined_value_per_share_aud_high"),
+    ):
+        expected = sum(
+            weights[method] * number(valuation, f"{stems[method]}_value_per_share_aud_{case}")
+            for method in weights
+        )
+        assert number(valuation, key) == pytest.approx(expected / 100, rel=1e-12), case
+    for method, stem in stems.items():
+        assert number(valuation, f"preferred_{method}_value_per_share_aud") == number(
+            valuation, f"{stem}_value_per_share_aud_mid"
+        )
+
+
+def test_my_preferred_value_and_range_on_my_inputs(valuation: dict[str, object]) -> None:
+    # Weights of 50, 25 and 25 on the base case give A$4.21 and A$3.71 to A$4.75 a share.
+    assert round(number(valuation, "preferred_value_per_share_aud"), 2) == 4.21
+    assert round(number(valuation, "combined_value_per_share_aud_low"), 2) == 3.71
+    assert round(number(valuation, "combined_value_per_share_aud_high"), 2) == 4.75
 
 
 def test_the_equity_bridge_adds_up_in_every_dcf_case(valuation: dict[str, object]) -> None:
@@ -183,11 +245,17 @@ def test_the_expert_reference_values_are_the_printed_range_and_its_midpoint(
 def test_the_football_field_rows_point_at_keys_that_exist(valuation: dict[str, object]) -> None:
     rows = valuation["football_field"]
     assert isinstance(rows, list)
-    assert [row["id"] for row in rows] == ["dcf", "trading", "precedent", "expert"]
+    assert [row["id"] for row in rows] == ["dcf", "trading", "precedent", "combined", "expert"]
     for row in rows:
         assert row["low_key"] in values_of(valuation), row
         assert row["high_key"] in values_of(valuation), row
         assert number(valuation, row["low_key"]) < number(valuation, row["high_key"]), row
+        if row["id"] == "expert":
+            assert row["preferred_key"] is None
+        else:
+            low = number(valuation, row["low_key"])
+            high = number(valuation, row["high_key"])
+            assert low < number(valuation, row["preferred_key"]) < high, row
 
 
 def test_the_forecast_table_has_the_stub_then_ten_years_and_discounts_to_the_dcf(

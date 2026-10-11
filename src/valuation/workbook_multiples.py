@@ -27,8 +27,7 @@ PERCENT = "0.00"
 PER_SHARE = "0.00"
 BOLD = Font(bold=True)
 HEADING_FILL = PatternFill("solid", start_color="D9E1F2")
-EDGE_CASES = ("low", "high")
-EDGE_COLUMNS = {"low": "C", "high": "D"}
+CASE_COLUMNS = {"low": "C", "mid": "D", "high": "E"}
 MEASURES: tuple[Measure, ...] = ("ebitda", "ebita")
 FIRST_BLOCK_ROW = 4
 BLOCK_HEIGHT = 14
@@ -95,8 +94,8 @@ def _value_block(
             ("per_share", PER_SHARE_ROW),
         )
     }
-    _heading(sheet, row["head"], f"{measure.upper()} multiple (A$ millions unless stated)", 4)
-    for case, column in EDGE_COLUMNS.items():
+    _heading(sheet, row["head"], f"{measure.upper()} multiple (A$ millions unless stated)", 5)
+    for case, column in CASE_COLUMNS.items():
         _put(sheet, f"{column}{row['head']}", f"{case.capitalize()} case")
         sheet[f"{column}{row['head']}"].font = BOLD
 
@@ -126,7 +125,9 @@ def _value_block(
         premium_note = "Deal multiples are control multiples, so no premium is applied."
     notes = {
         "earnings": "The expert's FY26 adjusted earnings, after the dividends to agents.",
-        "multiple": f"The low and high ends of my selected {method} range.",
+        "multiple": (
+            f"The low and high ends of my selected {method} range; the mid case is their midpoint."
+        ),
         "before": "Earnings times the multiple.",
         "premium": premium_note,
         "operations": "Value before premium grossed up by the premium.",
@@ -134,17 +135,22 @@ def _value_block(
         "ev": "Operations value plus other assets and liabilities.",
         "net_debt": "The same adjusted net debt as the DCF sheet.",
         "equity": "Enterprise value less adjusted net debt.",
-        "shares": "The low case uses the larger share count, as on the DCF sheet.",
+        "shares": "Larger count in the low case, the average in the mid case, as on the DCF sheet.",
         "per_share": "Equity value over diluted shares.",
     }
     for name, text in notes.items():
         sheet[f"{NOTE_COLUMN}{row[name]}"] = text
 
     outputs: dict[str, str] = {}
-    for case, column in EDGE_COLUMNS.items():
+    for case, column in CASE_COLUMNS.items():
         r = {name: f"{column}{number}" for name, number in row.items()}
         _put(sheet, r["earnings"], f"=fy26_adjusted_{measure}_aud_m", MONEY)
-        _put(sheet, r["multiple"], f"={method}_{measure}_multiple_fy26_{case}_x", MULTIPLE)
+        if case == "mid":
+            low_cell = f"{CASE_COLUMNS['low']}{row['multiple']}"
+            high_cell = f"{CASE_COLUMNS['high']}{row['multiple']}"
+            _put(sheet, r["multiple"], f"=({low_cell}+{high_cell})/2", MULTIPLE)
+        else:
+            _put(sheet, r["multiple"], f"={method}_{measure}_multiple_fy26_{case}_x", MULTIPLE)
         _put(sheet, r["before"], f"={r['earnings']}*{r['multiple']}", MONEY)
         if method == "trading":
             _put(sheet, r["premium"], "=control_premium_applied_pct", PERCENT)
@@ -169,7 +175,7 @@ def _value_block(
             outputs[key] = _absolute(sheet, f"{column}{row[name]}")
     outputs[f"{prefix}_earnings_aud_m"] = _absolute(sheet, f"C{row['earnings']}")
     outputs[f"{prefix}_control_premium_pct"] = _absolute(sheet, f"C{row['premium']}")
-    for column_number in range(1, 5):
+    for column_number in range(1, 6):
         sheet.cell(row["per_share"], column_number).font = BOLD
     return outputs
 

@@ -481,6 +481,35 @@ control_premium_applied_pct:
   judgement: true
   note: Chosen on 12 October 2026 in task P4-05 and applied to the trading method only, at enterprise value level. For Domain at the undisturbed price (equity about A$1,973m, adjusted net debt A$187.0m) 25% on enterprise value equals about 27.4% on the share price, close to the median premium of 27.5% in the RSM and Curtin study of 605 ASX takeovers (docs/RESEARCH.md section 4) and inside the expert's typical 20% to 35%.
 
+# Method weights
+
+method_weight_dcf_pct:
+  value: 50.0
+  unit: pct
+  source: My judgement, my answer of 12 October 2026 (task P4-06)
+  location: p. 135 (the expert gives no weights)
+  as_at: 12 October 2026
+  judgement: true
+  note: Weight of the DCF in my combined value. The expert gave both methods weight, used neither as a cross-check and says the approach cannot be reduced to a weighting calculation (p. 135), so these weights are mine and not a reading of its report. I chose 50/25/25 on 12 October 2026 from equal thirds, 50/25/25, 40/30/30 and the DCF alone (docs/BASE_CASE.md). The three weights add to 100.
+
+method_weight_trading_pct:
+  value: 25.0
+  unit: pct
+  source: My judgement, my answer of 12 October 2026 (task P4-06)
+  location: p. 135 (the expert gives no weights)
+  as_at: 12 October 2026
+  judgement: true
+  note: Weight of the trading comparables (with the control premium of task P4-05) in my combined value.
+
+method_weight_precedent_pct:
+  value: 25.0
+  unit: pct
+  source: My judgement, my answer of 12 October 2026 (task P4-06)
+  location: p. 135 (the expert gives no weights)
+  as_at: 12 October 2026
+  judgement: true
+  note: Weight of the precedent transactions in my combined value.
+
 # Discounting convention
 
 mid_year_discounting_flag:

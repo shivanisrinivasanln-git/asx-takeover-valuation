@@ -62,6 +62,22 @@ The evidence is in two forms. On the share price, the RSM and Curtin study of 60
 
 My engine applies the premium to enterprise value. At the undisturbed price Domain's equity was about A$1,973m and its adjusted net debt A$187.0m, 8.7% of enterprise value, so a 25% enterprise value premium equals about a 27.4% premium on the share price, close to the RSM median. With 25% the trading range is A$4.57 to A$5.42. At 20% it would be A$4.38 to A$5.19, and at 30% A$4.77 to A$5.65.
 
+## Method weights and my preferred value (task P4-06)
+
+Each method has a low, a middle and a high value per share. The middle is the midpoint of the multiple range for trading and precedents, and the middle discount rate (10.0%) for the DCF. In all three the middle uses the average of the two diluted share counts.
+
+| Method | Low | Middle | High | What sets the ends |
+|---|---|---|---|---|
+| DCF | A$3.47 | A$3.83 | A$4.26 | Discount rate 10.5%, 10.0% and 9.5% at 4.0% terminal growth |
+| Trading comparables | A$4.57 | A$5.00 | A$5.42 | 16.3x, 17.7x and 19.1x FY26 adjusted EBITDA with the 25% premium |
+| Precedent transactions | A$3.33 | A$4.19 | A$5.04 | 15.2x, 18.75x and 22.3x FY26 adjusted EBITDA |
+
+The bars do not all overlap: the top of the DCF (A$4.26) is below the bottom of trading (A$4.57). The expert gave both methods weight, used neither as a cross-check, and says its range cannot be reduced to a weighting calculation (p. 135), so there is no weighting to copy and the weights are my judgement.
+
+I weight the DCF 50%, trading comparables 25% and precedent transactions 25%. For comparison, equal thirds give A$3.79, A$4.34 and A$4.91 (low, middle, high), 40/30/30 gives A$3.76, A$4.29 and A$4.84, and the DCF alone gives A$3.47, A$3.83 and A$4.26. With 50/25/25 my preferred value is the weighted middle values, A$4.21, and my range is the weighted low values and the weighted high values, A$3.71 to A$4.75.
+
+Two things to keep in mind when I explain this. The range is the weighted sum of each method's low end and each method's high end, so it is the range if every method comes in low together or high together, and it is wider than a range that treats the methods as independent. And the offer of A$4.43 is inside my range and A$0.22 above my preferred value, while the expert's midpoint of A$4.26 (a midpoint of its printed A$4.06 to A$4.46 and not a figure it published) is A$0.05 above it.
+
 ## What I could not verify
 
 - The expert's reasons for starting its adopted range at 9.5% when its calculation gives 9.3% (p. 140).

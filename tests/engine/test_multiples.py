@@ -69,11 +69,15 @@ def test_my_selected_ranges_give_the_values_on_my_inputs() -> None:
     assert trading.control_premium_pct == 25.0
     assert trading.value_low_aud_m == pytest.approx(152.2 * 16.3 * 1.25, rel=1e-12)
     assert trading.value_high_aud_m == pytest.approx(152.2 * 19.1 * 1.25, rel=1e-12)
+    assert trading.mid_multiple_x == pytest.approx((16.3 + 19.1) / 2, rel=1e-12)
+    assert trading.value_mid_aud_m == pytest.approx(152.2 * 17.7 * 1.25, rel=1e-12)
     assert "control premium of 25% applied" in trading.basis
     precedent = multiples_value(inputs, "precedent", "ebitda")
     assert precedent.control_premium_pct == 0.0
     assert precedent.value_low_aud_m == pytest.approx(152.2 * 15.2, rel=1e-12)
     assert precedent.value_high_aud_m == pytest.approx(152.2 * 22.3, rel=1e-12)
+    assert precedent.mid_multiple_x == pytest.approx(18.75, rel=1e-12)
+    assert precedent.value_mid_aud_m == pytest.approx(152.2 * 18.75, rel=1e-12)
     assert "no control premium applied" in precedent.basis
 
 
