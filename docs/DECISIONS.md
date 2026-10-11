@@ -179,3 +179,9 @@ Before writing the tests I recalculated the workbook in desktop Excel and compar
 Both sheets (task P3-12) value Domain at my selected multiple range times FY26 adjusted earnings, for EBITDA and for EBITA, then run the same bridge as the DCF sheet, reading net debt and the share counts by the names of the DCF sheet's cells, so the three methods cannot drift apart. The control premium row on the Comparables sheet reads `control_premium_applied_pct`, which is zero until P4-05. On the Precedents sheet the premium is a typed 0, because deal multiples are control multiples.
 
 Under each value block I copied the expert's printed multiples with their page and date (8 peers by four multiples on Comparables, 9 deals on Precedents), and added the lowest, median and highest of each column as formulas. These tables are evidence for me to read when I choose my ranges in P4-04. The value does not use them, and each sheet says so. I put the evidence on the sheets and not on the Assumptions sheet because they are not inputs to the calculation.
+
+## 12 October 2026: the Summary sheet and the defined names
+
+The Summary sheet (task P3-13) lists value per share by method as the football field rows of `valuation.json`, then the offer, the undisturbed price, the offer premium and the midpoint of the expert's range, then the adopted discount rate range beside the two WACC builds. The WACC build sits at the bottom of the DCF sheet, once at my risk-free rate and once at the expert's, so the 9.3% to 10.5% range can be traced input by input.
+
+The workbook has one defined name for each input and one for each of the 101 keys in `valuation.json`, and no others. A test fails if a key has no name, if a name points at a range, or if a name exists that is neither an input nor a key. Where a key is also an input (the offer price and the undisturbed price, for example) the name points at the Assumptions cell.

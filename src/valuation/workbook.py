@@ -20,6 +20,7 @@ from valuation.forecast import EARLY_YEARS
 from valuation.inputs import Inputs
 from valuation.workbook_dcf import add_dcf_sheet
 from valuation.workbook_multiples import add_multiples_sheet
+from valuation.workbook_summary import add_summary_sheet
 
 ASSUMPTIONS_SHEET = "Assumptions"
 HEADER_ROW = 4
@@ -199,6 +200,7 @@ def build_workbook(inputs: Inputs) -> Workbook:
     outputs = add_dcf_sheet(book)
     outputs.update(add_multiples_sheet(book, inputs, "trading"))
     outputs.update(add_multiples_sheet(book, inputs, "precedent"))
+    outputs.update(add_summary_sheet(book))
     for key, reference in outputs.items():
         _define_name(book, key, reference)
     return book

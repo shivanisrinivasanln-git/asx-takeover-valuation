@@ -82,6 +82,10 @@ SENS_GRID_FIRST_ROW = 73
 SENS_SIZE = 5
 SENS_PV_COLUMN = "H"
 
+# Discount rate build: one block for my risk-free rate and one for the expert's.
+R_WACC_HEAD = 80
+WACC_BLOCK_HEIGHT = 10
+
 
 def _first_year_column() -> str:
     return get_column_letter(FIRST_YEAR_COLUMN)
@@ -185,7 +189,7 @@ def _forecast_block(sheet: Worksheet) -> None:
         "years",
         "=stub_period_years",
         lambda c, _p: f"=IF({c}{R_YEAR}=0,stub_period_years,1)",
-        "The stub period is half a year; every later period is a full year.",
+        "The stub period input for the first period; every later period is a full year.",
         "0.00",
     )
     _year_row(
@@ -251,7 +255,7 @@ def _forecast_block(sheet: Worksheet) -> None:
         "A$m",
         f"=corporate_cost_saving_aud_m*{first}{R_FRACTION}",
         lambda c, _p: f"=corporate_cost_saving_aud_m*{c}{R_FRACTION}",
-        "The expert's A$4.0m a year saving, scaled by the part of the year in the period.",
+        "The annual saving input, scaled by the part of the year in the period.",
         MONEY,
     )
     _year_row(
@@ -466,7 +470,7 @@ def _value_block(sheet: Worksheet, terminal_fcf_ref: str) -> dict[str, dict[str,
         R_RATE: ("Discount rate", "%"),
         R_GROWTH: ("Terminal growth rate", "%"),
         R_PV_FLOWS: ("Present value of the cash flows", "A$m"),
-        R_TV: ("Terminal value at the end of FY35", "A$m"),
+        R_TV: ("Terminal value at the end of the forecast", "A$m"),
         R_TV_FACTOR: ("Discount factor for the terminal value", "factor"),
         R_PV_TV: ("Present value of the terminal value", "A$m"),
         R_OPERATIONS: ("Value of business operations", "A$m"),
@@ -486,10 +490,10 @@ def _value_block(sheet: Worksheet, terminal_fcf_ref: str) -> dict[str, dict[str,
         R_GROWTH: "The terminal growth input, the same in all three cases.",
         R_PV_FLOWS: "Each free cash flow divided by one plus the rate, to the power of its time.",
         R_TV: "Gordon growth: the next flow over (rate less growth), raised for mid-year timing.",
-        R_TV_FACTOR: "Discounted from the end of the forecast, the stub period plus ten years.",
+        R_TV_FACTOR: "Discounted from the end of the forecast: the stub plus the full years.",
         R_PV_TV: "Terminal value times its discount factor.",
         R_OPERATIONS: "Present value of the cash flows plus that of the terminal value.",
-        R_TV_SHARE: "How much of the value comes after FY35.",
+        R_TV_SHARE: "How much of the value comes after the forecast.",
         R_OTHER: "Equity accounted investments, provisions and contingent consideration.",
         R_EV: "Operations value plus other assets and liabilities.",
         R_NET_DEBT: "Reported net debt including leases, plus the expert's two adjustments.",
@@ -649,6 +653,84 @@ def _sensitivity_block(sheet: Worksheet) -> None:
         )
 
 
+def _wacc_block(sheet: Worksheet, first_row: int, risk_free_name: str, stem: str) -> dict[str, str]:
+    """The discount rate at the low and high ends of beta and gearing, for one risk-free rate."""
+    title = (
+        "Discount rate build at my risk-free rate"
+        if risk_free_name == "risk_free_rate_pct"
+        else "Discount rate build at the expert's risk-free rate"
+    )
+    _heading(sheet, first_row, title)
+    _put(sheet, f"C{first_row}", "Low case")
+    _put(sheet, f"D{first_row}", "High case")
+    rows = {
+        "rf": (first_row + 1, "Risk-free rate", "%", "The 10-year government bond yield."),
+        "beta": (
+            first_row + 2,
+            "Equity beta",
+            "number",
+            "The low and high ends of the expert's range.",
+        ),
+        "premium": (first_row + 3, "Market risk premium", "%", "The market risk premium input."),
+        "equity": (
+            first_row + 4,
+            "Cost of equity",
+            "%",
+            "Risk-free rate plus beta times the premium.",
+        ),
+        "debt": (
+            first_row + 5,
+            "Pre-tax cost of debt",
+            "%",
+            "Risk-free rate plus the debt margin.",
+        ),
+        "debt_after_tax": (
+            first_row + 6,
+            "After-tax cost of debt",
+            "%",
+            "Pre-tax cost less the tax shield.",
+        ),
+        "weight": (
+            first_row + 7,
+            "Equity weight",
+            "%",
+            "Debt takes the rest of the capital structure.",
+        ),
+        "wacc": (
+            first_row + 8,
+            "Weighted average cost of capital",
+            "%",
+            "Weighted cost of equity and after-tax debt.",
+        ),
+    }
+    for row, label, unit, note in rows.values():
+        sheet[f"A{row}"] = label
+        sheet[f"B{row}"] = unit
+        _note(sheet, row, note)
+    for column, case in (("C", "low"), ("D", "high")):
+        r = {name: f"{column}{row}" for name, (row, *_rest) in rows.items()}
+        _put(sheet, r["rf"], f"={risk_free_name}", "0.000")
+        _put(sheet, r["beta"], f"=equity_beta_{case}", "0.00")
+        _put(sheet, r["premium"], "=market_risk_premium_pct", PERCENT)
+        _put(sheet, r["equity"], f"={r['rf']}+{r['beta']}*{r['premium']}", PERCENT)
+        _put(sheet, r["debt"], f"={r['rf']}+cost_of_debt_margin_over_risk_free_pct", PERCENT)
+        _put(sheet, r["debt_after_tax"], f"={r['debt']}*(1-tax_rate_pct/100)", PERCENT)
+        _put(sheet, r["weight"], f"=equity_weight_{case}_pct", PERCENT)
+        _put(
+            sheet,
+            r["wacc"],
+            f"={r['weight']}/100*{r['equity']}+(1-{r['weight']}/100)*{r['debt_after_tax']}",
+            PERCENT,
+        )
+    for column_number in range(1, FIRST_YEAR_COLUMN + 2):
+        sheet.cell(rows["wacc"][0], column_number).font = BOLD
+    wacc_row = rows["wacc"][0]
+    return {
+        f"{stem}_pct_low": f"{DCF_SHEET}!$C${wacc_row}",
+        f"{stem}_pct_high": f"{DCF_SHEET}!$D${wacc_row}",
+    }
+
+
 def add_dcf_sheet(book: Workbook) -> dict[str, str]:
     """Add the DCF sheet and return the cell of each output, keyed by its valuation.json key."""
     sheet: Worksheet = book.create_sheet(DCF_SHEET)
@@ -667,13 +749,26 @@ def add_dcf_sheet(book: Workbook) -> dict[str, str]:
 
     _forecast_block(sheet)
 
-    _heading(sheet, R_TERMINAL_HEAD, "Free cash flow of the year after FY35 (terminal growth rate)")
+    _heading(
+        sheet,
+        R_TERMINAL_HEAD,
+        "Free cash flow of the year after the forecast (terminal growth rate)",
+    )
     _terminal_labels(sheet, TERMINAL_FIRST_ROW)
     terminal_rows = _terminal_year(sheet, "C", TERMINAL_FIRST_ROW, f"$C${R_GROWTH}")
     outputs = _value_block(sheet, f"$C${terminal_rows['fcf']}")
     _sensitivity_block(sheet)
+    wacc_outputs = _wacc_block(sheet, R_WACC_HEAD, "risk_free_rate_pct", "wacc")
+    wacc_outputs.update(
+        _wacc_block(
+            sheet,
+            R_WACC_HEAD + WACC_BLOCK_HEIGHT,
+            "expert_risk_free_rate_pct",
+            "wacc_at_expert_risk_free",
+        )
+    )
 
-    flat: dict[str, str] = {}
+    flat: dict[str, str] = dict(wacc_outputs)
     for cells in outputs.values():
         flat.update({key: f"{DCF_SHEET}!${cell[0]}${cell[1:]}" for key, cell in cells.items()})
     flat["dcf_terminal_growth_pct"] = f"{DCF_SHEET}!$D${R_GROWTH}"
