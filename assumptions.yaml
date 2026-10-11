@@ -510,6 +510,164 @@ method_weight_precedent_pct:
   judgement: true
   note: Weight of the precedent transactions in my combined value.
 
+# The expert's own value for each input that my gap bridge changes (task P4-07). The bridge
+# starts from the expert's position and swaps each group of these for my value, one group at
+# a time. Each name is `expert_` plus my input's name.
+
+expert_discount_rate_low_pct:
+  value: 9.5
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 138 and p. 140
+  as_at: 30 May 2025
+  note: The expert's value of discount_rate_low_pct for the discount rate step of my gap bridge. It is the same value I seeded my own input with, and my own input may now differ.
+
+expert_discount_rate_high_pct:
+  value: 10.5
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 138 and p. 140
+  as_at: 30 May 2025
+  note: The expert's value of discount_rate_high_pct for the discount rate step of my gap bridge. It is the same value I seeded my own input with, and my own input may now differ.
+
+expert_revenue_growth_fy26_to_fy35_pct:
+  value: 9.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 141
+  as_at: 30 June 2025
+  judgement: true
+  note: The expert's value of revenue_growth_fy26_to_fy35_pct for the forecast step of my gap bridge. It is the same value I seeded my own input with, and my own input may now differ.
+
+expert_ebitda_margin_fy30_pct:
+  value: 41.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  note: The expert's value of ebitda_margin_fy30_pct for the forecast step of my gap bridge. It is the same value I seeded my own input with, and my own input may now differ.
+
+expert_ebitda_margin_fy35_pct:
+  value: 47.9
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  judgement: true
+  note: The expert's value of ebitda_margin_fy35_pct for the forecast step of my gap bridge. It is the same value I seeded my own input with, and my own input may now differ.
+
+expert_capex_pct_of_revenue_fy26_to_fy30_pct:
+  value: 9.6
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142 and p. 125
+  as_at: 30 June 2025
+  judgement: true
+  note: The expert's value of capex_pct_of_revenue_fy26_to_fy30_pct for the forecast step of my gap bridge. It is the same value I seeded my own input with, and my own input may now differ.
+
+expert_capex_pct_of_revenue_long_term_pct:
+  value: 9.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  note: The expert's value of capex_pct_of_revenue_long_term_pct for the forecast step of my gap bridge. It is the same value I seeded my own input with, and my own input may now differ.
+
+expert_depreciation_pct_of_revenue_long_term_pct:
+  value: 9.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  judgement: true
+  note: The expert's value of depreciation_pct_of_revenue_long_term_pct for the forecast step of my gap bridge. It is the same value I seeded my own input with, and my own input may now differ.
+
+expert_working_capital_pct_of_revenue_pct:
+  value: 2.5
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142 and p. 124
+  as_at: 30 June 2025
+  note: The expert's value of working_capital_pct_of_revenue_pct for the forecast step of my gap bridge. It is the same value I seeded my own input with, and my own input may now differ.
+
+expert_terminal_growth_pct:
+  value: 4.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 142
+  as_at: 30 June 2025
+  note: The expert's value of terminal_growth_pct for the terminal growth step of my gap bridge. It is the same value I seeded my own input with, and my own input may now differ.
+
+expert_trading_ebitda_multiple_fy26_low_x:
+  value: 18.2
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: The expert's selected range of A$2,775m to A$3,025m implies this multiple of FY26 adjusted EBITDA (p. 153). It is the output of its judgement and not an input, so I read the range as its position on both multiple methods for the bridge.
+
+expert_trading_ebitda_multiple_fy26_high_x:
+  value: 19.9
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: The expert's selected range of A$2,775m to A$3,025m implies this multiple of FY26 adjusted EBITDA (p. 153). It is the output of its judgement and not an input, so I read the range as its position on both multiple methods for the bridge.
+
+expert_precedent_ebitda_multiple_fy26_low_x:
+  value: 18.2
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: The expert's selected range of A$2,775m to A$3,025m implies this multiple of FY26 adjusted EBITDA (p. 153). It is the output of its judgement and not an input, so I read the range as its position on both multiple methods for the bridge.
+
+expert_precedent_ebitda_multiple_fy26_high_x:
+  value: 19.9
+  unit: times
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  note: The expert's selected range of A$2,775m to A$3,025m implies this multiple of FY26 adjusted EBITDA (p. 153). It is the output of its judgement and not an input, so I read the range as its position on both multiple methods for the bridge.
+
+expert_control_premium_applied_pct:
+  value: 0.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 153
+  as_at: 30 June 2025
+  judgement: true
+  note: The expert's range is a value of the whole business on a control basis (pp. 131 and 153) and it applies no further premium to a multiple, so I represent its premium as zero for the bridge. That is my reading and not a number it prints.
+
+# The expert's position as method weights, for the first step of the gap bridge (task P4-07)
+
+expert_method_weight_dcf_pct:
+  value: 0.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 135 and p. 153
+  as_at: 30 June 2025
+  judgement: true
+  note: My reading of the expert's position for the gap bridge, not a figure it prints. The expert gave both methods weight and says its range cannot be reduced to a weighting calculation (p. 135), and its A$2,775m to A$3,025m is the range its implied multiples give (p. 153). On its own inputs that position matches the multiples methods, so I give the DCF no weight here.
+
+expert_method_weight_trading_pct:
+  value: 50.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 135 and p. 153
+  as_at: 30 June 2025
+  judgement: true
+  note: My reading of the expert's position for the gap bridge, not a figure it prints. The split of the whole weight between trading and precedents is immaterial, because at the expert's inputs both methods have the same 18.2x to 19.9x range and no premium.
+
+expert_method_weight_precedent_pct:
+  value: 50.0
+  unit: pct
+  source: Domain scheme booklet, Grant Samuel report
+  location: p. 135 and p. 153
+  as_at: 30 June 2025
+  judgement: true
+  note: My reading of the expert's position for the gap bridge, not a figure it prints. The split of the whole weight between trading and precedents is immaterial, because at the expert's inputs both methods have the same 18.2x to 19.9x range and no premium.
+
 # Discounting convention
 
 mid_year_discounting_flag:

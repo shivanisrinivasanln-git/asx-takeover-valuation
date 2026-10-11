@@ -23,6 +23,7 @@ from valuation.dcf import (
     wacc_range_pct,
 )
 from valuation.forecast import YearCashFlow, forecast_from_inputs
+from valuation.gap_bridge import gap_bridge
 from valuation.inputs import Inputs
 from valuation.multiples import Measure, Method, multiples_value
 from valuation.sensitivity import (
@@ -291,6 +292,15 @@ def valuation_date_label(inputs: Inputs) -> str:
     return f"{day} {calendar.month_name[month]} {year}"
 
 
+def preferred_value_per_share_aud(inputs: Inputs) -> float:
+    """My preferred value per share on a set of inputs, for the gap bridge's repeated runs."""
+    values = _Values()
+    _add_dcf(values, inputs, forecast_from_inputs(inputs))
+    _add_multiples(values, inputs)
+    _add_combined(values, inputs)
+    return float(values.items["preferred_value_per_share_aud"]["value"])
+
+
 def build_valuation(inputs: Inputs) -> dict[str, Any]:
     """Every displayed number from the engine on the current inputs, at full precision."""
     cash_flows = forecast_from_inputs(inputs)
@@ -323,6 +333,11 @@ def build_valuation(inputs: Inputs) -> dict[str, Any]:
         ],
         "forecast": _forecast_table(inputs, cash_flows),
         "sensitivity": _sensitivity_table(inputs),
+        "gap_bridge": gap_bridge(
+            inputs,
+            preferred_value_per_share_aud,
+            values.items["expert_value_per_share_aud_mid"]["value"],
+        ),
     }
 
 
