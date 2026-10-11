@@ -87,6 +87,13 @@ def _with_values(inputs: Inputs, values: Mapping[str, float]) -> Inputs:
     return Inputs(assumptions=assumptions, tables=inputs.tables)
 
 
+def expert_case_inputs(inputs: Inputs) -> Inputs:
+    """My inputs with each bridge input set to the expert's value (its scenario A position)."""
+    return _with_values(
+        inputs, {name: inputs.number(expert_input_name(name)) for name in bridge_input_names()}
+    )
+
+
 def _steps(inputs: Inputs) -> list[_Step]:
     steps = [
         _Step(
