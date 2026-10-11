@@ -185,3 +185,17 @@ Under each value block I copied the expert's printed multiples with their page a
 The Summary sheet (task P3-13) lists value per share by method as the football field rows of `valuation.json`, then the offer, the undisturbed price, the offer premium and the midpoint of the expert's range, then the adopted discount rate range beside the two WACC builds. The WACC build sits at the bottom of the DCF sheet, once at my risk-free rate and once at the expert's, so the 9.3% to 10.5% range can be traced input by input.
 
 The workbook has one defined name for each input and one for each of the 101 keys in `valuation.json`, and no others. A test fails if a key has no name, if a name points at a range, or if a name exists that is neither an input nor a key. Where a key is also an input (the offer price and the undisturbed price, for example) the name points at the Assumptions cell.
+
+## 12 October 2026: my base case (tasks P4-01 to P4-05)
+
+I answered five sets of questions, and the inputs, evidence and ranges I tested are in [BASE_CASE.md](BASE_CASE.md). In each case the options were the expert's value, a value between the evidence on either side, and a lower value.
+
+Forecasts: I kept the expert's growth of 9.0%, FY30 and FY35 EBITDA margins of 41% and 47.9%, capital expenditure of 9.6% then 9.0%, and working capital of 2.5%. The brokers cover only FY25 and FY26 (growth of 7.4% and 8.0%), so they do not set a ten-year rate, and keeping the expert's forecast makes my differences from it appear in the discount rate and the multiples. The cost is that my value inherits the expert's most favourable assumption, a margin above anything Domain has reported. I show 46% (the expert's Scenario C) as the downside at A$3.67 a share.
+
+Discount rate and terminal growth: I kept 9.5% to 10.5%, beta 1.0 to 1.1 and terminal growth 4.0%. Brokers use 8.4% to 9.0%, and a beta of 0.9 would give 8.77% and a DCF high value of A$5.04, but I do not want one beta estimate to put my bar above the offer. The terminal value at 4.0% is 9.9x FY35 EBITDA, so I do not regard 4.0% as aggressive.
+
+Multiples: the seeded 18.2x to 19.9x was the expert's own implied multiple, so I replaced it. Trading is 16.3x to 19.1x (SEEK and Rightmove, the two lowest of the eight peers) and precedents are 15.2x to 22.3x (the six deals less the highest and the lowest). For EBITA I used the same two peers for trading (not the two lowest on EBITA, since CAR Group's 23.1x is second lowest) and the same trimming rule for precedents, and I left the football field on EBITDA. The alternatives were SEEK, Rightmove, Scout24 and CAR Group in full (16.3x to 22.8x) and Rightmove to Scout24 (19.1x to 22.2x). I first described those four as the closest peers, which was wrong: the expert keeps SEEK and CAR Group with caution as less comparable, and calls REA the closest Australian peer. I asked again on 12 October 2026 and kept 16.3x to 19.1x.
+
+Control premium: 25% on the trading method only, at enterprise value level, which is about 27.4% on the share price (the RSM median is 27.5%). The alternatives were 20%, 30% and no premium, which would leave the trading bar on a minority basis against a control offer. The engine applies the premium to enterprise value, so a share-price premium would overstate it for Domain, whose net debt is 8.7% of enterprise value.
+
+Weights and the preferred value are task P4-06.

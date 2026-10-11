@@ -61,21 +61,20 @@ def test_the_same_inputs_with_and_without_the_premium_differ_by_exactly_the_prem
     assert with_control_premium_aud_m(value, 0.0) == value
 
 
-def test_seeded_trading_and_precedent_values_reproduce_the_expert_range() -> None:
+def test_my_selected_ranges_give_the_values_on_my_inputs() -> None:
     inputs = load_inputs(ROOT)
-    for method in ("trading", "precedent"):
-        result = multiples_value(inputs, method, "ebitda")
-        assert result.control_premium_pct == 0.0
-        assert result.value_low_aud_m == pytest.approx(152.2 * 18.2, rel=1e-12)
-        assert result.value_high_aud_m == pytest.approx(152.2 * 19.9, rel=1e-12)
-        assert result.value_low_aud_m == pytest.approx(2775.0, abs=6.0)
-        assert result.value_high_aud_m == pytest.approx(3025.0, abs=6.0)
-        expected = (
-            "no further control premium applied"
-            if method == "trading"
-            else "no control premium applied"
-        )
-        assert expected in result.basis
+    trading = multiples_value(inputs, "trading", "ebitda")
+    assert trading.value_before_premium_low_aud_m == pytest.approx(152.2 * 16.3, rel=1e-12)
+    assert trading.value_before_premium_high_aud_m == pytest.approx(152.2 * 19.1, rel=1e-12)
+    assert trading.control_premium_pct == 25.0
+    assert trading.value_low_aud_m == pytest.approx(152.2 * 16.3 * 1.25, rel=1e-12)
+    assert trading.value_high_aud_m == pytest.approx(152.2 * 19.1 * 1.25, rel=1e-12)
+    assert "control premium of 25% applied" in trading.basis
+    precedent = multiples_value(inputs, "precedent", "ebitda")
+    assert precedent.control_premium_pct == 0.0
+    assert precedent.value_low_aud_m == pytest.approx(152.2 * 15.2, rel=1e-12)
+    assert precedent.value_high_aud_m == pytest.approx(152.2 * 22.3, rel=1e-12)
+    assert "no control premium applied" in precedent.basis
 
 
 def test_a_premium_input_changes_the_value_and_the_stated_basis() -> None:
@@ -83,22 +82,23 @@ def test_a_premium_input_changes_the_value_and_the_stated_basis() -> None:
     base = multiples_value(inputs, "trading", "ebitda")
     assumptions = dict(inputs.assumptions)
     assumptions["control_premium_applied_pct"] = replace(
-        assumptions["control_premium_applied_pct"], value=25.0
+        assumptions["control_premium_applied_pct"], value=40.0
     )
     premium = multiples_value(
         Inputs(assumptions=assumptions, tables=inputs.tables), "trading", "ebitda"
     )
     assert premium.value_before_premium_low_aud_m == base.value_before_premium_low_aud_m
-    assert premium.value_low_aud_m == pytest.approx(base.value_low_aud_m * 1.25, rel=1e-12)
-    assert premium.value_high_aud_m == pytest.approx(base.value_high_aud_m * 1.25, rel=1e-12)
-    assert "control premium of 25% applied" in premium.basis
+    ratio = 1.40 / 1.25
+    assert premium.value_low_aud_m == pytest.approx(base.value_low_aud_m * ratio, rel=1e-12)
+    assert premium.value_high_aud_m == pytest.approx(base.value_high_aud_m * ratio, rel=1e-12)
+    assert "control premium of 40% applied" in premium.basis
 
 
 def test_the_premium_input_is_not_applied_to_the_precedent_method() -> None:
     inputs = load_inputs(ROOT)
     assumptions = dict(inputs.assumptions)
     assumptions["control_premium_applied_pct"] = replace(
-        assumptions["control_premium_applied_pct"], value=25.0
+        assumptions["control_premium_applied_pct"], value=40.0
     )
     precedent = multiples_value(
         Inputs(assumptions=assumptions, tables=inputs.tables), "precedent", "ebitda"
@@ -106,3 +106,16 @@ def test_the_premium_input_is_not_applied_to_the_precedent_method() -> None:
     assert precedent.control_premium_pct == 0.0
     assert precedent.value_low_aud_m == precedent.value_before_premium_low_aud_m
     assert "control multiples" in precedent.basis
+
+
+def test_a_zero_premium_is_stated_as_no_premium_applied() -> None:
+    inputs = load_inputs(ROOT)
+    assumptions = dict(inputs.assumptions)
+    assumptions["control_premium_applied_pct"] = replace(
+        assumptions["control_premium_applied_pct"], value=0.0
+    )
+    result = multiples_value(
+        Inputs(assumptions=assumptions, tables=inputs.tables), "trading", "ebitda"
+    )
+    assert result.value_low_aud_m == result.value_before_premium_low_aud_m
+    assert "none is applied" in result.basis

@@ -71,29 +71,53 @@ def test_the_inputs_that_follow_the_expert_match_the_transcribed_evidence() -> N
     )
 
 
-def test_seeded_multiples_equal_the_expert_implied_multiples() -> None:
+def test_the_expert_implied_multiples_reproduce_its_value_range_within_print_rounding() -> None:
     printed = {
         r["item"]: float(r["value"]) for r in load_rows(DATA / "domain_implied_multiples.csv")
     }
-    for method in ("trading", "precedent"):
-        for measure in ("ebitda", "ebita"):
-            for bound in ("low", "high"):
-                assert (
-                    value(f"{method}_{measure}_multiple_fy26_{bound}_x")
-                    == printed[f"implied_{measure}_multiple_fy26_{bound}"]
-                )
-
-
-def test_seeded_multiples_reproduce_the_expert_value_range_within_print_rounding() -> None:
     low_aud_m, high_aud_m = EXPERT_VALUE_RANGE_AUD_M
     for measure in ("ebitda", "ebita"):
         earnings = value(f"fy26_adjusted_{measure}_aud_m")
-        assert earnings * value(f"trading_{measure}_multiple_fy26_low_x") == pytest.approx(
+        assert earnings * printed[f"implied_{measure}_multiple_fy26_low"] == pytest.approx(
             low_aud_m, abs=MULTIPLE_ROUNDING_AUD_M
         )
-        assert earnings * value(f"trading_{measure}_multiple_fy26_high_x") == pytest.approx(
+        assert earnings * printed[f"implied_{measure}_multiple_fy26_high"] == pytest.approx(
             high_aud_m, abs=MULTIPLE_ROUNDING_AUD_M
         )
+
+
+def test_my_selected_ranges_are_ordered_and_marked_as_my_judgement() -> None:
+    for method in ("trading", "precedent"):
+        for measure in ("ebitda", "ebita"):
+            low = f"{method}_{measure}_multiple_fy26_low_x"
+            high = f"{method}_{measure}_multiple_fy26_high_x"
+            assert value(low) < value(high), (method, measure)
+            assert ASSUMPTIONS[low].judgement
+            assert ASSUMPTIONS[high].judgement
+
+
+def forecast_multiples(table: str, name_column: str, measure: str) -> dict[str, float]:
+    return {
+        row[name_column]: float(row["multiple_x"])
+        for row in load_rows(DATA / f"{table}.csv")
+        if row["measure"] == measure and row["basis"] == "forecast"
+    }
+
+
+def test_the_trading_range_is_the_forecast_multiples_of_seek_and_rightmove() -> None:
+    for measure in ("ebitda", "ebita"):
+        peers = forecast_multiples("comparable_multiples", "company", measure)
+        pair = (peers["SEEK"], peers["Rightmove"])
+        assert value(f"trading_{measure}_multiple_fy26_low_x") == min(pair)
+        assert value(f"trading_{measure}_multiple_fy26_high_x") == max(pair)
+
+
+def test_the_precedent_range_is_the_six_deal_multiples_less_the_highest_and_lowest() -> None:
+    for measure in ("ebitda", "ebita"):
+        deals = sorted(forecast_multiples("precedent_transactions", "deal", measure).values())
+        assert len(deals) == 6
+        assert value(f"precedent_{measure}_multiple_fy26_low_x") == deals[1]
+        assert value(f"precedent_{measure}_multiple_fy26_high_x") == deals[-2]
 
 
 def test_adjusted_earnings_match_the_transcribed_earnings_for_valuation() -> None:

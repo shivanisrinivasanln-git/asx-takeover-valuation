@@ -4,8 +4,10 @@
 # judgement and not a figure from a document. An input name is lower-case words joined by _
 # and should end with its unit, for example risk_free_rate_pct.
 #
-# Until Phase 4 each input starts at the value the expert disclosed. Where the booklet gives only
-# a description such as "just below 48%", I choose a number and mark it `judgement: true`.
+# Each input started at the value the expert disclosed. On 12 October 2026 (tasks P4-01 to P4-05)
+# I kept the forecast and discount rate inputs and replaced the multiple ranges and the control
+# premium with my own. Where the booklet gives only a description such as "just below 48%", I
+# choose a number and mark it `judgement: true`.
 
 # Valuation date and cash flow timing
 
@@ -246,7 +248,7 @@ discount_rate_high_pct:
   as_at: 30 May 2025
   note: High end of the adopted range.
 
-# Earnings multiples (seeded with the expert's implied multiples on 5 October 2026; I choose my own in Phase 4)
+# Earnings multiples (my own ranges, chosen on 12 October 2026 in task P4-04)
 
 fy26_adjusted_ebitda_aud_m:
   value: 152.2
@@ -265,68 +267,76 @@ fy26_adjusted_ebita_aud_m:
   note: Broker median FY26 EBITA of 127.0 less the same 7.8.
 
 trading_ebitda_multiple_fy26_low_x:
-  value: 18.2
+  value: 16.3
   unit: times
   source: Domain scheme booklet, Grant Samuel report
-  location: p. 153
-  as_at: 30 June 2025
-  note: The multiple of FY26 adjusted EBITDA implied by the expert's range. It is on a control basis, so I apply no further control premium to it until I decide one in task P4-05.
+  location: p. 150, forecast multiples charts
+  as_at: 30 May 2025
+  judgement: true
+  note: SEEK's forecast EBITDA multiple, the lowest of the eight peers. The expert keeps SEEK (employment) and CAR Group (automotive) with caution as less comparable than the property marketplaces (pp. 140 and 151). I take the low end of the peer range because Domain is the number two portal with a 35.8% EBITDA margin against REA's 63% to 65% (p. 142). Chosen on 12 October 2026 in task P4-04; the expert's own implied 18.2x to 19.9x (p. 153) is not independent of its conclusion.
 
 trading_ebitda_multiple_fy26_high_x:
-  value: 19.9
+  value: 19.1
   unit: times
   source: Domain scheme booklet, Grant Samuel report
-  location: p. 153
-  as_at: 30 June 2025
-  note: High end of the same range.
+  location: p. 150, forecast multiples charts
+  as_at: 30 May 2025
+  judgement: true
+  note: Rightmove's forecast EBITDA multiple, the second lowest of the eight peers and the lowest of the property marketplaces. Peer multiples come from minority share prices, so the control premium input applies to this range.
 
 trading_ebita_multiple_fy26_low_x:
-  value: 23.3
+  value: 19.4
   unit: times
   source: Domain scheme booklet, Grant Samuel report
-  location: p. 153
-  as_at: 30 June 2025
-  note: The multiple of FY26 adjusted EBITA implied by the expert's range, on a control basis.
+  location: p. 150, forecast multiples charts
+  as_at: 30 May 2025
+  judgement: true
+  note: The forecast EBITA multiple of the lower of the same two peers, Rightmove (19.4x). SEEK's is 23.8x, so the order is reversed on EBITA. These are the same two peers as the EBITDA range, not the two lowest on EBITA (CAR Group's 23.1x is second lowest); the football field uses EBITDA.
 
 trading_ebita_multiple_fy26_high_x:
-  value: 25.4
+  value: 23.8
   unit: times
   source: Domain scheme booklet, Grant Samuel report
-  location: p. 153
-  as_at: 30 June 2025
-  note: High end of the same range.
+  location: p. 150, forecast multiples charts
+  as_at: 30 May 2025
+  judgement: true
+  note: SEEK's forecast EBITA multiple (23.8x), the higher of the same two peers.
 
 precedent_ebitda_multiple_fy26_low_x:
-  value: 18.2
+  value: 15.2
   unit: times
   source: Domain scheme booklet, Grant Samuel report
-  location: p. 153
+  location: pp. 146 and 147, forecast multiples charts
   as_at: 30 June 2025
-  note: Seeded with the same implied range, which the expert says is consistent with the high end of diversified marketplace deals (15x to 20x forecast EBITDA) and towards the lower end of the property deals (22x to 25x). I choose my own range in task P4-04.
+  judgement: true
+  note: Trade Me (Apax, 2018) forecast EBITDA multiple, the lowest of the six deals with a forecast multiple once 58.com (12.9x) is dropped. Chosen on 12 October 2026 in task P4-04 as the six deals less the highest and the lowest. Printed chart labels from Grant Samuel's analysis; I have not checked them against primary sources.
 
 precedent_ebitda_multiple_fy26_high_x:
-  value: 19.9
+  value: 22.3
   unit: times
   source: Domain scheme booklet, Grant Samuel report
-  location: p. 153
+  location: pp. 146 and 147, forecast multiples charts
   as_at: 30 June 2025
-  note: High end of the same range.
+  judgement: true
+  note: REA Group's proposal for Rightmove (2024) forecast EBITDA multiple, the highest once ZPG (25.1x) is dropped. Deal multiples are control multiples, so no control premium applies.
 
 precedent_ebita_multiple_fy26_low_x:
-  value: 23.3
+  value: 17.9
   unit: times
   source: Domain scheme booklet, Grant Samuel report
-  location: p. 153
+  location: pp. 146 and 147, forecast multiples charts
   as_at: 30 June 2025
-  note: Seeded with the expert's implied EBITA range.
+  judgement: true
+  note: Trade Me's forecast EBITA multiple (17.9x), the lowest of the six deals once 58.com (13.7x) is dropped. Same rule as the EBITDA range.
 
 precedent_ebita_multiple_fy26_high_x:
-  value: 25.4
+  value: 25.8
   unit: times
   source: Domain scheme booklet, Grant Samuel report
-  location: p. 153
+  location: pp. 146 and 147, forecast multiples charts
   as_at: 30 June 2025
-  note: High end of the same range.
+  judgement: true
+  note: Adevinta's forecast EBITA multiple (25.8x), the highest once ZPG (26.0x) is dropped.
 
 # Net debt and its adjustments are positive amounts of debt. Other assets and liabilities is signed as a value, so a net liability is negative.
 
@@ -463,13 +473,13 @@ listed_share_discount_to_underlying_high_pct:
   note: The high end of the same range.
 
 control_premium_applied_pct:
-  value: 0.0
+  value: 25.0
   unit: pct
   source: Domain scheme booklet, Grant Samuel report
-  location: p. 153 and p. 154
+  location: p. 133 and p. 158
   as_at: 30 June 2025
   judgement: true
-  note: On 5 October 2026 I chose to apply no premium to the seeded multiples until I decide one in task P4-05, because the expert's implied multiples are already on a control basis (docs/DECISIONS.md).
+  note: Chosen on 12 October 2026 in task P4-05 and applied to the trading method only, at enterprise value level. For Domain at the undisturbed price (equity about A$1,973m, adjusted net debt A$187.0m) 25% on enterprise value equals about 27.4% on the share price, close to the median premium of 27.5% in the RSM and Curtin study of 605 ASX takeovers (docs/RESEARCH.md section 4) and inside the expert's typical 20% to 35%.
 
 # Discounting convention
 

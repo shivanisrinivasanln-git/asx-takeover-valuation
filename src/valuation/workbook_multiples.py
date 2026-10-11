@@ -119,8 +119,8 @@ def _value_block(
 
     if method == "trading":
         premium_note = (
-            "My control premium input. It is zero because the expert's implied multiples "
-            "are already on a control basis."
+            "My control premium input, applied here only because peer multiples come from "
+            "minority share prices."
         )
     else:
         premium_note = "Deal multiples are control multiples, so no premium is applied."

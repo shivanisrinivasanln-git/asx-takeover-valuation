@@ -251,7 +251,7 @@ def build_valuation(inputs: Inputs) -> dict[str, Any]:
             "target": "Domain Holdings Australia (ASX: DHG)",
             "valuation_date": valuation_date_label(inputs),
             "discounting": "mid-year" if use_mid_year(inputs) else "year end",
-            "status": "Seeded with the expert's disclosed inputs; my own base case is not set yet.",
+            "status": "My base case as chosen on 12 October 2026 (docs/BASE_CASE.md).",
             "case_note": "A trailing low, mid or high is the value case: the low case "
             "discounts at the top of the discount rate range.",
         },

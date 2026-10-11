@@ -1,10 +1,8 @@
 """Earnings multiples: peer and deal summaries, implied value and the control premium.
 
 Money is A$ millions and multiples are times earnings. Nothing is rounded here. Deal multiples
-are control multiples and need no premium. Peer (trading) multiples come from share prices and
-carry no premium, so the control premium input applies to the trading method only. The seeded
-trading range is the expert's implied range, which is already on a control basis, so the premium
-input is zero until I set it (docs/DECISIONS.md).
+are control multiples and need no premium. Peer (trading) multiples come from minority share
+prices, so the control premium input applies to the trading method only (docs/BASE_CASE.md).
 """
 
 from __future__ import annotations
@@ -94,8 +92,8 @@ def _basis(method: Method, premium_pct: float) -> str:
         )
     if premium_pct == 0:
         return (
-            "FY26 adjusted earnings times the selected peer multiple range, which the expert "
-            "states on a control basis; no further control premium applied"
+            "FY26 adjusted earnings times the selected peer multiple range; peer multiples "
+            "carry no control premium and none is applied"
         )
     return (
         "FY26 adjusted earnings times the selected peer multiple range with a control premium "

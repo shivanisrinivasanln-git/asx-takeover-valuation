@@ -112,6 +112,8 @@ def test_the_listed_share_discount_implies_a_premium_near_the_typical_range() ->
     assert low * 100 < value("control_premium_typical_high_pct")
 
 
-def test_no_control_premium_is_applied_until_the_phase_4_decision() -> None:
-    assert value("control_premium_applied_pct") == 0.0
+def test_the_control_premium_applied_is_my_choice_inside_the_experts_typical_range() -> None:
+    assert value("control_premium_applied_pct") == 25.0
     assert ASSUMPTIONS["control_premium_applied_pct"].judgement
+    assert value("control_premium_typical_low_pct") <= value("control_premium_applied_pct")
+    assert value("control_premium_applied_pct") <= value("control_premium_typical_high_pct")
