@@ -89,6 +89,17 @@
     font-weight: var(--weight-strong);
   }
 
+  .site-header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-block-start: var(--space-2);
+  }
+
+  .site-header nav a[aria-current="page"] {
+    font-weight: var(--weight-strong);
+  }
+
   main {
     padding-block: var(--space-6) var(--space-7);
   }
@@ -229,5 +240,43 @@
   .figures th.num {
     font-variant-numeric: var(--numeric-features);
     text-align: end;
+  }
+}
+
+@layer components {
+  /* Wide tables scroll inside their own container, with the first column held in place. */
+  .table-scroll {
+    overflow-x: auto;
+  }
+
+  .table-scroll + .table-scroll,
+  .table-scroll + p {
+    margin-block-start: var(--space-5);
+  }
+
+  .figures td {
+    white-space: nowrap;
+  }
+
+  .figures th.num {
+    white-space: nowrap;
+  }
+
+  .figures tbody th[scope="row"],
+  .figures tfoot th[scope="row"] {
+    background: var(--surface);
+    inset-inline-start: 0;
+    position: sticky;
+  }
+
+  .figures tfoot td,
+  .figures tfoot th {
+    border-block-start: var(--line-focus) solid var(--rule-strong);
+  }
+
+  /* The base case in the sensitivity grid: a box and a heavier weight, not a fill. */
+  .sensitivity td.base {
+    box-shadow: inset 0 0 0 var(--line-focus) var(--accent);
+    font-weight: var(--weight-strong);
   }
 }

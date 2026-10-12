@@ -1,0 +1,182 @@
+{% extends "base.html.j2" %}
+{% block title %}Valuation tables, {{ meta.target }}{% endblock %}
+{% block main %}
+<h1>Valuation tables</h1>
+<p class="note">Money is in A$ millions unless a header says per share. Valuation date {{ meta.valuation_date }}. Discounting is {{ meta.discounting }}.</p>
+
+<section aria-labelledby="dcf-assumptions-heading">
+  <h2 id="dcf-assumptions-heading">DCF assumptions</h2>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="DCF assumptions">
+    <table class="figures">
+      <caption>Inputs to the discounted cash flow, with the document and page each comes from</caption>
+      <thead>
+        <tr><th scope="col">Input</th><th scope="col" class="num">Value</th><th scope="col">Unit</th><th scope="col">Source</th><th scope="col">Page or table</th><th scope="col">As at</th></tr>
+      </thead>
+      <tbody>
+        {% for row in page.assumptions %}
+        <tr>
+          <th scope="row">{{ row.label }}{% if row.judgement %} <span class="note">({{ row.judgement }})</span>{% endif %}</th>
+          <td class="num" data-input="{{ row.key }}">{{ row.value }}</td>
+          <td>{{ row.unit }}</td>
+          <td>{{ row.source }}</td>
+          <td>{{ row.location }}</td>
+          <td>{{ row.as_at }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="forecast-heading">
+  <h2 id="forecast-heading">Free cash flow forecast</h2>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Free cash flow forecast">
+    <table class="figures">
+      <caption>Forecast from the second half of FY25, discounted at {{ page.forecast.base_rate }}, the middle of my range</caption>
+      <thead>
+        <tr><th scope="col">Period</th>{% for header in page.forecast.headers %}<th scope="col" class="num">{{ header }}</th>{% endfor %}</tr>
+      </thead>
+      <tbody>
+        {% for row in page.forecast.rows %}
+        <tr>
+          <th scope="row">{{ row.period }}</th>
+          {% for cell in row.cells %}<td class="num" data-forecast="{{ cell.field }}">{{ cell.text }}</td>{% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="dcf-value-heading">
+  <h2 id="dcf-value-heading">DCF value</h2>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="DCF value by case">
+    <table class="figures">
+      <caption>Value by case. The low case discounts at the top of my range and the high case at the bottom.</caption>
+      <thead>
+        <tr><th scope="col">Line</th>{% for header in page.case_headers %}<th scope="col" class="num">{{ header }}</th>{% endfor %}</tr>
+      </thead>
+      <tbody>
+        {% for row in page.dcf_values.rows %}
+        <tr>
+          <th scope="row">{{ row.label }}</th>
+          {% for cell in row.cells %}<td class="num" data-key="{{ cell.key }}">{{ cell.text }}</td>{% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Enterprise value is the value of business operations plus other assets and liabilities (A$m): <span class="num" data-key="{{ page.dcf_values.other_assets.key }}">{{ page.dcf_values.other_assets.text }}</span>. Equity value is enterprise value less adjusted net debt (A$m): <span class="num" data-key="{{ page.dcf_values.net_debt.key }}">{{ page.dcf_values.net_debt.text }}</span>.</p>
+</section>
+
+<section aria-labelledby="sensitivity-heading">
+  <h2 id="sensitivity-heading">Sensitivity to the discount rate and terminal growth</h2>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Sensitivity of value per share">
+    <table class="figures sensitivity">
+      <caption>DCF value per share, A$. Rows are discount rates and columns are terminal growth rates, both in %.</caption>
+      <thead>
+        <tr><th scope="col">Discount rate (%)</th>{% for growth in page.sensitivity.growths %}<th scope="col" class="num">{{ growth }}</th>{% endfor %}</tr>
+      </thead>
+      <tbody>
+        {% for row in page.sensitivity.rows %}
+        <tr>
+          <th scope="row" class="num">{{ row.rate }}</th>
+          {% for cell in row.cells %}<td class="num{% if cell.base %} base{% endif %}"{% if cell.base %} data-key="{{ page.sensitivity.base_key }}" aria-label="{{ cell.text }}, my base case"{% endif %}>{{ cell.text }}</td>{% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="note">The boxed cell is my base case. Each cell is a full recalculation of the DCF at that pair of rates, on the average of the low and high diluted share counts. The grid varies the discount rate and terminal growth only. The forecast, net debt and share counts stay at my base case.</p>
+</section>
+
+<section aria-labelledby="comparables-heading">
+  <h2 id="comparables-heading">Trading comparables</h2>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Peer multiples">
+    <table class="figures">
+      <caption>Peer multiples printed by the independent expert at {{ page.comparables.as_at }}, based on share prices with no premium for control. Lowest, median and highest cover the eight peers shown. The financial year each multiple refers to is not stated in the printed labels (unverified).</caption>
+      <thead>
+        <tr><th scope="col">Company</th><th scope="col">Treatment</th>{% for header in page.comparables.headers %}<th scope="col" class="num">{{ header }}</th>{% endfor %}</tr>
+      </thead>
+      <tbody>
+        {% for row in page.comparables.rows %}
+        <tr>
+          <th scope="row">{{ row.company }}</th>
+          <td>{{ row.treatment }}</td>
+          {% for text in row.cells %}<td class="num">{{ text }}</td>{% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        {% for name in ["lowest", "median", "highest"] %}
+        <tr>
+          <th scope="row">{{ name.capitalize() }}</th><td></td>
+          {% for text in page.comparables.summary[name] %}<td class="num">{{ text }}</td>{% endfor %}
+        </tr>
+        {% endfor %}
+      </tfoot>
+    </table>
+  </div>
+  {% for block in page.trading_ranges %}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Trading comparables value on {{ block.measure }}">
+    <table class="figures">
+      <caption>My selected range on FY26 adjusted {{ block.measure }} of A${{ block.earnings }}m, with a control premium of {{ block.premium }}% on enterprise value</caption>
+      <thead>
+        <tr><th scope="col">Line</th>{% for header in page.case_headers %}<th scope="col" class="num">{{ header }}</th>{% endfor %}</tr>
+      </thead>
+      <tbody>
+        {% for label, cells in block.rows %}
+        <tr><th scope="row">{{ label }}</th>{% for cell in cells %}<td class="num" data-key="{{ cell.key }}">{{ cell.text }}</td>{% endfor %}</tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endfor %}
+</section>
+
+<section aria-labelledby="precedents-heading">
+  <h2 id="precedents-heading">Precedent transactions</h2>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Precedent transaction multiples">
+    <table class="figures">
+      <caption>Deal multiples printed by the independent expert. They are control multiples, so I apply no premium to them. I have not checked them against primary sources.</caption>
+      <thead>
+        <tr><th scope="col">Deal</th><th scope="col">Announced</th><th scope="col">Acquirer</th><th scope="col">Status</th>{% for header in page.precedents.headers %}<th scope="col" class="num">{{ header }}</th>{% endfor %}</tr>
+      </thead>
+      <tbody>
+        {% for row in page.precedents.rows %}
+        <tr>
+          <th scope="row">{{ row.deal }}</th>
+          <td>{{ row.announced }}</td>
+          <td>{{ row.acquirer }}</td>
+          <td>{{ row.status }}</td>
+          {% for text in row.cells %}<td class="num">{{ text }}</td>{% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        {% for name in ["lowest", "median", "highest"] %}
+        <tr>
+          <th scope="row">{{ name.capitalize() }}</th><td></td><td></td><td></td>
+          {% for text in page.precedents.summary[name] %}<td class="num">{{ text }}</td>{% endfor %}
+        </tr>
+        {% endfor %}
+      </tfoot>
+    </table>
+  </div>
+  {% for block in page.precedent_ranges %}
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Precedent transactions value on {{ block.measure }}">
+    <table class="figures">
+      <caption>My selected range on FY26 adjusted {{ block.measure }} of A${{ block.earnings }}m, with no control premium</caption>
+      <thead>
+        <tr><th scope="col">Line</th>{% for header in page.case_headers %}<th scope="col" class="num">{{ header }}</th>{% endfor %}</tr>
+      </thead>
+      <tbody>
+        {% for label, cells in block.rows %}
+        <tr><th scope="row">{{ label }}</th>{% for cell in cells %}<td class="num" data-key="{{ cell.key }}">{{ cell.text }}</td>{% endfor %}</tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

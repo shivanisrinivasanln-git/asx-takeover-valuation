@@ -102,6 +102,7 @@ REQUIRED_TABLES = (
     "broker_forecast_summary",
     "cash_flow",
     "comparable_multiples",
+    "comparable_peer_set",
     "dcf_npv_chart_reads",
     "dcf_scenarios",
     "discount_rate_evidence",

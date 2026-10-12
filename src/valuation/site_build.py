@@ -20,6 +20,7 @@ from valuation.football_field import build_football_field
 from valuation.inputs import Inputs, load_inputs
 from valuation.output import build_valuation
 from valuation.site_check import REFERRER_POLICY, site_problems
+from valuation.valuation_page import build_valuation_page
 
 # The sentence under every page and in the README (checked against the README by a test).
 DISCLAIMER = (
@@ -42,7 +43,7 @@ CONTENT_SECURITY_POLICY = "; ".join(
     ]
 )
 
-PAGES = {"index.html": "index.html.j2"}
+PAGES = {"index.html": "index.html.j2", "valuation.html": "valuation.html.j2"}
 
 
 def render_pages(root: Path, valuation: dict[str, Any], inputs: Inputs) -> dict[str, str]:
@@ -58,13 +59,14 @@ def render_pages(root: Path, valuation: dict[str, Any], inputs: Inputs) -> dict[
     context = {
         "meta": valuation["meta"],
         "field": build_football_field(valuation, inputs),
+        "page": build_valuation_page(valuation, inputs),
         "disclaimer": DISCLAIMER,
         "content_security_policy": CONTENT_SECURITY_POLICY,
         # Outbound links to ASX documents do not say which page sent the visitor.
         "referrer_policy": REFERRER_POLICY,
     }
     return {
-        name: environment.get_template(template).render(**context)
+        name: environment.get_template(template).render(current=name, **context)
         for name, template in PAGES.items()
     }
 
