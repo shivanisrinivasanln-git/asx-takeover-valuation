@@ -59,6 +59,16 @@
     --text-verdict: clamp(1.5625rem, 1.423rem + 0.571vw, 1.9375rem); /* 25 to 31 px */
     --text-title: clamp(1.9375rem, 1.752rem + 0.762vw, 2.4375rem); /* 31 to 39 px */
 
+    /* Chart line weights (docs/DESIGN_RESEARCH.md, proposed chart defaults). */
+    --chart-outline: 1.5px; /* my bars and the expert's bar */
+    --chart-hatch-line: 1.75px; /* the hatch inside my bars */
+    --chart-gridline: 1px;
+    --chart-tick: 2.5px; /* my preferred value */
+    --chart-offer: 1.5px;
+    --chart-undisturbed: 1px;
+    --chart-dash: 4 3; /* undisturbed price, dash and gap */
+    --chart-halo: 8px; /* surface-coloured edge that keeps a label legible over a line */
+
     /* Page width and line weights, so that no other file holds a raw size. */
     --page-width: 72rem;
     --line-thin: 1px; /* dividers and gridlines */

@@ -120,3 +120,114 @@
     transform: none;
   }
 }
+
+@layer components {
+  /* Football field chart. Positions are SVG attributes; colours and weights come from tokens. */
+  .chart {
+    display: block;
+    overflow: visible;
+    width: 100%;
+  }
+
+  .chart text {
+    fill: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-variant-numeric: var(--numeric-features);
+    paint-order: stroke;
+    stroke: var(--surface);
+    stroke-linejoin: round;
+    stroke-width: var(--chart-halo);
+  }
+
+  .chart .axis-label {
+    fill: var(--ink-muted);
+    font-size: var(--text-note);
+  }
+
+  .chart .rule-label {
+    font-size: var(--text-note);
+    font-weight: var(--weight-strong);
+  }
+
+  .chart .row-label {
+    font-weight: var(--weight-strong);
+  }
+
+  .chart .grid {
+    stroke: var(--rule);
+    stroke-width: var(--chart-gridline);
+  }
+
+  .chart .hatch-line {
+    stroke: var(--owner-hatch);
+    stroke-width: var(--chart-hatch-line);
+  }
+
+  .chart .bar-mine {
+    stroke: var(--owner-hatch);
+    stroke-width: var(--chart-outline);
+  }
+
+  .chart .bar-expert {
+    fill: none;
+    stroke: var(--expert-outline);
+    stroke-width: var(--chart-outline);
+  }
+
+  .chart .preferred-tick {
+    stroke: var(--owner-hatch);
+    stroke-width: var(--chart-tick);
+  }
+
+  .chart .rule-offer {
+    stroke: var(--offer-rule);
+    stroke-width: var(--chart-offer);
+  }
+
+  .chart .rule-undisturbed {
+    stroke: var(--undisturbed-rule);
+    stroke-dasharray: var(--chart-dash);
+    stroke-width: var(--chart-undisturbed);
+  }
+
+  /* Tick marks every A$0.50 on a wide page and every A$1.00 on a phone. */
+  @media (max-width: 40rem) {
+    .chart .minor {
+      display: none;
+    }
+  }
+
+  .figures {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .figures caption {
+    color: var(--ink-muted);
+    font-size: var(--text-note);
+    padding-block-end: var(--space-2);
+    text-align: start;
+  }
+
+  .figures th,
+  .figures td {
+    border-block-end: var(--line-thin) solid var(--rule);
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .figures thead th {
+    border-block-end-color: var(--rule-strong);
+  }
+
+  .figures th {
+    font-weight: var(--weight-strong);
+    text-align: start;
+  }
+
+  .figures td.num,
+  .figures th.num {
+    font-variant-numeric: var(--numeric-features);
+    text-align: end;
+  }
+}

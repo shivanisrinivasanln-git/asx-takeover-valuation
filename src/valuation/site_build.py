@@ -16,7 +16,8 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
-from valuation.inputs import load_inputs
+from valuation.football_field import build_football_field
+from valuation.inputs import Inputs, load_inputs
 from valuation.output import build_valuation
 from valuation.site_check import REFERRER_POLICY, site_problems
 
@@ -44,7 +45,7 @@ CONTENT_SECURITY_POLICY = "; ".join(
 PAGES = {"index.html": "index.html.j2"}
 
 
-def render_pages(root: Path, valuation: dict[str, Any]) -> dict[str, str]:
+def render_pages(root: Path, valuation: dict[str, Any], inputs: Inputs) -> dict[str, str]:
     """The HTML of every page, by output file name."""
     environment = Environment(
         loader=FileSystemLoader(root / "site" / "templates"),
@@ -56,6 +57,7 @@ def render_pages(root: Path, valuation: dict[str, Any]) -> dict[str, str]:
     )
     context = {
         "meta": valuation["meta"],
+        "field": build_football_field(valuation, inputs),
         "disclaimer": DISCLAIMER,
         "content_security_policy": CONTENT_SECURITY_POLICY,
         # Outbound links to ASX documents do not say which page sent the visitor.
@@ -72,7 +74,8 @@ def build_site(root: Path, out_dir: Path) -> list[Path]:
     build_root = (root / "build").resolve()
     if build_root not in out_dir.resolve().parents:
         raise ValueError(f"{out_dir} is not inside {build_root}; refusing to replace it")
-    pages = render_pages(root, build_valuation(load_inputs(root)))
+    inputs = load_inputs(root)
+    pages = render_pages(root, build_valuation(inputs), inputs)
     if out_dir.exists():
         shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True)
