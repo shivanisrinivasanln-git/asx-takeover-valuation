@@ -1,0 +1,122 @@
+/* Page layout and base styles. Colours, sizes and the font face come from tokens.css, which
+   is linked first and declares the layer order. */
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  p {
+    margin: 0;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: var(--weight-regular);
+    line-height: var(--leading-body);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: var(--weight-strong);
+    line-height: var(--leading-heading);
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: var(--text-title);
+  }
+
+  h2 {
+    font-size: var(--text-heading);
+  }
+
+  h3 {
+    font-size: var(--text-subheading);
+  }
+
+  a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: var(--underline-offset);
+  }
+
+  :focus-visible {
+    outline: var(--line-focus) solid var(--accent);
+    outline-offset: var(--line-focus);
+  }
+
+  .note {
+    color: var(--ink-muted);
+    font-size: var(--text-note);
+  }
+
+  .num {
+    font-variant-numeric: var(--numeric-features);
+  }
+}
+
+@layer layout {
+  .page {
+    margin-inline: auto;
+    max-width: var(--page-width);
+    padding-inline: var(--space-4);
+  }
+
+  .site-header {
+    border-block-end: var(--line-thin) solid var(--rule);
+    padding-block: var(--space-3);
+  }
+
+  .site-name {
+    font-weight: var(--weight-strong);
+  }
+
+  main {
+    padding-block: var(--space-6) var(--space-7);
+  }
+
+  main > * + * {
+    margin-block-start: var(--space-5);
+  }
+
+  .site-footer {
+    border-block-start: var(--line-thin) solid var(--rule);
+    color: var(--ink-muted);
+    font-size: var(--text-note);
+    padding-block: var(--space-5) var(--space-6);
+  }
+}
+
+@layer components {
+  .skip-link {
+    background: var(--surface-raised);
+    color: var(--ink);
+    inset-block-start: var(--space-2);
+    inset-inline-start: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    position: absolute;
+    transform: translateY(-200%);
+  }
+
+  .skip-link:focus {
+    transform: none;
+  }
+}

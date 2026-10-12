@@ -59,6 +59,12 @@
     --text-verdict: clamp(1.5625rem, 1.423rem + 0.571vw, 1.9375rem); /* 25 to 31 px */
     --text-title: clamp(1.9375rem, 1.752rem + 0.762vw, 2.4375rem); /* 31 to 39 px */
 
+    /* Page width and line weights, so that no other file holds a raw size. */
+    --page-width: 72rem;
+    --line-thin: 1px; /* dividers and gridlines */
+    --line-focus: 2px; /* the focus ring */
+    --underline-offset: 0.2em;
+
     /* Spacing on a 4 px base, tied to the 24 px body line. */
     --space-1: 0.25rem; /* 4 px */
     --space-2: 0.5rem; /* 8 px */

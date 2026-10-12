@@ -9,6 +9,7 @@ failing step stops the run; its output is printed above the summary.
 
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -22,11 +23,14 @@ STEPS: list[tuple[str, list[str]]] = [
     ("lint", [sys.executable, "-m", "ruff", "check", *PATHS]),
     ("types", [sys.executable, "-m", "mypy"]),
     ("tests", [sys.executable, "-m", "pytest", "-q"]),
+    ("build", [sys.executable, "-m", "valuation.site_build"]),
 ]
 
 
 def run_step(name: str, command: list[str]) -> bool:
-    result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, check=False)
+    # The package is run from src, so the build step needs it on the path.
+    env = {**os.environ, "PYTHONPATH": str(ROOT / "src")}
+    result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, check=False, env=env)
     if result.returncode != 0:
         print(f"--- {name} failed ({' '.join(command[2:])})")
         print(result.stdout, end="")

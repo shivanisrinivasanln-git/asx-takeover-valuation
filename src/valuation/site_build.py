@@ -1,0 +1,98 @@
+"""Build the static site into `build/site` from the templates and `valuation.json` (task P5-03).
+
+Usage, from the repository root: PYTHONPATH=src python -m valuation.site_build
+
+Every page is rendered here, so the numbers are in the HTML before any script runs. The pages
+load only files from the site itself, which lets the policy in each page's meta tag allow
+scripts and everything else from the site only.
+"""
+
+from __future__ import annotations
+
+import shutil
+import sys
+from pathlib import Path
+from typing import Any
+
+from jinja2 import Environment, FileSystemLoader, StrictUndefined
+
+from valuation.inputs import load_inputs
+from valuation.output import build_valuation
+from valuation.site_check import REFERRER_POLICY, site_problems
+
+# The sentence under every page and in the README (checked against the README by a test).
+DISCLAIMER = (
+    "This is an educational case study, not financial advice, "
+    "and it is not affiliated with any party to the deal."
+)
+
+# GitHub Pages cannot send headers, so the policy travels in a meta tag. Everything is allowed
+# from this site only and nothing inline: pages carry no inline script or style.
+CONTENT_SECURITY_POLICY = "; ".join(
+    [
+        "default-src 'none'",
+        "script-src 'self'",
+        "style-src 'self'",
+        "img-src 'self'",
+        "font-src 'self'",
+        "connect-src 'self'",
+        "base-uri 'none'",
+        "form-action 'none'",
+    ]
+)
+
+PAGES = {"index.html": "index.html.j2"}
+
+
+def render_pages(root: Path, valuation: dict[str, Any]) -> dict[str, str]:
+    """The HTML of every page, by output file name."""
+    environment = Environment(
+        loader=FileSystemLoader(root / "site" / "templates"),
+        autoescape=True,
+        undefined=StrictUndefined,
+        trim_blocks=True,
+        lstrip_blocks=True,
+        keep_trailing_newline=True,
+    )
+    context = {
+        "meta": valuation["meta"],
+        "disclaimer": DISCLAIMER,
+        "content_security_policy": CONTENT_SECURITY_POLICY,
+        # Outbound links to ASX documents do not say which page sent the visitor.
+        "referrer_policy": REFERRER_POLICY,
+    }
+    return {
+        name: environment.get_template(template).render(**context)
+        for name, template in PAGES.items()
+    }
+
+
+def build_site(root: Path, out_dir: Path) -> list[Path]:
+    """Write the site to `out_dir`, replacing what was there, and return the files written."""
+    build_root = (root / "build").resolve()
+    if build_root not in out_dir.resolve().parents:
+        raise ValueError(f"{out_dir} is not inside {build_root}; refusing to replace it")
+    pages = render_pages(root, build_valuation(load_inputs(root)))
+    if out_dir.exists():
+        shutil.rmtree(out_dir)
+    out_dir.mkdir(parents=True)
+    shutil.copytree(root / "site" / "static", out_dir / "static")
+    for name, html in pages.items():
+        (out_dir / name).write_text(html, encoding="utf-8", newline="\n")
+    return sorted(path for path in out_dir.rglob("*") if path.is_file())
+
+
+def main() -> int:
+    root = Path(__file__).resolve().parents[2]
+    out_dir = root / "build" / "site"
+    files = build_site(root, out_dir)
+    problems = site_problems(out_dir, DISCLAIMER)
+    if problems:
+        sys.stdout.write("site: FAIL\n" + "\n".join(problems) + "\n")
+        return 1
+    sys.stdout.write(f"site: wrote {len(files)} files to {out_dir.relative_to(root)}\n")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

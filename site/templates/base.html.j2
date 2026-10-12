@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="{{ content_security_policy }}">
+<meta name="referrer" content="{{ referrer_policy }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ meta.target }}{% endblock %}</title>
+<link rel="stylesheet" href="static/tokens.css">
+<link rel="stylesheet" href="static/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to the content</a>
+<header class="site-header">
+  <div class="page">
+    <p class="site-name">{{ meta.target }}</p>
+  </div>
+</header>
+<main id="main" class="page">
+{% block main %}{% endblock %}
+</main>
+<footer class="site-footer">
+  <div class="page">
+    <p>{{ disclaimer }}</p>
+  </div>
+</footer>
+</body>
+</html>
