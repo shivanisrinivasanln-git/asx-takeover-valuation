@@ -22,7 +22,7 @@ from valuation.inputs import Inputs, load_inputs
 from valuation.output import build_valuation
 from valuation.site_check import REFERRER_POLICY, site_problems
 from valuation.site_frame import BuildInfo, build_frame, current_commit
-from valuation.timeline_page import implementation_date, load_timeline
+from valuation.timeline_page import build_timeline_page, implementation_date, load_timeline
 from valuation.valuation_page import build_valuation_page
 
 # The sentence under every page and in the README (checked against the README by a test).
@@ -49,10 +49,12 @@ CONTENT_SECURITY_POLICY = "; ".join(
 PAGES = {
     "index.html": "index.html.j2",
     "valuation.html": "valuation.html.j2",
+    "timeline.html": "timeline.html.j2",
 }
 NAVIGATION = (
     ("index.html", "Football field"),
     ("valuation.html", "Valuation tables"),
+    ("timeline.html", "Deal timeline"),
 )
 
 
@@ -72,6 +74,7 @@ def render_pages(
     context = {
         "pages": NAVIGATION,
         "frame": build_frame(valuation, build, implementation_date(timeline)),
+        "timeline": build_timeline_page(timeline),
         "meta": valuation["meta"],
         "field": build_football_field(valuation, inputs),
         "page": build_valuation_page(valuation, inputs),

@@ -1,0 +1,15 @@
+{% extends "base.html.j2" %}
+{% block title %}Deal timeline, {{ meta.target }}{% endblock %}
+{% block heading %}Deal timeline{% endblock %}
+{% block main %}
+<p class="note">{{ timeline.verified_count }} of {{ timeline.total_count }} events are checked against the document linked beside them. An event that I could not check says why.</p>
+<ol class="timeline">
+  {% for event in timeline.events %}
+  <li>
+    <p class="timeline-date">{{ event.date }}</p>
+    <p>{{ event.event }}</p>
+    <p class="note">Source: <a href="{{ event.url }}">{{ event.source }}</a>, {{ event.location }}. {% if event.verified %}Checked against the source.{% else %}Not checked: {{ event.note }}{% endif %}</p>
+  </li>
+  {% endfor %}
+</ol>
+{% endblock %}

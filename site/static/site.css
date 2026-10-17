@@ -306,4 +306,21 @@
     margin-block-start: var(--space-3);
     max-width: var(--prose-width);
   }
+
+  /* The deal timeline: one entry per event, newest last. */
+  .timeline {
+    list-style: none;
+    margin-inline: 0;
+    max-width: var(--prose-width);
+    padding: 0;
+  }
+
+  .timeline li {
+    border-block-start: var(--line-thin) solid var(--rule);
+    padding-block: var(--space-3);
+  }
+
+  .timeline-date {
+    font-weight: var(--weight-strong);
+  }
 }

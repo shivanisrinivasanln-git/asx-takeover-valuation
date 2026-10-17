@@ -71,7 +71,7 @@ def site_dir() -> Path:
 
 def test_every_page_has_the_docket_and_the_colophon(site_dir: Path) -> None:
     pages = sorted(site_dir.glob("*.html"))
-    assert {page.name for page in pages} >= {"index.html", "valuation.html"}
+    assert {page.name for page in pages} >= {"index.html", "valuation.html", "timeline.html"}
     for page in pages:
         facts = _facts(page)
         assert [label for label, _ in facts.lists["docket"]] == [

@@ -299,3 +299,11 @@ I added `data_date` to the `meta` block of `valuation.json`. It is the as-at dat
 The build date is the day the build ran and the commit is the one HEAD points at. I read it from the git folder (a branch file, `packed-refs` or a detached head) and not by running git, so the build starts no other program and the code needs no exception to the lint rule on subprocess calls. A commit taken before the commit that carries the build is the one shown, which is accurate for a deploy from a green main.
 
 The consideration reads "A$4.43 cash a share, less any special dividend", which is how the deed and the timeline row of 9 May 2025 state it. The special dividend of 8.8 cents is not subtracted anywhere on the page, because the offer price input is the headline price.
+
+## 17 October 2026: the deal timeline page (task P5-12)
+
+`timeline.html` lists the 30 rows of `data/extracted/deal_timeline.csv` in date order: the date, the event, the source as a link with its page, and either "Checked against the source" or "Not checked" with the reason from the row. The summary line counts the checked rows (29 of 30; the 28 April 2025 row is unverified because its announcement returned HTTP 503 when I opened it). I show the evidence column's result and not its wording, because the evidence lines describe how I opened each file and are for my own records.
+
+I used an ordered list and not a table. Each event is a sentence or two and a table cell that does not wrap (my table rule keeps figures on one line) would push the text off a phone screen. The page text is limited to the summary line; any introduction is page copy for P5-19.
+
+The link check on 17 October 2026 was a one-off request to each of the 17 distinct addresses, and it is not part of the build, because the build must pass without a network. Fifteen answered (200, and 206 for the ATO ruling, which refuses a HEAD request). The two SEC addresses returned 403: the SEC blocks anonymous automated requests, and I did not send a made-up identity to get past that. Both rows were opened by hand on 5 October 2026 (evidence column). What the build tests is that every link is an https address equal to the one in the table.
