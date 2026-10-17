@@ -49,6 +49,7 @@
     --numeric-features: tabular-nums lining-nums;
     --leading-body: 1.5;
     --leading-heading: 1.2;
+    --leading-verdict: 1.45;
 
     /* Scale of 1.25 from a 16 px base. The three largest steps grow from the step below at a
        390 px viewport to the stated size at 1440 px, in rem plus vw so browser zoom still works. */
@@ -68,12 +69,17 @@
     --chart-undisturbed: 1px;
     --chart-dash: 4 3; /* undisturbed price, dash and gap */
     --chart-halo: 8px; /* surface-coloured edge that keeps a label legible over a line */
+    --hatch-pitch: 5px; /* the hatch under my range in the verdict, as in the chart */
+    --verdict-band: 0.2em; /* depth of that hatched band, inside the line gap */
+    --verdict-rule-offset: 0.3em; /* the solid rule under the offer */
 
     /* Page width and line weights, so that no other file holds a raw size. */
     --page-width: 72rem;
     --wrap-label-width: 9rem; /* a row label that may break anywhere */
     --wrap-column-width: 16rem; /* a table column that holds sentences */
     --prose-width: 45rem; /* about 70 characters at body size, under the 80 limit */
+    --verdict-width: 46rem; /* about 50 characters a line at the verdict size */
+    --route-min-width: 15rem; /* a route onward takes a column when three fit */
     --line-thin: 1px; /* dividers and gridlines */
     --line-focus: 2px; /* the focus ring */
     --line-mark: 2px; /* dotted underline of a sourced figure */

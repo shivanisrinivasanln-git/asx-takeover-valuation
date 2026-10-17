@@ -36,6 +36,7 @@
   <div><dt>{{ label }}</dt><dd>{{ text }}</dd></div>
   {% endfor %}
 </dl>
+{% block lead %}{% endblock %}
 {% block main %}{% endblock %}
 {% if sources %}
 {% include "sources.html.j2" %}

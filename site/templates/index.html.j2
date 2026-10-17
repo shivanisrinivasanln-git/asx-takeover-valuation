@@ -1,5 +1,31 @@
 {% extends "base.html.j2" %}
+{% from "macros.html.j2" import source_mark %}
+{% block title %}{{ site_name }}{% endblock %}
+{% block heading %}My valuation of Domain against CoStar's offer{% endblock %}
+{% macro fig(figure) -%}
+<span class="num" data-key="{{ figure.key }}">{{ source_mark(figure.ref, figure.text) if figure.ref else figure.text }}</span>
+{%- endmacro %}
+{% block lead %}
+{% set verdict = landing.verdict %}
+<p class="verdict">My valuation range of <span class="mark-mine">A${{ fig(verdict.my_low) }}–{{ fig(verdict.my_high) }}</span> a share includes CoStar's <span class="mark-offer">A${{ fig(verdict.offer) }}</span> offer, which is above my preferred value of <span class="mark-preferred">A${{ fig(verdict.my_preferred) }}</span>. Grant Samuel's range was <span class="mark-expert">A${{ fig(verdict.expert_low) }}–{{ fig(verdict.expert_high) }}</span>.</p>
+{% endblock %}
 {% block main %}
-<p class="note">Values are in A$ per share. Valuation date {{ meta.valuation_date }}.</p>
 {% include "football_field.html.j2" %}
+<p class="lead">I valued Domain at {{ meta.valuation_date }}, the independent expert's valuation date, from the scheme booklet and other public documents. My range weights the discounted cash flow at <span class="num" data-key="method_weight_dcf_pct">{{ landing.weight_dcf }}</span>% and each multiples method at <span class="num" data-key="method_weight_trading_pct">{{ landing.weight_multiples }}</span>%. Each figure taken from a document names the document, page and date.</p>
+<nav class="routes" aria-label="Read further">
+  <ul>
+    <li>
+      <a class="route-title" href="valuation.html">How I valued it</a>
+      <p>The forecast, the discount rate and the peer and deal multiples, each input with its source.</p>
+    </li>
+    <li>
+      <a class="route-title" href="gap.html">Where I differ from the expert</a>
+      <p>A bridge from the midpoint of Grant Samuel's range to my preferred value, one step per group of inputs.</p>
+    </li>
+    <li>
+      <p class="route-title">Download the model and report</p>
+      <p><a href="{{ landing.model_href }}">Excel model</a> with live formulas, and the <a href="{{ landing.report_href }}">PDF report</a>.</p>
+    </li>
+  </ul>
+</nav>
 {% endblock %}

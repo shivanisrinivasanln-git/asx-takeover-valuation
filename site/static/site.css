@@ -309,6 +309,14 @@
     font-weight: var(--weight-strong);
   }
 
+  /* On a phone the four deal facts sit two to a row, so the chart starts sooner. */
+  @media (max-width: 40rem) {
+    .docket {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
   .site-footer p {
     margin-block-start: var(--space-3);
     max-width: var(--prose-width);
@@ -510,5 +518,86 @@
 
   .limitations li + li {
     margin-block-start: var(--space-3);
+  }
+}
+
+@layer components {
+  /* The verdict on the landing page uses the chart's notation: a hatched band under my range,
+     the accent on my preferred value, a solid rule under the offer and a thin box around the
+     expert's range. Each mark sits under or around its figures, never behind them. */
+  .verdict {
+    font-size: var(--text-verdict);
+    line-height: var(--leading-verdict);
+    max-width: var(--verdict-width);
+    text-wrap: pretty;
+  }
+
+  .verdict .num {
+    font-variant-numeric: var(--numeric-features);
+  }
+
+  .mark-mine,
+  .mark-offer,
+  .mark-preferred,
+  .mark-expert {
+    white-space: nowrap;
+  }
+
+  .mark-mine {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      var(--owner-hatch) 0 var(--chart-hatch-line),
+      transparent var(--chart-hatch-line) var(--hatch-pitch)
+    );
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% var(--verdict-band);
+    padding-block-end: var(--verdict-band);
+  }
+
+  .mark-preferred {
+    color: var(--accent);
+    font-weight: var(--weight-strong);
+  }
+
+  .mark-offer {
+    text-decoration-color: var(--offer-rule);
+    text-decoration-line: underline;
+    text-decoration-thickness: var(--line-focus);
+    text-underline-offset: var(--verdict-rule-offset);
+  }
+
+  .mark-expert {
+    border: var(--chart-outline) solid var(--expert-outline);
+    padding-inline: var(--space-1);
+  }
+
+  .lead {
+    color: var(--ink-muted);
+    max-width: var(--prose-width);
+  }
+
+  /* The three routes onward: plain links in columns when they fit, with a rule above. */
+  .routes ul {
+    border-block-start: var(--line-thin) solid var(--rule);
+    display: grid;
+    gap: var(--space-5) var(--space-6);
+    grid-template-columns: repeat(auto-fit, minmax(var(--route-min-width), 1fr));
+    list-style: none;
+    margin: 0;
+    padding: var(--space-5) 0 0;
+  }
+
+  .routes p {
+    color: var(--ink-muted);
+    margin-block-start: var(--space-1);
+  }
+
+  .routes .route-title {
+    color: var(--ink);
+    display: inline-block;
+    font-size: var(--text-subheading);
+    font-weight: var(--weight-strong);
+    margin-block-start: 0;
   }
 }

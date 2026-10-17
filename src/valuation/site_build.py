@@ -21,6 +21,7 @@ from jinja2 import Environment, FileSystemLoader, StrictUndefined
 from valuation.bridge_page import build_bridge_page
 from valuation.football_field import build_football_field
 from valuation.inputs import Inputs, load_inputs
+from valuation.landing import build_landing
 from valuation.method_page import build_method_page
 from valuation.output import build_valuation
 from valuation.site_check import REFERRER_POLICY, site_problems
@@ -49,6 +50,9 @@ CONTENT_SECURITY_POLICY = "; ".join(
         "form-action 'none'",
     ]
 )
+
+# The title of the landing page.
+SITE_NAME = "Shadow valuation of the Domain takeover"
 
 PAGES = {
     "index.html": "index.html.j2",
@@ -107,12 +111,15 @@ def render_pages(
         keep_trailing_newline=True,
     )
     timeline = load_timeline(root)
+    field = build_football_field(valuation, inputs)
     context = {
         "pages": NAVIGATION,
+        "site_name": SITE_NAME,
+        "landing": build_landing(valuation, field, MODEL_HREF, REPORT_HREF),
         "frame": build_frame(valuation, build, implementation_date(timeline)),
         "timeline": build_timeline_page(timeline),
         "meta": valuation["meta"],
-        "field": build_football_field(valuation, inputs),
+        "field": field,
         "bridge": build_bridge_page(valuation, inputs),
         "method": build_method_page(valuation, inputs),
         "page": build_valuation_page(valuation, inputs),
