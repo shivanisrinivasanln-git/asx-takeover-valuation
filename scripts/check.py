@@ -23,6 +23,8 @@ STEPS: list[tuple[str, list[str]]] = [
     ("lint", [sys.executable, "-m", "ruff", "check", *PATHS]),
     ("types", [sys.executable, "-m", "mypy"]),
     ("tests", [sys.executable, "-m", "pytest", "-q"]),
+    # The site serves the PDF report, so the report is built first. It needs Typst 0.15.1.
+    ("report", [sys.executable, "scripts/build_report.py"]),
     ("build", [sys.executable, "-m", "valuation.site_build"]),
 ]
 

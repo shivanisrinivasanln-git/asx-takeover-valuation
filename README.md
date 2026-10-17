@@ -63,7 +63,7 @@ python -m venv .venv
 .venv/bin/python scripts/check.py
 ```
 
-On Windows the interpreter is `.venv\Scripts\python.exe`. The last command runs the format check, the linter, the type checker and the tests, and prints one summary line.
+On Windows the interpreter is `.venv\Scripts\python.exe`. The last command runs the format check, the linter, the type checker and the tests, builds the PDF report and the site, and prints one summary line. The report needs [Typst](https://github.com/typst/typst/releases/tag/v0.15.1) 0.15.1, on the path or named in the `TYPST` variable.
 
 ## Licence
 
