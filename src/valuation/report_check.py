@@ -31,38 +31,102 @@ def figures_in(text: str) -> list[str]:
     return FIGURE.findall(text)
 
 
-def expected_figures(valuation: dict[str, Any]) -> list[str]:
-    """Every figure the template prints, in the order it prints them."""
+def _per_share(values: dict[str, float], *keys: str) -> list[str]:
+    return [number(values[key]) for key in keys]
+
+
+def _one_place(values: dict[str, float], *keys: str) -> list[str]:
+    return [number(values[key], 1) for key in keys]
+
+
+def expected_figures(valuation: dict[str, Any], limitations: list[str]) -> list[str]:
+    """Every figure the template prints, in the order it prints them.
+
+    The text of each gap step and each limitation comes from the data, so its figures are taken
+    from that text: a word changed in the template cannot add or drop a figure unnoticed.
+    """
     values = {key: entry["value"] for key, entry in valuation["values"].items()}
-    figures: list[str] = []
+    # Summary.
+    figures = _per_share(
+        values,
+        "combined_value_per_share_aud_low",
+        "combined_value_per_share_aud_high",
+        "preferred_value_per_share_aud",
+        "offer_price_aud",
+        "expert_value_per_share_aud_low",
+        "expert_value_per_share_aud_high",
+    )
+    # Method and result: the weights are whole numbers and are not read as figures.
+    figures += _one_place(
+        values, "dcf_discount_rate_pct_high", "dcf_discount_rate_pct_low", "dcf_terminal_growth_pct"
+    )
+    figures += _per_share(
+        values,
+        "dcf_value_per_share_aud_low",
+        "dcf_value_per_share_aud_high",
+        "preferred_dcf_value_per_share_aud",
+    )
+    figures += _one_place(values, "dcf_discount_rate_pct_mid")
+    figures += _one_place(
+        values,
+        "trading_ebitda_multiple_x_low",
+        "trading_ebitda_multiple_x_high",
+        "trading_ebitda_earnings_aud_m",
+    )
+    figures += _per_share(
+        values,
+        "trading_ebitda_value_per_share_aud_low",
+        "trading_ebitda_value_per_share_aud_high",
+        "preferred_trading_value_per_share_aud",
+    )
+    figures += _one_place(
+        values, "precedent_ebitda_multiple_x_low", "precedent_ebitda_multiple_x_high"
+    )
+    figures += _per_share(
+        values,
+        "precedent_ebitda_value_per_share_aud_low",
+        "precedent_ebitda_value_per_share_aud_high",
+        "preferred_precedent_value_per_share_aud",
+    )
+    # Value per share by method, and the reference prices.
     for row in valuation["football_field"]:
         figures.append(number(values[row["low_key"]]))
         if row["preferred_key"] is not None:
             figures.append(number(values[row["preferred_key"]]))
         figures.append(number(values[row["high_key"]]))
-    figures.append(number(values["offer_price_aud"]))
-    figures.append(number(values["undisturbed_share_price_aud"]))
-    for key in (
+    figures += _per_share(values, "offer_price_aud", "undisturbed_share_price_aud")
+    # Business operations value.
+    figures += _one_place(
+        values,
         "dcf_business_operations_value_aud_m_low",
         "dcf_business_operations_value_aud_m_mid",
         "dcf_business_operations_value_aud_m_high",
         "expert_business_operations_value_aud_m_low",
         "expert_business_operations_value_aud_m_high",
-    ):
-        figures.append(number(values[key], 1))
+    )
+    # Gap: the paragraph, the table, then each step's explanation.
     bridge = valuation["gap_bridge"]
+    figures += [
+        number(bridge["start_value_per_share_aud"]),
+        number(bridge["end_value_per_share_aud"]),
+    ]
     figures.append(number(bridge["start_value_per_share_aud"]))
     figures.append(signed(bridge["reconstruction_change_aud"], 4))
     for step in bridge["steps"]:
         figures.append(signed(step["change_aud"]))
         figures.append(number(step["cumulative_value_per_share_aud"]))
     figures.append(number(bridge["end_value_per_share_aud"]))
+    for step in bridge["steps"]:
+        figures += figures_in(step["explanation"])
+    # What I could not verify.
+    for text in limitations:
+        figures += figures_in(text)
     return figures
 
 
-def figure_problems(valuation: dict[str, Any], text: str) -> list[str]:
+def figure_problems(valuation: dict[str, Any], limitations: list[str], text: str) -> list[str]:
     """One line for each position where the PDF's figure differs from the expected one."""
-    expected = expected_figures(valuation)
+    expected = expected_figures(valuation, limitations)
     found = figures_in(text)
     problems = [
         f"figure {position + 1}: the PDF has {actual}, valuation.json gives {wanted}"

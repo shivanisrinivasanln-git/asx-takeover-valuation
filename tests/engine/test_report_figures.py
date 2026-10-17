@@ -11,7 +11,8 @@ from typing import Any
 import pytest
 
 from test_report_template import build_script, clean_copy, needs_typst, valuation
-from valuation.report_build import TEMPLATE_NAME
+from valuation.inputs import load_inputs
+from valuation.report_build import LIMITATIONS_NAME, TEMPLATE_NAME
 from valuation.report_check import (
     expected_figures,
     figure_problems,
@@ -23,6 +24,12 @@ __all__ = ["valuation"]
 
 MINUS = chr(0x2212)
 BUILD_DATE = "17 October 2026"
+ROOT = Path(__file__).resolve().parents[2]
+
+
+@pytest.fixture(scope="module")
+def limitations() -> list[str]:
+    return [row["text"] for row in load_inputs(ROOT).tables["limitations"]]
 
 
 def test_a_figure_keeps_its_true_minus_sign_and_its_thousands_separators() -> None:
@@ -44,33 +51,58 @@ def test_a_figure_followed_by_a_full_stop_is_read_whole() -> None:
 
 
 def test_the_expected_figures_hold_the_displayed_form_of_the_offer_price(
-    valuation: dict[str, Any],
+    valuation: dict[str, Any], limitations: list[str]
 ) -> None:
-    expected = expected_figures(valuation)
+    expected = expected_figures(valuation, limitations)
     assert "4.43" in expected
     assert any(figure.startswith(MINUS) for figure in expected)
     assert any(figure.startswith("+") for figure in expected)
     assert any("," in figure for figure in expected)
 
 
-def test_matching_text_has_no_problems(valuation: dict[str, Any]) -> None:
-    text = " and ".join(expected_figures(valuation))
-    assert figure_problems(valuation, text) == []
+def test_matching_text_has_no_problems(valuation: dict[str, Any], limitations: list[str]) -> None:
+    text = " and ".join(expected_figures(valuation, limitations))
+    assert figure_problems(valuation, limitations, text) == []
 
 
-def test_a_mistyped_figure_is_named_by_its_position(valuation: dict[str, Any]) -> None:
-    figures = expected_figures(valuation)
+def test_a_mistyped_figure_is_named_by_its_position(
+    valuation: dict[str, Any], limitations: list[str]
+) -> None:
+    figures = expected_figures(valuation, limitations)
+    wanted = figures[3]
     figures[3] = "9.99"
-    problems = figure_problems(valuation, " ".join(figures))
-    assert problems == [
-        f"figure 4: the PDF has 9.99, valuation.json gives {expected_figures(valuation)[3]}"
-    ]
+    problems = figure_problems(valuation, limitations, " ".join(figures))
+    assert problems == [f"figure 4: the PDF has 9.99, valuation.json gives {wanted}"]
 
 
-def test_a_missing_figure_and_an_extra_figure_are_both_reported(valuation: dict[str, Any]) -> None:
-    figures = expected_figures(valuation)
-    assert figure_problems(valuation, " ".join(figures[:-1]))[-1].startswith("the PDF holds")
-    assert figure_problems(valuation, " ".join([*figures, "1.00"]))[-1].startswith("the PDF holds")
+def test_a_missing_figure_and_an_extra_figure_are_both_reported(
+    valuation: dict[str, Any], limitations: list[str]
+) -> None:
+    figures = expected_figures(valuation, limitations)
+    short = figure_problems(valuation, limitations, " ".join(figures[:-1]))
+    long = figure_problems(valuation, limitations, " ".join([*figures, "1.00"]))
+    assert short[-1].startswith("the PDF holds")
+    assert long[-1].startswith("the PDF holds")
+
+
+def test_the_text_of_each_gap_step_and_limitation_adds_its_own_figures(
+    valuation: dict[str, Any], limitations: list[str]
+) -> None:
+    with_text = expected_figures(valuation, limitations)
+    without_text = expected_figures(
+        {
+            **valuation,
+            "gap_bridge": {
+                **valuation["gap_bridge"],
+                "steps": [{**step, "explanation": ""} for step in valuation["gap_bridge"]["steps"]],
+            },
+        },
+        [],
+    )
+    added = sum(len(figures_in(step["explanation"])) for step in valuation["gap_bridge"]["steps"])
+    added += sum(len(figures_in(text)) for text in limitations)
+    assert added > 50
+    assert len(with_text) == len(without_text) + added
 
 
 @needs_typst
@@ -78,7 +110,10 @@ def test_the_built_pdf_holds_exactly_the_figures_in_valuation_json(tmp_path: Pat
     root = clean_copy(tmp_path)
     pdf = build_script().build_report(root, root / "build" / "report", BUILD_DATE)
     written = json.loads((root / "build" / "report" / "valuation.json").read_text("utf-8"))
-    assert figure_problems(written, pdf_text(pdf)) == []
+    written_limitations = json.loads(
+        (root / "build" / "report" / LIMITATIONS_NAME).read_text("utf-8")
+    )
+    assert figure_problems(written, written_limitations, pdf_text(pdf)) == []
 
 
 @needs_typst
@@ -101,7 +136,10 @@ def test_a_figure_mistyped_in_the_template_fails_the_check(
     template.write_text(source.replace(original, mistyped), encoding="utf-8")
     pdf = build_script().build_report(root, root / "build" / "report", BUILD_DATE)
     written = json.loads((root / "build" / "report" / "valuation.json").read_text("utf-8"))
-    assert figure_problems(written, pdf_text(pdf)) != []
+    written_limitations = json.loads(
+        (root / "build" / "report" / LIMITATIONS_NAME).read_text("utf-8")
+    )
+    assert figure_problems(written, written_limitations, pdf_text(pdf)) != []
 
 
 def write_pdf_with_text(path: Path, line: str) -> None:

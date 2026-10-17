@@ -17,6 +17,8 @@ import pytest
 from valuation.inputs import load_inputs
 from valuation.output import build_valuation
 from valuation.report_build import (
+    FONT_DIR,
+    LIMITATIONS_NAME,
     PDF_NAME,
     TEMPLATE_NAME,
     TYPST_VERSION,
@@ -92,16 +94,15 @@ def test_every_row_key_a_football_field_row_names_is_in_valuation_json(
                 assert row[name] in valuation["values"], row[name]
 
 
-def test_the_placeholders_hold_no_figure_and_no_text_of_mine() -> None:
-    placeholders = re.findall(r"#placeholder\[(.*?)\]", TEMPLATE)
-    assert len(placeholders) == 3
-    assert not [text for text in placeholders if re.search(r"\d", text)]
+def test_no_placeholder_is_left_in_the_report() -> None:
+    assert "placeholder" not in TEMPLATE.lower()
 
 
-def test_each_placeholder_uses_the_words_of_its_task_in_the_task_list() -> None:
-    task_list = (ROOT / "TODO.md").read_text(encoding="utf-8").lower()
-    placeholders = re.findall(r"#placeholder\[(.*?)\]", TEMPLATE)
-    assert [text for text in placeholders if text.rstrip(".").lower() not in task_list] == []
+def test_the_report_is_set_in_the_tracked_font_and_only_that_font() -> None:
+    assert 'font: "Atkinson Hyperlegible Next", fallback: false' in TEMPLATE
+    assert (ROOT / FONT_DIR / "AtkinsonHyperlegibleNext-Variable.ttf").is_file()
+    licence = (ROOT / FONT_DIR / "OFL.txt").read_text(encoding="utf-8")
+    assert "SIL Open Font License, Version 1.1" in licence
 
 
 def test_the_template_loads_valuation_json_from_its_own_folder() -> None:
@@ -134,6 +135,8 @@ def test_the_folder_holds_the_template_and_a_fresh_valuation_json(
     assert template == out_dir / TEMPLATE_NAME
     assert template.read_text(encoding="utf-8") == TEMPLATE
     assert json.loads((out_dir / "valuation.json").read_text(encoding="utf-8")) == valuation
+    limitations = json.loads((out_dir / LIMITATIONS_NAME).read_text(encoding="utf-8"))
+    assert limitations == [row["text"] for row in load_inputs(ROOT).tables["limitations"]]
     assert not (out_dir / "stale.txt").exists()
 
 
@@ -142,10 +145,11 @@ def test_a_folder_outside_the_build_folder_is_refused(tmp_path: Path) -> None:
         prepare_folder(ROOT, tmp_path / "report")
 
 
-def test_the_compile_command_uses_only_embedded_fonts_and_the_sites_disclaimer() -> None:
+def test_the_compile_command_uses_only_the_tracked_fonts_and_the_sites_disclaimer() -> None:
     folder = ROOT / "build" / "report"
-    command = compile_command("typst", folder / TEMPLATE_NAME, "17 October 2026")
+    command = compile_command("typst", folder / TEMPLATE_NAME, "17 October 2026", ROOT / FONT_DIR)
     assert "--ignore-system-fonts" in command
+    assert command[command.index("--font-path") + 1] == str(ROOT / FONT_DIR)
     assert f"disclaimer={DISCLAIMER}" in command
     assert "build_date=17 October 2026" in command
     assert command[command.index("--root") + 1] == str(folder)

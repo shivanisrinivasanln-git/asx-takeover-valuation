@@ -14,6 +14,7 @@ from datetime import date
 from pathlib import Path
 
 from valuation.report_build import (
+    FONT_DIR,
     PDF_NAME,
     check_version,
     compile_command,
@@ -31,7 +32,10 @@ def build_report(root: Path, out_dir: Path, build_date: str) -> Path:
     check_version(version.stdout)
     template = prepare_folder(root, out_dir)
     result = subprocess.run(
-        compile_command(typst, template, build_date), capture_output=True, text=True, check=False
+        compile_command(typst, template, build_date, root / FONT_DIR),
+        capture_output=True,
+        text=True,
+        check=False,
     )
     if result.returncode != 0:
         raise RuntimeError(f"typst failed:\n{result.stderr}")
