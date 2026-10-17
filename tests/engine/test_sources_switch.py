@@ -141,6 +141,6 @@ def test_when_scripting_is_off_the_page_reads_with_no_switch(
     opened = context.new_page()
     opened.goto((site_dir / "valuation.html").as_uri())
     assert opened.locator(SWITCH).is_hidden()
-    assert opened.locator("h1").inner_text() == "Valuation tables"
+    assert opened.locator("h1").inner_text() == "How I valued Domain"
     assert opened.locator("#sources-heading").is_visible()
     context.close()

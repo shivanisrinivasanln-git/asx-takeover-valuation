@@ -5,6 +5,12 @@
 <span class="num" data-sensitivity="precedent_completed_deals_only:{{ 'base_' if base else '' }}{{ field }}">{{ text }}</span>
 {%- endmacro %}
 {% block main %}
+<section class="prose" aria-labelledby="combine-heading">
+  <h2 id="combine-heading">How the three methods combine</h2>
+  <p>Each method gives a low, a middle and a high value per share. My preferred value weights the middle values, the discounted cash flow at <span class="num" data-key="method_weight_dcf_pct">{{ landing.weight_dcf }}</span>% and each multiples method at <span class="num" data-key="method_weight_trading_pct">{{ landing.weight_multiples }}</span>%. My range applies the same weights to the three low values and to the three high values, so it is the range if every method comes in low together or high together, which is wider than a range that treats the methods as independent.</p>
+  <p>The independent expert gave both of its methods weight and says its range cannot be reduced to a weighting calculation, so there are no expert weights to copy and these are my judgement (the <a href="gap.html#step-weights">method weights step</a> gives the booklet page). The register at the end of this page lists every input with its document, page and date.</p>
+</section>
+
 {% set deals = method.completed_deals %}
 {% set now = deals.figures %}
 {% set base = deals.base_figures %}

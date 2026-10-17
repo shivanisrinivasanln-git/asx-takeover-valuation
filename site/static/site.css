@@ -611,7 +611,8 @@
     padding-inline: var(--space-1);
   }
 
-  .lead {
+  .lead,
+  .section-intro {
     color: var(--ink-muted);
     max-width: var(--prose-width);
   }

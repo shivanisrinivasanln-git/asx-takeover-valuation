@@ -63,8 +63,8 @@ PAGES = {
 }
 NAVIGATION = (
     ("index.html", "Overview"),
-    ("valuation.html", "Valuation tables"),
-    ("gap.html", "Gap bridge"),
+    ("valuation.html", "Valuation"),
+    ("gap.html", "Gap to the expert"),
     ("method.html", "Method and sources"),
     ("timeline.html", "Deal timeline"),
 )

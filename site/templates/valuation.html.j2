@@ -1,8 +1,9 @@
 {% extends "base.html.j2" %}
 {% from "macros.html.j2" import source_mark %}
-{% block title %}Valuation tables, {{ meta.target }}{% endblock %}
-{% block heading %}Valuation tables{% endblock %}
+{% block title %}How I valued Domain, {{ meta.target }}{% endblock %}
+{% block heading %}How I valued Domain{% endblock %}
 {% block main %}
+<p class="lead">I value Domain three ways. The discounted cash flow keeps the independent expert's scenario A forecast and its adopted range of discount rates. The trading comparables apply the multiples of listed peers, with a control premium because those multiples come from minority share prices. The precedent transactions apply the multiples paid in past takeovers, which already include control. Each input below names its document and page. Of the ones marked as my judgement, most are my reading of the expert's words, and the discounting convention is my own choice because the booklet does not state it.</p>
 <p class="note">Valuation date {{ meta.valuation_date }}. Discounting is {{ meta.discounting }}.</p>
 
 <section aria-labelledby="dcf-assumptions-heading">
@@ -93,6 +94,7 @@
 
 <section aria-labelledby="comparables-heading">
   <h2 id="comparables-heading">Trading comparables</h2>
+  <p class="section-intro">My range uses the multiples of SEEK and Rightmove, the two lowest of the eight peers, because Domain is the second portal in its market and its margin is well below REA Group's. The <a href="gap.html#step-trading_multiples">trading multiples step</a> on the gap page gives the booklet pages.</p>
   <div class="table-scroll" tabindex="0" role="region" aria-label="Peer multiples">
     <table class="figures">
       <caption>Peer multiples printed by the independent expert at {{ page.comparables.as_at }}, based on share prices with no premium for control. Lowest, median and highest cover the eight peers shown. The financial year each multiple refers to is not stated in the printed labels (unverified).</caption>
@@ -137,6 +139,7 @@
 
 <section aria-labelledby="precedents-heading">
   <h2 id="precedents-heading">Precedent transactions</h2>
+  <p class="section-intro">My range uses the deals with a forecast EBITDA multiple, less the highest and the lowest. Two of the deals inside it were proposals that did not complete; the method page shows the range on completed deals only.</p>
   <div class="table-scroll" tabindex="0" role="region" aria-label="Precedent transaction multiples">
     <table class="figures">
       <caption>Deal multiples printed by the independent expert. They are control multiples, so I apply no premium to them. I have not checked them against primary sources.</caption>

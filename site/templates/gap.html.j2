@@ -1,8 +1,9 @@
 {% extends "base.html.j2" %}
 {% from "macros.html.j2" import source_mark %}
-{% block title %}Gap bridge, {{ meta.target }}{% endblock %}
-{% block heading %}Gap bridge{% endblock %}
+{% block title %}Where I differ from the expert, {{ meta.target }}{% endblock %}
+{% block heading %}Where I differ from the expert{% endblock %}
 {% block main %}
+<p class="lead">Grant Samuel published a range and no preferred value, so the bridge starts at the midpoint of its range. Each step swaps one group of inputs from the expert's value to mine, in the order shown, and each change is the effect of that swap with the steps before it already made. Where I kept the expert's input the step is zero, and the explanation says what I kept and, for the discount rate, the forecast and terminal growth, what a different value would give.</p>
 {% include "gap_bridge_chart.html.j2" %}
 <section aria-labelledby="steps-heading">
   <h2 id="steps-heading">Each step explained</h2>
