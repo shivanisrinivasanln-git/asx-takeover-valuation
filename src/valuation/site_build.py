@@ -85,7 +85,7 @@ def render_pages(
         "meta": valuation["meta"],
         "field": build_football_field(valuation, inputs),
         "bridge": build_bridge_page(valuation, inputs),
-        "method": build_method_page(inputs),
+        "method": build_method_page(valuation, inputs),
         "page": build_valuation_page(valuation, inputs),
         "disclaimer": DISCLAIMER,
         "content_security_policy": CONTENT_SECURITY_POLICY,

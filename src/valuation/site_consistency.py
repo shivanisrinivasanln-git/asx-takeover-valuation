@@ -7,8 +7,8 @@ Three rules, each reported with the page and the text it found:
    that writes text are errors, so a number can only arrive through a variable. The fiscal year
    labels (FY25, FY26) are the one allowed form: they name a year and are not a figure.
 2. A figure that names its origin with a `data-key`, `data-input`, `data-forecast`,
-   `data-bridge` or `data-count` attribute equals that value in `valuation.json`, the inputs or
-   the tables, at the precision the page shows.
+   `data-bridge`, `data-count` or `data-sensitivity` attribute equals that value in
+   `valuation.json`, the inputs or the tables, at the precision the page shows.
 3. Every other number in the visible text must appear in the evidence: the numbers in
    `valuation.json` (rounded to up to four places), the text of the inputs, the transcribed and
    written tables, and the lowest, median and highest multiples of the peer and deal tables.
@@ -38,7 +38,14 @@ from valuation.provenance import Reference, ReferenceBook
 from valuation.site_format import MINUS, number, plain
 from valuation.site_frame import BuildInfo
 
-ORIGIN_ATTRIBUTES = ("data-key", "data-input", "data-forecast", "data-bridge", "data-count")
+ORIGIN_ATTRIBUTES = (
+    "data-key",
+    "data-input",
+    "data-forecast",
+    "data-bridge",
+    "data-count",
+    "data-sensitivity",
+)
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?")
 # A fiscal year label names a year. It is the only number a template may write itself.
 TEMPLATE_ALLOWED = re.compile(r"\bFY\d{2}\b")
@@ -232,6 +239,9 @@ def _source_value(
         return float(_forecast_row(valuation, row_header)[attrs["data-forecast"]])
     if "data-count" in attrs:
         return _count(attrs["data-count"], inputs, timeline)
+    if "data-sensitivity" in attrs:
+        name, field = attrs["data-sensitivity"].split(":")
+        return float(valuation["sensitivities"][name][field])
     return _bridge_value(valuation["gap_bridge"], attrs["data-bridge"])
 
 
@@ -247,7 +257,7 @@ def _figure_problems(
         origin = next(f"{a}={attrs[a]}" for a in ORIGIN_ATTRIBUTES if a in attrs)
         try:
             source = _source_value(attrs, row_header, valuation, inputs, timeline)
-        except (KeyError, StopIteration):
+        except (KeyError, StopIteration, ValueError):
             problems.append(f"{name}: {origin} names nothing in the data (text {text!r})")
             continue
         if attrs.get("data-input") == "mid_year_discounting_flag":

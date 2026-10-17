@@ -485,3 +485,14 @@
     text-decoration: none;
   }
 }
+
+@layer components {
+  /* Prose sections of the method page: paragraphs stay at reading width, tables do not. */
+  .prose p {
+    max-width: var(--prose-width);
+  }
+
+  .prose > * + * {
+    margin-block-start: var(--space-3);
+  }
+}

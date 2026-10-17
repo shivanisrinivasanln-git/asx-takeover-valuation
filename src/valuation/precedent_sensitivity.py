@@ -30,6 +30,19 @@ def completed_deals_range_x(inputs: Inputs) -> tuple[float, float, list[str]]:
     return kept[0][0], kept[-1][0], [name for _, name in kept]
 
 
+def base_range_deals(inputs: Inputs) -> list[tuple[str, str, bool]]:
+    """The deals inside my base precedent range as (deal, year announced, unsuccessful).
+
+    The rule is the base range's: drop the highest and the lowest forecast EBITDA multiple.
+    """
+    deals = sorted(
+        (float(row["multiple_x"]), row)
+        for row in inputs.tables["precedent_transactions"]
+        if row["measure"] == "ebitda" and row["basis"] == "forecast"
+    )
+    return [(row["deal"], row["announced"], row["unsuccessful"] == "yes") for _, row in deals[1:-1]]
+
+
 def precedent_completed_deals_only(inputs: Inputs, combined_range: CombinedRange) -> dict[str, Any]:
     """My preferred value and range with the precedent multiples from completed deals only.
 

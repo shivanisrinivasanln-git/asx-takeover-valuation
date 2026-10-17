@@ -1,7 +1,34 @@
 {% extends "base.html.j2" %}
 {% block title %}Method and sources, {{ meta.target }}{% endblock %}
 {% block heading %}Method and sources{% endblock %}
+{% macro fig(field, text, base=False) -%}
+<span class="num" data-sensitivity="precedent_completed_deals_only:{{ 'base_' if base else '' }}{{ field }}">{{ text }}</span>
+{%- endmacro %}
 {% block main %}
+{% set deals = method.completed_deals %}
+{% set now = deals.figures %}
+{% set base = deals.base_figures %}
+<section class="prose" aria-labelledby="completed-deals-heading">
+  <h2 id="completed-deals-heading">Precedent range on completed deals only</h2>
+  <p>Two of the four deals behind my precedent range, {{ deals.earlier_unsuccessful.deal }} ({{ deals.earlier_unsuccessful.year }}) and {{ deals.later_unsuccessful.deal }} ({{ deals.later_unsuccessful.year }}), were proposals that did not complete. With completed deals only, the precedent range is {{ fig("multiple_low_x", now.multiple_low_x) }}x to {{ fig("multiple_high_x", now.multiple_high_x) }}x instead of {{ fig("multiple_low_x", base.multiple_low_x, True) }}x to {{ fig("multiple_high_x", base.multiple_high_x, True) }}x, my preferred value is {{ fig("preferred_value_per_share_aud", now.preferred_value_per_share_aud) }} instead of {{ fig("preferred_value_per_share_aud", base.preferred_value_per_share_aud, True) }}, and my range is {{ fig("combined_value_per_share_aud_low", now.combined_value_per_share_aud_low) }} to {{ fig("combined_value_per_share_aud_high", now.combined_value_per_share_aud_high) }} instead of {{ fig("combined_value_per_share_aud_low", base.combined_value_per_share_aud_low, True) }} to {{ fig("combined_value_per_share_aud_high", base.combined_value_per_share_aud_high, True) }}. My base case keeps the wider precedent range.</p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Precedent range on completed deals only">
+    <table class="figures">
+      <caption>The same precedent method with all deals in my range and with completed deals only</caption>
+      <thead>
+        <tr><th scope="col">Case</th><th scope="col" class="num">Multiple, low (x)</th><th scope="col" class="num">Multiple, high (x)</th><th scope="col" class="num">Preferred value (A$)</th><th scope="col" class="num">Range, low (A$)</th><th scope="col" class="num">Range, high (A$)</th></tr>
+      </thead>
+      <tbody>
+        {% for row in deals.rows %}
+        <tr>
+          <th scope="row">{{ row.label }}</th>
+          {% for cell in row.cells %}<td class="num" data-sensitivity="{{ cell.key }}">{{ cell.text }}</td>{% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
 <section aria-labelledby="register-heading">
   <h2 id="register-heading">Input register</h2>
   <p class="note">All <span class="num" data-count="inputs">{{ method.count }}</span> inputs to my valuation, with the document, page and date each comes from. <span class="num" data-count="judgement_inputs">{{ method.judgement_count }}</span> are my own judgement and not a figure from a document, and they are marked.</p>

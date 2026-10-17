@@ -34,10 +34,13 @@ class _Register(HTMLParser):
         self._cell_attrs: dict[str, str] = {}
         self._count_key: str | None = None
         self._in_body = False
+        self._in_register = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = {name: value or "" for name, value in attrs}
-        if tag == "tbody":
+        if values.get("id") == "register-heading":
+            self._in_register = True
+        if tag == "tbody" and self._in_register:
             self._in_body = True
         if tag == "tr" and self._in_body:
             self._row = {"id": values.get("id", ""), "cells": [], "attrs": []}
