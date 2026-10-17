@@ -88,6 +88,64 @@ def _completed_deals_note(valuation: dict[str, Any], inputs: Inputs) -> dict[str
     }
 
 
+# Terms the pages use without defining them, for a reader new to valuation (task P5-20). Each
+# definition says only what the site and the booklet use the term for.
+TERMS = (
+    (
+        "Discounted cash flow (DCF)",
+        "The value today of the cash a business is forecast to generate, each year's cash "
+        "discounted at a rate that reflects the risk of receiving it.",
+    ),
+    (
+        "EBITDA and EBITA",
+        "Earnings before interest, tax, depreciation and amortisation, and earnings before "
+        "interest, tax and amortisation. My range uses EBITDA multiples; the EBITA tables on the "
+        "valuation page are a cross-check.",
+    ),
+    (
+        "WACC",
+        "Weighted average cost of capital: a discount rate built from the cost of equity and the "
+        "cost of debt, weighted by how much of each a company like Domain uses.",
+    ),
+    (
+        "Business operations, enterprise and equity value",
+        "The value of the operating business; enterprise value adds other assets and "
+        "liabilities; equity value subtracts adjusted net debt. Equity value divided by the "
+        "diluted share count gives the value per share.",
+    ),
+    (
+        "Control premium",
+        "The amount a buyer pays above the market price of a small holding in order to control "
+        "the company. Peer multiples come from such market prices, so I add one to them.",
+    ),
+    (
+        "Scenario A",
+        "The independent expert's base case for its DCF forecast, one of eight scenarios it "
+        "disclosed; each of the others changes part of it.",
+    ),
+    (
+        "Grant Samuel",
+        "The independent expert that valued Domain for the scheme booklet, using a DCF and "
+        "multiples of EBITDA and EBITA.",
+    ),
+    ("Nine", "Nine Entertainment, which owned about 60% of Domain before the scheme."),
+    (
+        "1HY25 and FY25",
+        "The six months to 31 December 2024, and the year to 30 June 2025. Domain's financial "
+        "year ends on 30 June.",
+    ),
+    (
+        "Agents' dividends",
+        "Dividends that Domain's subsidiaries pay to the real estate agents who own part of them. "
+        "They are not Domain's cash, so the DCF deducts them.",
+    ),
+    (
+        "Football field",
+        "The chart on the overview page, with one bar for each method's range of value per share.",
+    ),
+)
+
+
 def build_method_page(valuation: dict[str, Any], inputs: Inputs) -> dict[str, Any]:
     """Everything the method and sources template needs."""
     rows = [
@@ -110,4 +168,5 @@ def build_method_page(valuation: dict[str, Any], inputs: Inputs) -> dict[str, An
         "judgement_count": sum(1 for row in rows if row["judgement"]),
         "completed_deals": _completed_deals_note(valuation, inputs),
         "limitations": [row["text"] for row in inputs.tables["limitations"]],
+        "terms": TERMS,
     }

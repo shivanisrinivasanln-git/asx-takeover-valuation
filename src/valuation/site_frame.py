@@ -57,7 +57,7 @@ def build_frame(valuation: dict[str, Any], build: BuildInfo, implemented_on: str
         "docket": [
             ("Target", meta["target"]),
             ("Acquirer", ACQUIRER),
-            ("Consideration", f"{aud(offer)} cash a share, less any special dividend"),
+            ("Consideration", f"{aud(offer)} a share, paid as cash and a special dividend"),
             ("Implemented", implemented_on),
         ],
         "colophon": [

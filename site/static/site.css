@@ -661,3 +661,18 @@
     max-width: none;
   }
 }
+
+@layer components {
+  /* Terms used on the site: each term above its meaning, at reading width. */
+  .terms {
+    max-width: var(--prose-width);
+  }
+
+  .terms div + div {
+    margin-block-start: var(--space-3);
+  }
+
+  .terms dt {
+    font-weight: var(--weight-strong);
+  }
+}

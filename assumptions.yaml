@@ -174,7 +174,7 @@ risk_free_rate_pct:
   source: "RBA statistical table F2, series FCMYGBAG10D (Source: RBA 2026, CC BY 4.0)"
   location: row 30-May-2025, column Australian Government 10 year bond; data/extracted/market_rates_30_may_2025.csv
   as_at: 30 May 2025
-  note: 10-year Commonwealth Government bond yield. On 5 October 2026 I chose this over the expert's 4.3% (and over 4.366%, the RBA yield at 31 December 2024) so that the 0.05 point difference shows as its own step in the gap bridge.
+  note: 10-year Commonwealth Government bond yield. On 5 October 2026 I chose this over the expert's 4.3% (and over 4.366%, the RBA yield at 31 December 2024). My DCF uses the expert's adopted discount rate range, so the 0.05 point difference does not change my value (docs/BASE_CASE.md, discount rate).
 
 expert_risk_free_rate_pct:
   value: 4.3

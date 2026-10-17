@@ -7,8 +7,10 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from markupsafe import escape
 
 from valuation.inputs import Inputs, load_inputs
+from valuation.method_page import TERMS
 from valuation.output import build_valuation
 from valuation.site_build import DISCLAIMER, build_site
 from valuation.site_consistency import consistency_problems
@@ -144,6 +146,12 @@ def test_the_counts_on_the_page_are_the_counts_in_the_file(
 
 def test_the_page_carries_the_disclaimer(register: _Register) -> None:
     assert DISCLAIMER in " ".join(register.text.split())
+
+
+def test_the_page_defines_each_term_in_the_list(site_dir: Path) -> None:
+    page = (site_dir / "method.html").read_text(encoding="utf-8")
+    for term, meaning in TERMS:
+        assert f"<dt>{escape(term)}</dt><dd>{escape(meaning)}</dd>" in page, term
 
 
 def test_a_changed_register_value_is_reported(

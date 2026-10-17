@@ -96,7 +96,9 @@ def test_the_docket_and_colophon_dates_come_from_the_data(site_dir: Path) -> Non
         facts = _facts(page)
         docket = dict(facts.lists["docket"])
         assert docket["Target"] == valuation["meta"]["target"]
-        assert docket["Consideration"] == f"A${offer:.2f} cash a share, less any special dividend"
+        assert (
+            docket["Consideration"] == f"A${offer:.2f} a share, paid as cash and a special dividend"
+        )
         assert docket["Implemented"] == implemented == "27 August 2025"
         colophon = dict(facts.lists["colophon"])
         assert colophon["Valuation date"] == valuation["meta"]["valuation_date"]

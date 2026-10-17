@@ -268,6 +268,13 @@ def build_bridge_page(valuation: dict[str, Any], inputs: Inputs) -> dict[str, An
         "table": _table_rows(bridge),
         "rounding": _rounding(bridge),
         "order_note": bridge["order_note"],
+        # The expert's value of business operations, which the explanations quote in A$m.
+        "expert_operations_low": number(
+            valuation["values"]["expert_business_operations_value_aud_m_low"]["value"], 0
+        ),
+        "expert_operations_high": number(
+            valuation["values"]["expert_business_operations_value_aud_m_high"]["value"], 0
+        ),
         "steps": [
             {
                 "id": step["id"],
