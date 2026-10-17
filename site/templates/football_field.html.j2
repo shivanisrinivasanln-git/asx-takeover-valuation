@@ -31,6 +31,7 @@
     <text class="rule-label" x="{{ field.undisturbed.x }}" y="{{ field.bottom_label_y }}" text-anchor="{{ field.undisturbed.anchor }}" data-key="{{ field.undisturbed.key }}">{{ field.undisturbed.text }}</text>
   </svg>
   <p class="note">Hatched bars are my estimates and the outlined bar is the independent expert's range. A tick marks my preferred value. The expert published a range and no preferred value. The solid line is the offer and the dashed line is the undisturbed price.</p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Value per share by method">
   <table class="figures">
     <caption>Value per share by method, A$</caption>
     <thead>
@@ -47,6 +48,8 @@
       {% endfor %}
     </tbody>
   </table>
+  </div>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Reference prices">
   <table class="figures reference-prices">
     <caption>Reference prices, A$</caption>
     <thead>
@@ -61,4 +64,5 @@
       {% endfor %}
     </tbody>
   </table>
+  </div>
 </section>

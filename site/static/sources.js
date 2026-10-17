@@ -1,9 +1,11 @@
-/* Sourced figures (task P5-06).
+/* Sourced figures (tasks P5-06 and P5-07).
 
    Every figure marked with a.source-mark links to its entry in the list of sources at the end of
    the page, so the page reads and the link works without this script. With the script, a click,
    tap or Enter opens the entry in a popover next to the figure. Escape, the Close button or a tap
-   elsewhere dismisses it. The script reads the page and changes it; it makes no request. */
+   elsewhere dismisses it. The Show sources switch, hidden in the markup until this script runs,
+   adds a class to the page that prints each marker's reference code beside its figure. The
+   script reads the page and changes it; it makes no request. */
 (function () {
   "use strict";
 
@@ -110,6 +112,18 @@
     if (returnFocus) {
       mark.focus();
     }
+  }
+
+  var sourcesSwitch = document.querySelector(".sources-switch");
+  if (sourcesSwitch) {
+    sourcesSwitch.hidden = false;
+    sourcesSwitch.addEventListener("click", function () {
+      var turningOn = sourcesSwitch.getAttribute("aria-pressed") !== "true";
+      sourcesSwitch.setAttribute("aria-pressed", turningOn ? "true" : "false");
+      document.documentElement.classList.toggle("show-sources", turningOn);
+      // The codes change the width of the figures, so an open popover would be left behind.
+      closePopover(false);
+    });
   }
 
   Array.prototype.forEach.call(document.querySelectorAll("a.source-mark"), function (mark) {

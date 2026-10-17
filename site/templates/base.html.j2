@@ -22,6 +22,9 @@
       <a href="{{ file }}"{% if current == file %} aria-current="page"{% endif %}>{{ label }}</a>
       {% endfor %}
     </nav>
+    {% if sources %}
+    <button type="button" class="sources-switch" aria-pressed="false" hidden>Show sources</button>
+    {% endif %}
   </div>
 </header>
 <main id="main" class="page">
