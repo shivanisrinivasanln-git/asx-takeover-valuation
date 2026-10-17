@@ -22,6 +22,14 @@ from valuation.bridge_page import build_bridge_page
 from valuation.football_field import build_football_field
 from valuation.inputs import Inputs, load_inputs
 from valuation.landing import build_landing
+from valuation.link_preview import (
+    PREVIEW_ALT,
+    PREVIEW_HEIGHT_PX,
+    PREVIEW_HREF,
+    PREVIEW_WIDTH_PX,
+    SITE_URL,
+    render_preview,
+)
 from valuation.method_page import build_method_page
 from valuation.output import build_valuation
 from valuation.site_check import REFERRER_POLICY, site_problems
@@ -100,10 +108,22 @@ def favicon_svg(root: Path) -> str:
     )
 
 
+PREVIEW_CARD = "card.html"
+
+
+def preview_dir(out_dir: Path) -> Path:
+    """The folder of the preview card, beside the site and not in it, because the card is a
+    picture's source and not a page of the site."""
+    return out_dir.with_name(f"{out_dir.name}_preview")
+
+
 def render_pages(
-    root: Path, valuation: dict[str, Any], inputs: Inputs, build: BuildInfo
+    root: Path, valuation: dict[str, Any], inputs: Inputs, build: BuildInfo, static_href: str
 ) -> dict[str, str]:
-    """The HTML of every page, by output file name."""
+    """The HTML of every page by output file name, and of the preview card under PREVIEW_CARD.
+
+    `static_href` is the card's path to the site's static folder.
+    """
     environment = Environment(
         loader=FileSystemLoader(root / "site" / "templates"),
         autoescape=True,
@@ -134,6 +154,14 @@ def render_pages(
         "content_security_policy": CONTENT_SECURITY_POLICY,
         # Outbound links to ASX documents do not say which page sent the visitor.
         "referrer_policy": REFERRER_POLICY,
+        # What a shared link shows: the title, the verdict and the preview image.
+        "share": {
+            "site_url": SITE_URL,
+            "image": SITE_URL + PREVIEW_HREF,
+            "width": PREVIEW_WIDTH_PX,
+            "height": PREVIEW_HEIGHT_PX,
+            "alt": PREVIEW_ALT,
+        },
     }
     # Pages that print sourced figures list their sources and load the script that opens them.
     page_sources = {
@@ -141,12 +169,14 @@ def render_pages(
         "valuation.html": context["page"]["sources"],
         "gap.html": context["bridge"]["sources"],
     }
-    return {
+    pages = {
         name: environment.get_template(template).render(
             current=name, sources=page_sources.get(name, ()), **context
         )
         for name, template in PAGES.items()
     }
+    card = environment.get_template("preview.html.j2").render(static_href=static_href, **context)
+    return {**pages, PREVIEW_CARD: card}
 
 
 def build_site(root: Path, out_dir: Path, build: BuildInfo) -> list[Path]:
@@ -155,10 +185,13 @@ def build_site(root: Path, out_dir: Path, build: BuildInfo) -> list[Path]:
     if build_root not in out_dir.resolve().parents:
         raise ValueError(f"{out_dir} is not inside {build_root}; refusing to replace it")
     inputs = load_inputs(root)
-    pages = render_pages(root, build_valuation(inputs), inputs, build)
+    pages = render_pages(root, build_valuation(inputs), inputs, build, f"../{out_dir.name}/static")
+    card = pages.pop(PREVIEW_CARD)
     if out_dir.exists():
         shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True)
+    preview_dir(out_dir).mkdir(parents=True, exist_ok=True)
+    (preview_dir(out_dir) / PREVIEW_CARD).write_text(card, encoding="utf-8", newline="\n")
     shutil.copytree(root / "site" / "static", out_dir / "static")
     favicon = out_dir / "static" / "favicon.svg"
     favicon.write_text(favicon_svg(root), encoding="utf-8", newline="\n")
@@ -214,6 +247,7 @@ def main() -> int:
     build = BuildInfo(date=f"{date.today().day} {date.today():%B %Y}", commit=current_commit(root))
     build_site(root, out_dir, build)
     copy_downloads(root / MODEL_SOURCE, root / REPORT_SOURCE, out_dir)
+    render_preview(preview_dir(out_dir) / PREVIEW_CARD, out_dir / PREVIEW_HREF)
     files = sorted(path for path in out_dir.rglob("*") if path.is_file())
     inputs = load_inputs(root)
     problems = (

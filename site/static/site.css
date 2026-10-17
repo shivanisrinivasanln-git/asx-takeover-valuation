@@ -641,3 +641,23 @@
     margin-block-start: 0;
   }
 }
+
+@layer components {
+  /* The link-preview card: the verdict and the chart on one 1200 by 630 picture
+     (src/valuation/link_preview.py). It is photographed, never served as a page. */
+  .preview-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6) var(--space-7);
+  }
+
+  .preview-name {
+    color: var(--ink-muted);
+    font-weight: var(--weight-strong);
+  }
+
+  .preview-card .verdict {
+    max-width: none;
+  }
+}

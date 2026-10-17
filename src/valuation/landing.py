@@ -15,6 +15,7 @@ from valuation.football_field import FootballField
 from valuation.site_format import number
 
 PLACES = 2
+EN_DASH = chr(0x2013)
 
 
 @dataclass(frozen=True)
@@ -36,6 +37,15 @@ class Verdict:
     offer: Figure
     expert_low: Figure
     expert_high: Figure
+
+    def sentence(self) -> str:
+        """The sentence as plain text, for the link preview, with the same words as the page."""
+        return (
+            f"My valuation range of A${self.my_low.text}{EN_DASH}{self.my_high.text} a share "
+            f"includes CoStar's A${self.offer.text} offer, which is above my preferred value of "
+            f"A${self.my_preferred.text}. Grant Samuel's range was "
+            f"A${self.expert_low.text}{EN_DASH}{self.expert_high.text}."
+        )
 
 
 def source_refs(field: FootballField) -> dict[str, str]:

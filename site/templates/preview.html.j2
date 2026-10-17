@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en-AU" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>{{ site_name }}</title>
+<link rel="stylesheet" href="{{ static_href }}/tokens.css">
+<link rel="stylesheet" href="{{ static_href }}/site.css">
+</head>
+<body class="preview-card">
+<p class="preview-name">{{ site_name }}</p>
+<p class="verdict">{{ landing.verdict.sentence() }}</p>
+{% include "football_field_chart.html.j2" %}
+<p class="note">Hatched bars are my estimates, the outlined bar is the independent expert's range, the solid line is the offer.</p>
+</body>
+</html>
