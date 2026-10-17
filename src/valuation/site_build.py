@@ -92,8 +92,16 @@ def render_pages(
         # Outbound links to ASX documents do not say which page sent the visitor.
         "referrer_policy": REFERRER_POLICY,
     }
+    # Pages that print sourced figures list their sources and load the script that opens them.
+    page_sources = {
+        "index.html": context["field"].sources,
+        "valuation.html": context["page"]["sources"],
+        "gap.html": context["bridge"]["sources"],
+    }
     return {
-        name: environment.get_template(template).render(current=name, **context)
+        name: environment.get_template(template).render(
+            current=name, sources=page_sources.get(name, ()), **context
+        )
         for name, template in PAGES.items()
     }
 

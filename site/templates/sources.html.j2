@@ -1,0 +1,13 @@
+<section class="sources" aria-labelledby="sources-heading">
+  <h2 id="sources-heading">Sources for the figures on this page</h2>
+  <ul class="source-list">
+    {% for ref in sources %}
+    <li id="ref-{{ ref.code }}">
+      <span class="ref-code">{{ ref.code }}</span>
+      <span class="ref-name">{{ ref.name }}</span>:
+      <span class="ref-source">{{ ref.source }}</span>, <span class="ref-location">{{ ref.location }}</span>, as at <span class="ref-date">{{ ref.as_at }}</span>.
+      {% if ref.link %}<a class="ref-link" href="{{ ref.link }}">{{ ref.link_label }}</a>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>

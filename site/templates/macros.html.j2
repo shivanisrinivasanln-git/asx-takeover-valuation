@@ -1,0 +1,4 @@
+{#- A sourced figure or heading. Without the script the link jumps to the source in the list at the end of the page. -#}
+{% macro source_mark(code, text) -%}
+<a class="source-mark" href="#ref-{{ code }}" data-ref="{{ code }}">{{ text }}</a>
+{%- endmacro %}

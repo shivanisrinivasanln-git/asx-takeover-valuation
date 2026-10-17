@@ -15,7 +15,13 @@ Three rules, each reported with the page and the text it found:
    This is a net and not a proof: a changed figure that happens to equal some other number in the
    evidence passes it, which is why the figures that matter carry an attribute (rule 2).
 
-Scale marks on a chart axis and the commit hash in the footer are not figures and are skipped.
+4. A reference marker (`data-ref`) links to its entry in the list of sources at the end of the
+   page, every entry is cited by a marker, each entry equals the reference built from the inputs
+   (document, page, date and register link), and a figure that names an input carries that
+   input's code.
+
+Scale marks on a chart axis, reference codes and the commit hash in the footer are not figures
+and are skipped.
 """
 
 from __future__ import annotations
@@ -28,6 +34,7 @@ from pathlib import Path
 from typing import Any
 
 from valuation.inputs import Inputs
+from valuation.provenance import Reference, ReferenceBook
 from valuation.site_format import MINUS, number, plain
 from valuation.site_frame import BuildInfo
 
@@ -89,8 +96,13 @@ class _Page(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.tagged: list[tuple[dict[str, str], str, str]] = []
         self.loose: list[str] = []
+        # Reference markers as (code, href, the origin attribute of the figure around it), and the
+        # entries of the sources list as {code: {part: text}}.
+        self.markers: list[tuple[str, str, dict[str, str]]] = []
+        self.entries: dict[str, dict[str, str]] = {}
         self._stack: list[tuple[str, dict[str, str], list[str]]] = []
         self._row_header = ""
+        self._entry = ""
 
     def _inside(self, test: str) -> bool:
         return any(test in attrs.get("class", "") for _, attrs, _ in self._stack)
@@ -100,7 +112,9 @@ class _Page(HTMLParser):
 
     def _skipped(self) -> bool:
         return any(
-            "axis-label" in attrs.get("class", "") or "/commit/" in attrs.get("href", "")
+            "axis-label" in attrs.get("class", "")
+            or "ref-code" in attrs.get("class", "")
+            or "/commit/" in attrs.get("href", "")
             for _, attrs, _ in self._stack
         )
 
@@ -111,6 +125,19 @@ class _Page(HTMLParser):
         self._stack.append((tag, values, []))
         if "aria-label" in values and not self._is_tagged() and not self._skipped():
             self.loose.append(values["aria-label"])
+        if tag == "a" and "data-ref" in values:
+            origin = {
+                name: attrs[name]
+                for _, attrs, _ in self._stack
+                for name in ORIGIN_ATTRIBUTES
+                if name in attrs
+            }
+            self.markers.append((values["data-ref"], values.get("href", ""), origin))
+        if tag == "li" and values.get("id", "").startswith("ref-"):
+            self._entry = values["id"][len("ref-") :]
+            self.entries[self._entry] = {}
+        if self._entry and tag == "a" and "ref-link" in values.get("class", ""):
+            self.entries[self._entry]["href"] = values.get("href", "")
 
     def handle_data(self, data: str) -> None:
         for _, _, parts in self._stack:
@@ -124,6 +151,14 @@ class _Page(HTMLParser):
             if name != tag:
                 continue
             text = "".join(parts).strip()
+            part = next(
+                (word[len("ref-") :] for word in values.get("class", "").split() if "ref-" in word),
+                "",
+            )
+            if self._entry and part:
+                self.entries[self._entry][part] = text
+            if tag == "li":
+                self._entry = ""
             if tag == "th" and not self._row_header:
                 self._row_header = text
             if tag == "tr":
@@ -298,6 +333,56 @@ def _page_problems(page: _Page, name: str, evidence: set[str]) -> list[str]:
     return problems
 
 
+# Rule 4: reference codes
+
+
+def _expected_entry(reference: Reference) -> dict[str, str]:
+    expected = {
+        "code": reference.code,
+        "name": reference.name,
+        "source": reference.source,
+        "location": reference.location,
+        "date": reference.as_at,
+    }
+    if reference.link is not None and reference.link_label is not None:
+        expected["href"] = reference.link
+        expected["link"] = reference.link_label
+    return expected
+
+
+def _marker_problems(page: _Page, name: str, book: ReferenceBook, inputs: Inputs) -> list[str]:
+    problems = []
+    for code, href, origin in page.markers:
+        if href != f"#ref-{code}":
+            problems.append(f"{name}: the marker {code} links to {href!r}, not to its source")
+        if code not in page.entries:
+            problems.append(f"{name}: the marker {code} has no entry in the list of sources")
+        key = origin.get("data-input") or origin.get("data-key", "")
+        if key in inputs.assumptions and book.for_input(key).code != code:
+            problems.append(
+                f"{name}: the figure for {key} carries {code}, not {book.for_input(key).code}"
+            )
+    return problems
+
+
+def reference_problems(page: _Page, name: str, inputs: Inputs) -> list[str]:
+    """Reference markers and the list of sources agree with each other and with the data."""
+    book = ReferenceBook(inputs)
+    known = {reference.code: reference for reference in book.all_references()}
+    problems = _marker_problems(page, name, book, inputs)
+    marked = {code for code, _, _ in page.markers}
+    for code, parts in page.entries.items():
+        if code not in known:
+            problems.append(f"{name}: the list of sources has {code}, which is not a reference")
+            continue
+        if code not in marked:
+            problems.append(f"{name}: {code} is listed but no figure on the page carries it")
+        expected = _expected_entry(known[code])
+        if parts != expected:
+            problems.append(f"{name}: the entry for {code} is {parts}, the data says {expected}")
+    return problems
+
+
 def consistency_problems(
     root: Path,
     out_dir: Path,
@@ -313,4 +398,5 @@ def consistency_problems(
         page = _parse(path)
         problems += _figure_problems(page, path.name, valuation, inputs, timeline)
         problems += _page_problems(page, path.name, evidence)
+        problems += reference_problems(page, path.name, inputs)
     return problems

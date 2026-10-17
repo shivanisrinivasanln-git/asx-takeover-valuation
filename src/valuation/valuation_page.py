@@ -11,6 +11,7 @@ import statistics
 from typing import Any
 
 from valuation.inputs import Inputs
+from valuation.provenance import PageSources, ReferenceBook
 from valuation.site_format import number, percent
 
 CASES = ("low", "mid", "high")
@@ -75,7 +76,31 @@ def _values(valuation: dict[str, Any]) -> dict[str, float]:
     return {key: item["value"] for key, item in valuation["values"].items()}
 
 
-def _assumption_rows(inputs: Inputs) -> list[dict[str, str]]:
+def _column_reference(inputs: Inputs, sources: PageSources, table: str, measure: str) -> str:
+    """The code of the one document, page and date that every value of a measure comes from."""
+    found = {
+        sources.book.for_table_row(table, row)
+        for row in inputs.tables[table]
+        if row["measure"] == measure
+    }
+    if len(found) != 1:
+        raise ValueError(f"{table} {measure} values cite {len(found)} sources, expected 1")
+    return sources.use(found.pop())
+
+
+def _column_headers(
+    inputs: Inputs, sources: PageSources, table: str, columns: tuple[tuple[str, str], ...]
+) -> list[dict[str, str]]:
+    return [
+        {
+            "text": f"{basis.capitalize()} {measure.upper()} (x)",
+            "ref": _column_reference(inputs, sources, table, measure),
+        }
+        for measure, basis in columns
+    ]
+
+
+def _assumption_rows(inputs: Inputs, sources: PageSources) -> list[dict[str, str]]:
     rows = []
     for key, label in DCF_ASSUMPTIONS:
         entry = inputs.assumptions[key]
@@ -88,6 +113,7 @@ def _assumption_rows(inputs: Inputs) -> list[dict[str, str]]:
             {
                 "key": key,
                 "label": label,
+                "ref": sources.use(sources.book.for_input(key)),
                 "value": text,
                 "unit": unit,
                 "source": entry.source,
@@ -175,7 +201,7 @@ def _summary_rows(multiples: list[float]) -> dict[str, str]:
     }
 
 
-def _comparables(inputs: Inputs) -> dict[str, Any]:
+def _comparables(inputs: Inputs, sources: PageSources) -> dict[str, Any]:
     columns = (
         ("ebitda", "forecast"),
         ("ebitda", "historical"),
@@ -205,13 +231,13 @@ def _comparables(inputs: Inputs) -> dict[str, Any]:
     }
     return {
         "as_at": inputs.tables["comparable_multiples"][0]["as_at"],
-        "headers": [f"{basis.capitalize()} {measure.upper()} (x)" for measure, basis in columns],
+        "headers": _column_headers(inputs, sources, "comparable_multiples", columns),
         "rows": rows,
         "summary": summary,
     }
 
 
-def _precedents(inputs: Inputs) -> dict[str, Any]:
+def _precedents(inputs: Inputs, sources: PageSources) -> dict[str, Any]:
     columns = (
         ("ebitda", "forecast"),
         ("ebitda", "historical"),
@@ -250,7 +276,7 @@ def _precedents(inputs: Inputs) -> dict[str, Any]:
         for name in ("lowest", "median", "highest")
     }
     return {
-        "headers": [f"{basis.capitalize()} {measure.upper()} (x)" for measure, basis in columns],
+        "headers": _column_headers(inputs, sources, "precedent_transactions", columns),
         "rows": rows,
         "summary": summary,
     }
@@ -300,15 +326,18 @@ def _selected_range(values: dict[str, float], method: str, measure: str) -> dict
 def build_valuation_page(valuation: dict[str, Any], inputs: Inputs) -> dict[str, Any]:
     """Everything the valuation page templates need."""
     values = _values(valuation)
-    return {
-        "assumptions": _assumption_rows(inputs),
+    sources = PageSources(ReferenceBook(inputs))
+    page: dict[str, Any] = {
+        "assumptions": _assumption_rows(inputs, sources),
         "forecast": _forecast(valuation),
         "dcf_values": _dcf_values(values),
         "sensitivity": _sensitivity(valuation),
         "case_headers": [CASE_LABELS[case] for case in CASES],
-        "comparables": _comparables(inputs),
-        "precedents": _precedents(inputs),
+        "comparables": _comparables(inputs, sources),
+        "precedents": _precedents(inputs, sources),
         "trading_ranges": [_selected_range(values, "trading", m) for m in ("ebitda", "ebita")],
         "precedent_ranges": [_selected_range(values, "precedent", m) for m in ("ebitda", "ebita")],
         "base_value_text": number(values["dcf_value_per_share_aud_mid"], 2),
     }
+    page["sources"] = sources.entries()
+    return page

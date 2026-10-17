@@ -86,14 +86,17 @@ def test_every_label_and_table_cell_is_the_value_in_valuation_json(
         if key is None:
             continue
         value = value_of(valuation, key)
-        if key in ("offer_price_aud", "undisturbed_share_price_aud"):
+        if (
+            key in ("offer_price_aud", "undisturbed_share_price_aud")
+            and (attrs, text) in page.texts
+        ):
             assert aud(value) in text, (key, text)
         else:
             assert text == number(value), (key, text)
         checked += 1
     # Five rows with a low and a high on the chart and in the table, four preferred values in the
-    # table, and the two reference lines.
-    assert checked == 5 * 2 * 2 + 4 + 2
+    # table, the two reference lines on the chart and the two reference prices in their table.
+    assert checked == 5 * 2 * 2 + 4 + 2 + 2
 
 
 def test_reference_lines_show_the_price_and_the_date_of_the_input(

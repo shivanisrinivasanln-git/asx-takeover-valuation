@@ -1,4 +1,5 @@
 {% extends "base.html.j2" %}
+{% from "macros.html.j2" import source_mark %}
 {% block title %}Valuation tables, {{ meta.target }}{% endblock %}
 {% block heading %}Valuation tables{% endblock %}
 {% block main %}
@@ -16,7 +17,7 @@
         {% for row in page.assumptions %}
         <tr>
           <th scope="row">{{ row.label }}{% if row.judgement %} <span class="note">({{ row.judgement }})</span>{% endif %}</th>
-          <td class="num" data-input="{{ row.key }}">{{ row.value }}</td>
+          <td class="num" data-input="{{ row.key }}">{{ source_mark(row.ref, row.value) }}</td>
           <td>{{ row.unit }}</td>
           <td>{{ row.source }}</td>
           <td>{{ row.location }}</td>
@@ -96,7 +97,7 @@
     <table class="figures">
       <caption>Peer multiples printed by the independent expert at {{ page.comparables.as_at }}, based on share prices with no premium for control. Lowest, median and highest cover the eight peers shown. The financial year each multiple refers to is not stated in the printed labels (unverified).</caption>
       <thead>
-        <tr><th scope="col">Company</th><th scope="col">Treatment</th>{% for header in page.comparables.headers %}<th scope="col" class="num">{{ header }}</th>{% endfor %}</tr>
+        <tr><th scope="col">Company</th><th scope="col">Treatment</th>{% for header in page.comparables.headers %}<th scope="col" class="num">{{ source_mark(header.ref, header.text) }}</th>{% endfor %}</tr>
       </thead>
       <tbody>
         {% for row in page.comparables.rows %}
@@ -140,7 +141,7 @@
     <table class="figures">
       <caption>Deal multiples printed by the independent expert. They are control multiples, so I apply no premium to them. I have not checked them against primary sources.</caption>
       <thead>
-        <tr><th scope="col">Deal</th><th scope="col">Announced</th><th scope="col">Acquirer</th><th scope="col">Status</th>{% for header in page.precedents.headers %}<th scope="col" class="num">{{ header }}</th>{% endfor %}</tr>
+        <tr><th scope="col">Deal</th><th scope="col">Announced</th><th scope="col">Acquirer</th><th scope="col">Status</th>{% for header in page.precedents.headers %}<th scope="col" class="num">{{ source_mark(header.ref, header.text) }}</th>{% endfor %}</tr>
       </thead>
       <tbody>
         {% for row in page.precedents.rows %}

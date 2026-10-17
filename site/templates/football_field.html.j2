@@ -1,3 +1,4 @@
+{% from "macros.html.j2" import source_mark %}
 <section class="football-field" aria-labelledby="football-field-heading">
   <h2 id="football-field-heading">Value per share by method</h2>
   <svg class="chart" width="100%" height="{{ field.height }}" role="img" aria-labelledby="ff-title ff-desc">
@@ -39,9 +40,23 @@
       {% for row in field.rows %}
       <tr>
         <th scope="row">{{ row.table_label }}</th>
-        <td class="num" data-key="{{ row.low_key }}">{{ row.low_text }}</td>
+        <td class="num" data-key="{{ row.low_key }}">{{ source_mark(row.low_ref, row.low_text) if row.low_ref else row.low_text }}</td>
         <td class="num"{% if row.preferred_key %} data-key="{{ row.preferred_key }}"{% endif %}>{{ row.preferred_text if row.preferred_text else "Not published" }}</td>
-        <td class="num" data-key="{{ row.high_key }}">{{ row.high_text }}</td>
+        <td class="num" data-key="{{ row.high_key }}">{{ source_mark(row.high_ref, row.high_text) if row.high_ref else row.high_text }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <table class="figures reference-prices">
+    <caption>Reference prices, A$</caption>
+    <thead>
+      <tr><th scope="col">Price</th><th scope="col" class="num">Value</th></tr>
+    </thead>
+    <tbody>
+      {% for price in field.reference_prices %}
+      <tr>
+        <th scope="row">{{ price.label }}</th>
+        <td class="num" data-key="{{ price.key }}">{{ source_mark(price.ref, price.text) }}</td>
       </tr>
       {% endfor %}
     </tbody>

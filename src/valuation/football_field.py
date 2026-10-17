@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from valuation.inputs import Inputs
+from valuation.provenance import PageSources, Reference, ReferenceBook
 from valuation.site_format import aud, number
 
 AXIS_STEP_AUD = 0.5
@@ -70,6 +71,17 @@ class FieldRow:
     preferred_text: str | None
     low_label_x: str
     high_label_x: str
+    # Reference codes of the figures taken from the booklet: the expert's range only.
+    low_ref: str | None = None
+    high_ref: str | None = None
+
+
+@dataclass(frozen=True)
+class ReferencePrice:
+    key: str
+    label: str
+    text: str
+    ref: str
 
 
 @dataclass(frozen=True)
@@ -108,6 +120,8 @@ class FootballField:
     undisturbed: ReferenceLine
     title: str
     description: str
+    reference_prices: tuple[ReferencePrice, ...]
+    sources: tuple[Reference, ...]
 
 
 def _x(value: float, low: float, high: float) -> float:
@@ -140,6 +154,7 @@ def _ticks(low: float, high: float) -> tuple[AxisTick, ...]:
 def build_football_field(valuation: dict[str, Any], inputs: Inputs) -> FootballField:
     """The chart's rows, axis and reference lines from `valuation.json`."""
     values = {key: item["value"] for key, item in valuation["values"].items()}
+    sources = PageSources(ReferenceBook(inputs))
     rows_spec = valuation["football_field"]
     offer = values["offer_price_aud"]
     undisturbed = values["undisturbed_share_price_aud"]
@@ -185,6 +200,8 @@ def build_football_field(valuation: dict[str, Any], inputs: Inputs) -> FootballF
                 preferred_text=None if preferred is None else number(preferred),
                 low_label_x=_pct(x_low),
                 high_label_x=_pct(x_high),
+                low_ref=_expert_ref(inputs, sources, "low") if spec["id"] == "expert" else None,
+                high_ref=_expert_ref(inputs, sources, "high") if spec["id"] == "expert" else None,
             )
         )
 
@@ -227,7 +244,28 @@ def build_football_field(valuation: dict[str, Any], inputs: Inputs) -> FootballF
         ),
         title="Value per share by method, A$",
         description=_description(rows, offer, undisturbed),
+        reference_prices=(
+            ReferencePrice(
+                "offer_price_aud",
+                f"Offer (deed signed {offer_date})",
+                number(offer),
+                sources.use(sources.book.for_input("offer_price_aud")),
+            ),
+            ReferencePrice(
+                "undisturbed_share_price_aud",
+                f"Undisturbed price ({undisturbed_date})",
+                number(undisturbed),
+                sources.use(sources.book.for_input("undisturbed_share_price_aud")),
+            ),
+        ),
+        sources=tuple(sources.entries()),
     )
+
+
+def _expert_ref(inputs: Inputs, sources: PageSources, case: str) -> str:
+    """The code of the booklet table that holds the expert's value per share."""
+    row = inputs.table_row("valuation_summary", item="value_per_share", case=case)
+    return sources.use(sources.book.for_table_row("valuation_summary", row))
 
 
 def _description(rows: list[FieldRow], offer: float, undisturbed: float) -> str:

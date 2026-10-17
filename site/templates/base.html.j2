@@ -8,6 +8,9 @@
 <title>{% block title %}{{ meta.target }}{% endblock %}</title>
 <link rel="stylesheet" href="static/tokens.css">
 <link rel="stylesheet" href="static/site.css">
+{% if sources %}
+<script src="static/sources.js" defer></script>
+{% endif %}
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to the content</a>
@@ -29,7 +32,13 @@
   {% endfor %}
 </dl>
 {% block main %}{% endblock %}
+{% if sources %}
+{% include "sources.html.j2" %}
+{% endif %}
 </main>
+{% if sources %}
+{% include "source_popover.html.j2" %}
+{% endif %}
 <footer class="site-footer">
   <div class="page">
     <dl class="colophon" aria-label="About this build">

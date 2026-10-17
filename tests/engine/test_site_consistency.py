@@ -150,7 +150,9 @@ def test_a_changed_forecast_figure_is_reported(
 def test_a_changed_input_is_reported(
     copy_of_site: Path, valuation: dict[str, Any], inputs: Inputs, timeline: list[dict[str, str]]
 ) -> None:
-    change_first(copy_of_site, "valuation.html", r'(data-input="tax_rate_pct">)[^<]*', r"\g<1>25.0")
+    change_first(
+        copy_of_site, "valuation.html", r'(data-input="tax_rate_pct"><a [^>]*>)[^<]*', r"\g<1>25.0"
+    )
     problems = problems_for(copy_of_site, valuation, inputs, timeline)
     assert any("data-input=tax_rate_pct shows '25.0'" in p for p in problems), problems
 
@@ -182,7 +184,10 @@ def test_a_flag_that_disagrees_with_the_input_is_reported(
     copy_of_site: Path, valuation: dict[str, Any], inputs: Inputs, timeline: list[dict[str, str]]
 ) -> None:
     change_first(
-        copy_of_site, "valuation.html", r'(data-input="mid_year_discounting_flag">)Yes', r"\g<1>No"
+        copy_of_site,
+        "valuation.html",
+        r'(data-input="mid_year_discounting_flag"><a [^>]*>)Yes',
+        r"\g<1>No",
     )
     problems = problems_for(copy_of_site, valuation, inputs, timeline)
     assert any("mid_year_discounting_flag shows 'No' for a flag of 1" in p for p in problems)

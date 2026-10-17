@@ -12,7 +12,9 @@ from __future__ import annotations
 import math
 from typing import Any
 
+from valuation.gap_bridge import expert_input_name
 from valuation.inputs import Inputs
+from valuation.provenance import PageSources, ReferenceBook
 from valuation.site_format import aud, aud_signed, number, signed
 
 AXIS_STEP_AUD = 0.1
@@ -84,7 +86,9 @@ def _label_position(x_low: float, x_high: float) -> tuple[str, str, int]:
     return _pct(x_high), "start", 6
 
 
-def _input_changes(step: dict[str, Any], inputs: Inputs) -> list[dict[str, str]]:
+def _input_changes(
+    step: dict[str, Any], inputs: Inputs, sources: PageSources
+) -> list[dict[str, str]]:
     rows = []
     for key in step["inputs"]:
         unit = inputs.assumptions[key].unit
@@ -94,7 +98,9 @@ def _input_changes(step: dict[str, Any], inputs: Inputs) -> list[dict[str, str]]
                 "key": key,
                 "unit": symbol,
                 "expert": number(step["expert_values"][key], 1),
+                "expert_ref": sources.use(sources.book.for_input(expert_input_name(key))),
                 "mine": number(step["my_values"][key], 1),
+                "mine_ref": sources.use(sources.book.for_input(key)),
             }
         )
     return rows
@@ -245,7 +251,8 @@ def build_bridge_page(valuation: dict[str, Any], inputs: Inputs) -> dict[str, An
     low, high = _axis(levels)
     rows = _chart_rows(bridge, low, high)
     plot_bottom = FIRST_ROW_TOP + len(rows) * ROW_PITCH - 10
-    return {
+    sources = PageSources(ReferenceBook(inputs))
+    page: dict[str, Any] = {
         "axis_min_aud": low,
         "axis_max_aud": high,
         "ticks": _ticks(low, high),
@@ -269,8 +276,10 @@ def build_bridge_page(valuation: dict[str, Any], inputs: Inputs) -> dict[str, An
                 "after": aud(step["cumulative_value_per_share_aud"]),
                 "sources": step["sources"],
                 "explanation": step["explanation"],
-                "inputs": _input_changes(step, inputs),
+                "inputs": _input_changes(step, inputs, sources),
             }
             for step in bridge["steps"]
         ],
     }
+    page["sources"] = sources.entries()
+    return page
