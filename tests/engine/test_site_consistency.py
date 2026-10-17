@@ -188,6 +188,15 @@ def test_a_flag_that_disagrees_with_the_input_is_reported(
     assert any("mid_year_discounting_flag shows 'No' for a flag of 1" in p for p in problems)
 
 
+def test_a_changed_count_is_reported(
+    copy_of_site: Path, valuation: dict[str, Any], inputs: Inputs, timeline: list[dict[str, str]]
+) -> None:
+    # 28 is a number that other sources hold, so only the count's own origin can catch it.
+    change_first(copy_of_site, "timeline.html", r'(data-count="timeline_checked">)29', r"\g<1>28")
+    problems = problems_for(copy_of_site, valuation, inputs, timeline)
+    assert any("data-count=timeline_checked shows '28'" in p for p in problems), problems
+
+
 def test_a_key_that_names_nothing_is_reported(
     copy_of_site: Path, valuation: dict[str, Any], inputs: Inputs, timeline: list[dict[str, str]]
 ) -> None:

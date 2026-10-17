@@ -6,9 +6,9 @@ Three rules, each reported with the page and the text it found:
 1. A template holds no typed figure. Digits in a template's own text or in a `{{ }}` expression
    that writes text are errors, so a number can only arrive through a variable. The fiscal year
    labels (FY25, FY26) are the one allowed form: they name a year and are not a figure.
-2. A figure that names its origin with a `data-key`, `data-input`, `data-forecast` or
-   `data-bridge` attribute equals that value in `valuation.json` or `assumptions.yaml`, at the
-   precision the page shows.
+2. A figure that names its origin with a `data-key`, `data-input`, `data-forecast`,
+   `data-bridge` or `data-count` attribute equals that value in `valuation.json`, the inputs or
+   the tables, at the precision the page shows.
 3. Every other number in the visible text must appear in the evidence: the numbers in
    `valuation.json` (rounded to up to four places), the text of the inputs, the transcribed and
    written tables, and the lowest, median and highest multiples of the peer and deal tables.
@@ -28,10 +28,10 @@ from pathlib import Path
 from typing import Any
 
 from valuation.inputs import Inputs
-from valuation.site_format import MINUS, number
+from valuation.site_format import MINUS, number, plain
 from valuation.site_frame import BuildInfo
 
-ORIGIN_ATTRIBUTES = ("data-key", "data-input", "data-forecast", "data-bridge")
+ORIGIN_ATTRIBUTES = ("data-key", "data-input", "data-forecast", "data-bridge", "data-count")
 NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?")
 # A fiscal year label names a year. It is the only number a template may write itself.
 TEMPLATE_ALLOWED = re.compile(r"\bFY\d{2}\b")
@@ -171,8 +171,23 @@ def _bridge_value(bridge: dict[str, Any], key: str) -> float:
     return float(step[field])
 
 
+def _count(name: str, inputs: Inputs, timeline: list[dict[str, str]]) -> int:
+    """A count the pages quote: inputs in the register, my judgement inputs, timeline events."""
+    counts = {
+        "inputs": len(inputs.assumptions),
+        "judgement_inputs": sum(entry.judgement for entry in inputs.assumptions.values()),
+        "timeline_events": len(timeline),
+        "timeline_checked": sum(row["status"] == "verified" for row in timeline),
+    }
+    return counts[name]
+
+
 def _source_value(
-    attrs: dict[str, str], row_header: str, valuation: dict[str, Any], inputs: Inputs
+    attrs: dict[str, str],
+    row_header: str,
+    valuation: dict[str, Any],
+    inputs: Inputs,
+    timeline: list[dict[str, str]],
 ) -> float | str:
     if "data-key" in attrs:
         return float(valuation["values"][attrs["data-key"]]["value"])
@@ -180,17 +195,23 @@ def _source_value(
         return inputs.number(attrs["data-input"])
     if "data-forecast" in attrs:
         return float(_forecast_row(valuation, row_header)[attrs["data-forecast"]])
+    if "data-count" in attrs:
+        return _count(attrs["data-count"], inputs, timeline)
     return _bridge_value(valuation["gap_bridge"], attrs["data-bridge"])
 
 
 def _figure_problems(
-    page: _Page, name: str, valuation: dict[str, Any], inputs: Inputs
+    page: _Page,
+    name: str,
+    valuation: dict[str, Any],
+    inputs: Inputs,
+    timeline: list[dict[str, str]],
 ) -> list[str]:
     problems = []
     for attrs, text, row_header in page.tagged:
         origin = next(f"{a}={attrs[a]}" for a in ORIGIN_ATTRIBUTES if a in attrs)
         try:
-            source = _source_value(attrs, row_header, valuation, inputs)
+            source = _source_value(attrs, row_header, valuation, inputs, timeline)
         except (KeyError, StopIteration):
             problems.append(f"{name}: {origin} names nothing in the data (text {text!r})")
             continue
@@ -255,6 +276,8 @@ def evidence_tokens(
     for entry in inputs.assumptions.values():
         for text in (entry.source, entry.location, entry.as_at, entry.note):
             found.update(_tokens(str(text)))
+        values = entry.value if isinstance(entry.value, tuple) else (entry.value,)
+        found.update(token for part in values for token in _tokens(plain(abs(part))))
     for rows in (*inputs.tables.values(), timeline):
         for row in rows:
             for text in row.values():
@@ -288,6 +311,6 @@ def consistency_problems(
     evidence = evidence_tokens(valuation, inputs, build, timeline)
     for path in sorted(out_dir.glob("*.html")):
         page = _parse(path)
-        problems += _figure_problems(page, path.name, valuation, inputs)
+        problems += _figure_problems(page, path.name, valuation, inputs, timeline)
         problems += _page_problems(page, path.name, evidence)
     return problems

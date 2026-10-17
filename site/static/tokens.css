@@ -71,6 +71,8 @@
 
     /* Page width and line weights, so that no other file holds a raw size. */
     --page-width: 72rem;
+    --wrap-label-width: 9rem; /* a row label that may break anywhere */
+    --wrap-column-width: 16rem; /* a table column that holds sentences */
     --prose-width: 45rem; /* about 70 characters at body size, under the 80 limit */
     --line-thin: 1px; /* dividers and gridlines */
     --line-focus: 2px; /* the focus ring */

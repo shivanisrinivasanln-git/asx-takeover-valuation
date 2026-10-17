@@ -42,3 +42,9 @@ def aud_signed(value: float, places: int = 2) -> str:
 def percent(value: float, places: int = 1) -> str:
     """A rate or share written with a percent sign, such as 10.0%."""
     return f"{number(value, places)}%"
+
+
+def plain(value: float) -> str:
+    """A value as it stands in the inputs: up to four decimal places and no trailing zeros."""
+    text = f"{abs(round(value, 4)):,.4f}".rstrip("0").rstrip(".")
+    return f"{MINUS}{text}" if value < 0 else text

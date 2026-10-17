@@ -1,0 +1,31 @@
+{% extends "base.html.j2" %}
+{% block title %}Method and sources, {{ meta.target }}{% endblock %}
+{% block heading %}Method and sources{% endblock %}
+{% block main %}
+<section aria-labelledby="register-heading">
+  <h2 id="register-heading">Input register</h2>
+  <p class="note">All <span class="num" data-count="inputs">{{ method.count }}</span> inputs to my valuation, with the document, page and date each comes from. <span class="num" data-count="judgement_inputs">{{ method.judgement_count }}</span> are my own judgement and not a figure from a document, and they are marked.</p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Input register">
+    <table class="figures">
+      <caption>Every input in assumptions.yaml, in the order of the file</caption>
+      <thead>
+        <tr><th scope="col">Input</th><th scope="col" class="num">Value</th><th scope="col">Unit</th><th scope="col">Source</th><th scope="col">Page or table</th><th scope="col">As at</th><th scope="col">Mine</th><th scope="col">Note</th></tr>
+      </thead>
+      <tbody>
+        {% for row in method.rows %}
+        <tr id="input-{{ row.key }}">
+          <th scope="row" class="wrap">{{ row.key }}</th>
+          <td class="num"{% if row.scalar %} data-input="{{ row.key }}"{% endif %}>{{ row.value }}</td>
+          <td>{{ row.unit }}</td>
+          <td class="wrap">{{ row.source }}</td>
+          <td class="wrap">{{ row.location }}</td>
+          <td>{{ row.as_at }}</td>
+          <td>{{ row.judgement }}</td>
+          <td class="wrap">{{ row.note }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

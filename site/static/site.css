@@ -368,3 +368,19 @@
     margin-block-start: var(--space-3);
   }
 }
+
+@layer components {
+  /* Long text in a table cell wraps instead of running off the page. */
+  .figures td.wrap {
+    min-width: var(--wrap-column-width);
+    white-space: normal;
+  }
+
+  /* A row label such as an input name may break anywhere, so it does not take the phone's
+     width. */
+  .figures th.wrap {
+    overflow-wrap: anywhere;
+    white-space: normal;
+    min-width: var(--wrap-label-width);
+  }
+}

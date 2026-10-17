@@ -20,6 +20,7 @@ from jinja2 import Environment, FileSystemLoader, StrictUndefined
 from valuation.bridge_page import build_bridge_page
 from valuation.football_field import build_football_field
 from valuation.inputs import Inputs, load_inputs
+from valuation.method_page import build_method_page
 from valuation.output import build_valuation
 from valuation.site_check import REFERRER_POLICY, site_problems
 from valuation.site_consistency import consistency_problems
@@ -52,12 +53,14 @@ PAGES = {
     "index.html": "index.html.j2",
     "valuation.html": "valuation.html.j2",
     "gap.html": "gap.html.j2",
+    "method.html": "method.html.j2",
     "timeline.html": "timeline.html.j2",
 }
 NAVIGATION = (
     ("index.html", "Football field"),
     ("valuation.html", "Valuation tables"),
     ("gap.html", "Gap bridge"),
+    ("method.html", "Method and sources"),
     ("timeline.html", "Deal timeline"),
 )
 
@@ -82,6 +85,7 @@ def render_pages(
         "meta": valuation["meta"],
         "field": build_football_field(valuation, inputs),
         "bridge": build_bridge_page(valuation, inputs),
+        "method": build_method_page(inputs),
         "page": build_valuation_page(valuation, inputs),
         "disclaimer": DISCLAIMER,
         "content_security_policy": CONTENT_SECURITY_POLICY,

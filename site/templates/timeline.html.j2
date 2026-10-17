@@ -2,7 +2,7 @@
 {% block title %}Deal timeline, {{ meta.target }}{% endblock %}
 {% block heading %}Deal timeline{% endblock %}
 {% block main %}
-<p class="note">{{ timeline.verified_count }} of {{ timeline.total_count }} events are checked against the document linked beside them. An event that I could not check says why.</p>
+<p class="note"><span class="num" data-count="timeline_checked">{{ timeline.verified_count }}</span> of <span class="num" data-count="timeline_events">{{ timeline.total_count }}</span> events are checked against the document linked beside them. An event that I could not check says why.</p>
 <ol class="timeline">
   {% for event in timeline.events %}
   <li>
