@@ -59,6 +59,10 @@ ast-serialize==0.12.1 \
     --hash=sha256:f896fa38e0af38821e1ab1425c5dee89e359623e165765bdeae7d0eb6909e76d \
     --hash=sha256:fafe1471e8aca6c87b4913b7b54ff97197adf702fbe28692284b929dfa62ff96
     # via mypy
+axe-playwright-python==0.1.8 \
+    --hash=sha256:97de160210fd5ce51e552d21d3b0a1cabb850235942737643ee3b9398de81a47 \
+    --hash=sha256:fdd263c998388f1a8e67cad02677e612d946248bd44d163be5e8650ea31f95f8
+    # via asx-takeover-valuation (pyproject.toml:dev)
 boolean-py==5.0 \
     --hash=sha256:60cbc4bad079753721d32649545505362c754e121570ada4658b852a3a318d95 \
     --hash=sha256:ef28a70bd43115208441b53a045d1549e2f0ec6e3d08a9d142cbc41c1938e8d9
@@ -861,7 +865,9 @@ playwright==1.63.0 \
     --hash=sha256:ad21bc07516b187965a7521c5cf0df0bd657b17482eaad74335272d35a2b07de \
     --hash=sha256:c89fc4736502a1f0fac2c8ca5d10c0cbc1c669f1f4774a2d8507a43140e4d53f \
     --hash=sha256:fd1aa00631d44d55e56e0975bf3f3f285fac4a9fd2813183f0c12a488f1a1b24
-    # via asx-takeover-valuation (pyproject.toml:dev)
+    # via
+    #   asx-takeover-valuation (pyproject.toml:dev)
+    #   axe-playwright-python
 pluggy==1.6.0 \
     --hash=sha256:7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3 \
     --hash=sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746

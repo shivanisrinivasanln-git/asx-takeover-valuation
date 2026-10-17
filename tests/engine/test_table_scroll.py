@@ -21,7 +21,7 @@ SCROLL_POLL_MS = 100
 SCROLL_POLLS = 30
 # The valuation page has ten tables, each in its own scroll region. A new table changes this.
 SCROLL_REGIONS_ON_PAGE = 10
-WIDE_TABLES = ("Peer multiples", "Precedent transaction multiples", "Free cash flow forecast")
+WIDE_TABLES = ("Peer multiples", "Precedent transaction multiples", "Free cash flow forecast table")
 
 
 @pytest.fixture(scope="module")

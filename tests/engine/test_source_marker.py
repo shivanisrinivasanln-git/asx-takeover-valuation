@@ -23,7 +23,7 @@ PHONE_HEIGHT_PX = 800
 MAX_TABS = 200
 FIRST_INPUT = "revenue_growth_fy26_to_fy35_pct"
 POPOVER = "#source-popover"
-DCF_MARK = '[aria-label="DCF assumptions"] a.source-mark'
+DCF_MARK = '[aria-label="DCF assumptions table"] a.source-mark'
 EDGE_TOLERANCE_PX = 1.0
 PAGES_WITH_SOURCES = ("index.html", "valuation.html", "gap.html")
 PAGES_WITHOUT_SOURCES = ("method.html", "timeline.html")
@@ -207,7 +207,9 @@ def test_scrolling_the_page_keeps_it_beside_its_figure(page: Page) -> None:
 
 def test_scrolling_the_table_sideways_dismisses_it(page: Page) -> None:
     page.locator(DCF_MARK).first.click()
-    page.evaluate("document.querySelector('[aria-label=\"DCF assumptions\"]').scrollLeft = 40")
+    page.evaluate(
+        "document.querySelector('[aria-label=\"DCF assumptions table\"]').scrollLeft = 40"
+    )
     page.wait_for_timeout(200)
     assert page.locator(POPOVER).is_hidden()
 

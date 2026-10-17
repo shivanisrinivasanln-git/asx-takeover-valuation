@@ -11,6 +11,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "axe-playwright-python==0.1.8",
     "mypy",
     "pip-audit",
     "playwright==1.63.0",
@@ -29,6 +30,11 @@ addopts = "-ra --strict-markers --strict-config"
 strict = true
 mypy_path = "src"
 files = ["src", "scripts", "tests/engine"]
+
+# The axe wrapper ships annotations but no py.typed marker, so mypy reads its source.
+[[tool.mypy.overrides]]
+module = "axe_playwright_python.*"
+follow_untyped_imports = true
 
 [tool.ruff]
 line-length = 100

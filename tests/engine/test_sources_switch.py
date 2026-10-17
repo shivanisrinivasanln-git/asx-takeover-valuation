@@ -86,7 +86,7 @@ def test_the_switch_shows_a_focus_ring(page: Page) -> None:
 
 
 def test_a_popover_closes_when_the_switch_changes_the_layout(page: Page) -> None:
-    page.locator('[aria-label="DCF assumptions"] a.source-mark').first.click()
+    page.locator('[aria-label="DCF assumptions table"] a.source-mark').first.click()
     assert page.locator("#source-popover").is_visible()
     page.locator(SWITCH).click()
     assert page.locator("#source-popover").is_hidden()
@@ -126,7 +126,7 @@ def test_when_the_script_is_blocked_the_switch_stays_hidden_and_the_links_still_
     opened.goto((site_dir / "valuation.html").as_uri())
     assert opened.locator(SWITCH).is_hidden()
     assert opened.locator("#source-popover").is_hidden()
-    mark = opened.locator('[aria-label="DCF assumptions"] a.source-mark').first
+    mark = opened.locator('[aria-label="DCF assumptions table"] a.source-mark').first
     code = mark.get_attribute("data-ref")
     mark.click()
     assert opened.url.endswith(f"#ref-{code}")
