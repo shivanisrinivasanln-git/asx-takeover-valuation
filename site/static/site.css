@@ -83,23 +83,51 @@
   }
 
   .site-header {
+    background: var(--surface-band);
     border-block-end: var(--line-thin) solid var(--rule);
     padding-block: var(--space-3);
   }
 
+  .switches {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  /* One row on a wide page: the site name on the left, then the pages and the switch. */
+  .site-header-row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+  }
+
   .site-name {
     font-weight: var(--weight-strong);
+    margin-inline-end: auto;
+    text-decoration: none;
   }
 
   .site-header nav {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-block-start: var(--space-2);
+    gap: var(--space-1) var(--space-4);
+  }
+
+  .site-header nav a {
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+
+  .site-header nav a:hover,
+  .site-name:hover {
+    text-decoration: underline;
   }
 
   .site-header nav a[aria-current="page"] {
-    font-weight: var(--weight-strong);
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: var(--line-focus);
   }
 
   main {
@@ -110,7 +138,14 @@
     margin-block-start: var(--space-5);
   }
 
+  /* Each section of a page reads as its own exhibit, with more space before it than inside it. */
+  main > section + section,
+  main > * + .routes {
+    margin-block-start: var(--space-7);
+  }
+
   .site-footer {
+    background: var(--surface-band);
     border-block-start: var(--line-thin) solid var(--rule);
     color: var(--ink-muted);
     font-size: var(--text-note);
@@ -236,6 +271,7 @@
   }
 
   .figures thead th {
+    background: var(--surface-band);
     border-block-end-color: var(--rule-strong);
   }
 
@@ -464,7 +500,8 @@
   }
 
   .source-popover-close,
-  .sources-switch {
+  .sources-switch,
+  .theme-switch {
     background: var(--surface);
     border: var(--line-thin) solid var(--rule-strong);
     border-radius: var(--radius-control);
@@ -480,11 +517,13 @@
 @layer components {
   /* The Show sources switch is hidden until the script runs, so a page without the script has
      no control that does nothing. When it is on, each marker prints its reference code. */
-  .sources-switch {
-    margin-block-start: var(--space-3);
+  .sources-switch,
+  .theme-switch {
+    font-size: var(--text-note);
   }
 
-  .sources-switch[aria-pressed="true"] {
+  .sources-switch[aria-pressed="true"],
+  .theme-switch[aria-pressed="true"] {
     background: var(--accent-wash);
     box-shadow: inset 0 0 0 var(--line-focus) var(--accent);
     font-weight: var(--weight-strong);

@@ -51,7 +51,7 @@ CONTENT_SECURITY_POLICY = "; ".join(
     ]
 )
 
-# The title of the landing page.
+# The name in the header of every page and the title of the landing page.
 SITE_NAME = "Shadow valuation of the Domain takeover"
 
 PAGES = {
@@ -62,7 +62,7 @@ PAGES = {
     "timeline.html": "timeline.html.j2",
 }
 NAVIGATION = (
-    ("index.html", "Football field"),
+    ("index.html", "Overview"),
     ("valuation.html", "Valuation tables"),
     ("gap.html", "Gap bridge"),
     ("method.html", "Method and sources"),

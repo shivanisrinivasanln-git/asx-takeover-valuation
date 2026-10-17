@@ -6,6 +6,7 @@ evaluating strings, so nothing here waits with `wait_for_function`.
 """
 
 import functools
+import re
 import threading
 from collections.abc import Iterator
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -315,7 +316,9 @@ def test_pages_with_sourced_figures_list_their_sources_and_load_the_script(
 
 
 @pytest.mark.parametrize("name", PAGES_WITHOUT_SOURCES)
-def test_pages_with_no_sourced_figures_carry_no_script(site_dir: Path, name: str) -> None:
+def test_pages_with_no_sourced_figures_carry_only_the_theme_script(
+    site_dir: Path, name: str
+) -> None:
     html = (site_dir / name).read_text(encoding="utf-8")
-    assert "<script" not in html
+    assert re.findall(r"<script[^>]*>", html) == ['<script src="static/theme.js">']
     assert 'id="source-popover"' not in html

@@ -10,6 +10,7 @@
 <link rel="preload" href="static/fonts/AtkinsonHyperlegibleNext-subset.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="static/tokens.css">
 <link rel="stylesheet" href="static/site.css">
+<script src="static/theme.js"></script>
 {% if sources %}
 <script src="static/sources.js" defer></script>
 {% endif %}
@@ -17,16 +18,19 @@
 <body>
 <a class="skip-link" href="#main">Skip to the content</a>
 <header class="site-header">
-  <div class="page">
-    <p class="site-name">{{ meta.target }}</p>
+  <div class="page site-header-row">
+    <a class="site-name" href="index.html">{{ site_name }}</a>
     <nav aria-label="Pages">
       {% for file, label in pages %}
       <a href="{{ file }}"{% if current == file %} aria-current="page"{% endif %}>{{ label }}</a>
       {% endfor %}
     </nav>
-    {% if sources %}
-    <button type="button" class="sources-switch" aria-pressed="false" hidden>Show sources</button>
-    {% endif %}
+    <div class="switches">
+      {% if sources %}
+      <button type="button" class="sources-switch" aria-pressed="false" hidden>Show sources</button>
+      {% endif %}
+      <button type="button" class="theme-switch" aria-pressed="false" hidden>Dark theme</button>
+    </div>
   </div>
 </header>
 <main id="main" class="page">

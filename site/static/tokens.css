@@ -15,22 +15,25 @@
   :root {
     color-scheme: light;
 
-    /* Colour roles. Ratios are against surface and were calculated with the WCAG 2.2
-       relative luminance formula; tests/engine/test_site_tokens.py recalculates them. */
-    --surface: #f7f9fb; /* pale grey-blue, so the page is neither pure white nor cream */
+    /* Colour roles, light theme. Warm neutrals with a deep blue accent (my choice of
+       18 October 2026). Ratios are against surface, calculated with the WCAG 2.2 relative
+       luminance formula; tests/engine/test_site_tokens.py recalculates them for this theme and
+       tests/engine/test_theme.py for both. */
+    --surface: #fafaf8; /* warm off-white, so the page is neither pure white nor cream */
+    --surface-band: #f2f1ee; /* the header and footer bands and table heads */
     --surface-raised: #ffffff; /* overlays and popovers only */
-    --ink: #1a2332; /* 15.0:1, a blue-black chosen on purpose instead of #000 */
-    --ink-muted: #4b5768; /* 7.0:1: units, axis labels, source lines */
-    --rule: #d0d7e0; /* gridlines and dividers, decorative at 1.4:1 */
-    --rule-strong: #7d899b; /* control borders, 3.4:1 */
-    --accent: #1b4fbf; /* 6.8:1: my hatch, my preferred value, focus and selection only */
-    --positive-variance: #00796b; /* 5.0:1: favourable */
-    --negative-variance: #b34700; /* 5.2:1: unfavourable */
+    --ink: #1c1f26; /* 15.8:1, a blue-black chosen on purpose instead of #000 */
+    --ink-muted: #575b64; /* 6.5:1: units, axis labels, source lines */
+    --rule: #e3e1dc; /* gridlines and dividers, decorative at 1.3:1 */
+    --rule-strong: #8a8780; /* control borders, 3.4:1 */
+    --accent: #2148b8; /* 7.5:1: my hatch, my preferred value, focus and selection only */
+    --positive-variance: #00796b; /* 5.1:1: favourable */
+    --negative-variance: #b34700; /* 5.3:1: unfavourable */
 
     /* Tints of the accent. The hex values are the sRGB mix, for a browser without color-mix. */
-    --accent-wash: #eaeff7;
+    --accent-wash: #edeff4;
     --accent-wash: color-mix(in oklab, var(--accent) 6%, var(--surface));
-    --accent-tint: #dde5f4;
+    --accent-tint: #e0e5f0;
     --accent-tint: color-mix(in oklab, var(--accent) 12%, var(--surface));
 
     /* Chart notation (docs/DESIGN_RESEARCH.md): solid for actuals, outline for the expert,
@@ -100,5 +103,48 @@
     --space-6: 2rem; /* 32 px */
     --space-7: 3rem; /* 48 px: between sections */
     --space-8: 4rem; /* 64 px: above the footer */
+  }
+}
+
+/* Dark theme. It follows the system setting unless a visitor has chosen a theme with the switch,
+   which sets data-theme on the root (site/static/theme.js). The two blocks hold the same
+   values, and a test checks that they do. */
+@layer tokens {
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface: #0f1116; /* a blue-black, not #000 */
+      --surface-band: #151821;
+      --surface-raised: #1c202a;
+      --ink: #eceef2; /* 16.3:1 */
+      --ink-muted: #a8aebb; /* 8.5:1 */
+      --rule: #2a2f3b;
+      --rule-strong: #6e7687; /* 4.1:1 */
+      --accent: #8ea9ff; /* 8.3:1 */
+      --positive-variance: #4db6a8; /* 7.7:1 */
+      --negative-variance: #f2995c; /* 8.5:1 */
+      --accent-wash: #171a24;
+      --accent-wash: color-mix(in oklab, var(--accent) 6%, var(--surface));
+      --accent-tint: #1e2332;
+      --accent-tint: color-mix(in oklab, var(--accent) 12%, var(--surface));
+    }
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface: #0f1116; /* a blue-black, not #000 */
+    --surface-band: #151821;
+    --surface-raised: #1c202a;
+    --ink: #eceef2; /* 16.3:1 */
+    --ink-muted: #a8aebb; /* 8.5:1 */
+    --rule: #2a2f3b;
+    --rule-strong: #6e7687; /* 4.1:1 */
+    --accent: #8ea9ff; /* 8.3:1 */
+    --positive-variance: #4db6a8; /* 7.7:1 */
+    --negative-variance: #f2995c; /* 8.5:1 */
+    --accent-wash: #171a24;
+    --accent-wash: color-mix(in oklab, var(--accent) 6%, var(--surface));
+    --accent-tint: #1e2332;
+    --accent-tint: color-mix(in oklab, var(--accent) 12%, var(--surface));
   }
 }

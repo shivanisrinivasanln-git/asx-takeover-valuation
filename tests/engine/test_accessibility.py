@@ -1,7 +1,8 @@
-"""Every built page passes axe at a phone width and a laptop width, also with the Show sources
-switch on and a source popover open (task P5-16). The tests drive the Chrome that is installed on
-the machine. Axe is injected as a script, which the pages' own policy blocks, so only this test's
-browser context ignores the policy; the pages are unchanged."""
+"""Every built page passes axe at a phone width and a laptop width, in the light and the dark
+theme, and also with the Show sources switch on and a source popover open (task P5-16). The tests
+drive the Chrome that is installed on the machine. Axe is injected as a script, which the pages'
+own policy blocks, so only this test's browser context ignores the policy; the pages are
+unchanged."""
 
 from collections.abc import Iterator
 from contextlib import contextmanager
@@ -41,9 +42,13 @@ def site_dir() -> Path:
 
 
 @contextmanager
-def open_page(browser: Browser, site_dir: Path, name: str, width_px: int) -> Iterator[Page]:
+def open_page(
+    browser: Browser, site_dir: Path, name: str, width_px: int, scheme: str = "light"
+) -> Iterator[Page]:
     context = browser.new_context(
-        viewport={"width": width_px, "height": HEIGHT_PX}, bypass_csp=True
+        viewport={"width": width_px, "height": HEIGHT_PX},
+        bypass_csp=True,
+        color_scheme=scheme,  # type: ignore[arg-type]
     )
     page = context.new_page()
     page.goto((site_dir / name).as_uri())
@@ -58,12 +63,14 @@ def violations_report(page: Page) -> str:
     return results.generate_report() if results.violations_count else ""
 
 
+# The dark theme follows the system setting, so each page is checked under both settings.
+@pytest.mark.parametrize("scheme", ["light", "dark"])
 @pytest.mark.parametrize("width_px", WIDTHS_PX)
 @pytest.mark.parametrize("name", PAGES)
 def test_a_page_has_no_axe_violations(
-    browser: Browser, site_dir: Path, name: str, width_px: int
+    browser: Browser, site_dir: Path, name: str, width_px: int, scheme: str
 ) -> None:
-    with open_page(browser, site_dir, name, width_px) as page:
+    with open_page(browser, site_dir, name, width_px, scheme) as page:
         assert violations_report(page) == ""
 
 

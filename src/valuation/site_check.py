@@ -172,6 +172,10 @@ SCRIPT_BANNED_NAMES = (
     "cssText",
     "globalThis",
 )
+# The one use of browser storage the site allows: reading and writing the key "theme", which holds
+# the light or dark choice (my decision of 18 October 2026). Every other use of localStorage, and
+# any other key, is still a problem.
+SCRIPT_ALLOWED_STORAGE = re.compile(r'\blocalStorage\.(?:getItem|setItem)\("theme"(?=[,)])')
 SCRIPT_BANNED_CALLS = re.compile(r"\.\s*(?:write|writeln)\s*\(|\bopen\s*\(")
 # Reaching a global by a computed name hides what is called, so it is not allowed.
 SCRIPT_COMPUTED_ACCESS = re.compile(r"\b(?:window|document|self|this|globalThis)\s*\[")
@@ -449,7 +453,11 @@ def script_problems(js: str) -> list[str]:
                 f"line {line(code.index(leftover))}: script has an unfinished string or comment"
             )
     names = "|".join(SCRIPT_BANNED_NAMES)
+    # Blanking literals keeps every offset, so an allowed use is found at the same place in both.
+    allowed = {match.start() for match in SCRIPT_ALLOWED_STORAGE.finditer(js)}
     for match in re.finditer(rf"(?<![A-Za-z0-9_$])({names})(?![A-Za-z0-9_$])", code):
+        if match.start() in allowed:
+            continue
         problems.append(f"line {line(match.start())}: script uses {match.group(1)}")
     for match in SCRIPT_BANNED_CALLS.finditer(code):
         problems.append(f"line {line(match.start())}: script calls {match.group(0).strip(' .(')}")
