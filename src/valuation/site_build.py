@@ -9,6 +9,7 @@ scripts and everything else from the site only.
 
 from __future__ import annotations
 
+import re
 import shutil
 import sys
 from datetime import date
@@ -65,6 +66,24 @@ NAVIGATION = (
 )
 
 
+ACCENT_TOKEN = re.compile(r"--accent:\s*(#[0-9a-fA-F]{6})\s*;")
+FAVICON_SIZE_PX = 16
+
+
+def favicon_svg(root: Path) -> str:
+    """A plain square in the accent colour, written from the colour in tokens.css so that the
+    hex value stays in that one file."""
+    tokens = (root / "site" / "static" / "tokens.css").read_text(encoding="utf-8")
+    match = ACCENT_TOKEN.search(tokens)
+    if match is None:
+        raise ValueError("tokens.css has no --accent colour to draw the favicon from")
+    size = FAVICON_SIZE_PX
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}">'
+        f'<rect width="{size}" height="{size}" fill="{match.group(1)}"/></svg>\n'
+    )
+
+
 def render_pages(
     root: Path, valuation: dict[str, Any], inputs: Inputs, build: BuildInfo
 ) -> dict[str, str]:
@@ -117,6 +136,8 @@ def build_site(root: Path, out_dir: Path, build: BuildInfo) -> list[Path]:
         shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True)
     shutil.copytree(root / "site" / "static", out_dir / "static")
+    favicon = out_dir / "static" / "favicon.svg"
+    favicon.write_text(favicon_svg(root), encoding="utf-8", newline="\n")
     for name, html in pages.items():
         (out_dir / name).write_text(html, encoding="utf-8", newline="\n")
     return sorted(path for path in out_dir.rglob("*") if path.is_file())

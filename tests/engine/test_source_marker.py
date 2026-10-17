@@ -5,7 +5,10 @@ The tests drive the Chrome that is installed on the machine. The page's own poli
 evaluating strings, so nothing here waits with `wait_for_function`.
 """
 
+import functools
+import threading
 from collections.abc import Iterator
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 import pytest
@@ -42,6 +45,18 @@ def site_dir() -> Path:
     out_dir = ROOT / "build" / "site_marker_test"
     build_site(ROOT, out_dir, BUILD)
     return out_dir
+
+
+@pytest.fixture(scope="module")
+def site_url(site_dir: Path) -> Iterator[str]:
+    """The built site over HTTP, as a visitor gets it. A page opened from a folder cannot load the
+    preloaded font, because a font request needs a cross-origin permission that a file address
+    cannot give, so the browser reports an error for it that no visitor to the site sees."""
+    handler = functools.partial(SimpleHTTPRequestHandler, directory=str(site_dir))
+    with ThreadingHTTPServer(("127.0.0.1", 0), handler) as server:
+        threading.Thread(target=server.serve_forever, daemon=True).start()
+        yield f"http://127.0.0.1:{server.server_address[1]}"
+        server.shutdown()
 
 
 @pytest.fixture(scope="module")
@@ -231,7 +246,7 @@ def test_the_popover_sits_under_the_figure_and_inside_the_phone_screen(page: Pag
 
 
 def test_opening_a_source_breaks_none_of_the_pages_security_rules(
-    browser: Browser, site_dir: Path
+    browser: Browser, site_url: str
 ) -> None:
     opened = browser.new_page(viewport={"width": PHONE_WIDTH_PX, "height": PHONE_HEIGHT_PX})
     problems: list[str] = []
@@ -240,7 +255,7 @@ def test_opening_a_source_breaks_none_of_the_pages_security_rules(
         lambda message: problems.append(message.text) if message.type == "error" else None,
     )
     opened.on("pageerror", lambda error: problems.append(str(error)))
-    opened.goto((site_dir / "valuation.html").as_uri())
+    opened.goto(f"{site_url}/valuation.html")
     opened.locator(DCF_MARK).first.click()
     assert opened.locator(POPOVER).is_visible()
     opened.close()

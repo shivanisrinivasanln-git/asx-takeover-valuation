@@ -16,3 +16,6 @@ __pycache__/
 
 # Build output
 build/
+
+# Node packages for the Lighthouse script
+node_modules/

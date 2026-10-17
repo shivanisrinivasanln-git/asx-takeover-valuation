@@ -1,0 +1,9 @@
+{
+  "name": "site-lighthouse",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pinned Lighthouse for scripts/lighthouse.py",
+  "dependencies": {
+    "lighthouse": "13.5.0"
+  }
+}

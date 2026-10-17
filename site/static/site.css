@@ -221,6 +221,12 @@
     font-size: var(--text-note);
     padding-block-end: var(--space-2);
     text-align: start;
+    /* A caption as wide as its table would run off a phone screen; this keeps it as wide as
+       the scroll container and in view while the table scrolls. */
+    box-sizing: border-box;
+    inline-size: 100cqw;
+    inset-inline-start: 0;
+    position: sticky;
   }
 
   .figures th,
@@ -248,6 +254,7 @@
 @layer components {
   /* Wide tables scroll inside their own container, with the first column held in place. */
   .table-scroll {
+    container-type: inline-size;
     overflow-x: auto;
   }
 

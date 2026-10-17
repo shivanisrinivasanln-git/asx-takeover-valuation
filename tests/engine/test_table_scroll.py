@@ -120,3 +120,28 @@ def test_every_scroll_container_can_be_reached_by_keyboard_and_shows_a_focus_rin
         tab_to(page, label)
         outline = page.evaluate("getComputedStyle(document.activeElement).outlineStyle")
         assert outline != "none", label
+
+
+def test_every_caption_fits_inside_its_scroll_container(page: Page) -> None:
+    # A caption as wide as its table would run off a phone screen. Each pair is the container's
+    # right edge and its caption's right edge.
+    edges = page.eval_on_selector_all(
+        ".table-scroll",
+        """regions => regions.map(region => [
+            region.getBoundingClientRect().right,
+            region.querySelector('caption').getBoundingClientRect().right])""",
+    )
+    assert len(edges) == SCROLL_REGIONS_ON_PAGE
+    for region_right, caption_right in edges:
+        assert caption_right <= region_right + EDGE_TOLERANCE_PX
+
+
+def test_a_caption_stays_in_view_while_the_table_scrolls(page: Page) -> None:
+    label = "Peer multiples"
+    region = f'[aria-label="{label}"]'
+    caption = f"{region} caption"
+    tab_to(page, label)
+    for _ in range(SCROLL_PRESSES):
+        page.keyboard.press("ArrowRight")
+    assert scroll_position_at_rest(page, region) > 0
+    assert box(page, caption)["x"] == pytest.approx(box(page, region)["x"], abs=EDGE_TOLERANCE_PX)
