@@ -466,6 +466,19 @@ These come from the sources above and my own calculations. They are starting poi
 - Gap bridge: drawn horizontally with one step per row, signed labels, thin connectors, and the accent kept out of the step bars so it does not blur with teal.
 - Type: body at a fixed 16 px, with the three largest steps growing between 390 and 1440 px in `rem` plus `vw` so browser zoom still works; tabular figures on numbers but not in running prose; no small caps and no synthesised styles.
 
+### Defaults after the first build (task P5-01, 18 October 2026)
+
+I checked each default above against the code and against screenshots of the landing page, the gap page and the sensitivity section of the valuation page, each at 390, 768, 1280 and 1440 px, and kept the default I had recommended for each.
+
+| Default | Result | What the build does |
+|---|---|---|
+| Tick pitch | Confirmed | Price marks every A$0.50 on screens wider than 40rem (640 px) and every A$1.00 below that, where the half-dollar marks are hidden (`src/valuation/football_field.py`, `site/static/site.css`) |
+| Base-case border | Confirmed | The base cell of the sensitivity grid has a 2 px accent inset border and the heavier weight, with no heat-map fill and one line under the grid saying what it does not vary |
+| Bridge layout | Confirmed | Horizontal, one step per row, a signed label on every step that moves the value, thin connectors, teal and orange step bars and the accent only on my preferred value |
+| Fluid type | Confirmed | Body text fixed at 16 px; headings grow from 20 to 25 px, the verdict from 25 to 31 px and page titles from 31 to 39 px between 390 and 1440 px, in `rem` plus `vw` (`site/static/tokens.css`) |
+
+Two related points from the build. The row pitch is 64 px and not the 40 px proposed, because every row label sits above its bar at every width, as the stacked mobile layout in DESIGN.md requires; the bars are 16 px as proposed. Where a low or high label falls on the offer or undisturbed line, a surface-coloured edge around the digits breaks the line behind them, so the label stays legible; I keep that.
+
 ### Refinements I adopt
 
 1. A stronger hatch with an outline, and a dotted accent underline on every sourced figure as the provenance marker. The underline is visible with "Show sources" off, so the signature feature is seen without switching anything on.
