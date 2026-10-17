@@ -17,7 +17,7 @@ PHONE_WIDTH_PX = 390
 PHONE_HEIGHT_PX = 800
 SWITCH = ".sources-switch"
 PAGES_WITH_SWITCH = ("index.html", "valuation.html", "gap.html")
-PAGES_WITHOUT_SWITCH = ("method.html", "timeline.html")
+PAGES_WITHOUT_SWITCH = ("method.html", "timeline.html", "about.html")
 
 # Compares what each marker prints after it with its own reference code.
 MISMATCHES = """() => Array.from(document.querySelectorAll('a.source-mark'))

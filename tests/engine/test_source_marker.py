@@ -30,7 +30,7 @@ POPOVER = "#source-popover"
 DCF_MARK = '[aria-label="DCF assumptions table"] a.source-mark'
 EDGE_TOLERANCE_PX = 1.0
 PAGES_WITH_SOURCES = ("index.html", "valuation.html", "gap.html")
-PAGES_WITHOUT_SOURCES = ("method.html", "timeline.html")
+PAGES_WITHOUT_SOURCES = ("method.html", "timeline.html", "about.html")
 
 
 @pytest.fixture(scope="module")

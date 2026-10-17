@@ -19,7 +19,14 @@ ROOT = Path(__file__).resolve().parents[2]
 BUILD = BuildInfo(date="17 October 2026", commit="0123456789abcdef0123456789abcdef01234567")
 WIDTHS_PX = (390, 1280)
 HEIGHT_PX = 900
-PAGES = ("index.html", "valuation.html", "gap.html", "method.html", "timeline.html")
+PAGES = (
+    "index.html",
+    "valuation.html",
+    "gap.html",
+    "method.html",
+    "timeline.html",
+    "about.html",
+)
 PAGES_WITH_SOURCES = ("index.html", "valuation.html", "gap.html")
 SWITCH = ".sources-switch"
 MARKER = "a.source-mark"

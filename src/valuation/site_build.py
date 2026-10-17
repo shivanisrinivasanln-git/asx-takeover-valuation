@@ -26,7 +26,7 @@ from valuation.method_page import build_method_page
 from valuation.output import build_valuation
 from valuation.site_check import REFERRER_POLICY, site_problems
 from valuation.site_consistency import consistency_problems
-from valuation.site_frame import BuildInfo, build_frame, current_commit
+from valuation.site_frame import ACQUIRER, REPOSITORY_URL, BuildInfo, build_frame, current_commit
 from valuation.timeline_page import build_timeline_page, implementation_date, load_timeline
 from valuation.valuation_page import build_valuation_page
 
@@ -60,6 +60,7 @@ PAGES = {
     "gap.html": "gap.html.j2",
     "method.html": "method.html.j2",
     "timeline.html": "timeline.html.j2",
+    "about.html": "about.html.j2",
 }
 NAVIGATION = (
     ("index.html", "Overview"),
@@ -67,6 +68,7 @@ NAVIGATION = (
     ("gap.html", "Gap to the expert"),
     ("method.html", "Method and sources"),
     ("timeline.html", "Deal timeline"),
+    ("about.html", "About"),
 )
 
 
@@ -115,6 +117,11 @@ def render_pages(
     context = {
         "pages": NAVIGATION,
         "site_name": SITE_NAME,
+        "about": {
+            "acquirer": ACQUIRER,
+            "implemented": implementation_date(timeline),
+            "repository_url": REPOSITORY_URL,
+        },
         "landing": build_landing(valuation, field, MODEL_HREF, REPORT_HREF),
         "frame": build_frame(valuation, build, implementation_date(timeline)),
         "timeline": build_timeline_page(timeline),

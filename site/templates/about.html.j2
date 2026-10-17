@@ -1,0 +1,19 @@
+{% extends "base.html.j2" %}
+{% block title %}About, {{ meta.target }}{% endblock %}
+{% block heading %}About{% endblock %}
+{% block main %}
+<section class="prose" aria-labelledby="who-heading">
+  <h2 id="who-heading">Who I am</h2>
+  <p>I am a third-year Commerce student at UNSW Sydney, studying Finance and Business Analytics. I have a background in security engineering and I am comfortable with Python, React and Next.js. Professional valuation practice is newer to me.</p>
+</section>
+<section class="prose" aria-labelledby="project-heading">
+  <h2 id="project-heading">What this project is</h2>
+  <p>A shadow valuation of {{ meta.target }}, which {{ about.acquirer }} acquired by a scheme of arrangement implemented on {{ about.implemented }}. I valued Domain independently of the expert, from the scheme booklet and other public documents, compared my range with the independent expert's range and with the offer, and explained each difference between the expert's value and mine.</p>
+</section>
+<section class="prose" aria-labelledby="built-heading">
+  <h2 id="built-heading">How it is built</h2>
+  <p>One file of inputs, assumptions.yaml, holds every input with the document, page and date it comes from. A Python engine reads that file and writes the figures for this site, the Excel model and the PDF report. The Excel model is written as live formulas and recalculated in Excel, and tests check that the site, the model and the report agree with the engine.</p>
+  <p>The site is static HTML with two small scripts of its own: one opens the source of a figure, and one switches between the light and dark themes. It requests nothing from any other site, has no analytics and keeps nothing in the browser except the theme choice.</p>
+  <p>The code, the data and my record of each decision are in <a href="{{ about.repository_url }}">the repository on GitHub</a>.</p>
+</section>
+{% endblock %}
