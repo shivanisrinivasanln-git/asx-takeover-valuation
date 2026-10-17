@@ -12,9 +12,11 @@ from valuation.inputs import Inputs, load_inputs
 from valuation.output import build_valuation
 from valuation.site_build import build_site
 from valuation.site_format import MINUS, number
+from valuation.site_frame import BuildInfo
 from valuation.valuation_page import DCF_VALUE_ROWS, FORECAST_COLUMNS
 
 ROOT = Path(__file__).resolve().parents[2]
+BUILD = BuildInfo(date="17 October 2026", commit="0123456789abcdef0123456789abcdef01234567")
 CSS = ROOT / "site" / "static" / "site.css"
 
 Cell = tuple[str, dict[str, str], str]
@@ -87,7 +89,7 @@ def valuation(inputs: Inputs) -> dict[str, object]:
 @pytest.fixture(scope="module")
 def page() -> _Page:
     out_dir = ROOT / "build" / "site_test"
-    build_site(ROOT, out_dir)
+    build_site(ROOT, out_dir, BUILD)
     reader = _Page()
     reader.feed((out_dir / "valuation.html").read_text(encoding="utf-8"))
     return reader

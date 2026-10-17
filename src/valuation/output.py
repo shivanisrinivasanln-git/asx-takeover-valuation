@@ -325,6 +325,7 @@ def build_valuation(inputs: Inputs) -> dict[str, Any]:
         "meta": {
             "target": "Domain Holdings Australia (ASX: DHG)",
             "valuation_date": valuation_date_label(inputs),
+            "data_date": inputs.assumptions["risk_free_rate_pct"].as_at,
             "discounting": "mid-year" if use_mid_year(inputs) else "year end",
             "status": "My base case as chosen on 12 October 2026 (docs/BASE_CASE.md).",
             "case_note": "A trailing low, mid or high is the value case: the low case "

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import shutil
 import sys
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -20,6 +21,8 @@ from valuation.football_field import build_football_field
 from valuation.inputs import Inputs, load_inputs
 from valuation.output import build_valuation
 from valuation.site_check import REFERRER_POLICY, site_problems
+from valuation.site_frame import BuildInfo, build_frame, current_commit
+from valuation.timeline_page import implementation_date, load_timeline
 from valuation.valuation_page import build_valuation_page
 
 # The sentence under every page and in the README (checked against the README by a test).
@@ -43,10 +46,19 @@ CONTENT_SECURITY_POLICY = "; ".join(
     ]
 )
 
-PAGES = {"index.html": "index.html.j2", "valuation.html": "valuation.html.j2"}
+PAGES = {
+    "index.html": "index.html.j2",
+    "valuation.html": "valuation.html.j2",
+}
+NAVIGATION = (
+    ("index.html", "Football field"),
+    ("valuation.html", "Valuation tables"),
+)
 
 
-def render_pages(root: Path, valuation: dict[str, Any], inputs: Inputs) -> dict[str, str]:
+def render_pages(
+    root: Path, valuation: dict[str, Any], inputs: Inputs, build: BuildInfo
+) -> dict[str, str]:
     """The HTML of every page, by output file name."""
     environment = Environment(
         loader=FileSystemLoader(root / "site" / "templates"),
@@ -56,7 +68,10 @@ def render_pages(root: Path, valuation: dict[str, Any], inputs: Inputs) -> dict[
         lstrip_blocks=True,
         keep_trailing_newline=True,
     )
+    timeline = load_timeline(root)
     context = {
+        "pages": NAVIGATION,
+        "frame": build_frame(valuation, build, implementation_date(timeline)),
         "meta": valuation["meta"],
         "field": build_football_field(valuation, inputs),
         "page": build_valuation_page(valuation, inputs),
@@ -71,13 +86,13 @@ def render_pages(root: Path, valuation: dict[str, Any], inputs: Inputs) -> dict[
     }
 
 
-def build_site(root: Path, out_dir: Path) -> list[Path]:
+def build_site(root: Path, out_dir: Path, build: BuildInfo) -> list[Path]:
     """Write the site to `out_dir`, replacing what was there, and return the files written."""
     build_root = (root / "build").resolve()
     if build_root not in out_dir.resolve().parents:
         raise ValueError(f"{out_dir} is not inside {build_root}; refusing to replace it")
     inputs = load_inputs(root)
-    pages = render_pages(root, build_valuation(inputs), inputs)
+    pages = render_pages(root, build_valuation(inputs), inputs, build)
     if out_dir.exists():
         shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True)
@@ -90,7 +105,8 @@ def build_site(root: Path, out_dir: Path) -> list[Path]:
 def main() -> int:
     root = Path(__file__).resolve().parents[2]
     out_dir = root / "build" / "site"
-    files = build_site(root, out_dir)
+    build = BuildInfo(date=f"{date.today().day} {date.today():%B %Y}", commit=current_commit(root))
+    files = build_site(root, out_dir, build)
     problems = site_problems(out_dir, DISCLAIMER)
     if problems:
         sys.stdout.write("site: FAIL\n" + "\n".join(problems) + "\n")

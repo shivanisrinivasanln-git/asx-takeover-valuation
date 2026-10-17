@@ -71,6 +71,7 @@
 
     /* Page width and line weights, so that no other file holds a raw size. */
     --page-width: 72rem;
+    --prose-width: 45rem; /* about 70 characters at body size, under the 80 limit */
     --line-thin: 1px; /* dividers and gridlines */
     --line-focus: 2px; /* the focus ring */
     --underline-offset: 0.2em;

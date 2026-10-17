@@ -12,8 +12,10 @@ from valuation.inputs import Inputs, load_inputs
 from valuation.output import build_valuation
 from valuation.site_build import build_site
 from valuation.site_format import MINUS, aud, aud_signed, number, percent, signed
+from valuation.site_frame import BuildInfo
 
 ROOT = Path(__file__).resolve().parents[2]
+BUILD = BuildInfo(date="17 October 2026", commit="0123456789abcdef0123456789abcdef01234567")
 CSS = ROOT / "site" / "static" / "site.css"
 TOKENS = ROOT / "site" / "static" / "tokens.css"
 MINIMUM_GRAPHIC_CONTRAST = 3.0
@@ -63,7 +65,7 @@ def valuation(inputs: Inputs) -> dict[str, object]:
 @pytest.fixture(scope="module")
 def page() -> _Chart:
     out_dir = ROOT / "build" / "site_test"
-    build_site(ROOT, out_dir)
+    build_site(ROOT, out_dir, BUILD)
     chart = _Chart()
     chart.feed((out_dir / "index.html").read_text(encoding="utf-8"))
     return chart

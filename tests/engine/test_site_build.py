@@ -13,8 +13,10 @@ from valuation.site_check import (
     site_problems,
     stylesheet_problems,
 )
+from valuation.site_frame import BuildInfo
 
 ROOT = Path(__file__).resolve().parents[2]
+BUILD = BuildInfo(date="17 October 2026", commit="0123456789abcdef0123456789abcdef01234567")
 
 POLICY_TAG = f'<meta http-equiv="Content-Security-Policy" content="{CONTENT_SECURITY_POLICY}">'
 REFERRER_TAG = f'<meta name="referrer" content="{REFERRER_POLICY}">'
@@ -37,7 +39,7 @@ GOOD_PAGE = f"""<!doctype html>
 @pytest.fixture(scope="module")
 def site_dir() -> Path:
     out_dir = ROOT / "build" / "site_test"
-    build_site(ROOT, out_dir)
+    build_site(ROOT, out_dir, BUILD)
     return out_dir
 
 
@@ -299,4 +301,4 @@ def test_an_empty_site_is_reported(tmp_path: Path) -> None:
 
 def test_the_build_refuses_to_replace_a_folder_outside_build(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="refusing to replace"):
-        build_site(ROOT, tmp_path / "site")
+        build_site(ROOT, tmp_path / "site", BUILD)

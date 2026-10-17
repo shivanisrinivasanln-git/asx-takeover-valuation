@@ -1,8 +1,8 @@
 {% extends "base.html.j2" %}
 {% block title %}Valuation tables, {{ meta.target }}{% endblock %}
+{% block heading %}Valuation tables{% endblock %}
 {% block main %}
-<h1>Valuation tables</h1>
-<p class="note">Money is in A$ millions unless a header says per share. Valuation date {{ meta.valuation_date }}. Discounting is {{ meta.discounting }}.</p>
+<p class="note">Valuation date {{ meta.valuation_date }}. Discounting is {{ meta.discounting }}.</p>
 
 <section aria-labelledby="dcf-assumptions-heading">
   <h2 id="dcf-assumptions-heading">DCF assumptions</h2>

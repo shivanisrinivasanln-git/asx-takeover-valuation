@@ -15,16 +15,30 @@
   <div class="page">
     <p class="site-name">{{ meta.target }}</p>
     <nav aria-label="Pages">
-      <a href="index.html"{% if current == "index.html" %} aria-current="page"{% endif %}>Football field</a>
-      <a href="valuation.html"{% if current == "valuation.html" %} aria-current="page"{% endif %}>Valuation tables</a>
+      {% for file, label in pages %}
+      <a href="{{ file }}"{% if current == file %} aria-current="page"{% endif %}>{{ label }}</a>
+      {% endfor %}
     </nav>
   </div>
 </header>
 <main id="main" class="page">
+<h1>{% block heading %}{{ meta.target }}{% endblock %}</h1>
+<dl class="docket" aria-label="The deal">
+  {% for label, text in frame.docket %}
+  <div><dt>{{ label }}</dt><dd>{{ text }}</dd></div>
+  {% endfor %}
+</dl>
 {% block main %}{% endblock %}
 </main>
 <footer class="site-footer">
   <div class="page">
+    <dl class="colophon" aria-label="About this build">
+      {% for label, text in frame.colophon %}
+      <div><dt>{{ label }}</dt><dd>{{ text }}</dd></div>
+      {% endfor %}
+      <div><dt>Commit</dt><dd><a href="{{ frame.commit_url }}">{{ frame.commit_short }}</a></dd></div>
+    </dl>
+    <p>{{ frame.unit_note }}</p>
     <p>{{ disclaimer }}</p>
   </div>
 </footer>
