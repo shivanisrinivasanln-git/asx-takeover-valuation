@@ -216,13 +216,10 @@ def _table_rows(bridge: dict[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
-def _rounding_note(bridge: dict[str, Any]) -> str:
-    rounded_steps = round(sum(round(s["change_aud"], 2) for s in bridge["steps"]), 2)
-    return (
-        f"Each step is rounded to the cent on its own. The rounded steps add to "
-        f"{signed(rounded_steps)}, and the total change from the expert's midpoint is "
-        f"{signed(bridge['total_gap_aud'])} before rounding to the cent."
-    )
+def _rounding(bridge: dict[str, Any]) -> dict[str, str]:
+    """The sum of the steps rounded one by one, beside the total rounded once."""
+    rounded_steps = round(sum(round(step["change_aud"], 2) for step in bridge["steps"]), 2)
+    return {"steps_sum": signed(rounded_steps), "total": signed(bridge["total_gap_aud"])}
 
 
 def _description(rows: list[dict[str, Any]], bridge: dict[str, Any]) -> str:
@@ -262,7 +259,7 @@ def build_bridge_page(valuation: dict[str, Any], inputs: Inputs) -> dict[str, An
         "title": "Gap bridge from the expert's midpoint to my preferred value, A$ per share",
         "description": _description(rows, bridge),
         "table": _table_rows(bridge),
-        "rounding_note": _rounding_note(bridge),
+        "rounding": _rounding(bridge),
         "order_note": bridge["order_note"],
         "steps": [
             {

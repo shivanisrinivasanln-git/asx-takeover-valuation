@@ -22,6 +22,7 @@ from valuation.football_field import build_football_field
 from valuation.inputs import Inputs, load_inputs
 from valuation.output import build_valuation
 from valuation.site_check import REFERRER_POLICY, site_problems
+from valuation.site_consistency import consistency_problems
 from valuation.site_frame import BuildInfo, build_frame, current_commit
 from valuation.timeline_page import build_timeline_page, implementation_date, load_timeline
 from valuation.valuation_page import build_valuation_page
@@ -114,7 +115,10 @@ def main() -> int:
     out_dir = root / "build" / "site"
     build = BuildInfo(date=f"{date.today().day} {date.today():%B %Y}", commit=current_commit(root))
     files = build_site(root, out_dir, build)
-    problems = site_problems(out_dir, DISCLAIMER)
+    inputs = load_inputs(root)
+    problems = site_problems(out_dir, DISCLAIMER) + consistency_problems(
+        root, out_dir, build_valuation(inputs), inputs, build, load_timeline(root)
+    )
     if problems:
         sys.stdout.write("site: FAIL\n" + "\n".join(problems) + "\n")
         return 1

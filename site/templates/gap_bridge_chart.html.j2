@@ -48,5 +48,5 @@
       </tbody>
     </table>
   </div>
-  <p class="note">{{ bridge.rounding_note }} {{ bridge.order_note }}</p>
+  <p class="note">Each step is rounded to the cent on its own. The rounded steps add to <span class="num" data-bridge="rounded_steps_sum_aud">{{ bridge.rounding.steps_sum }}</span>, and the total change from the expert's midpoint, rounded once, is <span class="num" data-bridge="total_gap_aud">{{ bridge.rounding.total }}</span>. {{ bridge.order_note }}</p>
 </section>

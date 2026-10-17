@@ -1,7 +1,6 @@
 """The gap bridge page: the steps add up, every label is the figure in valuation.json, each step
 links to its explanation and the explanation is my wording, unchanged (task P5-11)."""
 
-import re
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
@@ -99,6 +98,8 @@ def expected_text(bridge: dict[str, Any], key: str) -> str:
         return signed(bridge[key], 4)
     if key == "total_gap_aud":
         return signed(bridge[key])
+    if key == "rounded_steps_sum_aud":
+        return signed(round(sum(round(step["change_aud"], 2) for step in bridge["steps"]), 2))
     step_id, field = key.split(":")
     steps = bridge["steps"]
     step = next(item for item in steps if item["id"] == step_id)
@@ -131,7 +132,8 @@ def test_every_label_and_cell_is_the_figure_in_valuation_json(
     chart = 1 + len(steps) + 1
     table_changes = len(steps) + 2
     table_values = 1 + len(steps) + 1
-    assert len(keys) == chart + table_changes + table_values
+    # The rounding note repeats the total and adds the sum of the rounded steps.
+    assert len(keys) == chart + table_changes + table_values + 2
     for key, text in page.labelled:
         assert text == expected_text(bridge, key), key
     assert {key for key, _ in page.labelled} >= {f"{step['id']}:change_aud" for step in steps}
@@ -254,9 +256,10 @@ def test_the_rounding_note_gives_the_sum_of_the_rounded_steps(
     built = build_bridge_page(valuation, inputs)
     steps = valuation["gap_bridge"]["steps"]
     rounded = round(sum(round(step["change_aud"], 2) for step in steps), 2)
-    assert signed(rounded) in built["rounding_note"]
-    assert signed(valuation["gap_bridge"]["total_gap_aud"]) in built["rounding_note"]
-    assert re.search(r"[+" + MINUS + r"]0\.0\d", built["rounding_note"])
+    assert built["rounding"]["steps_sum"] == signed(rounded)
+    assert built["rounding"]["total"] == signed(valuation["gap_bridge"]["total_gap_aud"])
+    # The rounded steps and the rounded total can differ by a cent, and the note says so.
+    assert built["rounding"]["steps_sum"] != built["rounding"]["total"]
 
 
 def test_the_input_tables_show_the_expert_and_my_values(
