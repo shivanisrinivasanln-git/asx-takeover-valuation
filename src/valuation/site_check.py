@@ -7,6 +7,10 @@ The rule for anything a page loads is an allow-list: the address must be a plain
 this site. A link a visitor follows (`<a href>`) may also be an absolute http or https address,
 because following it loads nothing into the page, and may not use any other scheme (a
 `javascript:` address runs code when it is clicked).
+
+Script files are scanned as text (`script_problems`). The threat model is the same as for pages:
+my own mistakes, not deliberate evasion. A script on this site changes the page it is on and makes
+no request, keeps nothing in storage and builds no code or markup from text.
 """
 
 from __future__ import annotations
@@ -134,6 +138,49 @@ CONTROL_OR_BACKSLASH = re.compile(r"[\x00-\x20\x7f\\]")
 ODD_SCRIPT_END = re.compile(r"</script(?!>)", re.IGNORECASE)
 CSS_URL = re.compile(r"url\(\s*(['\"]?)(.*?)\1\s*\)", re.IGNORECASE | re.DOTALL)
 CSS_OTHER_FETCHERS = re.compile(r"@import|image-set\(|image\(|cross-fade\(|element\(|src\(", re.I)
+
+
+# Names a site script may not use in code. Each one either runs code built from text, makes a
+# request, keeps data in the browser, writes markup from text or leaves the page.
+SCRIPT_BANNED_NAMES = (
+    "eval",
+    "Function",
+    "constructor",
+    "setTimeout",
+    "setInterval",
+    "setImmediate",
+    "import",
+    "importScripts",
+    "fetch",
+    "XMLHttpRequest",
+    "WebSocket",
+    "EventSource",
+    "sendBeacon",
+    "Worker",
+    "SharedWorker",
+    "serviceWorker",
+    "cookie",
+    "localStorage",
+    "sessionStorage",
+    "indexedDB",
+    "innerHTML",
+    "outerHTML",
+    "insertAdjacentHTML",
+    "srcdoc",
+    "postMessage",
+    "location",
+    "cssText",
+    "globalThis",
+)
+SCRIPT_BANNED_CALLS = re.compile(r"\.\s*(?:write|writeln)\s*\(|\bopen\s*\(")
+# Reaching a global by a computed name hides what is called, so it is not allowed.
+SCRIPT_COMPUTED_ACCESS = re.compile(r"\b(?:window|document|self|this|globalThis)\s*\[")
+# Comments and string literals, matched left to right so that a quote inside a comment, or `//`
+# inside a string, is read as the thing it belongs to.
+SCRIPT_LITERAL = re.compile(r"//[^\n]*|/\*.*?\*/|\"[^\"\n]*\"|'[^'\n]*'", re.DOTALL)
+SCRIPT_BANNED_STRINGS = ("script", "iframe", "object", "embed", "style", "base", "link")
+SCRIPT_STRING_FRAGMENTS = ("<", ">", "javascript:", "data:", "http", "//")
+EVENT_HANDLER_NAME = re.compile(r"on[a-z]+")
 
 
 def _address_problem(address: str, *, may_leave_site: bool) -> str | None:
@@ -362,6 +409,56 @@ def stylesheet_problems(css: str) -> list[str]:
     return problems
 
 
+def script_problems(js: str) -> list[str]:
+    """Problems in one script file.
+
+    A script is plain ASCII with no escape sequences, regular expression literals or template
+    literals, so what it calls can be read from its text. Comments and string literals are
+    removed before the names are checked, and the strings are checked on their own.
+    """
+    problems: list[str] = []
+
+    def line(offset: int) -> int:
+        return js.count("\n", 0, offset) + 1
+
+    if not js.isascii():
+        problems.append("script has a character outside ASCII")
+    for mark, reason in (
+        ("\\", "a backslash, which starts an escape sequence or a regular expression literal"),
+        ("`", "a template literal"),
+    ):
+        if mark in js:
+            problems.append(f"line {line(js.index(mark))}: script has {reason}")
+
+    def blank(match: re.Match[str]) -> str:
+        text = match.group(0)
+        if text[0] in "\"'":
+            body = text[1:-1].lower()
+            if body.strip() in SCRIPT_BANNED_STRINGS or EVENT_HANDLER_NAME.fullmatch(body):
+                problems.append(f"line {line(match.start())}: script uses the string {text}")
+            if any(fragment in body for fragment in SCRIPT_STRING_FRAGMENTS):
+                problems.append(
+                    f"line {line(match.start())}: script has a string with markup or an address"
+                )
+        return re.sub(r"[^\n]", " ", text)
+
+    code = SCRIPT_LITERAL.sub(blank, js)
+    for leftover in ('"', "'", "/*"):
+        if leftover in code:
+            problems.append(
+                f"line {line(code.index(leftover))}: script has an unfinished string or comment"
+            )
+    names = "|".join(SCRIPT_BANNED_NAMES)
+    for match in re.finditer(rf"(?<![A-Za-z0-9_$])({names})(?![A-Za-z0-9_$])", code):
+        problems.append(f"line {line(match.start())}: script uses {match.group(1)}")
+    for match in SCRIPT_BANNED_CALLS.finditer(code):
+        problems.append(f"line {line(match.start())}: script calls {match.group(0).strip(' .(')}")
+    for match in SCRIPT_COMPUTED_ACCESS.finditer(code):
+        name = match.group(0).rstrip(" [")
+        problems.append(f"line {line(match.start())}: script reads {name} by a computed name")
+    return problems
+
+
 def site_problems(site_dir: Path, disclaimer: str) -> list[str]:
     """Every problem in the built site, prefixed with the file it is in."""
     problems: list[str] = []
@@ -377,5 +474,10 @@ def site_problems(site_dir: Path, disclaimer: str) -> list[str]:
         problems += [
             f"{sheet.relative_to(site_dir)}: {problem}"
             for problem in stylesheet_problems(sheet.read_text(encoding="utf-8"))
+        ]
+    for script in sorted(site_dir.rglob("*.js")):
+        problems += [
+            f"{script.relative_to(site_dir)}: {problem}"
+            for problem in script_problems(script.read_text(encoding="utf-8"))
         ]
     return problems
