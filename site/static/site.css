@@ -487,12 +487,21 @@
 }
 
 @layer components {
-  /* Prose sections of the method page: paragraphs stay at reading width, tables do not. */
-  .prose p {
+  /* Prose sections of the method page: paragraphs and lists stay at reading width, tables do not. */
+  .prose p,
+  .prose ul {
     max-width: var(--prose-width);
   }
 
   .prose > * + * {
+    margin-block-start: var(--space-3);
+  }
+
+  .limitations {
+    padding-inline-start: var(--space-5);
+  }
+
+  .limitations li + li {
     margin-block-start: var(--space-3);
   }
 }

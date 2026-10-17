@@ -109,4 +109,5 @@ def build_method_page(valuation: dict[str, Any], inputs: Inputs) -> dict[str, An
         "count": len(rows),
         "judgement_count": sum(1 for row in rows if row["judgement"]),
         "completed_deals": _completed_deals_note(valuation, inputs),
+        "limitations": [row["text"] for row in inputs.tables["limitations"]],
     }

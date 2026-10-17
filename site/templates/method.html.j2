@@ -29,6 +29,15 @@
   </div>
 </section>
 
+<section class="prose" aria-labelledby="limitations-heading">
+  <h2 id="limitations-heading">What I could not verify</h2>
+  <ul class="limitations">
+    {% for text in method.limitations %}
+    <li>{{ text }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
 <section aria-labelledby="register-heading">
   <h2 id="register-heading">Input register</h2>
   <p class="note">All <span class="num" data-count="inputs">{{ method.count }}</span> inputs to my valuation, with the document, page and date each comes from. <span class="num" data-count="judgement_inputs">{{ method.judgement_count }}</span> are my own judgement and not a figure from a document, and they are marked.</p>

@@ -1,5 +1,5 @@
-"""The method page's completed-deals note prints the wording I approved on 17 October 2026, with
-every figure read from the data (task P5-13)."""
+"""The method page's completed-deals note and its list of what I could not verify print the
+wording I approved on 17 October 2026, with every figure read from the data (task P5-13)."""
 
 import html
 import re
@@ -20,6 +20,17 @@ from valuation.timeline_page import load_timeline
 ROOT = Path(__file__).resolve().parents[2]
 BUILD = BuildInfo(date="17 October 2026", commit="0123456789abcdef0123456789abcdef01234567")
 SENSITIVITY = "precedent_completed_deals_only"
+RESEARCH = ROOT / "docs" / "RESEARCH.md"
+RESEARCH_HEADING = "## Items I could not verify while transcribing the data and filling the inputs"
+# Items of that list I chose to leave off the page on 17 October 2026, and why.
+LEFT_OUT = {
+    "The booklet's actual dispatch date": "no effect on any figure and no page recorded",
+    "REA's 22.4x multiple for Rightmove and CoStar's 8-K statements": (
+        "my notes disagree about how it was read, so I cannot state it accurately"
+    ),
+}
+# Words that would point at my working method instead of the valuation.
+INTERNAL_WORDS = re.compile(r"\b(task|tool|script|engine|test|fetch)\b|\bP\d-\d\d\b", re.IGNORECASE)
 
 
 @pytest.fixture(scope="module")
@@ -139,6 +150,42 @@ def test_the_build_stops_if_the_data_no_longer_matches_the_words_two_of_the_four
     )
     with pytest.raises(ValueError, match="two of the four"):
         build_method_page(valuation, changed)
+
+
+def test_the_page_lists_each_approved_limitation_unchanged_and_in_order(
+    method_html: str, inputs: Inputs
+) -> None:
+    section = method_html.split('id="limitations-heading"')[1].split("</section>")[0]
+    printed = [plain_text(item) for item in re.findall(r"<li>(.*?)</li>", section, re.DOTALL)]
+    written = [" ".join(row["text"].split()) for row in inputs.tables["limitations"]]
+    assert printed == written
+    assert len(written) == 14
+
+
+def test_every_item_in_my_list_is_published_or_left_out_for_a_stated_reason(
+    inputs: Inputs,
+) -> None:
+    section = RESEARCH.read_text(encoding="utf-8").split(RESEARCH_HEADING)[1]
+    items = [
+        line.strip("|").split(" | ")[0].strip()
+        for line in section.splitlines()
+        if line.startswith("| ") and not line.startswith(("| Item", "|---"))
+    ]
+    assert len(items) == 16
+    assert set(LEFT_OUT) <= set(items)
+    assert len(inputs.tables["limitations"]) == len(items) - len(LEFT_OUT)
+
+
+def test_each_limitation_has_a_page_or_a_source_and_names_no_working_method(
+    inputs: Inputs,
+) -> None:
+    ids = [row["item"] for row in inputs.tables["limitations"]]
+    assert len(ids) == len(set(ids))
+    for row in inputs.tables["limitations"]:
+        assert row["source"].strip(), row["item"]
+        assert row["location"].strip(), row["item"]
+        assert row["as_at"].strip(), row["item"]
+        assert not INTERNAL_WORDS.search(row["text"]), row["item"]
 
 
 def planted(site_dir: Path, tmp_path: Path, old: str, new: str) -> list[str]:

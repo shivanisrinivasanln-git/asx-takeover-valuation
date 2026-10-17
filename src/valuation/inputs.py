@@ -117,7 +117,7 @@ REQUIRED_TABLES = (
 
 
 # Tables I wrote myself (each row still carries its source, location and date).
-REQUIRED_WRITTEN_TABLES = ("gap_step_explanations",)
+REQUIRED_WRITTEN_TABLES = ("gap_step_explanations", "limitations")
 
 
 class MissingInputError(ValueError):
