@@ -307,3 +307,15 @@ The consideration reads "A$4.43 cash a share, less any special dividend", which 
 I used an ordered list and not a table. Each event is a sentence or two and a table cell that does not wrap (my table rule keeps figures on one line) would push the text off a phone screen. The page text is limited to the summary line; any introduction is page copy for P5-19.
 
 The link check on 17 October 2026 was a one-off request to each of the 17 distinct addresses, and it is not part of the build, because the build must pass without a network. Fifteen answered (200, and 206 for the ATO ruling, which refuses a HEAD request). The two SEC addresses returned 403: the SEC blocks anonymous automated requests, and I did not send a made-up identity to get past that. Both rows were opened by hand on 5 October 2026 (evidence column). What the build tests is that every link is an https address equal to the one in the table.
+
+## 17 October 2026: the gap bridge page (task P5-11)
+
+`gap.html` draws the eight steps of `valuation.json` `gap_bridge` as a horizontal bridge, then a table of the same figures, then one section for each step with my explanation from `data/written/gap_step_explanations.csv` printed unchanged, and a table of the inputs in that step (the expert's value and mine). `src/valuation/bridge_page.py` decides every position and label, as the football field module does.
+
+The chart is a price axis from A$3.80 to A$4.40, which does not start at zero, and the page says so. The first mark is the expert's midpoint (ink) and the last is my preferred value (accent), both as lines and not as bars from zero, because a bar from a truncated axis would show a length that means nothing. A step is a bar from the value before it to the value after it, in the two variance colours of DESIGN.md (teal raises my value, orange lowers it) with the sign printed beside it, so colour is never the only cue. A step that is zero at the cent is a short mark labelled 0.00, so the four steps where I kept the expert's value stay on the chart. Thin connectors join each step to the next. The accent stays out of the step bars, as DESIGN.md asks.
+
+The chart's row labels are short (`Forecast`, `Control premium`), and the table and the step headings use the full labels from the engine, because the full forecast label is cut off at 390 px. The chart rows are not links. I first made them links and found that the surface-coloured halo behind each label hides its underline, so a link looked like plain text. The table's first column carries an underlined link to each step.
+
+The rounded steps do not add up to the rounded total: they sum to the figure in the note under the table (A$0.04 down) while the total change from the midpoint is A$0.05 down, because each step is rounded to the cent on its own. The note states both numbers, taken from the engine. The 0.0003 reconstruction difference is its own row in the table and is not a step.
+
+The A$4.07 completed-deals figure is not on this page. Where it goes is still open (P5-13 and P5-19).

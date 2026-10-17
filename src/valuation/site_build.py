@@ -17,6 +17,7 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
+from valuation.bridge_page import build_bridge_page
 from valuation.football_field import build_football_field
 from valuation.inputs import Inputs, load_inputs
 from valuation.output import build_valuation
@@ -49,11 +50,13 @@ CONTENT_SECURITY_POLICY = "; ".join(
 PAGES = {
     "index.html": "index.html.j2",
     "valuation.html": "valuation.html.j2",
+    "gap.html": "gap.html.j2",
     "timeline.html": "timeline.html.j2",
 }
 NAVIGATION = (
     ("index.html", "Football field"),
     ("valuation.html", "Valuation tables"),
+    ("gap.html", "Gap bridge"),
     ("timeline.html", "Deal timeline"),
 )
 
@@ -77,6 +80,7 @@ def render_pages(
         "timeline": build_timeline_page(timeline),
         "meta": valuation["meta"],
         "field": build_football_field(valuation, inputs),
+        "bridge": build_bridge_page(valuation, inputs),
         "page": build_valuation_page(valuation, inputs),
         "disclaimer": DISCLAIMER,
         "content_security_policy": CONTENT_SECURITY_POLICY,

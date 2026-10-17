@@ -324,3 +324,47 @@
     font-weight: var(--weight-strong);
   }
 }
+
+@layer components {
+  /* Gap bridge: steps are solid variance colours with the sign printed, the first mark is the
+     expert's (ink) and the last is mine (accent). */
+  .chart .bar-up {
+    fill: var(--positive-variance);
+  }
+
+  .chart .bar-down {
+    fill: var(--negative-variance);
+  }
+
+  .chart .step-none {
+    stroke: var(--ink-muted);
+    stroke-width: var(--chart-tick);
+  }
+
+  .chart .marker-expert {
+    stroke: var(--expert-outline);
+    stroke-width: var(--chart-tick);
+  }
+
+  .chart .marker-mine {
+    stroke: var(--owner-hatch);
+    stroke-width: var(--chart-tick);
+  }
+
+  .chart .connector {
+    stroke: var(--rule-strong);
+    stroke-width: var(--chart-gridline);
+  }
+
+  .step {
+    max-width: var(--prose-width);
+  }
+
+  .step + .step {
+    margin-block-start: var(--space-6);
+  }
+
+  .step > * + * {
+    margin-block-start: var(--space-3);
+  }
+}

@@ -1,0 +1,52 @@
+<section class="bridge" aria-labelledby="bridge-heading">
+  <h2 id="bridge-heading">From the expert's midpoint to my preferred value</h2>
+  <svg class="chart" width="100%" height="{{ bridge.height }}" role="img" aria-labelledby="bridge-title bridge-desc">
+    <title id="bridge-title">{{ bridge.title }}</title>
+    <desc id="bridge-desc">{{ bridge.description }}</desc>
+    {% for tick in bridge.ticks %}
+    <line class="grid" x1="{{ tick.x }}" x2="{{ tick.x }}" y1="{{ bridge.plot_top }}" y2="{{ bridge.plot_bottom }}"/>
+    <text class="axis-label" x="{{ tick.x }}" y="{{ bridge.top_axis_y }}" text-anchor="{{ tick.anchor }}">{{ tick.label }}</text>
+    <text class="axis-label" x="{{ tick.x }}" y="{{ bridge.bottom_axis_y }}" text-anchor="{{ tick.anchor }}">{{ tick.label }}</text>
+    {% endfor %}
+    {% for row in bridge.rows %}
+    {% if row.has_connector %}
+    <line class="connector" x1="{{ row.x_level }}" x2="{{ row.x_level }}" y1="{{ row.connector_y1 }}" y2="{{ row.connector_y2 }}"/>
+    {% endif %}
+    {% endfor %}
+    {% for row in bridge.rows %}
+    <g class="row" data-row="{{ row.id }}">
+      <text class="row-label" x="0" y="{{ row.label_y }}">{{ row.label }}</text>
+      {% if row.kind == "start" %}
+      <line class="marker-expert" x1="{{ row.x_level }}" x2="{{ row.x_level }}" y1="{{ row.marker_y1 }}" y2="{{ row.marker_y2 }}"/>
+      {% elif row.kind == "end" %}
+      <line class="marker-mine" x1="{{ row.x_level }}" x2="{{ row.x_level }}" y1="{{ row.marker_y1 }}" y2="{{ row.marker_y2 }}"/>
+      {% elif row.direction == "none" %}
+      <line class="step-none" x1="{{ row.x_level }}" x2="{{ row.x_level }}" y1="{{ row.marker_y1 }}" y2="{{ row.marker_y2 }}"/>
+      {% else %}
+      <rect class="bar bar-{{ row.direction }}" x="{{ row.x_low }}" y="{{ row.bar_y }}" width="{{ row.x_width }}" height="{{ row.bar_height }}"/>
+      {% endif %}
+      <text class="end-label" x="{{ row.label_x }}" dx="{{ row.label_dx }}" y="{{ row.mid_y }}" dy="0.35em" text-anchor="{{ row.label_anchor }}" data-bridge="{{ row.key }}">{{ row.text }}</text>
+    </g>
+    {% endfor %}
+  </svg>
+  <p class="note">The axis is a price axis and does not start at zero. The first and last marks are values per share: the expert's midpoint ({{ bridge.start_text }} is the midpoint of a printed range, not a figure the expert published) and my preferred value. Each bar is the change from one group of inputs, with the sign printed beside it. Teal bars raise my value and orange bars lower it. Each step in the table links to its explanation below.</p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Gap bridge steps">
+    <table class="figures">
+      <caption>Each step swaps one group of inputs from the expert's value to mine, in the order shown, A$ per share</caption>
+      <thead>
+        <tr><th scope="col">Step</th><th scope="col" class="num">Change (A$)</th><th scope="col" class="num">Value after the step (A$)</th><th scope="col">Booklet pages</th></tr>
+      </thead>
+      <tbody>
+        {% for row in bridge.table %}
+        <tr>
+          <th scope="row">{% if row.href %}<a href="{{ row.href }}">{{ row.label }}</a>{% else %}{{ row.label }}{% endif %}</th>
+          <td class="num"{% if row.change_key %} data-bridge="{{ row.change_key }}"{% endif %}>{{ row.change }}</td>
+          <td class="num"{% if row.value_key %} data-bridge="{{ row.value_key }}"{% endif %}>{{ row.value }}</td>
+          <td>{{ row.pages }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="note">{{ bridge.rounding_note }} {{ bridge.order_note }}</p>
+</section>

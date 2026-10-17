@@ -1,0 +1,31 @@
+{% extends "base.html.j2" %}
+{% block title %}Gap bridge, {{ meta.target }}{% endblock %}
+{% block heading %}Gap bridge{% endblock %}
+{% block main %}
+{% include "gap_bridge_chart.html.j2" %}
+<section aria-labelledby="steps-heading">
+  <h2 id="steps-heading">Each step explained</h2>
+  {% for step in bridge.steps %}
+  <article id="step-{{ step.id }}" class="step">
+    <h3>{{ step.label }}</h3>
+    <p class="note">Change {{ step.change }}. Value after this step {{ step.after }}. Booklet pages: {{ step.sources }}.</p>
+    <p>{{ step.explanation }}</p>
+    {% if step.inputs %}
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Inputs changed in {{ step.label }}">
+      <table class="figures">
+        <caption>Inputs in this step</caption>
+        <thead>
+          <tr><th scope="col">Input</th><th scope="col">Unit</th><th scope="col" class="num">Expert</th><th scope="col" class="num">Mine</th></tr>
+        </thead>
+        <tbody>
+          {% for change in step.inputs %}
+          <tr><th scope="row">{{ change.key }}</th><td>{{ change.unit }}</td><td class="num">{{ change.expert }}</td><td class="num">{{ change.mine }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}
