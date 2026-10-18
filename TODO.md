@@ -4,8 +4,8 @@ My task list. Every task is about two hours of work or less, has acceptance crit
 
 Tags:
 - [ME] my judgement calls: a valuation input, a choice of peers or multiples, anything public about me, and the interview preparation that only I can rehearse.
-- [AUTO] reading, transcription, notes, code and automation that run through scripts and tools and are then read and tested against the source.
-- [MIXED] work where I decide one point and the tools do the rest.
+- [AUTO] reading, transcription, notes, code and automation, each read and tested against the source.
+- [MIXED] work where I decide one point and the rest is [AUTO] work.
 
 The full check command is defined in P0-04. Until it exists, a check means the command named in the row.
 
