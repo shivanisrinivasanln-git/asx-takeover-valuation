@@ -1,6 +1,6 @@
 # Design research
 
-What I studied before choosing how the site looks, what I took from it, and the three directions I am choosing between. All pages and files were accessed on 4 October 2026. Where a page was read through a summary tool and not in full, I say so, and I re-check any quotation before it appears on the site. Anything I could not confirm is marked UNVERIFIED.
+What I studied before choosing how the site looks, what I took from it, and the three directions I am choosing between. All pages and files were accessed on 4 October 2026. Where I read only a summary of a page and not the page in full, I say so, and I re-check any quotation before it appears on the site. Anything I could not confirm is marked UNVERIFIED.
 
 The brief: the site shows my valuation range next to the expert's range and the offer price, and every number leads to its source. A recruiter opens it on a phone for about 30 seconds, a hiring manager reads it on a laptop for about 5 minutes, and an interviewer asks about single figures.
 
@@ -115,7 +115,7 @@ Licence notes are what the source states. "None stated" means I found no licence
 | [RBA Statement on Monetary Policy](https://www.rba.gov.au/publications/smp/2026/aug/contents.html) and [Bank of England Monetary Policy Report](https://www.bankofengland.co.uk/monetary-policy-report/2026/july-2026) | Not stated | Chapters as web pages and a PDF, an Excel file of the data behind the charts, named sources, alt text that states the finding. I saw only the contents page for the RBA, so its chart layout is UNVERIFIED | Principles only |
 | [Takeover valuation report on Qantas](https://aharlingfinance.wordpress.com/portfolio/takeover-valuation-report-%EF%BB%BFqantas-airways-limited/) | Not stated | The nearest subject match: a readable HTML takeover valuation with an executive summary and a disclaimer. It is hosted on WordPress.com, so it makes third-party requests | Principles only |
 
-I did not reach Simply Wall St, Bloomberg Graphics, Reuters Graphics or Morningstar (access blocked or not attempted), so I draw nothing from them. An Alpha Spread DCF page returned a summary that named a different company from its address, so I discard it.
+I did not reach Simply Wall St, Bloomberg Graphics, Reuters Graphics or Morningstar (access blocked or not attempted), so I draw nothing from them. The text I got from an Alpha Spread DCF page named a different company from its address, so I discard it.
 
 Principles that appeared in three or more of these sources:
 
@@ -143,7 +143,7 @@ These are the stock choices that make a finance or dashboard site look like ever
 - Type and chrome: Inter, Roboto, Arial or the framework's default face; small all-caps headings above headings; one word in a headline set in a different colour or style; meta strings joined with middle dots; labels built as "WORD, fragment"; a monospace face for small data labels; an arrow appended to every link.
 - Components and content: emoji as icons; icons in coloured squares above headings; chat buttons, fake live badges, ticker tapes, candlestick decoration and stock photos; unchanged component-kit styling; placeholder or invented figures in anything shipped.
 
-I did not run the brief through a generic prompt to see where it lands. I compared each direction with this list instead.
+I compared each direction with this list.
 
 ## What I measured
 
