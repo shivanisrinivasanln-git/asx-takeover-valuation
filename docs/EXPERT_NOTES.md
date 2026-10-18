@@ -211,7 +211,7 @@ Grant Samuel says there have been no transactions involving Australian digital p
 
 ### Transactions
 
-Grant Samuel shows historical and forecast EBITDA and EBITA multiples for each deal in two bar charts (pp. 146 and 147); unsuccessful proposals are hatched. Each bar carries a printed label, so the chart values are printed figures and not readings. The text sometimes rounds them differently from the labels: for example, the text says ZPG's historical multiple is about 30 to 31 times (p. 147) and the EBITDA chart label is 29.5 times (p. 146). The table gives the text's figures with the chart's EBITDA labels added where they differ.
+Grant Samuel shows historical and forecast EBITDA and EBITA multiples for each deal in two bar charts (pp. 146 and 147); unsuccessful proposals are hatched. Each bar has a printed label, so the chart values are printed figures and not readings. The text sometimes rounds them differently from the labels: for example, the text says ZPG's historical multiple is about 30 to 31 times (p. 147) and the EBITDA chart label is 29.5 times (p. 146). The table gives the text's figures with the chart's EBITDA labels added where they differ.
 
 | Transaction | Treatment | Multiples in the text | Page |
 |---|---|---|---|
@@ -264,7 +264,7 @@ The range of A$2,775 to A$3,025 million implies 18.2 to 19.9 times FY26 adjusted
 
 Grant Samuel concludes the scheme is fair and reasonable (p. 157). The A$4.43 falls inside its range of A$4.06 to A$4.46 per share and "very close to the top end", which the expert says probably reflects Domain's strategic value as the second participant in a two-participant market and a shareholding structure in which CoStar needed Nine's support (p. 157). It adds that Nine, as an arm's length party, has no apparent reason to accept less than fair value, and that this reinforces fairness (p. 157). The reasoning is that, as the scheme is fair, it is also reasonable, and it then lists further factors (p. 157).
 
-For scale, A$4.43 sits A$0.37 above the bottom of the range and A$0.03 below the top, which is 92.5% of the way up the range (my arithmetic: 0.37 divided by 0.40). It is A$0.17, or 4.0%, above the A$4.26 midpoint I use later for the gap bridge.
+For scale, A$4.43 is A$0.37 above the bottom of the range and A$0.03 below the top, which is 92.5% of the way up the range (my arithmetic: 0.37 divided by 0.40). It is A$0.17, or 4.0%, above the A$4.26 midpoint I use later for the gap bridge.
 
 ### The premium the offer represents
 

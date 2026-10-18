@@ -1,7 +1,7 @@
 """The Comparables and Precedents sheets: implied value from a multiple range, as formulas.
 
 Each sheet values Domain at my selected multiple range times FY26 adjusted earnings, then runs
-the same equity bridge as the DCF sheet. Below the value block sits the evidence: the expert's
+the same equity bridge as the DCF sheet. Below the value block is the evidence: the expert's
 printed multiples with their source, and the lowest, median and highest of each column. That
 evidence is not used in the value; the value uses the selected range on the Assumptions sheet.
 """

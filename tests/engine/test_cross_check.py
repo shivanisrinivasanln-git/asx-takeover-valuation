@@ -1,7 +1,7 @@
 """My engine on the expert's scenario A inputs, against the bar it printed on p. 144.
 
 The bar ends are read from the chart (about plus or minus A$5m). Mid-year discounting, my choice
-(docs/DECISIONS.md, 6 October 2026), lands within A$6m of both ends; year end lands about A$120m
+(docs/DECISIONS.md, 6 October 2026), is within A$6m of both ends; year end is about A$120m
 below both, far outside the reading precision. The same checks with a planted year-end result
 and a planted input change show that the comparison can fail.
 """

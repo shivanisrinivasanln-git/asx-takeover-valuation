@@ -19,9 +19,9 @@ The engine side uses the `expert_` inputs in `assumptions.yaml`, which hold the 
 
 ## What the difference means
 
-Mid-year discounting lands within the reading precision of both bar ends. Year end is about A$120m (4% to 5%) below both ends, far outside it. So either the expert discounted mid-year, or it used year end and something else in its model offsets A$120m. The booklet does not state its convention (p. 137), so which is UNVERIFIED. I chose mid-year on 6 October 2026, before I ran this comparison, because it fits how Domain earns cash (docs/DECISIONS.md), and I did not change any modelling choice to close the gap.
+Mid-year discounting is within the reading precision of both bar ends. Year end is about A$120m (4% to 5%) below both ends, far outside it. So either the expert discounted mid-year, or it used year end and something else in its model offsets A$120m. The booklet does not state its convention (p. 137), so which is UNVERIFIED. I chose mid-year on 6 October 2026, before I ran this comparison, because it fits how Domain earns cash (docs/DECISIONS.md), and I did not change any modelling choice to close the gap.
 
-The A$4.6m gap at 9.5% and A$0.9m gap at 10.5% are within what I cannot pin down. The expert published no cash flows, so I cannot split the residual by line. The expert also describes several inputs in words ("just over 9%", "just below 48%", "higher in the early years"), and I chose the numbers. Changing one of those choices by a rounding-size amount on the expert's inputs moves the value by more than the residual, as the engine shows (A$m at 10.5% and 9.5%; the change column is worked from the unrounded engine values and can differ by 0.1 from subtracting the cells shown):
+The A$4.6m gap at 9.5% and A$0.9m gap at 10.5% are within the uncertainty of my inputs. The expert published no cash flows, so I cannot split the residual by line. The expert also describes several inputs in words ("just over 9%", "just below 48%", "higher in the early years"), and I chose the numbers. Changing one of those choices by a rounding-size amount on the expert's inputs moves the value by more than the residual, as the engine shows (A$m at 10.5% and 9.5%; the change column is worked from the unrounded engine values and can differ by 0.1 from subtracting the cells shown):
 
 | Change to one input on the expert's inputs | Value at 10.5% | Value at 9.5% | Change at 10.5% and 9.5% |
 |---|---|---|---|
@@ -35,5 +35,5 @@ My capital expenditure path averages 9.3% over the projection against the expert
 ## What this does not show
 
 - It validates the mechanics of the DCF on one scenario. Because my DCF inputs equal scenario A's, it also checks my DCF's business operations value, but not my value per share: the multiples, the premium and the weights are outside it, and scenario NPVs are not printed as numbers, so I have no per-share figure from the expert to compare.
-- The expert's selected range of A$2,775m to A$3,025m sits above scenario A's bar. Its own words are that the range is "a subjective balancing of the scenarios" (p. 144), with the multiples as evidence (p. 135), so scenario A alone is not the expert's value.
-- The chart reading itself carries about A$5m of uncertainty, so a difference of that size is not a finding.
+- The expert's selected range of A$2,775m to A$3,025m is above scenario A's bar. Its own words are that the range is "a subjective balancing of the scenarios" (p. 144), with the multiples as evidence (p. 135), so scenario A alone is not the expert's value.
+- The chart reading itself has about A$5m of uncertainty, so a difference of that size is not a finding.

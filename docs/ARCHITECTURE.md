@@ -69,11 +69,11 @@ A Python package reads the assumptions and data, runs the DCF, the trading compa
 
 ### The Excel model
 
-The engine also writes the workbook with openpyxl. It writes formulas, not values: an Assumptions sheet filled from `assumptions.yaml`, then DCF, Comparables, Precedents and Summary sheets whose cells are formulas that reference the Assumptions sheet. Anyone who opens the file can change the discount rate and watch the value move. Each output cell has an Excel defined name equal to its key in `valuation.json` (for example `equity_value_per_share_aud_low`), which is what lets a test compare the two mechanically.
+The engine also writes the workbook with openpyxl. It writes formulas, not values: an Assumptions sheet filled from `assumptions.yaml`, then DCF, Comparables, Precedents and Summary sheets whose cells are formulas that reference the Assumptions sheet. Anyone who opens the file can change the discount rate and see the value change. Each output cell has an Excel defined name equal to its key in `valuation.json` (for example `equity_value_per_share_aud_low`), which is what lets a test compare the two mechanically.
 
 openpyxl stores formulas without calculating them ("openpyxl never evaluates formula"), so a spreadsheet program has to calculate the workbook before its values can be compared. I use desktop Excel, because LibreOffice is not installed on my machine: `scripts/build_model.py` builds the workbook, Excel calculates and saves it through `scripts/recalculate_with_excel.ps1`, and the file is committed as `model/domain_valuation_model.xlsx`. The reconciliation test reads the values stored in that file and compares each named cell with the engine's figure. It fails if a named cell is empty or an error such as `#NAME?`, and it rebuilds the workbook from the inputs and fails if the committed file's formulas, typed values or names are out of date. CI has no spreadsheet program, so it checks the committed file in the same way. The consequence is that I run the build script and commit the model file after any change to an input or a formula.
 
-The DCF logic therefore exists twice, once in Python and once as Excel formulas, and the test is what keeps the two in agreement. The alternative is to build the workbook by hand and have Python read its inputs and check its outputs. That gives me more practice in Excel but makes the workbook the thing that has to be kept correct, with no unit tests on individual calculations.
+The DCF logic therefore exists twice, once in Python and once as Excel formulas, and the test checks that the two agree. The alternative is to build the workbook by hand and have Python read its inputs and check its outputs. That gives me more practice in Excel but makes the workbook the thing that has to be kept correct, with no unit tests on individual calculations.
 
 ### The PDF report
 
@@ -98,7 +98,7 @@ Next.js (version 16 at the time of writing) with `output: 'export'` builds every
 
 - For: I already use Next.js and React, so I can build quickly and explain every part of it in an interview. Large ecosystem, TypeScript throughout.
 - Against: every page ships the React and Next.js runtime, so a page loads more JavaScript than it strictly needs. Static export drops features that need a server (the default image optimiser, server actions, rewrites, redirects, `headers()` and proxy, formerly called middleware). A static site needs none of them, but it means a nonce-based Content-Security-Policy is not possible, so the meta-tag policy has to allow inline scripts or use Next.js's experimental hash support. Next.js changes major versions often, so the lockfile pins it and upgrades are deliberate.
-- Pages detail: the site lives under `/asx-takeover-valuation/`, so `basePath` is set at build time. Next.js publishes an official GitHub Pages template that deploys the same way.
+- Pages detail: the site is served under `/asx-takeover-valuation/`, so `basePath` is set at build time. Next.js publishes an official GitHub Pages template that deploys the same way.
 
 ## Option 2: Astro with React islands
 
@@ -118,7 +118,7 @@ The engine renders the pages itself with Jinja2 templates, with a little plain J
 How I build it:
 - Every page is rendered to HTML at build time, with the numbers and the SVG charts (football field, sensitivity table, gap bridge) already in the page, so a phone shows the full content before any script runs.
 - The interactive parts, such as choosing a discount rate and terminal growth rate and seeing the value, look up values the engine has already calculated and stored in `valuation.json` as a sensitivity grid. The browser does no valuation arithmetic, so there is no third copy of the logic to keep in agreement.
-- All JavaScript lives in separate files served from the site itself, so the Content-Security-Policy meta tag can allow scripts from the site only, with no inline scripts.
+- All JavaScript is in separate files served from the site itself, so the Content-Security-Policy meta tag can allow scripts from the site only, with no inline scripts.
 - The rendered HTML is tested with the same test runner as the engine: each displayed figure is compared with `valuation.json`, and the pages are checked in a headless browser for accessibility and at the four screenshot widths.
 
 ## Options ruled out

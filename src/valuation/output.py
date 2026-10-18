@@ -1,6 +1,6 @@
 """Build `valuation.json`: every number the site, the Excel model and the report display.
 
-Each scalar sits under a stable key with its unit, at full precision. A key's name carries its
+Each scalar is stored under a stable key with its unit, at full precision. A key's name carries its
 unit (`_aud_m`, `_aud`, `_pct`, `_x`, `_shares_m`, `_years`), and the Excel defined names are
 these keys. A trailing `_low`, `_mid` or `_high` is the value case, not a rate: the low case
 discounts at the top of the adopted discount rate range, and the high case at the bottom.

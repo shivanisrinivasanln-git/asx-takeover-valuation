@@ -259,7 +259,7 @@ Third-party requests: none.
 
 ### Direction B: range first
 
-Concept. The football field is the landing page and the navigation. Every row is a link that opens the method behind it (DCF, comparables, precedents, the expert's report). The page reads as the exhibit page of an expert's report enlarged to the width of the screen, with the verdict above it.
+Concept. The football field is the landing page and the navigation. Every row is a link that opens the method behind it (DCF, comparables, precedents, the expert's report). The page looks like the exhibit page of an expert's report enlarged to the width of the screen, with the verdict above it.
 
 | Role | Hex | Use |
 |---|---|---|
@@ -321,10 +321,10 @@ Landing view, mobile (390 px). Rows stack with the bar at full width under each 
 +--------------------------------+
 ```
 
-Where it takes its one visible risk. The chart is the hero at full width with no illustration, no headline number and no supporting statistics. The 30-second read is the chart and one sentence. If the ranges are not interesting the page is thin, so the gap analysis has to carry the story.
+Where it takes its one visible risk. The chart is the hero at full width with no illustration, no headline number and no supporting statistics. The 30-second read is the chart and one sentence. If the ranges are not interesting the page is thin, so the interest has to come from the gap analysis.
 
 Self-review against the defaults above.
-- A blue accent on a cool white page is the commonest finance palette. I kept it because the blue is deep and appears only on my hatch, my preferred marker and the focus ring, so no large area reads as a brand colour.
+- A blue accent on a cool white page is the commonest finance palette. I kept it because the blue is deep and appears only on my hatch, my preferred marker and the focus ring, so no large area looks like a brand colour.
 - Rows are links shown by an underlined label, not by an appended arrow.
 - A full-width chart is not the default hero: there is no large number, no row of statistics and no gradient.
 - Atkinson is recognisable but is not the default of any stack.
@@ -481,7 +481,7 @@ Two related points from the build. The row pitch is 64 px and not the 40 px prop
 
 ### Refinements I adopt
 
-1. A stronger hatch with an outline, and a dotted accent underline on every sourced figure as the provenance marker. The underline is visible with "Show sources" off, so the signature feature is seen without switching anything on.
+1. A stronger hatch with an outline, and a dotted accent underline on every sourced figure as the provenance marker. The underline is visible with "Show sources" off, so the marker is seen without switching anything on.
 2. The verdict sentence uses the chart's own notation: my range under a hatched band, the expert's range in a thin box, the offer with a solid rule under it, and the offer line extending up from the chart to the sentence. The sentence works as the legend.
 3. A deal docket under the title: a labelled one-line list of target, acquirer, consideration and implementation date.
 4. A footer written as a colophon: valuation date, data date, build date with a link to the commit, the disclaimer, and the unit note.
@@ -510,7 +510,7 @@ On 4 October 2026 I chose direction B, range first, with direction A's "Show sou
 - Light theme only at launch. A dark theme would double the contrast and colour-vision checks on every chart and hatch pattern, and I can add one later if it passes the same checks.
 - Negative numbers use a true minus sign (for example −0.12) everywhere, matching the plus or minus sign every variance carries. I considered parentheses, which Grant Samuel's tables use, and rejected them because I would still need minus signs for variances and would end up with two conventions.
 
-Why B: it gives the 30-second reader the verdict and the chart with nothing in between, and it has the lightest font load (one file of about 21 KB). Direction A would have put reference codes in front of every first-time visitor, and direction C would have put prose above the chart on a phone. I accept B's risk that the page is thin if my ranges are dull, so the gap analysis has to carry the story.
+Why B: it gives the 30-second reader the verdict and the chart with nothing in between, and it has the lightest font load (one file of about 21 KB). Direction A would have put reference codes in front of every first-time visitor, and direction C would have put prose above the chart on a phone. I accept B's risk that the page is thin if my ranges are dull, so the interest has to come from the gap analysis.
 
 After the front-end research on the same day I kept direction B's palette and typeface and adopted the refinements listed under "Refinements I adopt" above. The palette stays because the accent keeps my hatch distinct from the expert's ink outline (about 2.2:1 between accent and ink), and the deeper blues I tested did worse on that measure: cobalt #1640A8 is 8.5:1 against the page but 1.75:1 against the ink, and petrol #0F5A8A is 7.0:1 and 2.1:1. The improvement comes from how the colours are used, not new values.
 

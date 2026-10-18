@@ -1,7 +1,7 @@
 """The method and sources page: the register of every input with its source (task P5-13).
 
 Each row is one entry of `assumptions.yaml`, in the file's order, with the document, page and date
-that the entry carries. Nothing here is rewritten: the register is the file, shown.
+that the entry carries. Nothing here is rewritten; the register shows the file as it is.
 """
 
 from __future__ import annotations

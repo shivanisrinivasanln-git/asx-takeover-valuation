@@ -93,7 +93,7 @@ def test_control_borders_reach_3_to_1(theme: dict[str, str]) -> None:
 @pytest.mark.parametrize("theme", [LIGHT, DARK], ids=["light", "dark"])
 def test_my_hatch_stays_distinct_from_the_expert_outline(theme: dict[str, str]) -> None:
     # The accent (my bars) and the ink (the expert's outline) also differ in pattern and hue. This
-    # floor sits just under the dark theme's 1.95:1, so a later colour change cannot bring them
+    # minimum is just under the dark theme's 1.95:1, so a later colour change cannot bring them
     # closer.
     assert contrast(theme["accent"], theme["ink"]) >= 1.9
 

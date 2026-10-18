@@ -3,7 +3,7 @@
 `data/written/figure_trace.csv` is my list. Each row names a group of figures by a path, says how
 they are calculated, which inputs in `assumptions.yaml` and which transcribed tables they depend
 on, and which tests cover them. The source and page of each figure are not typed again: they are
-read from the entries of the inputs the row names, so a source cannot drift from its figure.
+read from the entries of the inputs the row names, so a figure and its source cannot disagree.
 
 A row's `inputs` cell holds input names, `table:` names for transcribed tables, `doc:path#heading`
 for a figure that comes from a rule in one of my documents, and `@path` references that mean
@@ -11,7 +11,7 @@ for a figure that comes from a rule in one of my documents, and `@path` referenc
 in a row's figure, inputs and tests stand for each of their values, so one row covers the four
 multiples blocks.
 
-The checks that keep the list honest are in `tests/engine/test_figure_trace.py`: every figure has
+The checks on the list are in `tests/engine/test_figure_trace.py`: every figure has
 exactly one row, every row has a figure, every named input and test exists, and a figure does not
 depend on an input that its row leaves out. `changed_figures` finds that last fact by moving each
 input in turn and reporting which figures move.

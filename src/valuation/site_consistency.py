@@ -12,7 +12,7 @@ Three rules, each reported with the page and the text it found:
 3. Every other number in the visible text must appear in the evidence: the numbers in
    `valuation.json` (rounded to up to four places), the text of the inputs, the transcribed and
    written tables, and the lowest, median and highest multiples of the peer and deal tables.
-   This is a net and not a proof: a changed figure that happens to equal some other number in the
+   This rule can miss an error: a changed figure that happens to equal some other number in the
    evidence passes it, which is why the figures that matter carry an attribute (rule 2).
 
 4. A reference marker (`data-ref`) links to its entry in the list of sources at the end of the

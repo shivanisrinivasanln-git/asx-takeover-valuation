@@ -7,7 +7,7 @@ My plan for the shadow valuation of Domain Holdings Australia (ASX: DHG), acquir
 I will value Domain independently, compare my range with Grant Samuel's range (A$4.06 to A$4.46) and the A$4.43 offer, and explain each material gap. Everything is built so that I can defend every number in an interview.
 
 What a reader gets:
-- Recruiter, 30 seconds on a phone: one sentence stating where my range sits against the offer and the expert's range, the football field chart under it, and three routes onward (how I valued it, where I differ from the expert, download the model and report).
+- Recruiter, 30 seconds on a phone: one sentence comparing my range with the offer and the expert's range, the football field chart under it, and three routes onward (how I valued it, where I differ from the expert, download the model and report).
 - Hiring manager, 5 minutes: the DCF with its sensitivity table, the comparable companies and precedent transactions tables, the gap bridge from the expert's value to mine, the assumption register with a source for every input, and the Excel model with live formulas.
 - Interviewer, any single number: a marker on each figure opens its document, page and date, and I can explain the calculation behind it without notes.
 
@@ -90,7 +90,7 @@ Done when: the full check command passes on a clean clone, CI is green, and a de
 
 ### Phase 1: deal review
 
-Read Grant Samuel's report from start to finish (booklet pp. 99 to 165) and the booklet's front sections. Build the deal timeline from ASX notices, and write up the expert's method, each DCF assumption, the discount rate build, the comparable set and why each peer was kept or dropped. Learning tasks sit here, because I need to understand the expert's choices before I can disagree with them.
+Read Grant Samuel's report from start to finish (booklet pp. 99 to 165) and the booklet's front sections. Build the deal timeline from ASX notices, and write up the expert's method, each DCF assumption, the discount rate build, the comparable set and why each peer was kept or dropped. Learning tasks belong here, because I need to understand the expert's choices before I can disagree with them.
 
 Done when: the timeline has a document link for every event, and I can explain the expert's DCF assumptions and discount rate from memory.
 
@@ -153,7 +153,7 @@ Done when: the live site passes the same checks as the local build, and the link
 2. A link to the live site, the Excel model and the PDF.
 3. How the three methods work, in one short paragraph each.
 4. Where I differ from the expert, with the gap bridge.
-5. How the numbers are produced: the pipeline diagram and the tests that keep the site, model and report in agreement.
+5. How the numbers are produced: the pipeline diagram and the tests that check the site, model and report agree.
 6. Sources and limitations, and the disclaimer: educational case study, not financial advice, not affiliated with any party to the deal.
 7. How to run it locally.
 

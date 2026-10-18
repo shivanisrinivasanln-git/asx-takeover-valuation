@@ -55,7 +55,7 @@ Step 2, cross-check (DCF). Next year's free cash flow is forecast at A$30m, grow
 - Cost of equity, from the capital asset pricing model: risk-free rate plus beta times the market risk premium, 4.0% + 1.3 × 6.0% = 11.8%.
 - Cost of debt after 30% tax: 7.0% × (1 − 0.30) = 4.9%.
 - WACC with 80% equity and 20% debt: 0.8 × 11.8% + 0.2 × 4.9% = 10.42%, which I round to 10.4% in the steps below.
-- A cash flow growing for ever at a constant rate is worth cash flow ÷ (WACC − growth): 30 ÷ (0.104 − 0.03) = A$405m of enterprise value, A$305m of equity, or A$3.05 per share. That sits inside the range from step 1.
+- A cash flow growing for ever at a constant rate is worth cash flow ÷ (WACC − growth): 30 ÷ (0.104 − 0.03) = A$405m of enterprise value, A$305m of equity, or A$3.05 per share. That is inside the range from step 1.
 
 The result is sensitive to the discount rate. At a WACC of 9.4% the value is 30 ÷ 0.064 = A$469m, or A$3.69 per share; at 11.4% it is 30 ÷ 0.084 = A$357m, or A$2.57 per share. One percentage point either way moves the value by 48 to 63 cents a share, which is why experts publish sensitivity tables.
 
@@ -132,7 +132,7 @@ Related ASIC material, all accessed 26 September 2026:
 - [24-131MR](https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-131mr-pkf-admits-to-contraventions-concerning-independent-expert-report-engagements/): PKF Melbourne Corporate gave a court enforceable undertaking after admitting it lacked documented policies on method selection, specialist competence and conflicts, and agreed to stop IER work until an independent review was done. The date of 20 June 2024 comes from search summaries (UNVERIFIED).
 - [24-189MR](https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-189mr-afs-licensee-to-cease-providing-independent-expert-reports-on-corporate-transactions/): AP Lloyds' licence was varied from 28 August 2024 so it can no longer prepare IERs, after ASIC found problems with its selection and disclosure of methods and inputs and its use of specialists.
 
-I use ASIC's five points as a checklist for reading the Domain IER: which figures sit inside the range and why, why each method was chosen, which assumptions are disclosed, and how any specialist was reviewed.
+I use ASIC's five points as a checklist for reading the Domain IER: which figures are inside the range and why, why each method was chosen, which assumptions are disclosed, and how any specialist was reviewed.
 
 ### Recent Takeovers Panel and court matters involving IERs
 
@@ -143,7 +143,7 @@ I use ASIC's five points as a checklist for reading the Domain IER: which figure
 5. Zenith Minerals Limited 01 and 02 (media release TP26/059, 28 August 2026). The bid implementation deed said the target would not commission an IER. The Panel found this clause, with other deed terms, gave the bidder undue influence over the target board and declared unacceptable circumstances. [TP26/059](https://takeovers.gov.au/media-releases/tp26-059) (accessed 26 September 2026).
 6. Kingsland Minerals Ltd (media release TP26/035, 19 June 2026). The Panel declined to conduct proceedings, noting that an IER was proposed for the transaction. [TP26/035](https://takeovers.gov.au/media-releases/tp26-035) (accessed 26 September 2026).
 
-The common thread in items 1, 4 and 5 is disclosure: the Panel and the court each objected when shareholders could not see how a value was reached.
+Items 1, 4 and 5 have disclosure in common: the Panel and the court each objected when shareholders could not see how a value was reached.
 
 ## 2. Valuation methods Australian experts use
 
@@ -188,7 +188,7 @@ Experts differ on whether to use the spot yield or an average:
 - Normalised: Kroll built a normalised rate of about 3.5% for Silk from real-rate and inflation estimates, noted a spot yield of 4.18%, and adopted 4.0% (booklet pp. 150 to 151). It also adopted 4.0% for CSR against a spot yield of 4.38% (booklet pp. 202 to 203).
 - Currency: US-dollar cash flows get a US rate. BDO used 4.00% to 4.50% for ASM's Korean plant, modelled in real US dollars (booklet pp. 203 to 204).
 
-The choice matters now: in September 2026 the spot yield (5.245%) is well above the ten-year average (2.921%).
+In September 2026 the spot yield (5.245%) is well above the ten-year average (2.921%), so the choice changes the result.
 
 ### Market risk premium
 
@@ -241,7 +241,7 @@ Gold Road and ASM convert nominal rates to real ones because their cash flow mod
 | Kroll, Insignia (2026) | No fixed figure; control-basis multiples | FactSet: 25% to 40% median in deals with a US party; the premium is "an outcome of the valuation process, not a determinant of value" | Insignia booklet p. 156 |
 | Lonergan Edwards, Bigtincan (2025) | 30% to 35% for the quoted price cross-check | Own study above | Bigtincan PDF pp. 187 to 188 |
 
-RG 111.82 asks the expert to comment where its value differs materially from the undisturbed price plus a typical premium. Kroll states that its Insignia range of A$4.49 to A$5.08 sits 46.9% to 65.9% above the undisturbed close of A$3.06 on 11 December 2024 (A$5.08 ÷ A$3.06 − 1 gives 66.0%, so Kroll's top figure appears to use unrounded inputs; UNVERIFIED). Kroll attributed the gap to the market's earlier view of remediation risk and the acquirer's ability to direct strategy (Insignia booklet pp. 152 to 153).
+RG 111.82 asks the expert to comment where its value differs materially from the undisturbed price plus a typical premium. Kroll states that its Insignia range of A$4.49 to A$5.08 is 46.9% to 65.9% above the undisturbed close of A$3.06 on 11 December 2024 (A$5.08 ÷ A$3.06 − 1 gives 66.0%, so Kroll's top figure appears to use unrounded inputs; UNVERIFIED). Kroll attributed the gap to the market's earlier view of remediation risk and the acquirer's ability to direct strategy (Insignia booklet pp. 152 to 153).
 
 ## 5. How a published IER is laid out
 
@@ -288,7 +288,7 @@ Audited annual reports, each with Deloitte's auditor's report:
 
 Half-year material: [1H23 Appendix 4D](https://shareholders.domain.com.au/DownloadFile.axd?file=/Report/ComNews/20230216/02632059.pdf), [1H24 results announcement](https://announcements.asx.com.au/asxpdf/20240214/pdf/060cljbbyc72xd.pdf) and [1H25 results announcement](https://shareholders.domain.com.au/DownloadFile.axd?file=%2FReport%2FComNews%2F20250213%2F02912417.pdf) (13 February 2025). Half-year statements are reviewed, not audited (booklet p. 44).
 
-Access is fragile. Domain's investor centre index page now returns a 404, although direct file links on the same host still download; one (the 1H24 half-year report) returned HTTP 503. The ASX announcement search no longer recognises the DHG code, but PDFs still download from their exact URLs. I keep local copies in `research/raw/`, which is not in git.
+Access is unreliable. Domain's investor centre index page now returns a 404, although direct file links on the same host still download; one (the 1H24 half-year report) returned HTTP 503. The ASX announcement search no longer recognises the DHG code, but PDFs still download from their exact URLs. I keep local copies in `research/raw/`, which is not in git.
 
 Presentation: the annual reports give statutory statements plus "trading results" that exclude significant items and, from FY23, discontinued operations. The booklet's summary tables (booklet pp. 44 to 46) and the IER's history table (booklet p. 118) use these underlying figures. The IER restates FY22 for purchase price allocations and discontinued operations but not FY21, which includes A$5.5m of Consumer Solutions revenue (booklet p. 118). Reported segments were Core Digital, Consumer Solutions, Print and Corporate in FY21, and Core Digital, Print and Corporate from FY23 after the exit from Domain Home Loans. Core Digital revenue is split by product (Residential; Media, Developers and Commercial; Agent Solutions; Domain Insight), but Domain does not disclose EBITDA below Core Digital (booklet pp. 120 and 122).
 

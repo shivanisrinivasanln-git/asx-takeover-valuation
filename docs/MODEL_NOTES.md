@@ -4,7 +4,7 @@ What each sheet of `model/domain_valuation_model.xlsx` does and why its formulas
 
 ## How the five sheets fit together
 
-Inputs sit only on the Assumptions sheet, each under an Excel defined name equal to its input name in `assumptions.yaml`, so a formula reads `=tax_rate_pct` and never a cell address on another sheet. The DCF, Comparables and Precedents sheets calculate a value per share. The Summary sheet combines them with my weights. Every output cell has a defined name equal to its key in `valuation.json`, which is how the tests find it. A test fails if a formula has a typed-in number other than 0, 1, 2 or 100 (a unit conversion, a step of one year or an average of two), if a formula addresses another sheet by cell, or if a formula uses a function outside IF, INDEX, SUM, SUMPRODUCT, MIN, MEDIAN and MAX.
+Inputs are only on the Assumptions sheet, each under an Excel defined name equal to its input name in `assumptions.yaml`, so a formula reads `=tax_rate_pct` and never a cell address on another sheet. The DCF, Comparables and Precedents sheets calculate a value per share. The Summary sheet combines them with my weights. Every output cell has a defined name equal to its key in `valuation.json`, which is how the tests find it. A test fails if a formula has a typed-in number other than 0, 1, 2 or 100 (a unit conversion, a step of one year or an average of two), if a formula addresses another sheet by cell, or if a formula uses a function outside IF, INDEX, SUM, SUMPRODUCT, MIN, MEDIAN and MAX.
 
 ## Assumptions
 
@@ -36,13 +36,13 @@ The sheet follows the engine's `forecast.py`, `dcf.py`, `bridge.py` and `sensiti
 
 **Terminal year, rows 45 to 54.** Revenue grows at the terminal growth rate (4.0%, p. 142), the last margin is held, depreciation and capital expenditure take their long-term shares of revenue, and working capital takes the smaller revenue increase. This is the cash flow the terminal value grows from.
 
-**Sensitivity grid, rows 59 to 77.** Each of the 25 cells is a full recalculation at that discount rate and terminal growth, not an interpolation: the present value of the cash flows at the row's rate sits in column H, and the terminal year is worked out again for each growth rate in rows 61 to 70. The middle cell equals the mid case value per share in D41, which a test checks.
+**Sensitivity grid, rows 59 to 77.** Each of the 25 cells is a full recalculation at that discount rate and terminal growth, not an interpolation: the present value of the cash flows at the row's rate is in column H, and the terminal year is worked out again for each growth rate in rows 61 to 70. The middle cell equals the mid case value per share in D41, which a test checks.
 
 **Discount rate builds, rows 81 to 98.** CAPM at my risk-free rate (4.249%, RBA, 30 May 2025) and at the expert's (4.3%, p. 139). Cost of equity is the risk-free rate plus beta times the 6.0% premium; the cost of debt is the risk-free rate plus 1.2 points, taxed at 30%; the weights are 85% to 95% equity. With the expert's inputs the build gives 9.33% to 10.55%, which rounds to its printed 9.3% to 10.5% (p. 140). My adopted range of 9.5% to 10.5% is an input and not this build.
 
 ## Comparables and Precedents
 
-Both sheets multiply FY26 adjusted EBITDA of A$152.2m (pp. 136 and 153) by the low, mid and high ends of my selected multiple range, then run the same bridge as the DCF sheet and read net debt and the share counts from the DCF sheet by name, so the three methods cannot drift apart. A second block does the same on EBITA, which is shown and not used in the weights. The mid case is the midpoint of the two multiples (row 6, `=(C6+E6)/2`) on the average share count.
+Both sheets multiply FY26 adjusted EBITDA of A$152.2m (pp. 136 and 153) by the low, mid and high ends of my selected multiple range, then run the same bridge as the DCF sheet and read net debt and the share counts from the DCF sheet by name, so the three methods cannot disagree on them. A second block does the same on EBITA, which is shown and not used in the weights. The mid case is the midpoint of the two multiples (row 6, `=(C6+E6)/2`) on the average share count.
 
 The Comparables sheet applies my control premium of 25% to enterprise value (row 8, `=control_premium_applied_pct`) because peer multiples come from minority share prices. The Precedents sheet has a typed 0 there because deal multiples are control multiples. Why the premium applies at enterprise value level and the evidence for 25% are in [BASE_CASE.md](BASE_CASE.md).
 

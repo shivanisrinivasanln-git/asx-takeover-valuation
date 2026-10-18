@@ -2,7 +2,7 @@
 
 The inputs I chose on 12 October 2026 for my valuation of Domain, each with the evidence I weighed and the range I tested. Page numbers are booklet pages of the Grant Samuel report (printed page N is PDF page N+3). Values per share come from my engine at a 10.0% discount rate and 4.0% terminal growth with mid-year discounting, unless a row says otherwise, and the engine is in `src/valuation/`. The reasons for the choices are in [DECISIONS.md](DECISIONS.md), and every input is in [assumptions.yaml](../assumptions.yaml) with its source.
 
-The common thread is that I start from the expert's disclosed inputs and change one only where I have evidence of my own. For the forecasts, the discount rate and terminal growth I found no document that sets a better number, so I kept the expert's. For the multiple ranges the expert's published figure is its own conclusion, so I chose ranges from the peers and deals it printed.
+I start from the expert's disclosed inputs and change one only where I have evidence of my own. For the forecasts, the discount rate and terminal growth I found no document that sets a better number, so I kept the expert's. For the multiple ranges the expert's published figure is its own conclusion, so I chose ranges from the peers and deals it printed.
 
 ## Forecasts (task P4-01)
 
@@ -15,7 +15,7 @@ The common thread is that I start from the expert's disclosed inputs and change 
 | Capital expenditure long term | 9.0% of revenue | p. 142 | 10.0% A$3.70 (the expert's Scenario G, p. 143) |
 | Working capital | 2.5% of the change in revenue | p. 142 | 0% A$3.86, 5.0% A$3.81 |
 
-Revenue growth moves the value most: about A$0.15 a share for each half point. The evidence for a lower rate is the broker medians, which imply growth of 7.4% in FY25 (A$391.1m to A$420.0m) and 8.0% in FY26 (to A$453.8m) (p. 118 and p. 165). Revenue grew at 10.5% a year from FY21 to FY24 (A$289.6m to A$391.1m, p. 118), so history points the other way. The brokers cover two years and the expert states a ten-year average, so I kept 9.0%.
+Revenue growth has the largest effect on value, about A$0.15 a share for each half point. The evidence for a lower rate is the broker medians, which imply growth of 7.4% in FY25 (A$391.1m to A$420.0m) and 8.0% in FY26 (to A$453.8m) (p. 118 and p. 165). Revenue grew at 10.5% a year from FY21 to FY24 (A$289.6m to A$391.1m, p. 118), so history supports a higher rate. The brokers cover two years and the expert states a ten-year average, so I kept 9.0%.
 
 Domain's EBITDA margin was 34.7%, 35.9%, 31.4% and 35.1% from FY21 to FY24 (p. 118, my division) and 35.8% in 1HY25 (p. 142). The expert says its path to 41% and almost 48% is above that history and points to REA Group's 63% to 65% as evidence that higher margins are possible in the sector (p. 142). Each margin point in FY35 is worth about A$0.08 a share. The path is above anything Domain has reported, so I inherit this assumption from the expert and cannot support it from Domain's own history. I kept it so that my differences from the expert appear in the discount rate and the multiples, and I show 46% as the downside.
 
@@ -37,7 +37,7 @@ Value per share by discount rate, with 4.0% growth: 8.5% A$5.39, 9.0% A$4.77, 9.
 
 ## Terminal growth (task P4-03)
 
-I use 4.0%, the expert's rate, which it builds from long-term inflation of 2.5% a year plus real growth in EBITDA (p. 142). Two thirds of my DCF value, 66%, comes after FY35, so the rate matters: 2.5% gives A$3.26, 3.0% A$3.42, 3.5% A$3.61, 4.0% A$3.83 and 4.5% A$4.09 a share.
+I use 4.0%, the expert's rate, which it builds from long-term inflation of 2.5% a year plus real growth in EBITDA (p. 142). Two thirds of my DCF value, 66%, comes after FY35, so the value is sensitive to this rate: 2.5% gives A$3.26, 3.0% A$3.42, 3.5% A$3.61, 4.0% A$3.83 and 4.5% A$4.09 a share.
 
 The terminal value at 4.0% is 9.9x FY35 EBITDA of A$476.3m, about half the 18.2x to 19.9x FY26 multiples the expert applies today (p. 153). Lower growth lowers that multiple further (8.4x at 3.0%, 7.8x at 2.5%), which argues against calling 4.0% aggressive. The only other report in docs/RESEARCH.md that gives a terminal growth rate, Grant Thornton on RPMGlobal (2025), used 3.0% for a different business (section 2), so it is a reference point and not a like-for-like.
 
@@ -50,7 +50,7 @@ The multiples apply to FY26 adjusted EBITDA of A$152.2m (p. 136 and p. 153). The
 | Trading comparables | 16.3x to 19.1x | SEEK's and Rightmove's forecast EBITDA multiples at 30 May 2025 (p. 150), the two lowest of the eight peers | A$3.60 to A$4.28 |
 | Precedent transactions | 15.2x to 22.3x | The six deals with a forecast EBITDA multiple (pp. 146 and 147), less the highest (ZPG, 25.1x) and the lowest (58.com, 12.9x) | A$3.33 to A$5.04 |
 
-The eight peers' forecast EBITDA multiples are SEEK 16.3x, Rightmove 19.1x, Scout24 22.2x, CAR Group 22.8x, Vend 27.2x, Hemnet 30.5x, Baltic 32.0x and REA 32.6x. I take the low end because Domain is the number two portal in its market and its EBITDA margin of 35.8% sits far below REA's 63% to 65% (p. 142). The expert keeps SEEK (employment) and CAR Group (automotive) with caution as less comparable than the property marketplaces (pp. 140 and 151), so the bottom of my range is the multiple of a peer it treats as a weaker guide, and Rightmove is the lowest property marketplace. The expert itself quotes SEEK and CAR Group at 16x to 22x forecast EBITDA (p. 151). The deal multiples are 58.com 12.9x, Trade Me 15.2x, Adevinta 17.7x, Scout24 19.7x, the Rightmove proposal 22.3x and ZPG 25.1x, and their median is 18.7x. They are Grant Samuel's printed chart labels, and I have not checked them against primary sources.
+The eight peers' forecast EBITDA multiples are SEEK 16.3x, Rightmove 19.1x, Scout24 22.2x, CAR Group 22.8x, Vend 27.2x, Hemnet 30.5x, Baltic 32.0x and REA 32.6x. I take the low end because Domain is the number two portal in its market and its EBITDA margin of 35.8% is far below REA's 63% to 65% (p. 142). The expert keeps SEEK (employment) and CAR Group (automotive) with caution as less comparable than the property marketplaces (pp. 140 and 151), so the bottom of my range is the multiple of a peer it treats as a weaker guide, and Rightmove is the lowest property marketplace. The expert itself quotes SEEK and CAR Group at 16x to 22x forecast EBITDA (p. 151). The deal multiples are 58.com 12.9x, Trade Me 15.2x, Adevinta 17.7x, Scout24 19.7x, the Rightmove proposal 22.3x and ZPG 25.1x, and their median is 18.7x. They are Grant Samuel's printed chart labels, and I have not checked them against primary sources.
 
 For EBITA I used the same two peers for trading, which gives 19.4x to 23.8x (Rightmove 19.4x and SEEK 23.8x, so the order reverses). They are not the two lowest on EBITA, because CAR Group's 23.1x is second lowest. For precedents I used the same trimming rule, which gives 17.9x to 25.8x. The football field uses EBITDA.
 
@@ -78,7 +78,7 @@ The bars do not all overlap: the top of the DCF (A$4.26) is below the bottom of 
 
 I weight the DCF 50%, trading comparables 25% and precedent transactions 25%. For comparison, equal thirds give A$3.79, A$4.34 and A$4.91 (low, middle, high), 40/30/30 gives A$3.76, A$4.29 and A$4.84, and the DCF alone gives A$3.47, A$3.83 and A$4.26. With 50/25/25 my preferred value is the weighted middle values, A$4.21, and my range is the weighted low values and the weighted high values, A$3.71 to A$4.75.
 
-Two things to keep in mind when I explain this. The range is the weighted sum of each method's low end and each method's high end, so it is the range if every method comes in low together or high together, and it is wider than a range that treats the methods as independent. And the offer of A$4.43 is inside my range and A$0.22 above my preferred value, while the expert's midpoint of A$4.26 (a midpoint of its printed A$4.06 to A$4.46 and not a figure it published) is A$0.05 above it.
+The range is the weighted sum of each method's low end and each method's high end, so it is the range if every method comes in low together or high together, and it is wider than a range that treats the methods as independent. The offer of A$4.43 is inside my range and A$0.22 above my preferred value, while the expert's midpoint of A$4.26 (a midpoint of its printed A$4.06 to A$4.46 and not a figure it published) is A$0.05 above it.
 
 ## What I could not verify
 

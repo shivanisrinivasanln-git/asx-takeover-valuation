@@ -2,7 +2,7 @@
 when the site is built (task P5-22).
 
 A page shared in a message or a post shows this image. The card is written from a template with
-the same verdict and chart as the landing page and photographed by the Chrome installed on the
+the same verdict and chart as the landing page and captured by the Chrome installed on the
 machine, through Playwright, in the light theme. The pages name it with an absolute address,
 because a link preview is fetched from outside the site.
 """
@@ -25,7 +25,7 @@ PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 
 
 def render_preview(card_html: Path, out_png: Path) -> None:
-    """Photograph the card at exactly the preview size."""
+    """Capture the card at exactly the preview size."""
     out_png.parent.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(channel="chrome")

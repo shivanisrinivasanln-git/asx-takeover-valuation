@@ -104,7 +104,7 @@ def test_a_figure_does_not_depend_on_an_input_its_row_leaves_out(
 def test_every_input_that_moves_no_figure_is_one_i_hold_for_information(
     moved: dict[str, set[str]],
 ) -> None:
-    # An input that moves nothing is dead weight in assumptions.yaml or a figure missing from
+    # An input that moves nothing is either unused in assumptions.yaml or a figure missing from
     # valuation.json. Each one is listed here so a new one has to be looked at.
     never_moved = sorted(
         name for name, groups in moved.items() if not groups and not name.startswith("table:")

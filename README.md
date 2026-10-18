@@ -36,7 +36,7 @@ Grant Samuel published a range and no preferred value, so the bridge starts at A
 | Net debt and diluted share counts | 0.00 | 4.21 |
 | My preferred value | | 4.21 |
 
-The total gap is A$0.05, and two steps much larger than it pull in opposite directions. Weighting my DCF at 50% lowers the value by A$0.21, because the DCF alone gives A$3.83. The 25% control premium on the trading method raises it by A$0.27. My result therefore depends most on the method weights and the premium, and the site explains each step with its booklet pages.
+The total gap is A$0.05, and two steps much larger than it go in opposite directions. Weighting my DCF at 50% lowers the value by A$0.21, because the DCF alone gives A$3.83. The 25% control premium on the trading method raises it by A$0.27. My result therefore depends most on the method weights and the premium, and the site explains each step with its booklet pages.
 
 ## How the numbers are produced
 

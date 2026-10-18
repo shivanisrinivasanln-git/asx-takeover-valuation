@@ -233,8 +233,8 @@ def _description(rows: list[dict[str, Any]], bridge: dict[str, Any]) -> str:
         f"{row['label']} {aud_signed(row['change'])}" for row in rows if row["kind"] == "step"
     )
     return (
-        "Horizontal bars show how each group of inputs moves the value per share from "
-        f"{aud(bridge['start_value_per_share_aud'])}, the midpoint of the expert's range, to "
+        "Horizontal bars show how each group of inputs changes the value per share between "
+        f"{aud(bridge['start_value_per_share_aud'])}, the midpoint of the expert's range, and "
         f"{aud(bridge['end_value_per_share_aud'])}, my preferred value. {steps}."
     )
 

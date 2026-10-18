@@ -1,7 +1,7 @@
 /* Sourced figures (tasks P5-06 and P5-07).
 
    Every figure marked with a.source-mark links to its entry in the list of sources at the end of
-   the page, so the page reads and the link works without this script. With the script, a click,
+   the page, so the page and the link work without this script. With the script, a click,
    tap or Enter opens the entry in a popover next to the figure. Escape, the Close button or a tap
    elsewhere dismisses it. The Show sources switch, hidden in the markup until this script runs,
    adds a class to the page that prints each marker's reference code beside its figure. The

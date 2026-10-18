@@ -138,7 +138,7 @@
     margin-block-start: var(--space-5);
   }
 
-  /* Each section of a page reads as its own exhibit, with more space before it than inside it. */
+  /* Each section of a page is set out as its own exhibit, with more space before it than inside it. */
   main > section + section,
   main > * + .routes {
     margin-block-start: var(--space-7);
@@ -644,7 +644,7 @@
 
 @layer components {
   /* The link-preview card: the verdict and the chart on one 1200 by 630 picture
-     (src/valuation/link_preview.py). It is photographed, never served as a page. */
+     (src/valuation/link_preview.py). It is captured as an image, never served as a page. */
   .preview-card {
     display: flex;
     flex-direction: column;
