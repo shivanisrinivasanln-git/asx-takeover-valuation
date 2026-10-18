@@ -45,14 +45,17 @@
   h1,
   h2 {
     font-family: var(--font-serif);
+    letter-spacing: var(--tracking-heading);
   }
 
   h1 {
     font-size: var(--text-title);
   }
 
+  /* A section heading keeps a gap above its content; in prose it collapses with the gap there. */
   h2 {
     font-size: var(--text-heading);
+    margin-block-end: var(--space-3);
   }
 
   h3 {
@@ -63,6 +66,20 @@
     color: var(--ink);
     text-decoration: underline;
     text-underline-offset: var(--underline-offset);
+  }
+
+  a,
+  button {
+    transition:
+      color var(--motion-fast) ease-out,
+      text-decoration-color var(--motion-fast) ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a,
+    button {
+      transition: none;
+    }
   }
 
   :focus-visible {
@@ -88,14 +105,13 @@
   }
 
   .site-header {
-    background: var(--surface-band);
     border-block-end: var(--line-thin) solid var(--rule);
     padding-block: var(--space-3);
   }
 
   .switches {
     display: flex;
-    gap: var(--space-2);
+    gap: var(--space-4);
   }
 
   /* One row on a wide page: the site name on the left, then the pages and the switch. */
@@ -125,6 +141,7 @@
 
   .site-header nav a:hover,
   .site-name:hover {
+    color: var(--ink);
     text-decoration: underline;
   }
 
@@ -280,12 +297,15 @@
   .figures th,
   .figures td {
     border-block-end: var(--line-thin) solid var(--rule);
-    padding: var(--space-2) var(--space-3);
+    padding: var(--space-3);
   }
 
+  /* Column heads are small muted labels over one ink rule, so the figures carry the weight. */
   .figures thead th {
-    background: var(--surface-band);
-    border-block-end-color: var(--rule-strong);
+    border-block-end-color: var(--ink);
+    color: var(--ink-muted);
+    font-size: var(--text-note);
+    vertical-align: bottom;
   }
 
   .figures th {
@@ -520,14 +540,17 @@
   .source-popover-close,
   .sources-switch,
   .theme-switch {
-    background: var(--surface);
-    border: var(--line-thin) solid var(--rule-strong);
-    border-radius: var(--radius-control);
-    color: var(--ink);
     cursor: pointer;
     font: inherit;
     min-block-size: var(--touch-target);
     min-inline-size: var(--touch-target);
+  }
+
+  .source-popover-close {
+    background: var(--surface);
+    border: var(--line-thin) solid var(--rule-strong);
+    border-radius: var(--radius-control);
+    color: var(--ink);
     padding-inline: var(--space-3);
   }
 }
@@ -535,16 +558,31 @@
 @layer components {
   /* The Show sources switch is hidden until the script runs, so a page without the script has
      no control that does nothing. When it is on, each marker prints its reference code. */
+  /* Both switches are set as text, like the page links beside them: muted when off, and ink
+     with the accent underline of the current page when on. */
   .sources-switch,
   .theme-switch {
+    background: none;
+    border: none;
+    color: var(--ink-muted);
     font-size: var(--text-note);
+    padding-inline: 0;
+    text-decoration-color: transparent;
+    text-decoration-line: underline;
+    text-decoration-thickness: var(--line-focus);
+    text-underline-offset: var(--underline-offset);
+  }
+
+  .sources-switch:hover,
+  .theme-switch:hover {
+    color: var(--ink);
+    text-decoration-color: currentColor;
   }
 
   .sources-switch[aria-pressed="true"],
   .theme-switch[aria-pressed="true"] {
-    background: var(--accent-wash);
-    box-shadow: inset 0 0 0 var(--line-focus) var(--accent);
-    font-weight: var(--weight-strong);
+    color: var(--ink);
+    text-decoration-color: var(--accent);
   }
 
   .show-sources .source-mark::after {

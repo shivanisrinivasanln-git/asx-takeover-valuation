@@ -29,7 +29,7 @@
        luminance formula; tests/engine/test_site_tokens.py recalculates them for this theme and
        tests/engine/test_theme.py for both. */
     --surface: #fafaf8; /* warm off-white, so the page is neither pure white nor cream */
-    --surface-band: #f2f1ee; /* the header and footer bands and table heads */
+    --surface-band: #f2f1ee; /* the footer band */
     --surface-raised: #ffffff; /* overlays and popovers only */
     --ink: #1c1f26; /* 15.8:1, a blue-black chosen on purpose instead of #000 */
     --ink-muted: #575b64; /* 6.5:1: units, axis labels, source lines */
@@ -98,6 +98,8 @@
     --line-thin: 1px; /* dividers and gridlines */
     --line-focus: 2px; /* the focus ring */
     --underline-offset: 0.2em;
+    --tracking-heading: -0.01em; /* serif titles and headings, drawn a little tighter */
+    --motion-fast: 150ms; /* colour change on hover; none under reduced motion */
     --popover-width: 22rem; /* the source popover, about 40 characters a line */
     --touch-target: 2.75rem; /* 44 px: the smallest button */
 

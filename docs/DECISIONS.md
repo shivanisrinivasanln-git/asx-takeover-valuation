@@ -529,3 +529,14 @@ I found the hatched bars and the dotted, banded and boxed marks busy, and on 18 
 - Verdict: on 19 October 2026 I chose semibold figures with my preferred value in the accent, as its tick is in the chart, over keeping the box around the expert's range and the rule under the offer, or keeping all three marks with a thin solid line in place of the hatched band. The band, the box and the rule are gone.
 - Sourced figure: a 1 px underline in the grey of control borders, at least 3:1 against the page in both themes, that turns to the accent on hover or focus, instead of a 2 px dotted accent underline.
 - The chart caption and the link-preview caption now name the shaded, solid and outlined bars. The hatch tokens are removed, and the token for my marks is renamed from owner-hatch to owner-mark.
+
+## 19 October 2026: a quieter header, lighter tables and spacing (task P5-26)
+
+On 18 October 2026 I asked for the front end to look premium and professional and for common front-end practice to be applied. After the typeface and the chart marks, these are the remaining changes made under that request. Each keeps the palette, type and tokens I chose.
+
+- Header: the bar sits on the page colour with a hairline below it, instead of a tinted band. The Show sources and theme switches are set as small muted text like the page links, ink with the accent underline when on, instead of boxed buttons. Each keeps its 44 px target and the focus ring. The close button in the source popover keeps its box, because it sits in an overlay.
+- Tables: column heads are small muted labels over one ink rule, with no band fill, and rows have 12 px of padding above and below instead of 8 px, so the figures carry the weight.
+- Headings: the serif titles and section headings are set 0.01em tighter, and each section heading has 12 px below it, where it had none and the chart's offer label sat against it on a phone.
+- Motion: links and buttons change colour over 150 ms, and not at all when the visitor's system asks for reduced motion.
+
+tests/engine/test_site_polish.py checks the switches, the header and table heads, and the motion rule.
