@@ -152,7 +152,7 @@ The full check command is defined in P0-04. Until it exists, a check means the c
 
 | Done | ID | Tag | Task | Acceptance | Check | Needs |
 |---|---|---|---|---|---|---|
-| [ ] | P7-01 | [AUTO] | Pages deploy job | Deploys the site, the model and the PDF from a green `main` only | A deploy from a failing branch does not run | P5-17, P6-03 |
+| [x] | P7-01 | [AUTO] | Pages deploy job | Deploys the site, the model and the PDF from a green `main` only | A deploy from a failing branch does not run. Evidence: .github/workflows/ci.yml: the checks job runs the full check (which builds the PDF, the site and the preview image), the dependency audit and Lighthouse, and only for a push to main uploads build/site (pages, model and PDF) as the Pages artifact; the deploy job needs the checks job and has the same condition. tests/engine/test_ci_workflow.py passes (6 tests): the deploy job needs the checks and runs only for a push to main, only it may write to Pages, the uploaded site is the one the checks built, every action is pinned to a full commit, and Typst and Node are pinned and checked by SHA-256. I did not push a failing branch to the public repository to prove it (docs/DECISIONS.md) | P5-17, P6-03 |
 | [ ] | P7-02 | [ME] | Decide the first deploy to the public address | I confirm the address, the content and the About page | I have read the site once more | P7-01 |
 | [ ] | P7-03 | [ME] | Check the live site on a phone and a laptop | A list of what I checked and the result | Downloads open and every page loads | P7-02 |
 | [ ] | P7-04 | [AUTO] | Final checks on the live address | axe and Lighthouse on the deployed pages | Budgets met | P7-02 |

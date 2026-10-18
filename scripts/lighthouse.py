@@ -2,10 +2,13 @@
 
 Usage, from the repository root, after `npm ci --ignore-scripts` in scripts/lighthouse:
     PYTHONPATH=src python scripts/lighthouse.py
+    PYTHONPATH=src python scripts/lighthouse.py https://address/of/a/live/copy/
 
-The pages are served from build/site on a local port, because Lighthouse measures a page loaded
-over HTTP. Node must be on the path (or named in NODE), and Chrome is taken from CHROME_PATH or the
-usual folder. Reports are written to build/lighthouse.
+Without an address the pages are served from build/site on a local port, because Lighthouse
+measures a page loaded over HTTP; with one, the same page names are measured at that address.
+Node must be on the path (or named in NODE), and Chrome is taken from CHROME_PATH or the usual
+folder. LIGHTHOUSE_CHROME_FLAGS replaces the Chrome flags; CI sets it to add --no-sandbox, which
+Chrome needs on the Linux runner. Reports are written to build/lighthouse.
 """
 
 from __future__ import annotations
@@ -28,6 +31,7 @@ REPORT_DIR = ROOT / "build" / "lighthouse"
 CLI = ROOT / "scripts" / "lighthouse" / "node_modules" / "lighthouse" / "cli" / "index.js"
 CHROME = Path(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
 CATEGORIES = "performance,accessibility,best-practices"
+CHROME_FLAGS = "--headless=new"
 LOCAL_ADDRESS = "127.0.0.1"
 ATTEMPTS = 3
 TIMEOUT_S = 120
@@ -58,7 +62,7 @@ def run_lighthouse(node: str, url: str, report: Path) -> None:
         str(CLI),
         url,
         f"--only-categories={CATEGORIES}",
-        "--chrome-flags=--headless=new",
+        f"--chrome-flags={os.environ.get('LIGHTHOUSE_CHROME_FLAGS', CHROME_FLAGS)}",
         "--output=json",
         f"--output-path={report}",
         "--quiet",
@@ -80,7 +84,22 @@ def run_lighthouse(node: str, url: str, report: Path) -> None:
     raise SystemExit(f"lighthouse: failed {ATTEMPTS} times on {url}\n{last_error}")
 
 
+def measure(node: str, base_url: str, pages: list[Path]) -> list[str]:
+    """Run Lighthouse on each page at `base_url`, print its scores and return the budget misses."""
+    problems: list[str] = []
+    for page in pages:
+        report_path = REPORT_DIR / f"{page.stem}.json"
+        run_lighthouse(node, f"{base_url}{page.name}", report_path)
+        scores: PageScores = read_report(page.name, json.loads(report_path.read_text("utf-8")))
+        summary = ", ".join(f"{name} {value}" for name, value in scores.score_pct.items())
+        sys.stdout.write(f"{page.name}: {summary}, LCP {scores.lcp_ms / 1000:.1f} s\n")
+        problems += budget_problems(scores)
+    return problems
+
+
 def main() -> int:
+    if len(sys.argv) > 2 or (len(sys.argv) == 2 and not sys.argv[1].startswith("https://")):
+        raise SystemExit("usage: python scripts/lighthouse.py [https://address/of/a/live/copy/]")
     if not CLI.is_file():
         raise SystemExit("lighthouse: run `npm ci --ignore-scripts` in scripts/lighthouse first")
     pages = sorted(SITE_DIR.glob("*.html"))
@@ -88,19 +107,15 @@ def main() -> int:
         raise SystemExit("lighthouse: build/site has no pages; run the site build first")
     node = find_node()
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
-    handler = functools.partial(QuietHandler, directory=str(SITE_DIR))
-    with QuietServer((LOCAL_ADDRESS, 0), handler) as server:
-        threading.Thread(target=server.serve_forever, daemon=True).start()
-        port = server.server_address[1]
-        problems: list[str] = []
-        for page in pages:
-            report_path = REPORT_DIR / f"{page.stem}.json"
-            run_lighthouse(node, f"http://{LOCAL_ADDRESS}:{port}/{page.name}", report_path)
-            scores: PageScores = read_report(page.name, json.loads(report_path.read_text("utf-8")))
-            summary = ", ".join(f"{name} {value}" for name, value in scores.score_pct.items())
-            sys.stdout.write(f"{page.name}: {summary}, LCP {scores.lcp_ms / 1000:.1f} s\n")
-            problems += budget_problems(scores)
-        server.shutdown()
+    if len(sys.argv) == 2:
+        problems = measure(node, sys.argv[1].rstrip("/") + "/", pages)
+    else:
+        handler = functools.partial(QuietHandler, directory=str(SITE_DIR))
+        with QuietServer((LOCAL_ADDRESS, 0), handler) as server:
+            threading.Thread(target=server.serve_forever, daemon=True).start()
+            port = server.server_address[1]
+            problems = measure(node, f"http://{LOCAL_ADDRESS}:{port}/", pages)
+            server.shutdown()
     for problem in problems:
         sys.stdout.write(f"{problem}\n")
     sys.stdout.write("lighthouse: PASS\n" if not problems else "lighthouse: FAIL\n")
