@@ -14,7 +14,6 @@ BUILD = BuildInfo(date="18 October 2026", commit="0123456789abcdef0123456789abcd
 APPROVED_FACTS = (
     "third-year Commerce student at UNSW Sydney",
     "Finance and Business Analytics",
-    "background in security engineering",
     "comfortable with Python, React and Next.js",
     "Professional valuation practice is newer to me",
 )
@@ -37,6 +36,11 @@ def test_the_page_states_each_approved_fact(about_html: str) -> None:
     text = visible_text(about_html)
     for fact in APPROVED_FACTS:
         assert fact in text
+
+
+def test_the_page_makes_no_security_engineering_claim(about_html: str) -> None:
+    # I removed this on 18 October 2026: it is not part of my background.
+    assert "security" not in visible_text(about_html).lower()
 
 
 def test_the_page_links_to_the_repository(about_html: str) -> None:
