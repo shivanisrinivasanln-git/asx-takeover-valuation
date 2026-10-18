@@ -98,11 +98,15 @@ def test_no_placeholder_is_left_in_the_report() -> None:
     assert "placeholder" not in TEMPLATE.lower()
 
 
-def test_the_report_is_set_in_the_tracked_font_and_only_that_font() -> None:
-    assert 'font: "Atkinson Hyperlegible Next", fallback: false' in TEMPLATE
-    assert (ROOT / FONT_DIR / "AtkinsonHyperlegibleNext-Variable.ttf").is_file()
-    licence = (ROOT / FONT_DIR / "OFL.txt").read_text(encoding="utf-8")
-    assert "SIL Open Font License, Version 1.1" in licence
+def test_the_report_is_set_in_the_tracked_fonts_and_only_those_fonts() -> None:
+    assert 'font: "Site Sans", fallback: false' in TEMPLATE
+    assert '#let serif = "Site Serif"' in TEMPLATE
+    for family in ("SiteSans", "SiteSerif"):
+        for weight in ("Regular", "SemiBold"):
+            assert (ROOT / FONT_DIR / f"{family}-{weight}.ttf").is_file()
+    for source in ("SourceSans3", "SourceSerif4"):
+        licence = (ROOT / FONT_DIR / f"OFL-{source}.txt").read_text(encoding="utf-8")
+        assert "SIL Open Font License, Version 1.1" in licence
 
 
 def test_the_template_loads_valuation_json_from_its_own_folder() -> None:

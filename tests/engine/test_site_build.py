@@ -47,11 +47,12 @@ def test_the_site_builds_and_has_no_problems(site_dir: Path) -> None:
     assert site_problems(site_dir, DISCLAIMER) == []
 
 
-def test_the_build_copies_the_tokens_and_the_font_and_leaves_out_the_font_source(
+def test_the_build_copies_the_tokens_and_the_fonts_and_leaves_out_the_font_source(
     site_dir: Path,
 ) -> None:
     assert (site_dir / "static" / "tokens.css").is_file()
-    assert (site_dir / "static" / "fonts" / "AtkinsonHyperlegibleNext-subset.woff2").is_file()
+    for font in ("SiteSans-subset.woff2", "SiteSerif-subset.woff2"):
+        assert (site_dir / "static" / "fonts" / font).is_file()
     assert not (site_dir / "font-source").exists()
 
 

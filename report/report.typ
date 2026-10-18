@@ -54,10 +54,12 @@
     #sys.inputs.disclaimer #h(1fr) #counter(page).display()
   ],
 )
-// The site's typeface, from the tracked font file in report/fonts; nothing else is used.
-#set text(font: "Atkinson Hyperlegible Next", fallback: false, size: 10pt, fill: ink, lang: "en", region: "AU")
+// The site's typefaces, from the tracked font files in report/fonts; nothing else is used. The
+// serif sets the title and the headings, as on the site.
+#let serif = "Site Serif"
+#set text(font: "Site Sans", fallback: false, size: 10pt, fill: ink, lang: "en", region: "AU")
 #set par(justify: false, leading: 0.7em, spacing: 1.1em)
-#show heading: set text(weight: 600)
+#show heading: set text(font: serif, weight: 600)
 #show heading.where(level: 1): it => block(above: 1.8em, below: 0.8em)[
   #set text(size: 13pt)
   #it.body
@@ -78,7 +80,7 @@
   ..cells,
 )
 
-#text(size: 20pt, weight: 600)[Shadow valuation of #meta.target]
+#text(font: serif, size: 20pt, weight: 600)[Shadow valuation of #meta.target]
 #v(0.2em)
 #text(fill: muted)[Valuation date #meta.valuation_date. Built #sys.inputs.build_date. Values are A\$ per share unless a heading says otherwise.]
 #v(0.6em)

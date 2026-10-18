@@ -42,6 +42,11 @@
     text-wrap: balance;
   }
 
+  h1,
+  h2 {
+    font-family: var(--font-serif);
+  }
+
   h1 {
     font-size: var(--text-title);
   }
@@ -565,6 +570,7 @@
      the accent on my preferred value, a solid rule under the offer and a thin box around the
      expert's range. Each mark sits under or around its figures, never behind them. */
   .verdict {
+    font-family: var(--font-serif);
     font-size: var(--text-verdict);
     line-height: var(--leading-verdict);
     max-width: var(--verdict-width);

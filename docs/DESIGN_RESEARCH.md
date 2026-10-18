@@ -517,3 +517,7 @@ After the front-end research on the same day I kept direction B's palette and ty
 ### Change of 18 October 2026: warmer palette and a dark theme
 
 I replaced the cool palette with warm neutrals and a deeper blue accent, added a dark theme that follows the system setting, and added a switch in the header that remembers my choice. Atkinson Hyperlegible Next stays the only typeface, and the chart notation is unchanged. The new accent is closer to the ink (2.1:1 in the light theme and 1.95:1 in the dark, against 2.2:1 before), which reverses one reason I gave above for keeping the old palette; the hatch and the empty outline still differ in pattern and hue, and docs/DECISIONS.md explains why I accept it. The colours, their contrast and the one storage key the switch uses are in docs/DECISIONS.md (18 October 2026), and tests/engine/test_theme.py checks them.
+
+### Change of 18 October 2026: Source Serif 4 and Source Sans 3
+
+Later the same day I replaced Atkinson Hyperlegible Next with Source Serif 4 for page titles, section headings and the verdict sentence, and Source Sans 3 for everything else, on the site and in the report. Both families draw tabular lining figures with a plain zero by default, which answers the minus-sign question under "Unverified" for the new type: the sans minus advances the same 497 units as a digit. The two site files are 12.4 KB and 18.3 KB. The comparison I chose from, the files and their licences are in docs/DECISIONS.md (18 October 2026) and site/font-source/README.md.

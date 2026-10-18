@@ -1,4 +1,4 @@
-"""The head of every page links the favicon and preloads the font (task P5-17). The favicon is
+"""The head of every page links the favicon and preloads both fonts (task P5-17). The favicon is
 drawn from the accent colour in tokens.css, so that colour is written in one place."""
 
 import re
@@ -12,10 +12,7 @@ from valuation.site_frame import BuildInfo
 ROOT = Path(__file__).resolve().parents[2]
 BUILD = BuildInfo(date="17 October 2026", commit="0123456789abcdef0123456789abcdef01234567")
 FAVICON_LINK = '<link rel="icon" href="static/favicon.svg" type="image/svg+xml">'
-FONT_PRELOAD = (
-    '<link rel="preload" href="static/fonts/AtkinsonHyperlegibleNext-subset.woff2" '
-    'as="font" type="font/woff2" crossorigin>'
-)
+FONT_FILES = ("SiteSans-subset.woff2", "SiteSerif-subset.woff2")
 
 
 @pytest.fixture(scope="module")
@@ -43,11 +40,16 @@ def test_the_favicon_is_a_square_in_the_accent_colour(site_dir: Path) -> None:
 
 
 @pytest.mark.parametrize("name", PAGES)
-def test_every_page_links_the_favicon_and_preloads_the_font(site_dir: Path, name: str) -> None:
+def test_every_page_links_the_favicon_and_preloads_the_fonts(site_dir: Path, name: str) -> None:
     html = (site_dir / name).read_text(encoding="utf-8")
     assert FAVICON_LINK in html
-    assert FONT_PRELOAD in html
-    assert (site_dir / "static" / "fonts" / "AtkinsonHyperlegibleNext-subset.woff2").is_file()
+    for font in FONT_FILES:
+        preload = (
+            f'<link rel="preload" href="static/fonts/{font}" as="font" type="font/woff2" '
+            "crossorigin>"
+        )
+        assert preload in html
+        assert (site_dir / "static" / "fonts" / font).is_file()
 
 
 def test_no_stylesheet_or_template_holds_the_favicon_colour_outside_the_tokens() -> None:

@@ -3,9 +3,18 @@
 
 @layer reset, tokens, base, layout, components, print;
 
+/* Source Sans 3 and Source Serif 4, subset and renamed under the OFL (site/font-source). */
 @font-face {
-  font-family: "Atkinson Hyperlegible Next";
-  src: url("fonts/AtkinsonHyperlegibleNext-subset.woff2") format("woff2");
+  font-family: "Site Sans";
+  src: url("fonts/SiteSans-subset.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Site Serif";
+  src: url("fonts/SiteSerif-subset.woff2") format("woff2");
   font-weight: 400 600;
   font-style: normal;
   font-display: swap;
@@ -44,9 +53,12 @@
     --offer-rule: var(--ink);
     --undisturbed-rule: var(--ink-muted);
 
-    /* Type. One family, weights 400 and 600. Its figures are proportional by default, so
-       numbers set --numeric-features. */
-    --font-sans: "Atkinson Hyperlegible Next", sans-serif;
+    /* Type (my choice of 18 October 2026). The serif sets the page titles, section headings and
+       the verdict; the sans sets everything else, tables and charts included. Weights 400 and
+       600. Both draw tabular lining figures by default; numbers still set --numeric-features
+       so a fallback font lines up too. */
+    --font-sans: "Site Sans", sans-serif;
+    --font-serif: "Site Serif", serif;
     --weight-regular: 400;
     --weight-strong: 600;
     --numeric-features: tabular-nums lining-nums;

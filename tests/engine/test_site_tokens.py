@@ -9,7 +9,9 @@ ROOT = Path(__file__).resolve().parents[2]
 SITE_DIR = ROOT / "site"
 STATIC_DIR = SITE_DIR / "static"
 TOKENS_PATH = STATIC_DIR / "tokens.css"
-FONT_PATH = STATIC_DIR / "fonts" / "AtkinsonHyperlegibleNext-subset.woff2"
+FONT_DIR = STATIC_DIR / "fonts"
+FONT_FILES = ("SiteSans-subset.woff2", "SiteSerif-subset.woff2")
+LICENCE_FILES = ("OFL-SourceSans3.txt", "OFL-SourceSerif4.txt")
 
 FONT_BUDGET_BYTES = 25 * 1024
 BASE_FONT_SIZE_PX = 16
@@ -98,15 +100,21 @@ def test_the_raw_colour_check_catches_a_planted_colour() -> None:
     assert not HEX_COLOUR.search('<a href="#main">Skip to content</a>')
 
 
-def test_font_subset_is_a_woff2_file_under_the_budget() -> None:
-    data = FONT_PATH.read_bytes()
+@pytest.mark.parametrize("name", FONT_FILES)
+def test_each_font_subset_is_a_woff2_file_under_the_budget(name: str) -> None:
+    data = (FONT_DIR / name).read_bytes()
     assert data[:4] == b"wOF2"
     assert len(data) < FONT_BUDGET_BYTES
 
 
-def test_font_licence_ships_beside_the_font() -> None:
-    licence = (FONT_PATH.parent / "OFL.txt").read_text(encoding="utf-8")
+@pytest.mark.parametrize("name", LICENCE_FILES)
+def test_each_font_licence_ships_beside_the_fonts(name: str) -> None:
+    licence = (FONT_DIR / name).read_text(encoding="utf-8")
     assert "SIL Open Font License, Version 1.1" in licence
+
+
+def test_the_only_fonts_shipped_are_the_two_subsets() -> None:
+    assert sorted(path.name for path in FONT_DIR.iterdir()) == sorted(FONT_FILES + LICENCE_FILES)
 
 
 @pytest.mark.parametrize(

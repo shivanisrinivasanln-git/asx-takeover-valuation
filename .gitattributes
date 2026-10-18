@@ -5,5 +5,5 @@
 *.png binary
 *.woff2 binary
 *.ttf binary
-site/static/fonts/OFL.txt whitespace=-trailing-space
-report/fonts/OFL.txt whitespace=-trailing-space
+site/static/fonts/OFL-*.txt whitespace=-trailing-space
+report/fonts/OFL-*.txt whitespace=-trailing-space

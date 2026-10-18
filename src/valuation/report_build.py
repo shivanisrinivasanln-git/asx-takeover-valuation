@@ -3,7 +3,7 @@
 The template, report/report.typ, reads valuation.json and limitations.json from its own folder,
 so the report is compiled in a folder that holds a copy of the template and fresh copies of both.
 The compile itself is run by scripts/build_report.py, which uses the pieces here. The report is
-set in the site's typeface, from the font file tracked in report/fonts under its licence.
+set in the site's typefaces, from the font files tracked in report/fonts under their licences.
 """
 
 from __future__ import annotations

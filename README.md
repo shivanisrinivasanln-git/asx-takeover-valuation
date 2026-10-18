@@ -74,4 +74,4 @@ On Windows the interpreter is `.venv\Scripts\python.exe`. The last command runs 
 
 ## Licence
 
-The code is under the MIT licence (see [LICENSE](LICENSE)). The report font, Atkinson Hyperlegible Next, is under the SIL Open Font License, with its licence in `report/fonts` and `site/static/fonts`. The documents I link to, such as the scheme booklet and company reports, belong to their owners and keep their own terms.
+The code is under the MIT licence (see [LICENSE](LICENSE)). The fonts, Source Sans 3 and Source Serif 4, are under the SIL Open Font License, with their licences in `report/fonts` and `site/static/fonts`. The documents I link to, such as the scheme booklet and company reports, belong to their owners and keep their own terms.
