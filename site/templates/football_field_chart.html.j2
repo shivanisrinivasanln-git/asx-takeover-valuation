@@ -1,11 +1,6 @@
   <svg class="chart" width="100%" height="{{ field.height }}" role="img" aria-labelledby="ff-title ff-desc">
     <title id="ff-title">{{ field.title }}</title>
     <desc id="ff-desc">{{ field.description }}</desc>
-    <defs>
-      <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-        <line class="hatch-line" x1="0" y1="0" x2="0" y2="5"/>
-      </pattern>
-    </defs>
     {% for tick in field.ticks %}
     <line class="grid{% if not tick.major %} minor{% endif %}" x1="{{ tick.x }}" x2="{{ tick.x }}" y1="{{ field.plot_top }}" y2="{{ field.plot_bottom }}"/>
     <text class="axis-label{% if not tick.major %} minor{% endif %}" x="{{ tick.x }}" y="{{ field.top_axis_y }}" text-anchor="{{ tick.anchor }}">{{ tick.label }}</text>
@@ -16,8 +11,11 @@
     {% for row in field.rows %}
     <g class="row" data-row="{{ row.id }}">
       <text class="row-label" x="0" y="{{ row.label_y }}">{{ row.label }}</text>
-      <rect class="bar {{ 'bar-mine' if row.owner else 'bar-expert' }}" x="{{ row.x_low }}" y="{{ row.bar_y }}" width="{{ row.width }}" height="{{ row.bar_height }}"{% if row.owner %} fill="url(#hatch)"{% endif %}/>
+      <rect class="bar {{ 'bar-expert' if not row.owner else 'bar-combined' if row.id == 'combined' else 'bar-mine' }}" x="{{ row.x_low }}" y="{{ row.bar_y }}" width="{{ row.width }}" height="{{ row.bar_height }}"/>
       {% if row.x_preferred %}
+      {% if row.id == 'combined' %}
+      <line class="preferred-halo" x1="{{ row.x_preferred }}" x2="{{ row.x_preferred }}" y1="{{ row.tick_y1 }}" y2="{{ row.tick_y2 }}"/>
+      {% endif %}
       <line class="preferred-tick" x1="{{ row.x_preferred }}" x2="{{ row.x_preferred }}" y1="{{ row.tick_y1 }}" y2="{{ row.tick_y2 }}"/>
       {% endif %}
       <text class="end-label" x="{{ row.low_label_x }}" dx="-6" y="{{ row.mid_y }}" dy="0.35em" text-anchor="end" data-key="{{ row.low_key }}">{{ row.low_text }}</text>

@@ -521,3 +521,7 @@ I replaced the cool palette with warm neutrals and a deeper blue accent, added a
 ### Change of 18 October 2026: Source Serif 4 and Source Sans 3
 
 Later the same day I replaced Atkinson Hyperlegible Next with Source Serif 4 for page titles, section headings and the verdict sentence, and Source Sans 3 for everything else, on the site and in the report. Both families draw tabular lining figures with a plain zero by default, which answers the minus-sign question under "Unverified" for the new type: the sans minus advances the same 497 units as a digit. The two site files are 12.4 KB and 18.3 KB. The comparison I chose from, the files and their licences are in docs/DECISIONS.md (18 October 2026) and site/font-source/README.md.
+
+### Change of 19 October 2026: shaded bars instead of the hatch
+
+My estimate by each method is now a bar with a light accent fill (stronger in the dark theme) and an accent outline, my combined range a solid accent bar, and the expert's range an ink outline as before. The verdict marks its figures with weight and the accent only, and a sourced figure has a thin grey underline instead of a dotted one. The reasons are in docs/DECISIONS.md (19 October 2026).

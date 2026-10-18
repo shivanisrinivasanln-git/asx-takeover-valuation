@@ -518,3 +518,14 @@ I found the site's type unusual rather than professional: Atkinson Hyperlegible 
 - Source Sans 3 reserves the font name "Source", and a subset is a modified version under the OFL, so the files are renamed Site Sans and Site Serif (site/font-source/README.md).
 - The site loads two subsets of 12.4 KB and 18.3 KB, each under the 25 KB budget, instead of one of 11.6 KB, and preloads both, because the title and the text are both above the fold.
 - The report's fonts are static 400 and 600 files of each family, since a static file leaves Typst no axis to resolve.
+
+## 19 October 2026: shaded bars and plain figures replace the hatching (task P5-25)
+
+I found the hatched bars and the dotted, banded and boxed marks busy, and on 18 October 2026 I chose plainer marks from mock-ups of my own chart. This replaces the 45 degree hatch for my estimates that I adopted on 4 October 2026.
+
+- Chart: my estimate by each method is a bar with a light accent fill and a 1.5 px accent outline. My combined range is a solid accent bar, so the range I stand behind reads first. The expert's range stays an ink outline with no fill. On the solid bar, the preferred tick has a gap in the page colour either side so it still shows.
+- In the dark theme the tint (1.2:1 against the page) left my method bars looking like outlines, so on 19 October 2026 I chose a stronger fill there: 25% accent, 1.6:1 against the page, with the outline at 5.2:1 against the fill. The light theme keeps the tint.
+- My bars and the expert's still differ in fill and in hue; the accent stays at 2.1:1 against the ink in the light theme and 1.95:1 in the dark, which tests/engine/test_theme.py keeps.
+- Verdict: on 19 October 2026 I chose semibold figures with my preferred value in the accent, as its tick is in the chart, over keeping the box around the expert's range and the rule under the offer, or keeping all three marks with a thin solid line in place of the hatched band. The band, the box and the rule are gone.
+- Sourced figure: a 1 px underline in the grey of control borders, at least 3:1 against the page in both themes, that turns to the accent on hover or focus, instead of a 2 px dotted accent underline.
+- The chart caption and the link-preview caption now name the shaded, solid and outlined bars. The hatch tokens are removed, and the token for my marks is renamed from owner-hatch to owner-mark.

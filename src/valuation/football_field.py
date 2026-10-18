@@ -1,7 +1,7 @@
 """Geometry and labels for the football field chart (tasks P5-04 and P5-04b).
 
 The chart is an inline SVG with percentage x coordinates and no `viewBox`, so bars stretch with
-the page while text, hatch angle and line widths keep their size. Python decides every position
+the page while text and line widths keep their size. Python decides every position
 and label; the template only writes them out. Rows come from `valuation.json` `football_field`
 (each row names its low, high and preferred keys), and nothing here recalculates a value.
 """

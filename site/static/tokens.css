@@ -35,7 +35,7 @@
     --ink-muted: #575b64; /* 6.5:1: units, axis labels, source lines */
     --rule: #e3e1dc; /* gridlines and dividers, decorative at 1.3:1 */
     --rule-strong: #8a8780; /* control borders, 3.4:1 */
-    --accent: #2148b8; /* 7.5:1: my hatch, my preferred value, focus and selection only */
+    --accent: #2148b8; /* 7.5:1: my bars, my preferred value, focus and selection only */
     --positive-variance: #00796b; /* 5.1:1: favourable */
     --negative-variance: #b34700; /* 5.3:1: unfavourable */
 
@@ -45,11 +45,15 @@
     --accent-tint: #e0e5f0;
     --accent-tint: color-mix(in oklab, var(--accent) 12%, var(--surface));
 
-    /* Chart notation (docs/DESIGN_RESEARCH.md): solid for actuals, outline for the expert,
-       hatch for my estimates, a solid rule for the offer, a dashed rule for the undisturbed price. */
+    /* Chart notation (docs/DECISIONS.md, 19 October 2026): an accent outline with a light accent
+       fill for my estimate by each method, a solid accent bar for my combined range, an ink
+       outline for the expert, a solid rule for the offer and a dashed rule for the undisturbed
+       price. */
     --actual-solid: var(--ink-muted);
     --expert-outline: var(--ink);
-    --owner-hatch: var(--accent);
+    --owner-mark: var(--accent);
+    --owner-fill: #e0e5f0; /* the accent tint; stronger in the dark theme */
+    --owner-fill: color-mix(in oklab, var(--accent) 12%, var(--surface));
     --offer-rule: var(--ink);
     --undisturbed-rule: var(--ink-muted);
 
@@ -77,16 +81,12 @@
 
     /* Chart line weights (docs/DESIGN_RESEARCH.md, proposed chart defaults). */
     --chart-outline: 1.5px; /* my bars and the expert's bar */
-    --chart-hatch-line: 1.75px; /* the hatch inside my bars */
     --chart-gridline: 1px;
     --chart-tick: 2.5px; /* my preferred value */
     --chart-offer: 1.5px;
     --chart-undisturbed: 1px;
     --chart-dash: 4 3; /* undisturbed price, dash and gap */
-    --chart-halo: 8px; /* surface-coloured edge that keeps a label legible over a line */
-    --hatch-pitch: 5px; /* the hatch under my range in the verdict, as in the chart */
-    --verdict-band: 0.2em; /* depth of that hatched band, inside the line gap */
-    --verdict-rule-offset: 0.3em; /* the solid rule under the offer */
+    --chart-halo: 8px; /* surface-coloured edge around a label or my preferred tick */
 
     /* Page width and line weights, so that no other file holds a raw size. */
     --page-width: 72rem;
@@ -97,7 +97,6 @@
     --route-min-width: 15rem; /* a route onward takes a column when three fit */
     --line-thin: 1px; /* dividers and gridlines */
     --line-focus: 2px; /* the focus ring */
-    --line-mark: 2px; /* dotted underline of a sourced figure */
     --underline-offset: 0.2em;
     --popover-width: 22rem; /* the source popover, about 40 characters a line */
     --touch-target: 2.75rem; /* 44 px: the smallest button */
@@ -139,6 +138,10 @@
       --accent-wash: color-mix(in oklab, var(--accent) 6%, var(--surface));
       --accent-tint: #1e2332;
       --accent-tint: color-mix(in oklab, var(--accent) 12%, var(--surface));
+      /* My method bars take a stronger fill on the dark page, where the tint barely shows
+         (my choice of 19 October 2026). */
+      --owner-fill: #2f3750;
+      --owner-fill: color-mix(in oklab, var(--accent) 25%, var(--surface));
     }
   }
 
@@ -158,5 +161,9 @@
     --accent-wash: color-mix(in oklab, var(--accent) 6%, var(--surface));
     --accent-tint: #1e2332;
     --accent-tint: color-mix(in oklab, var(--accent) 12%, var(--surface));
+    /* My method bars take a stronger fill on the dark page, where the tint barely shows
+       (my choice of 19 October 2026). */
+    --owner-fill: #2f3750;
+    --owner-fill: color-mix(in oklab, var(--accent) 25%, var(--surface));
   }
 }

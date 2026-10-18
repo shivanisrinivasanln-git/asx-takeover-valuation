@@ -91,8 +91,8 @@ def test_control_borders_reach_3_to_1(theme: dict[str, str]) -> None:
 
 
 @pytest.mark.parametrize("theme", [LIGHT, DARK], ids=["light", "dark"])
-def test_my_hatch_stays_distinct_from_the_expert_outline(theme: dict[str, str]) -> None:
-    # The accent (my bars) and the ink (the expert's outline) also differ in pattern and hue. This
+def test_my_bars_stay_distinct_from_the_expert_outline(theme: dict[str, str]) -> None:
+    # The accent (my bars) and the ink (the expert's outline) also differ in fill and hue. This
     # minimum is just under the dark theme's 1.95:1, so a later colour change cannot bring them
     # closer.
     assert contrast(theme["accent"], theme["ink"]) >= 1.9
@@ -102,6 +102,14 @@ def test_my_hatch_stays_distinct_from_the_expert_outline(theme: dict[str, str]) 
 def test_tint_fallbacks_are_the_srgb_mix_of_accent_and_surface(theme: dict[str, str]) -> None:
     assert theme["accent-wash"] == srgb_mix(theme["accent"], theme["surface"], 0.06)
     assert theme["accent-tint"] == srgb_mix(theme["accent"], theme["surface"], 0.12)
+
+
+def test_my_method_bars_take_the_tint_in_light_and_a_stronger_fill_in_dark() -> None:
+    assert LIGHT["owner-fill"] == LIGHT["accent-tint"]
+    assert DARK["owner-fill"] == srgb_mix(DARK["accent"], DARK["surface"], 0.25)
+    assert contrast(DARK["owner-fill"], DARK["surface"]) > contrast(
+        DARK["accent-tint"], DARK["surface"]
+    )
 
 
 @pytest.mark.parametrize(

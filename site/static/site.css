@@ -212,13 +212,15 @@
     stroke-width: var(--chart-gridline);
   }
 
-  .chart .hatch-line {
-    stroke: var(--owner-hatch);
-    stroke-width: var(--chart-hatch-line);
+  .chart .bar-mine {
+    fill: var(--owner-fill);
+    stroke: var(--owner-mark);
+    stroke-width: var(--chart-outline);
   }
 
-  .chart .bar-mine {
-    stroke: var(--owner-hatch);
+  .chart .bar-combined {
+    fill: var(--owner-mark);
+    stroke: var(--owner-mark);
     stroke-width: var(--chart-outline);
   }
 
@@ -228,8 +230,14 @@
     stroke-width: var(--chart-outline);
   }
 
+  /* On the solid combined bar, a gap in the page colour either side of the tick shows it. */
+  .chart .preferred-halo {
+    stroke: var(--surface);
+    stroke-width: var(--chart-halo);
+  }
+
   .chart .preferred-tick {
-    stroke: var(--owner-hatch);
+    stroke: var(--owner-mark);
     stroke-width: var(--chart-tick);
   }
 
@@ -403,7 +411,7 @@
   }
 
   .chart .marker-mine {
-    stroke: var(--owner-hatch);
+    stroke: var(--owner-mark);
     stroke-width: var(--chart-tick);
   }
 
@@ -442,15 +450,20 @@
 }
 
 @layer components {
-  /* A sourced figure has a dotted accent underline. It links to its entry in the list of
-     sources at the end of the page; the script opens that entry in a popover instead. */
+  /* A sourced figure has a thin grey underline that turns to the accent on hover or focus. It
+     links to its entry in the list of sources at the end of the page; the script opens that
+     entry in a popover instead. */
   .source-mark {
     color: inherit;
-    text-decoration-color: var(--accent);
+    text-decoration-color: var(--rule-strong);
     text-decoration-line: underline;
-    text-decoration-style: dotted;
-    text-decoration-thickness: var(--line-mark);
+    text-decoration-thickness: var(--line-thin);
     text-underline-offset: var(--underline-offset);
+  }
+
+  .source-mark:hover,
+  .source-mark:focus-visible {
+    text-decoration-color: var(--accent);
   }
 
   .source-list {
@@ -566,9 +579,8 @@
 }
 
 @layer components {
-  /* The verdict on the landing page uses the chart's notation: a hatched band under my range,
-     the accent on my preferred value, a solid rule under the offer and a thin box around the
-     expert's range. Each mark sits under or around its figures, never behind them. */
+  /* In the verdict on the landing page every figure is semibold and my preferred value takes
+     the accent, as its tick does in the chart. */
   .verdict {
     font-family: var(--font-serif);
     font-size: var(--text-verdict);
@@ -588,33 +600,15 @@
     white-space: nowrap;
   }
 
-  .mark-mine {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      var(--owner-hatch) 0 var(--chart-hatch-line),
-      transparent var(--chart-hatch-line) var(--hatch-pitch)
-    );
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    background-size: 100% var(--verdict-band);
-    padding-block-end: var(--verdict-band);
+  .mark-mine,
+  .mark-offer,
+  .mark-preferred,
+  .mark-expert {
+    font-weight: var(--weight-strong);
   }
 
   .mark-preferred {
     color: var(--accent);
-    font-weight: var(--weight-strong);
-  }
-
-  .mark-offer {
-    text-decoration-color: var(--offer-rule);
-    text-decoration-line: underline;
-    text-decoration-thickness: var(--line-focus);
-    text-underline-offset: var(--verdict-rule-offset);
-  }
-
-  .mark-expert {
-    border: var(--chart-outline) solid var(--expert-outline);
-    padding-inline: var(--space-1);
   }
 
   .lead,

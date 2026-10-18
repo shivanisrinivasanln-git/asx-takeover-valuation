@@ -146,7 +146,7 @@ def test_bar_positions_follow_the_price_scale(inputs: Inputs, valuation: dict[st
     assert field.axis_max_aud > max(values)
 
 
-def test_my_rows_have_a_hatch_and_a_preferred_tick_and_the_expert_row_has_neither(
+def test_my_method_bars_are_shaded_my_combined_bar_is_solid_and_the_expert_bar_is_an_outline(
     page: _Chart,
 ) -> None:
     groups = [
@@ -161,12 +161,21 @@ def test_my_rows_have_a_hatch_and_a_preferred_tick_and_the_expert_row_has_neithe
         if tag == "line" and "preferred-tick" in attrs.get("class", "")
     ]
     assert len(ticks) == 4
-    hatched = [
+    halos = [
         attrs
         for tag, attrs in page.elements
-        if tag == "rect" and attrs.get("fill") == "url(#hatch)"
+        if tag == "line" and "preferred-halo" in attrs.get("class", "")
     ]
-    assert len(hatched) == 4
+    assert len(halos) == 1
+    bar_classes = [
+        attrs["class"]
+        for tag, attrs in page.elements
+        if tag == "rect" and "bar" in attrs.get("class", "")
+    ]
+    assert bar_classes == ["bar bar-mine"] * 3 + ["bar bar-combined", "bar bar-expert"]
+    # The fill comes from the stylesheet, so no bar carries a fill attribute or a pattern.
+    assert not any(tag == "pattern" for tag, _ in page.elements)
+    assert not any("fill" in attrs for tag, attrs in page.elements if tag == "rect")
     expert = [
         attrs
         for tag, attrs in page.elements
@@ -221,9 +230,10 @@ def _contrast(foreground: str, background: str) -> float:
 @pytest.mark.parametrize(
     ("selector", "token_name"),
     [
-        (".chart .bar-mine", "owner-hatch"),
+        (".chart .bar-mine", "owner-mark"),
+        (".chart .bar-combined", "owner-mark"),
         (".chart .bar-expert", "expert-outline"),
-        (".chart .preferred-tick", "owner-hatch"),
+        (".chart .preferred-tick", "owner-mark"),
         (".chart .rule-offer", "offer-rule"),
         (".chart .rule-undisturbed", "undisturbed-rule"),
     ],
